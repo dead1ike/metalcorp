@@ -1,7 +1,7 @@
 <template>
   <b-navbar type="dark" variant="dark" class="sticky-top d-inline-flex">
     <b-navbar-brand to="/">
-      <h3 class="my-4 font-weight-bolder" link-classes="text-black-50">MetalCorp</h3>
+      <h3 class="my-4 font-weight-bolder">MetalCorp</h3>
     </b-navbar-brand>
 
     <b-collapse id="nav-collapse" is-nav>
