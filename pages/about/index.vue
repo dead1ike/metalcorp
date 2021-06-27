@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <public-about />
-  </div>
+  <public-about />
 </template>
 
 <script>
