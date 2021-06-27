@@ -1,0 +1,106 @@
+<template>
+  <div class="d-flex flex-column h-100 overflow-auto" style="min-width: 300px">
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+    <b-btn>qweqweqwe</b-btn>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PublicCatalogFilter',
+}
+</script>

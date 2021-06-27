@@ -1,8 +1,8 @@
 <template>
-  <div class="w-100 overflow-auto d-flex flex-column">
+  <div class="d-flex flex-column overflow-hidden h-100">
     <public-dashboard-navbar />
-    <Nuxt class="w-100 overflow-hidden container" />
-    <div class="d-flex w-100 overflow-hidden justify-content-center"></div>
+    <Nuxt class="h-100 container-fluid" style="max-width: 1520px" />
+    <div class="overflow-hidden">FOOTER</div>
   </div>
 </template>
 

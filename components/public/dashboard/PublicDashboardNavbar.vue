@@ -1,5 +1,5 @@
 <template>
-  <b-navbar type="dark" variant="dark" class="sticky-top d-inline-flex">
+  <b-navbar type="dark" variant="dark">
     <b-navbar-brand to="/">
       <h3>MetalCorp</h3>
     </b-navbar-brand>
