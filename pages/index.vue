@@ -2,7 +2,7 @@
   <div class="overflow-auto h-100">
     <div class="d-flex flex-row justify-content-between">
       <b-card class="shadow mt-3">
-        <!--Металлические стеллажи-->
+        <!--Металлические стеллaжи-->
         <div class="d-flex flex-column">
           <div class="p-2">
             <b-btn block id="metal-racks" class="d-flex justify-content-between" size="sm" variant="outline-corp">

@@ -86,6 +86,25 @@
         <b-btn variant="outline-info"><b-icon icon="cloud-download"></b-icon></b-btn>
       </div>
     </div>
+    <!--Загрузка товара в каталог-->
+    <div class="d-flex flex-column p-4">
+      <h3 class="mr-4">Загрузка товара в каталог</h3>
+      <div>
+        <b-file class="w-25" placeholder="Выберите изображение"></b-file>
+      </div>
+      <div>
+        <b-form-textarea class="w-25" placeholder="Описание товара"></b-form-textarea>
+      </div>
+      <div class="d-flex flex-row">
+        <b-dd text="Выберите категорию"></b-dd>
+        <b-dd text="Выберите подкатегорию"></b-dd>
+        <b-dd text="Выберите высоту"></b-dd>
+        <b-dd text="Выберите ширину"></b-dd>
+        <b-dd text="Выберите глубину"></b-dd>
+        <b-dd text="Выберите кол-во полок"></b-dd>
+        <b-dd text="Выберите грузоподъемность на полку"></b-dd>
+      </div>
+    </div>
   </div>
 </template>
 
