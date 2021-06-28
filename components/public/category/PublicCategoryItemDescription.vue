@@ -4,7 +4,7 @@
     size="md"
     body-class="px-5"
     centered
-    title="Добавление штатной должности"
+    title="Добавление стеллажа в заказ"
     lazy
     no-close-on-backdrop
     no-close-on-esc
