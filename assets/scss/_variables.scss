@@ -54,6 +54,7 @@ $olive: #83dc86 !default;
 $light-olive: #a3f3a5 !default;
 $coral: #ef5261 !default;
 $light-coral: #ffdbdb !default;
+$corp: #5472f9 !default;
 
 $colors: () !default;
 $colors: map-merge(
@@ -75,7 +76,8 @@ $colors: map-merge(
       "olive":      $olive,
       "light-olive":      $light-olive,
       "coral":      $coral,
-      "light-coral":      $light-coral
+      "light-coral":      $light-coral,
+      "corp" : $corp
     ),
     $colors
 );
@@ -106,7 +108,8 @@ $theme-colors: map-merge(
       "light-olive": $light-olive,
       "coral": $coral,
       "light-coral": $light-coral,
-      "ultra" : $white
+      "ultra" : $white,
+      "corp" : $corp
     ),
     $theme-colors
 );
@@ -157,11 +160,11 @@ $font-size-lg:                $font-size-base * 1.75 !default;
 $font-size-sm:                $font-size-base * .875 !default;
 
 // Forms
-$input-border-color:                    $olive !default;
+$input-border-color:                    $corp !default;
 
-$form-feedback-valid-color:         $olive !default;
+$form-feedback-valid-color:         $corp !default;
 //$form-feedback-invalid-color:       theme-color("danger") !default;
 
-$link-color:                              theme-color("olive") !default;
-$component-active-bg:         theme-color("olive") !default;
+$link-color:                              theme-color("corp") !default;
+$component-active-bg:         theme-color("corp") !default;
 

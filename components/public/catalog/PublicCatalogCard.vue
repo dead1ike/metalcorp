@@ -1,11 +1,25 @@
 <template>
   <div class="h-100 w-100 overflow-auto d-flex">
     <div class="d-flex flex-wrap justify-content-center">
-      <template v-for="item in items">
-        <b-card :key="item.title" class="text-center m-4 border-0 shadow" :img-src="item.src" style="max-width: 340px">
+      <template v-for="item in catalog">
+        <b-card :key="item.title" class="text-center m-4 border-0 shadow" :img-src="item.src" style="max-width: 320px">
           <b-card-text>{{
             item.height + 'x' + item.width + 'x' + item.deep + '. ' + item.weight + 'кг. ' + item.count + ' полок.'
           }}</b-card-text>
+          <b-card-text style="color: #5472f9">{{ 'Цена: ' + item.price + ' р.' }}</b-card-text>
+          <b-card-text>
+            <div class="d-flex flex-row">
+              <div v-b-popover.hover.bottom="'Введите нужное кол-во'" class="py-1 pr-2">
+                <b-icon icon="hdd-stack" class="m-2" scale="1.7"></b-icon>
+              </div>
+              <div>
+                <b-input v-model="item.itemCount"></b-input>
+              </div>
+              <div>
+                <b-btn variant="outline-corp" class="mx-1">Добавить</b-btn>
+              </div>
+            </div>
+          </b-card-text>
         </b-card>
       </template>
     </div>
@@ -17,7 +31,7 @@ export default {
   name: 'PublicCatalogCard',
   data() {
     return {
-      items: [
+      catalog: [
         {
           title: 'Стеллаж 1',
           src: 'http://www.standes.ru/published/publicdata/DBSANTEH15/attachments/SC/products_pictures/%D1%81%D1%82%D0%B5%D0%BB%D0%BB%D0%B0%D0%B6-%D0%B4%D1%81%D0%BF-%D0%A1%D0%A2-2-%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B5-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE-%D0%BA%D0%B0%D1%80%D0%B1%D0%BE%D0%BDgx_enl.jpg',
@@ -26,6 +40,8 @@ export default {
           width: '70',
           count: '5',
           weight: '150',
+          price: '3499',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 2',
@@ -35,6 +51,8 @@ export default {
           width: '50',
           count: '5',
           weight: '120',
+          price: '4599',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 3',
@@ -44,6 +62,8 @@ export default {
           width: '50',
           count: '5',
           weight: '150',
+          price: '3399',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 4',
@@ -53,6 +73,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '5199',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 5',
@@ -62,6 +84,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '5499',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 6',
@@ -71,6 +95,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '4299',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 7',
@@ -80,6 +106,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '3999',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 8',
@@ -89,6 +117,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '2799',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 9',
@@ -98,6 +128,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '5299',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 10',
@@ -107,6 +139,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '4799',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 11',
@@ -116,6 +150,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '5099',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 12',
@@ -125,6 +161,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '3699',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 13',
@@ -134,6 +172,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '4999',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 14',
@@ -143,6 +183,8 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '3599',
+          itemCount: '1',
         },
         {
           title: 'Стеллаж 15',
@@ -152,9 +194,12 @@ export default {
           width: '50',
           count: '5',
           weight: '100',
+          price: '4399',
+          itemCount: '1',
         },
       ],
     }
   },
+  computed: {},
 }
 </script>
