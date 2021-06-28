@@ -1,14 +1,21 @@
 <template>
   <div>
     <b-table
-      id="catalog-table"
+      id="manager-table"
       :items="items"
       :fields="fields"
       striped
       small
       primary-key="a"
       :tbody-transition-props="transProps"
-    ></b-table>
+    >
+      <template #cell(rack_description)>
+        <b-btn id="btn-description" variant="outline-corp" size="sm" block><b-icon icon="eye"></b-icon></b-btn>
+        <b-popover target="btn-description" triggers="hover"
+          >Тут должно быть описание, но его спиздили еноты
+        </b-popover>
+      </template>
+    </b-table>
   </div>
 </template>
 
@@ -22,6 +29,58 @@ export default {
         name: 'flip-list',
       },
       items: [
+        {
+          rack_name: 'СТФЛ Стеллаж 180х100х30',
+          rack_description: '',
+          rack_category: 'Металлические стеллажи',
+          rack_subcategory: 'Архивные стеллажи',
+          rack_type: 'СТФЛ',
+          rack_height: '1800',
+          rack_width: '1110',
+          rack_depth: '300',
+          rack_shelves_count: '3',
+          rack_shelf_load: '100',
+          rack_load: '750',
+        },
+        {
+          rack_name: 'СТФЛ Стеллаж 180х100х30',
+          rack_description: '',
+          rack_category: 'Металлические стеллажи',
+          rack_subcategory: 'Архивные стеллажи',
+          rack_type: 'СТФЛ',
+          rack_height: '1800',
+          rack_width: '1320',
+          rack_depth: '300',
+          rack_shelves_count: '3',
+          rack_shelf_load: '100',
+          rack_load: '750',
+        },
+        {
+          rack_name: 'СТФЛ Стеллаж 180х100х30',
+          rack_description: '',
+          rack_category: 'Металлические стеллажи',
+          rack_subcategory: 'Архивные стеллажи',
+          rack_type: 'СТФЛ',
+          rack_height: '1800',
+          rack_width: '140',
+          rack_depth: '300',
+          rack_shelves_count: '3',
+          rack_shelf_load: '100',
+          rack_load: '750',
+        },
+        {
+          rack_name: 'СТФЛ Стеллаж 180х100х30',
+          rack_description: '',
+          rack_category: 'Металлические стеллажи',
+          rack_subcategory: 'Архивные стеллажи',
+          rack_type: 'СТФЛ',
+          rack_height: '1800',
+          rack_width: '1200',
+          rack_depth: '300',
+          rack_shelves_count: '3',
+          rack_shelf_load: '100',
+          rack_load: '750',
+        },
         {
           rack_name: 'СТФЛ Стеллаж 180х100х30',
           rack_description: '',
