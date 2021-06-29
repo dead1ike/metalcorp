@@ -13,8 +13,9 @@
       v-b-modal.modal-add-rack
       class="mb-2"
       variant="outline-corp"
-      ><b-icon icon="plus"></b-icon
-    ></b-btn>
+    >
+      <b-icon icon="plus"></b-icon>
+    </b-btn>
     <b-modal
       id="modal-add-rack"
       size="xl"
@@ -34,7 +35,7 @@
             <label class="col-form-label text-right mr-2">Название:</label>
           </div>
           <div class="input-group">
-            <b-form-input trim placeholder="Название стеллажа"></b-form-input>
+            <b-form-input v-model.trim="form.rack_name" trim placeholder="Название стеллажа"></b-form-input>
           </div>
         </div>
         <div class="d-flex flex-row">
@@ -44,8 +45,12 @@
                 <label class="col-form-label text-right mr-2">Категория:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
-                  <b-dd-item>Металлические стеллажи</b-dd-item>
+                <b-dd variant="outline-corp" :text="selectedRack.text">
+                  <template v-for="item in optionRackCategory">
+                    <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectRack(item)">{{
+                      item.text
+                    }}</b-dd-item>
+                  </template>
                 </b-dd>
               </div>
             </div>
@@ -191,7 +196,11 @@
             <label class="col-form-label text-right mr-2">Описание:</label>
           </div>
           <div class="input-group">
-            <b-form-textarea rows="18" placeholder="Описание стеллажа"></b-form-textarea>
+            <b-form-textarea
+              v-model.trim="form.rack_description"
+              rows="18"
+              placeholder="Описание стеллажа"
+            ></b-form-textarea>
           </div>
         </div>
       </div>
@@ -201,7 +210,42 @@
 <script>
 export default {
   name: 'ManagerControl',
+  data() {
+    return {
+      form: {
+        rack_uuid: '',
+        rack_name: '',
+        rack_description: '',
+        rack_category_uuid: null,
+        rack_subcategory_uuid: null,
+        rack_type_uuid: null,
+        rack_height_uuid: null,
+        rack_width_uuid: null,
+        rack_depth_uuid: null,
+        rack_shelves_count_uuid: null,
+        rack_shelf_load_uuid: null,
+        rack_load_uuid: null,
+      },
+    }
+  },
+  computed: {
+    selectedRack() {
+      if (this.optionRackCategory.find((rack) => rack.uuid === this.form.rack_category_uuid)) {
+        return this.optionRackCategory.find((rack) => rack.uuid === this.form.rack_category_uuid)
+      }
+      return {}
+    },
+    optionRackCategory() {
+      return this.$store.getters['manager/getOptionsCategory']
+    },
+  },
+  mounted() {
+    console.warn(this.optionRackCategory)
+  },
+  methods: {
+    selectRack(item) {
+      this.form.rack_category_uuid = item.uuid
+    },
+  },
 }
-// TODO: Сделать динамическое отображение в дропдаунах значения которые сейчас в статике.
-// TODO: Добавление выбранных и внесенных значений в таблицу
 </script>
