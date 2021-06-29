@@ -12,7 +12,7 @@
       <template #cell(rack_description)>
         <b-btn id="btn-description" variant="outline-corp" size="sm" block><b-icon icon="eye"></b-icon></b-btn>
         <b-popover target="btn-description" triggers="hover"
-          >Тут должно быть описание, но его спиздили еноты
+          >Тут должно быть описание, но его спиздили еноты...
         </b-popover>
       </template>
     </b-table>
