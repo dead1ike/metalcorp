@@ -2,18 +2,9 @@
   <div class="h-100 w-100 overflow-auto">
     <div class="d-flex flex-column align-items-center">
       <template v-for="item in getCategoryItems">
-        <b-card
-          :key="item.id"
-          class="text-center m-4 border-0 shadow"
-          :img-src="item.src"
-          :title="item.title"
-          img-left
-          style="max-width: 1024px"
-        >
+        <b-card :key="item.id" class="text-center m-4 border-0 shadow" :img-src="item.src" :title="item.title" img-left>
           <div class="d-flex flex-column justify-content-between">
-            <div class="text-left">
-              {{ item.text }}
-            </div>
+            <div class="text-left">{{ item.text }}</div>
             <div class="align-self-end">
               <b-btn variant="outline-corp" class="mx-1" @click="toConfigurePage(item)">Подробнее</b-btn>
             </div>
