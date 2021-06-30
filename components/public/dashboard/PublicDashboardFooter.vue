@@ -1,22 +1,27 @@
 <template>
-  <div class="my-2 d-inline-flex justify-content-center w-100 h-100" style="background-color: #5472f9">
-    <div class="p-2 d-flex justify-content-start">
-      <p class="mr-2 font-weight-bolder">
-        <b-icon icon="info-circle" variant="coral" class="mr-1"></b-icon>Контактная информация:
-      </p>
-      <p class="mr-2 ml-2"><b-icon icon="at" variant="coral" scale="1.3"></b-icon>Email: info@m-lc.ru </p>
-      <p class="mr-2 ml-2"><b-icon icon="at" variant="coral" scale="1.3"></b-icon>Генеральный директор Шишигин Владислав Евгеньевич
-        +7 (906) 812-81-75</p>
-      <p>
-        <b-icon icon="house-fill" variant="coral"></b-icon> Фактический адрес 620014,Россия,
-        обл. Свердловская, г. Екатеринбург,
-        ул. Радищева, 4, офис 611
-      </p>
-      <p>
-        <b-icon icon="house-fill" variant="coral"></b-icon> Юpидический адрес 620141,Россия,
-        Обл. Свердловская, г. Екатеринбург,
-        ул. Ольховская 25/2, кв. 56
-      </p>
+  <div
+    class="border border-warning text-white text-center d-flex justify-content-center flex-column"
+    style="background-color: #1a1a1a"
+  >
+    <div class="border border-warning">
+      <div class="border-bottom h-100 border-light d-flex flex-fill flex-row justify-content-center">
+        <div class="border border-warning mx-5 d-flex flex-wrap">
+          <b-img
+            src="https://thumb.tildacdn.com/tild6536-3538-4137-b034-373731613935/-/resize/130x/-/format/webp/__2_2.png"
+          ></b-img>
+        </div>
+        <div class="d-flex flex-row border border-warning">
+          <div class="border border-warning mx-3 d-flex">ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «МЕТАЛЛКОРП»</div>
+          <div class="border border-warning mx-3 d-flex">+7 (906) 812-81-75 info@m-lc.ru</div>
+        </div>
+      </div>
+      <hr />
+      <div class="border-bottom h-100 border-light d-flex flex-fill flex-row justify-content-center">
+        <div class="mr-5 d-flex flex-row">
+          <div class="border border-warning ml-5 d-flex">ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «МЕТАЛЛКОРП»</div>
+          <div class="border border-warning ml-5 d-flex">+7 (906) 812-81-75 info@m-lc.ru</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,21 +31,3 @@ export default {
   name: 'PublicDashboardFooter',
 }
 </script>
-
-
-<!--
-ИНН 6678111118
-КПП 667801001
-ОГРН 1216600004587
-ОКПО 47046899
-Номер Р/с 40702810602500090234
-Наименование банка Филиал Точка Публичного акционерного общества Банка
-«Финансовая Корпорация Открытие»
-Номер К/сч 30101810845250000999
-БИК 044525999
-ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «МЕТАЛЛКОРП»
-
-
-Гинеральный директор Шишигин Владислав Евгеньевич
-+7 (906) 812-81-75
-->

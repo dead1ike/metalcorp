@@ -3,56 +3,6 @@
     <div class="text-center font-weight-bold p-4">
       <h2>Потрясающий ассортимент с индивидуальным подбором любой сложности</h2>
     </div>
-    <div class="d-flex flex-row">
-      <b-card
-        title="Металлические стеллажи"
-        img-src="https://static.tildacdn.com/tild6264-6238-4736-b463-383331636339/WhatsApp_Image_2020-.jpg"
-        style="max-width: 20rem"
-        class="shadow-lg mr-2 ml-2"
-      >
-        <b-btn variant="corp" class="py-3" block><h5 class="font-weight-bold m-0">Подробнее</h5></b-btn>
-      </b-card>
-      <b-card
-        title="Металлические стеллажи"
-        img-src="https://static.tildacdn.com/tild6264-6238-4736-b463-383331636339/WhatsApp_Image_2020-.jpg"
-        style="max-width: 20rem"
-        class="shadow-lg mr-2 ml-2"
-      >
-        <b-btn variant="corp" class="py-3" block><h5 class="font-weight-bold m-0">Подробнее</h5></b-btn>
-      </b-card>
-      <b-card
-        title="Металлические стеллажи"
-        img-src="https://static.tildacdn.com/tild6264-6238-4736-b463-383331636339/WhatsApp_Image_2020-.jpg"
-        style="max-width: 20rem"
-        class="shadow-lg mr-2 ml-2"
-      >
-        <b-btn variant="corp" class="py-3" block><h5 class="font-weight-bold m-0">Подробнее</h5></b-btn>
-      </b-card>
-      <b-card
-        title="Металлические стеллажи"
-        img-src="https://static.tildacdn.com/tild6264-6238-4736-b463-383331636339/WhatsApp_Image_2020-.jpg"
-        style="max-width: 20rem"
-        class="shadow-lg mr-2 ml-2"
-      >
-        <b-btn variant="corp" class="py-3" block><h5 class="font-weight-bold m-0">Подробнее</h5></b-btn>
-      </b-card>
-      <b-card
-        title="Металлические стеллажи"
-        img-src="https://static.tildacdn.com/tild6264-6238-4736-b463-383331636339/WhatsApp_Image_2020-.jpg"
-        style="max-width: 20rem"
-        class="shadow-lg mr-2 ml-2"
-      >
-        <b-btn variant="corp" class="py-3" block><h5 class="font-weight-bold m-0">Подробнее</h5></b-btn>
-      </b-card>
-      <b-card
-        title="Металлические стеллажи"
-        img-src="https://static.tildacdn.com/tild6264-6238-4736-b463-383331636339/WhatsApp_Image_2020-.jpg"
-        style="max-width: 20rem"
-        class="shadow-lg mr-2 ml-2"
-      >
-        <b-btn variant="corp" class="py-3" block><h5 class="font-weight-bold m-0">Подробнее</h5></b-btn>
-      </b-card>
-    </div>
     <b-carousel
       class="shadow-lg mt-3"
       :interval="224000"

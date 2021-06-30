@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column overflow-hidden h-100">
+  <div class="d-flex flex-column">
     <public-dashboard-navbar />
     <Nuxt class="h-100 container-fluid" style="max-width: 1520px" />
     <template v-if="$store.getters.getActivePublicCategoryItemDescription">
