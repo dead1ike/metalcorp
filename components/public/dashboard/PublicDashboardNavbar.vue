@@ -1,7 +1,7 @@
 <template>
   <b-navbar type="dark" style="background: #5472f9">
     <b-navbar-brand to="/">
-      <img src="~/static/logo_original.png" />
+      <b-img src="~/static/logo.png" />
     </b-navbar-brand>
 
     <b-collapse id="nav-collapse" is-nav>

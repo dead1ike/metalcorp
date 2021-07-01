@@ -1,8 +1,5 @@
-export const state = {
-  items: {
-    rack_name: '',
-    rack_description: '',
-  },
+export const state = () => ({
+  items: {},
   options: {
     rack_category: [
       { text: 'Выберите', uuid: null },
@@ -16,8 +13,10 @@ export const state = {
     rack_shelves_count: '',
     rack_shelf_load: '',
     rack_load: '',
+    rack_name: '',
+    rack_description: '',
   },
-}
+})
 
 export const actions = {}
 
