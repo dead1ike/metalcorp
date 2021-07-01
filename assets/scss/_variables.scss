@@ -9,7 +9,7 @@
 // Quickly modify global styling by enabling or disabling optional features.
 
 $enable-caret: true !default;
-$enable-rounded: false !default;
+$enable-rounded: true !default;
 $enable-shadows: true !default;
 $enable-gradients: true !default;
 $enable-transitions: true !default;
@@ -237,3 +237,13 @@ $input-btn-font-size-lg:      $font-size-lg !default;
 //$input-btn-line-height-lg:    $line-height-lg !default;
 
 //$input-btn-border-width:      $border-width !default;
+
+$btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+$btn-focus-width:             $input-btn-focus-width !default;
+$btn-focus-box-shadow:        $input-btn-focus-box-shadow !default;
+$btn-disabled-opacity:        .65 !default;
+$btn-active-box-shadow:       inset -3px 30px 30px rgba($black, .35) !default;
+
+$btn-link-disabled-color:     $gray-600 !default;
+
+$btn-block-spacing-y:         .5rem !default;

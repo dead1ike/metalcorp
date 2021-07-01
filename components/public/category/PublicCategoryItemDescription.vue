@@ -21,7 +21,7 @@
       </div>
     </div>
     <template #modal-footer>
-      <b-btn variant="outline-corp" @click="closeModal">Закрыть</b-btn>
+      <b-btn variant="corp" @click="closeModal">Закрыть</b-btn>
     </template>
   </b-modal>
 </template>

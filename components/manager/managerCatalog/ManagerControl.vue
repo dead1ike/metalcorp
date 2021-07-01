@@ -3,17 +3,12 @@
     <div>
       <b-input-group>
         <b-form-input type="search" placeholder="Введите наименование"></b-form-input>
-        <b-btn variant="outline-corp">
-          <span><b-icon icon="search" variant="outline-corp" class="b-icon mr-2" scale="0.8"></b-icon>Поиск</span>
+        <b-btn variant="corp">
+          <span><b-icon icon="search" variant="corp" class="b-icon mr-2" scale="0.8"></b-icon>Поиск</span>
         </b-btn>
       </b-input-group>
     </div>
-    <b-btn
-      v-b-popover.hover.top="'Добавить новый стеллаж,ебать'"
-      v-b-modal.modal-add-rack
-      class="mb-2"
-      variant="outline-corp"
-    >
+    <b-btn v-b-popover.hover.top="'Добавить новый стеллаж,ебать'" v-b-modal.modal-add-rack class="mb-2" variant="corp">
       <b-icon icon="plus"></b-icon>
     </b-btn>
     <b-modal
@@ -45,7 +40,7 @@
                 <label class="col-form-label text-right mr-2">Категория:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" :text="selectedRack.text">
+                <b-dd variant="corp" :text="selectedRack.text">
                   <template v-for="item in optionRackCategory">
                     <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectRack(item)">{{
                       item.text
@@ -59,7 +54,7 @@
                 <label class="col-form-label text-right mr-2">Подкатегория:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>Архивные стеллажи</b-dd-item>
                   <b-dd-item>Складские стеллажи / Среднегрузовые</b-dd-item>
                   <b-dd-item>Паллетные стеллажи / Фронтальные</b-dd-item>
@@ -75,7 +70,7 @@
                 <label class="col-form-label text-right mr-2">Вид:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>Стеллажи СТФЛ</b-dd-item>
                   <b-dd-item>Стеллажи СТФ</b-dd-item>
                   <b-dd-item>Стеллажи СТФУ</b-dd-item>
@@ -102,7 +97,7 @@
                 <label class="col-form-label text-right mr-2">Высота:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>1500</b-dd-item>
                   <b-dd-item>1800</b-dd-item>
                   <b-dd-item>2000</b-dd-item>
@@ -117,7 +112,7 @@
                 <label class="col-form-label text-right mr-2">Ширина:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>70</b-dd-item>
                   <b-dd-item>100</b-dd-item>
                   <b-dd-item>120</b-dd-item>
@@ -130,7 +125,7 @@
                 <label class="col-form-label text-right mr-2">Глубина:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>30</b-dd-item>
                   <b-dd-item>40</b-dd-item>
                   <b-dd-item>50</b-dd-item>
@@ -147,7 +142,7 @@
                 <label class="col-form-label text-right mr-2 text-truncate">Кол-во полок:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>3</b-dd-item>
                   <b-dd-item>4</b-dd-item>
                   <b-dd-item>5</b-dd-item>
@@ -161,7 +156,7 @@
                 <label class="col-form-label text-right mr-2 text-truncate">Нагрузка на полку:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>100</b-dd-item>
                   <b-dd-item>140</b-dd-item>
                   <b-dd-item>145</b-dd-item>
@@ -178,7 +173,7 @@
                 <label class="col-form-label text-right mr-2 text-truncate">Нагрузка на стеллаж:</label>
               </div>
               <div class="input-group d-flex justify-content-end">
-                <b-dd variant="outline-corp" text="Выбрать">
+                <b-dd variant="corp" text="Выбрать">
                   <b-dd-item>700</b-dd-item>
                   <b-dd-item>780</b-dd-item>
                   <b-dd-item>1000</b-dd-item>

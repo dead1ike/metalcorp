@@ -4,7 +4,7 @@
       <h2>Потрясающий ассортимент с индивидуальным подбором любой сложности</h2>
     </div>
     <b-carousel
-      class="shadow-lg mt-3"
+      class="shadow mt-3"
       :interval="224000"
       controls
       @sliding-start="onSlideStart"
@@ -76,8 +76,9 @@
     <div>
       <b-card-group columns>
         <b-card
+          class="border-0 shadow"
           title="Среднегрузовые стеллажи"
-          img-src="https://thumb.tildacdn.com/tild3761-6235-4164-b461-363366363361/-/resize/300x/-/format/webp/WhatsApp_Image_2020-.jpg"
+          img-src="https://i.ibb.co/1rzcD3T/medium.jpg"
           img-alt="Image"
           img-top
         >
@@ -87,8 +88,7 @@
           >
           <b-btn variant="corp" class="my-3" block> Подробнее</b-btn>
         </b-card>
-
-        <b-card header="Случайный отзыв">
+        <b-card class="border-0 shadow" header="Случайный отзыв">
           <blockquote class="blockquote mb-0">
             <p>Я заказал у этих парней более 200 стеллажей за этот год. Парни - красавцы! 10/10</p>
             <footer class="blockquote-footer">
@@ -96,8 +96,8 @@
             </footer>
           </blockquote>
         </b-card>
-
         <b-card
+          class="border-0 shadow"
           title="Паллетные стеллажи / Фронтальные"
           img-src="https://placekitten.com/500/350"
           img-alt="Image"
@@ -106,8 +106,7 @@
           <b-card-text>Влад, придумай пожалуйста что сюда вставить</b-card-text>
           <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
         </b-card>
-
-        <b-card bg-variant="primary" text-variant="white">
+        <b-card class="border-0 shadow" bg-variant="primary" text-variant="white">
           <blockquote class="card-blockquote">
             <h4>Бесплатный выезд замерщика, к Вам на склад</h4>
             <hr />
@@ -131,26 +130,25 @@
             </footer>
           </blockquote>
         </b-card>
-
-        <b-card>
+        <b-card class="border-0 shadow">
           <b-card-title>Проектирование чертежей</b-card-title>
           <b-card-text>Планы расстановки складских стеллажей</b-card-text>
-          <b-btn variant="outline-corp" block>Подробнее</b-btn>
+          <b-btn variant="corp" block>Подробнее</b-btn>
         </b-card>
-
         <b-card
+          class="border-0 shadow"
           img-src="https://thumb.tildacdn.com/tild6562-6261-4632-b130-656264356533/-/cover/762x628/center/center/-/format/webp/Frame_3.jpg"
           img-alt="Image"
           overlay
         ></b-card>
-
         <b-card
+          class="border-0 shadow"
           img-src="http://mc-stellazhi.ru/upload/iblock/538/53884af185bfbe5292c8af25361af1ab.png"
           img-alt="Image"
           img-top
         >
           <b-card-text class="h4"> Среднегрузовые / Складские стеллажи </b-card-text>
-          <b-btn variant="outline-corp" block>Подробнее</b-btn>
+          <b-btn variant="corp" block>Подробнее</b-btn>
         </b-card>
       </b-card-group>
     </div>
@@ -175,3 +173,12 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.carousel-caption {
+  h1 {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #5472f99e;
+  }
+}
+</style>
