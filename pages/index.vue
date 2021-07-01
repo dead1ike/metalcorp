@@ -75,10 +75,17 @@
     </div>
     <div>
       <b-card-group columns>
-        <b-card title="Вова, что сюда вставить?" img-src="https://placekitten.com/g/400/450" img-alt="Image" img-top>
-          <b-card-text
-            >Мы не торгуем котиками, однако временами они попадают на индексные страницы будущих прекрасных проектов
-          </b-card-text>
+        <b-card
+          title="Среднегрузовые стеллажи"
+          img-src="https://thumb.tildacdn.com/tild3761-6235-4164-b461-363366363361/-/resize/300x/-/format/webp/WhatsApp_Image_2020-.jpg"
+          img-alt="Image"
+          img-top
+        >
+          <b-card-text>
+            Конструктивная особенность этих стеллажей позволяет хранить крупногабаритные и тяжелые грузы, что повышает
+            вместимость и эффективность складского пространства.</b-card-text
+          >
+          <b-btn variant="corp" class="my-3" block> Подробнее</b-btn>
         </b-card>
 
         <b-card header="Случайный отзыв">
@@ -91,7 +98,7 @@
         </b-card>
 
         <b-card
-          title="Кончилась фантазия, поэтому вот вам котики! :)"
+          title="Паллетные стеллажи / Фронтальные"
           img-src="https://placekitten.com/500/350"
           img-alt="Image"
           img-top
