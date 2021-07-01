@@ -14,8 +14,9 @@
           href="https://metalcorp.org/"
           target="_blank"
           class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate"
-          >O нас</b-nav-item
         >
+          O нас
+        </b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
     </b-collapse>

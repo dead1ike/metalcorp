@@ -11,31 +11,12 @@
           <span>{{ getTypeByUuid.description }}</span>
         </div>
       </div>
-      <div class="mt-2">
-        <div class="w-100 text-truncate" v-if="getTypeByUuid.shelf_load">
-          <label>Нагрузка на полку: </label>
-          <span class="ml-2"
-            ><b> {{ getTypeByUuid.shelf_load }}кг </b></span
-          >
-        </div>
-        <div class="w-100 text-truncate" v-if="getTypeByUuid.section_load">
-          <label>Нагрузка на секцию: </label>
-          <span class="ml-2"
-            ><b> {{ getTypeByUuid.section_load }}кг </b></span
-          >
-        </div>
-        <div class="w-100 text-truncate" v-if="getTypeByUuid.rack_load">
-          <label>Нагрузка на стеллаж: </label>
-          <span class="ml-2"
-            ><b> {{ getTypeByUuid.rack_load }}кг </b></span
-          >
-        </div>
-      </div>
       <div class="d-flex w-100 flex-column">
         <div class="d-flex flex-row align-self-end">
-          <div class="d-flex flex-column m-3">
+          <b-input-group>
             <label>Высота:</label>
             <b-dd
+              block
               no-caret
               variant="corp"
               :text="
@@ -46,10 +27,11 @@
                 <b-dd-item :key="item.uuid" @click="selectHeight(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
-          </div>
-          <div class="d-flex flex-column m-3">
+          </b-input-group>
+          <b-input-group>
             <label>Ширина:</label>
             <b-dd
+              block
               no-caret
               variant="corp"
               :text="
@@ -60,12 +42,11 @@
                 <b-dd-item :key="item.uuid" @click="selectWidth(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
-          </div>
-        </div>
-        <div class="d-flex flex-row align-self-end">
-          <div class="d-flex flex-column m-3">
+          </b-input-group>
+          <b-input-group>
             <label>Глубина:</label>
             <b-dd
+              block
               no-caret
               variant="corp"
               :text="
@@ -76,10 +57,11 @@
                 <b-dd-item :key="item.uuid" @click="selectDepth(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
-          </div>
-          <div class="d-flex flex-column m-3">
+          </b-input-group>
+          <b-input-group>
             <label>Кол-во полок:</label>
             <b-dd
+              block
               no-caret
               variant="corp"
               :text="
@@ -92,6 +74,41 @@
                 </b-dd-item>
               </template>
             </b-dd>
+          </b-input-group>
+          <b-input-group>
+            <label>Настил:</label>
+            <b-dd
+              block
+              no-caret
+              variant="corp"
+              :text="selectedRackDeck.rack_parameter_value ? selectedRackDeck.rack_parameter_value : 'Выберите'"
+            >
+              <template v-for="item in getRackDeck">
+                <b-dd-item :key="item.uuid" @click="selectDeck(item)"> {{ item.rack_parameter_value }} </b-dd-item>
+              </template>
+            </b-dd>
+          </b-input-group>
+        </div>
+        <div class="d-flex flex-row align-self-end text-right">
+          <div class="mt-2">
+            <div class="w-100 text-truncate" v-if="getTypeByUuid.shelf_load">
+              <label>Нагрузка на полку: </label>
+              <span class="ml-2"
+                ><b> {{ getTypeByUuid.shelf_load }}кг </b></span
+              >
+            </div>
+            <div class="w-100 text-truncate" v-if="getTypeByUuid.section_load">
+              <label>Нагрузка на секцию: </label>
+              <span class="ml-2"
+                ><b> {{ getTypeByUuid.section_load }}кг </b></span
+              >
+            </div>
+            <div class="w-100 text-truncate" v-if="getTypeByUuid.rack_load">
+              <label>Нагрузка на стеллаж: </label>
+              <span class="ml-2"
+                ><b> {{ getTypeByUuid.rack_load }}кг </b></span
+              >
+            </div>
           </div>
         </div>
         <div class="m-3 d-flex align-self-end flex-column">
@@ -121,6 +138,7 @@ export default {
         rack_width: {},
         rack_depth: {},
         rack_shelves_count: {},
+        rack_deck: {},
         rack_count: 1,
       },
     }
@@ -145,6 +163,11 @@ export default {
     getRackDepth() {
       return this.getTypeByUuid.rack_type_parameters.filter((item) => {
         return item.rack_parameter_uuid === '2cc05daf-d674-45a2-96e6-39ba73605e00'
+      })
+    },
+    getRackDeck() {
+      return this.getTypeByUuid.rack_type_parameters.filter((item) => {
+        return item.rack_parameter_uuid === '91c13c4a-d604-4029-b189-fbc8f2949265'
       })
     },
     getRackShelves() {
@@ -176,6 +199,12 @@ export default {
       }
       return {}
     },
+    selectedRackDeck() {
+      if (this.getRackDeck.find((rack) => rack.uuid === this.form.rack_deck.uuid)) {
+        return this.getRackDeck.find((rack) => rack.uuid === this.form.rack_deck.uuid)
+      }
+      return {}
+    },
     getTypeByUuid() {
       return this.$store.getters['type/getTypeById'](this.typeUuid)
     },
@@ -197,6 +226,9 @@ export default {
     selectShelves(item) {
       this.form.rack_shelves_count = item
     },
+    selectDeck(item) {
+      this.form.rack_deck = item
+    },
     getUuid() {
       return this.$store.getters.getNewUuid(new Date())
     },
@@ -209,6 +241,7 @@ export default {
         rack_depth: this.form.rack_depth,
         rack_shelves_count: this.form.rack_shelves_count,
         rack_count: this.form.rack_count,
+        rack_deck: this.form.rack_deck,
         uuid: this.getUuid(),
       })
     },
