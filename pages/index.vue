@@ -96,18 +96,24 @@
             </footer>
           </blockquote>
         </b-card>
-        <b-card
-          class="border-0 shadow"
-          title="Паллетные стеллажи / Фронтальные"
-          img-src="https://placekitten.com/500/350"
-          img-alt="Image"
-          img-top
+        <div
+          class="d-flex border-0 shadow"
+          style="
+            background-image: url(https://st3.depositphotos.com/1614160/18453/i/600/depositphotos_184538824-stock-photo-blur-image-of-warehouse.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 390px;
+          "
         >
-          <b-card-text>Влад, придумай пожалуйста что сюда вставить</b-card-text>
-          <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
-        </b-card>
+          <b-img
+            src="https://kovrolin.ru/image/man-4.png"
+            alt="ImageCard"
+            class="align-self-end"
+            style="width: 100%"
+          ></b-img>
+        </div>
         <b-card class="border-0 shadow" bg-variant="primary" text-variant="white">
-          <blockquote class="card-blockquote">
+          <blockquote>
             <h4>Бесплатный выезд замерщика, к Вам на склад</h4>
             <hr />
             <footer>
@@ -119,7 +125,7 @@
                 <b-form-input placeholder="Введите номер телефона"></b-form-input>
               </div>
               <div>
-                <b-btn size="sm" class="mt-2" variant="light" block>Вызвать замерщика</b-btn>
+                <b-btn class="mt-3" variant="success" block>Вызвать замерщика</b-btn>
                 <small
                   >Нажимая на кнопку, выдаете согласие на обработку персональных данных и соглашаетесь с
                   <a class="text-white" href="https://metalcorp.org/privacypolicy"

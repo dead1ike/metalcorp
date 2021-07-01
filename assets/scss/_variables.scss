@@ -117,7 +117,8 @@ $colors: map-merge(
                         "light-olive": $light-olive,
                         "coral": $coral,
                         "light-coral": $light-coral,
-                        "corp" : $corp
+                        "corp" : $corp,
+                        "black" : $black
                 ),
                 $colors
 );
@@ -149,7 +150,8 @@ $theme-colors: map-merge(
                         "coral": $coral,
                         "light-coral": $light-coral,
                         "ultra" : $white,
-                        "corp" : $corp
+                        "corp" : $corp,
+                        "black" : $black
                 ),
                 $theme-colors
 );
