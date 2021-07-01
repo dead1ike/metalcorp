@@ -1,5 +1,75 @@
 export const state = () => ({
-  items: {},
+  fields: {
+    offerManage: [
+      {
+        key: 'title',
+        label: 'Наименование',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_height',
+        label: 'Высота',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_width',
+        label: 'Ширина',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_depth',
+        label: 'Глубина',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_shelves_count',
+        label: 'Кол-во полок',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'price',
+        label: 'Цена',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_count',
+        label: 'Количество',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'summ',
+        label: 'Сумма',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: 'Действия',
+        class: 'align-middle text-center',
+      },
+    ],
+    offerConfirm: [
+      {
+        key: 'title',
+        label: 'Наименование',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'price',
+        label: 'Цена',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_count',
+        label: 'Количество',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'summ',
+        label: 'Сумма',
+        class: 'align-middle text-center',
+      },
+    ],
+  },
   activeModals: {
     publicCategoryItemDescription: false,
   },
@@ -19,5 +89,16 @@ export const mutations = {
 export const getters = {
   getActivePublicCategoryItemDescription(state) {
     return state.activeModals.publicCategoryItemDescription
+  },
+  getOfferManageFields(state) {
+    return state.fields.offerManage
+  },
+  getOfferConfirmFields(state) {
+    return state.fields.offerConfirm
+  },
+  getNewUuid: (state) => (payload) => {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+    )
   },
 }

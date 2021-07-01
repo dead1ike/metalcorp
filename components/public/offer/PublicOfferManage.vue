@@ -1,0 +1,75 @@
+<template>
+  <div class="h-100 w-100 overflow-auto">
+    <div class="d-flex flex-column align-items-center">
+      <div class="m-2">
+        <b-btn variant="corp" @click="toOfferConfirm()">Оформить заказ</b-btn>
+      </div>
+      <div class="w-100">
+        <b-table
+          no-border-collapse
+          head-variant="light"
+          sticky-header="100%"
+          borderless
+          striped
+          hover
+          :fields="getOfferManageFields"
+          :items="getOfferManageItems"
+        >
+          <template #cell(rack_height)="data">{{ data.item.rack_height.rack_parameter_value }} </template>
+          <template #cell(rack_width)="data"> {{ data.item.rack_width.rack_parameter_value }} </template>
+          <template #cell(rack_shelves_count)="data">
+            {{ data.item.rack_shelves_count.rack_parameter_value }}
+          </template>
+          <template #cell(rack_depth)="data">{{ data.item.rack_depth.rack_parameter_value }} </template>
+          <template #cell(rack_count)="data">
+            <b-spinbutton :value="data.item.rack_count" inline @change="rackCountEdit">
+              <template #decrement>
+                <b-btn size="sm" variant="link">-</b-btn>
+              </template>
+              <template #increment>
+                <b-btn size="sm" variant="link">+</b-btn>
+              </template>
+            </b-spinbutton>
+          </template>
+          <template #cell(actions)="data">
+            <b-btn class="live-edit btn-icon" variant="link">
+              <b-icon icon="x-circle" scale="1" variant="danger" @click="deleteOfferItem(data.item.uuid)"></b-icon
+            ></b-btn>
+          </template>
+        </b-table>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PublicOfferManage',
+  computed: {
+    getOfferManageFields() {
+      return this.$store.getters.getOfferManageFields
+    },
+    getOfferManageItems() {
+      return this.$store.getters['type/getBasketProduct']
+    },
+  },
+  mounted() {
+    console.warn('getBasketProd', this.getOfferManageItems)
+  },
+  methods: {
+    rackCountEdit(count) {
+      console.warn(count)
+      this.$store.commit('type/setEditCount', count)
+    },
+
+    toOfferConfirm() {
+      this.$router.push('/offer/confirm')
+    },
+    deleteOfferItem(uuid) {
+      this.$store.commit('type/setDelBasketProduct', {
+        uuid,
+      })
+    },
+  },
+}
+</script>

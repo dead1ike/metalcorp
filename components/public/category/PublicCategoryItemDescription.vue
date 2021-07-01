@@ -50,7 +50,6 @@ export default {
     },
   },
   mounted() {
-    console.warn('getstell', this.getType)
     this.$bvModal.show('public-category-item-description')
   },
   methods: {

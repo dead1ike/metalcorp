@@ -239,9 +239,7 @@ export default {
       return this.$store.getters['manager/getOptionsCategory']
     },
   },
-  mounted() {
-    console.warn(this.optionRackCategory)
-  },
+  mounted() {},
   methods: {
     selectRack(item) {
       this.form.rack_category_uuid = item.uuid
