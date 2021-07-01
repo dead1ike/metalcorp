@@ -2,8 +2,8 @@
   <div class="d-flex flex-column">
     <public-dashboard-navbar />
     <Nuxt class="h-100 container-fluid" style="max-width: 1520px" />
-    <template v-if="$store.getters.getActivePublicCategoryItemDescription">
-      <public-category-item-description />
+    <template v-if="$store.getters.getActiveDimensionModal">
+      <public-dimension-modal />
     </template>
     <div class="overflow-hidden"><public-dashboard-footer /></div>
   </div>
@@ -13,9 +13,9 @@
 export default {
   mounted() {
     this.$root.$on('bv::modal::hide', (bvEvent, modalId) => {
-      if (modalId === 'public-category-item-description') {
+      if (modalId === 'dimension-modal') {
         this.$store.commit('setActiveModal', {
-          modalName: 'publicCategoryItemDescription',
+          modalName: 'dimensionModal',
           modalStatus: false,
         })
       }

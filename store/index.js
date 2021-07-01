@@ -71,7 +71,7 @@ export const state = () => ({
     ],
   },
   activeModals: {
-    publicCategoryItemDescription: false,
+    dimensionModal: false,
   },
 })
 export const actions = {
@@ -87,8 +87,8 @@ export const mutations = {
   setBlank2(state, data) {},
 }
 export const getters = {
-  getActivePublicCategoryItemDescription(state) {
-    return state.activeModals.publicCategoryItemDescription
+  getActiveDimensionModal(state) {
+    return state.activeModals.dimensionModal
   },
   getOfferManageFields(state) {
     return state.fields.offerManage

@@ -57,7 +57,7 @@
               <h3>- Расчет сметы</h3>
               <h3>- Сроки поставки и установки стеллажей</h3>
               <div class="d-flex align-items-end h-100">
-                <b-btn variant="corp" size="lg" class="px-5 py-4" @click="">Оставить заявку</b-btn>
+                <b-btn variant="corp" size="lg" class="px-5 py-4" @click="openModal()">Оставить заявку</b-btn>
               </div>
             </div>
           </div>
@@ -121,6 +121,12 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.$store.commit('setActiveModal', {
+        modalName: 'dimensionModal',
+        modalStatus: true,
+      })
+    },
     onSlideStart(slide) {
       this.sliding = true
     },
