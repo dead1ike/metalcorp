@@ -41,7 +41,7 @@
             <div
               class="position-absolute"
               style="
-                background-image: url(https://i.ibb.co/JxD9JX4/man-4.png);
+                background-image: url(https://i.ibb.co/qdd5SM3/man-4.png);
                 background-size: cover;
                 background-position: center;
                 width: 520px;
