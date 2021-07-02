@@ -11,7 +11,7 @@
     </b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="/category" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">Каталогa </b-nav-item>
+        <b-nav-item to="/category" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">Каталог</b-nav-item>
         <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">
           <public-offer-basket />
         </b-nav-item>
