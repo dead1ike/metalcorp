@@ -2,9 +2,9 @@
   <div class="h-100 w-100 overflow-auto jus">
     <div class="d-flex flex-row justify-content-between">
       <div class="d-flex flex-column m-3 w-100">
-        <h3>{{ getTypeByUuid.title ? getTypeByUuid.title : '' }}</h3>
+        <h3>{{ form.title ? form.title : '' }}</h3>
         <div class="mt-3">
-          <img :src="getTypeByUuid.image" style="width: 30%" />
+          <img :src="form.image" style="width: 30%" />
         </div>
         <div class="mt-2">
           <div class="d-flex flex-row text-left">
@@ -35,7 +35,7 @@
       <div class="d-flex flex-fill flex-row-reverse w-50">
         <div class="d-flex flex-column">
           <h4>Описание:</h4>
-          <span>{{ getTypeByUuid.description }}</span>
+          <span>{{ form.description }}</span>
         </div>
       </div>
       <div class="d-flex flex-row-reverse p-3">
@@ -151,12 +151,13 @@ export default {
         rack_shelves_count: {},
         rack_deck: {},
         rack_count: 1,
+        title: '',
+        image: '',
+        description: '',
       },
     }
   },
-  mounted() {
-    console.warn('currentRack', this.getTypeByUuid)
-  },
+
   computed: {
     getRackHeight() {
       if (this.getTypeByUuid.rack_type_parameters) {
@@ -220,8 +221,13 @@ export default {
       return this.$store.getters['type/getTypeById'](this.typeUuid)
     },
   },
-  created() {
-    this.$store.dispatch('type/fetchTypes')
+  mounted() {
+    this.$store.dispatch('type/fetchTypes').then(() => {
+      this.form.title = this.getTypeByUuid.title
+      this.form.description = this.getTypeByUuid.description
+      this.form.image = this.getTypeByUuid.image
+    })
+    console.warn('currentRack', this.getTypeByUuid)
   },
 
   methods: {
@@ -246,7 +252,7 @@ export default {
 
     addProduct() {
       this.$store.commit('type/setAddBasketProduct', {
-        title: this.getTypeByUuid.title,
+        title: this.form.title,
         rack_height: this.form.rack_height,
         rack_width: this.form.rack_width,
         rack_depth: this.form.rack_depth,
