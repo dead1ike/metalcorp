@@ -2,67 +2,29 @@
   <div class="overflow-auto h-100">
     <!--Каруселька №1-->
     <div class="p-2">
-      <b-carousel
-        class="shadow"
-        :interval="1000000"
-        @sliding-start="onSlideStart"
-        @sliding-end="onSlideEnd"
-        img-height="480"
-        img-width="1024"
-      >
-        <b-carousel-slide
+      <div class="shadow d-flex flex-fill">
+        <div
           style="
             background-image: url(https://i.ibb.co/ZLRp1Cf/storage2.png);
             background-size: cover;
             background-position: center;
             width: 100%;
-            height: 580px;
           "
+          class="text-white p-3 d-flex flex-fill flex-column"
         >
-          <div class="text-left">
+          <div class="text-left p-2">
             <h3>Комплексное решение для вашего склада</h3>
           </div>
-          <div class="text-left">
+          <div class="text-left p-2">
             <h1 class="font-weight-bolder">
               Складские стеллажи от производителя с установкой под ключ и гарантией 24 месяца
             </h1>
           </div>
-        </b-carousel-slide>
-        <b-carousel-slide
-          style="
-            background-image: url(https://i.ibb.co/hYRmNmT/storagemuzhik.png);
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 580px;
-          "
-        >
-          <div class="h-100">
-            <div
-              class="position-absolute"
-              style="
-                background-image: url(https://i.ibb.co/qdd5SM3/man-4.png);
-                background-size: cover;
-                background-position: center;
-                width: 520px;
-                height: 450px;
-                right: 0;
-                bottom: 0;
-              "
-            ></div>
-            <div class="text-left position-relative h-100 d-flex flex-column">
-              <h3>Бесплатный выезд замерщика</h3>
-              <h2 class="font-weight-bolder">Закажите бесплатный выезд замерщика и получите в течении дня</h2>
-              <h3 class="mt-3">- Точный замер</h3>
-              <h3>- Расчет сметы</h3>
-              <h3>- Сроки поставки и установки стеллажей</h3>
-              <div class="d-flex align-items-end h-100">
-                <b-btn variant="corp" size="lg" class="px-5 py-4" @click="openModal()">Оставить заявку</b-btn>
-              </div>
-            </div>
+          <div class="pt-8 ml-5 mb-4">
+            <b-btn variant="corp" to="/category">Перейти в каталог</b-btn>
           </div>
-        </b-carousel-slide>
-      </b-carousel>
+        </div>
+      </div>
     </div>
     <!--Что такое МеталлКорп?-->
     <div class="p-2 mt-4">
@@ -104,7 +66,7 @@
       </div>
       <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
         <b-img src="https://static.tildacdn.com/tild6463-6138-4033-a531-626237613066/Barcode.svg"></b-img>
-        <div class="h4 mt-3 px-3">Удобные способы оплаты для Юридических и Частных лиц (с НДС и Без)</div>
+        <div class="h4 mt-3 px-3"><h5>Удобные способы оплаты для Юридических и Частных лиц (с НДС и Без)</h5></div>
       </div>
       <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
         <b-btn variant="corp" block href="https://metalcorp.org/">Подробнее о нас</b-btn>
@@ -134,12 +96,14 @@
               class="position-absolute"
               style="
                 background-image: url(https://i.ibb.co/qdd5SM3/man-4.png);
-                background-size: cover;
-                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center bottom;
                 width: 520px;
                 height: 450px;
                 right: 0;
                 bottom: 0;
+                max-width: 100%;
               "
             ></div>
             <div class="text-left position-relative h-100 d-flex flex-column">
@@ -154,27 +118,37 @@
             </div>
           </div>
         </b-carousel-slide>
-
-        <b-carousel-slide
+      </b-carousel>
+    </div>
+    <!--Каталог 1-->
+    <div>Catalog 1</div>
+    <!--Каталог 2-->
+    <div>Catalog 2</div>
+    <!--Конечная индексной-->
+    <div class="p-2">
+      <div class="shadow d-flex flex-fill">
+        <div
           style="
-            background-image: url(https://i.ibb.co/ZLRp1Cf/storage2.png);
+            background-image: url(https://thumb.tildacdn.com/tild3631-3733-4561-a139-343061303663/-/format/webp/A4_-_4.jpg);
             background-size: cover;
             background-position: center;
             width: 100%;
-            height: 580px;
           "
+          class="position-relative text-white p-3 d-flex flex-fill flex-column"
         >
-          <div class="text-left">
-            <h3>Комплексное решение для вашего склада</h3>
+          <div class="text-left p-2 ml-6">
+            <h3>Затрудняетесь с выбором?</h3>
           </div>
-          <div class="text-left">
-            <h1 class="font-weight-bolder">
-              Складские стеллажи от производителя с установкой под ключ и гарантией 24 месяца
-            </h1>
+          <div class="text-left p-2 ml-6">
+            <h1 class="font-weight-bolder">Поможем определиться и подобрать лучшие для Вас товары из каталога!</h1>
           </div>
-        </b-carousel-slide>
-      </b-carousel>
+          <div class="pt-4 ml-2">
+            <b-btn variant="corp" block class="px-5 py-2" @click="openModal()">Получить консультацию</b-btn>
+          </div>
+        </div>
+      </div>
     </div>
+    <!--Отзывы-->
   </div>
 </template>
 
