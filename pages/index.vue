@@ -136,10 +136,10 @@
           "
           class="position-relative text-white p-3 d-flex flex-fill flex-column"
         >
-          <div class="text-left p-2 ml-6">
-            <h3>Затрудняетесь с выбором?</h3>
+          <div class="text-center p-4">
+            <h2>Затрудняетесь с выбором?</h2>
           </div>
-          <div class="text-left p-2 ml-6">
+          <div class="text-center p-4">
             <h1 class="font-weight-bolder">Поможем определиться и подобрать лучшие для Вас товары из каталога!</h1>
           </div>
           <div class="pt-4 ml-2">
