@@ -1,11 +1,11 @@
 <template>
   <div>
     <div v-if="getBasketLength === 0">
-      <b-icon icon="basket3"></b-icon>
+      <b-icon class="mb-1" icon="basket3"></b-icon>
       <label>Позиций: {{ getBasketLength }}</label>
     </div>
     <div v-else>
-      <b-icon icon="basket2"></b-icon>
+      <b-icon class="mb-1" icon="basket2"></b-icon>
       <label>Позиций: {{ getBasketLength }}</label>
     </div>
   </div>

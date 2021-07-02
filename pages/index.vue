@@ -1,156 +1,179 @@
 <template>
   <div class="overflow-auto h-100">
-    <div class="text-center font-weight-bold p-4">
-      <h2>Потрясающий ассортимент с индивидуальным подбором любой сложности</h2>
-    </div>
-    <b-carousel
-      class="shadow mt-3"
-      :interval="224000"
-      controls
-      @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
-      img-height="480"
-      img-width="1024"
-    >
-      <b-carousel-slide
-        style="
-          background-image: url(https://thumb.tildacdn.com/tild3432-6233-4361-a366-633365353231/-/format/webp/A4_-_12.jpg);
-          background-size: cover;
-          background-position: center;
-          width: 100%;
-          height: 480px;
-        "
+    <!--Каруселька №1-->
+    <div class="p-2">
+      <b-carousel
+        class="shadow"
+        :interval="1000000"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+        img-height="480"
+        img-width="1024"
       >
-        <div class="pt-5 mt-5">
-          <h1 class="font-weight-bolder text-right text-white">Большой ассортимент товаров</h1>
-          <h1 class="font-weight-bolder text-right text-white">
-            Возможность индивидуально подобрать собственный стеллаж
-          </h1>
-        </div>
-      </b-carousel-slide>
-      <b-carousel-slide
-        style="
-          background-image: url(https://thumb.tildacdn.com/tild6135-6165-4531-b562-663464396565/-/format/webp/A4_-_3.jpg);
-          background-size: cover;
-          width: 100%;
-          height: 480px;
-        "
-      >
-        <div class="pt-5 ml-5">
-          <h1 class="font-weight-bolder text-center text-white">Оформление заказа за несколько секунд</h1>
-          <h1 class="font-weight-bolder text-center text-white">Любой сложности</h1>
-        </div>
-      </b-carousel-slide>
-      <b-carousel-slide
-        style="
-          background-image: url(https://thumb.tildacdn.com/tild3862-3736-4562-a264-356363353633/-/format/webp/A4_-_10.jpg);
-          background-size: cover;
-          width: 100%;
-          height: 480px;
-        "
-      >
-        <div class="pt-5 ml-5">
-          <h1 class="font-weight-bolder text-left text-white">Отличное качество товаров</h1>
-          <h1 class="font-weight-bolder text-left text-white">Потрясающие отзывы</h1>
-        </div>
-      </b-carousel-slide>
-      <b-carousel-slide
-        style="
-          background-image: url(https://thumb.tildacdn.com/tild6430-3734-4263-a263-633362393932/-/format/webp/A4_-_9.jpg);
-          background-size: cover;
-          width: 100%;
-          height: 480px;
-        "
-      >
-        <div class="pt-5 ml-5">
-          <h1 class="font-weight-bolder text-left text-white">Индивидуальное оформление заказов</h1>
-          <h1 class="font-weight-bolder text-left text-white">Постоянная телефонная связь</h1>
-          <h1 class="font-weight-bolder text-left text-white">Поставщики высокого класса</h1>
-          <h1 class="font-weight-bolder text-left text-white">И всё это вместе - МеталлКорп!</h1>
-        </div>
-      </b-carousel-slide>
-    </b-carousel>
-    <div class="p-3">
-      <h2>Каталог</h2>
-    </div>
-    <div>
-      <b-card-group columns>
-        <b-card
-          class="border-0 shadow"
-          title="Среднегрузовые стеллажи"
-          img-src="https://i.ibb.co/1rzcD3T/medium.jpg"
-          img-alt="Image"
-          img-top
+        <b-carousel-slide
+          style="
+            background-image: url(https://i.ibb.co/ZLRp1Cf/storage2.png);
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 580px;
+          "
         >
-          <b-card-text>
-            Конструктивная особенность этих стеллажей позволяет хранить крупногабаритные и тяжелые грузы, что повышает
-            вместимость и эффективность складского пространства.</b-card-text
-          >
-          <b-btn variant="corp" class="my-3" block> Подробнее</b-btn>
-        </b-card>
-        <b-card class="border-0 shadow" header="Случайный отзыв">
-          <blockquote class="blockquote mb-0">
-            <p>Я заказал у этих парней более 200 стеллажей за этот год. Парни - красавцы! 10/10</p>
-            <footer class="blockquote-footer">
-              Андрей Симановский, основатель <cite title="Source Title">"Сима-ленд"</cite>
-            </footer>
-          </blockquote>
-        </b-card>
-        <b-card
-          class="border-0 shadow"
-          title="Паллетные стеллажи / Фронтальные"
-          img-src="https://placekitten.com/500/350"
-          img-alt="Image"
-          img-top
+          <div class="text-left">
+            <h3>Комплексное решение для вашего склада</h3>
+          </div>
+          <div class="text-left">
+            <h1 class="font-weight-bolder">
+              Складские стеллажи от производителя с установкой под ключ и гарантией 24 месяца
+            </h1>
+          </div>
+        </b-carousel-slide>
+        <b-carousel-slide
+          style="
+            background-image: url(https://i.ibb.co/hYRmNmT/storagemuzhik.png);
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 580px;
+          "
         >
-          <b-card-text>Влад, придумай пожалуйста что сюда вставить</b-card-text>
-          <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
-        </b-card>
-        <b-card class="border-0 shadow" bg-variant="primary" text-variant="white">
-          <blockquote class="card-blockquote">
-            <h4>Бесплатный выезд замерщика, к Вам на склад</h4>
-            <hr />
-            <footer>
-              <div>
-                <h5>
-                  Закажите бесплатный выезд замерщика и получите точный размер со сроками поставки и установки
-                  стеллажей:
-                </h5>
-                <b-form-input placeholder="Введите номер телефона"></b-form-input>
+          <div class="h-100">
+            <div
+              class="position-absolute"
+              style="
+                background-image: url(https://i.ibb.co/qdd5SM3/man-4.png);
+                background-size: cover;
+                background-position: center;
+                width: 520px;
+                height: 450px;
+                right: 0;
+                bottom: 0;
+              "
+            ></div>
+            <div class="text-left position-relative h-100 d-flex flex-column">
+              <h3>Бесплатный выезд замерщика</h3>
+              <h2 class="font-weight-bolder">Закажите бесплатный выезд замерщика и получите в течении дня</h2>
+              <h3 class="mt-3">- Точный замер</h3>
+              <h3>- Расчет сметы</h3>
+              <h3>- Сроки поставки и установки стеллажей</h3>
+              <div class="d-flex align-items-end h-100">
+                <b-btn variant="corp" size="lg" class="px-5 py-4" @click="openModal()">Оставить заявку</b-btn>
               </div>
-              <div>
-                <b-btn size="sm" class="mt-2" variant="light" block>Вызвать замерщика</b-btn>
-                <small
-                  >Нажимая на кнопку, выдаете согласие на обработку персональных данных и соглашаетесь с
-                  <a class="text-white" href="https://metalcorp.org/privacypolicy"
-                    >Политикой конфиденциальности</a
-                  ></small
-                >
-              </div>
-            </footer>
-          </blockquote>
-        </b-card>
-        <b-card class="border-0 shadow">
-          <b-card-title>Проектирование чертежей</b-card-title>
-          <b-card-text>Планы расстановки складских стеллажей</b-card-text>
-          <b-btn variant="corp" block>Подробнее</b-btn>
-        </b-card>
-        <b-card
-          class="border-0 shadow"
-          img-src="https://thumb.tildacdn.com/tild6562-6261-4632-b130-656264356533/-/cover/762x628/center/center/-/format/webp/Frame_3.jpg"
-          img-alt="Image"
-          overlay
-        ></b-card>
-        <b-card
-          class="border-0 shadow"
-          img-src="http://mc-stellazhi.ru/upload/iblock/538/53884af185bfbe5292c8af25361af1ab.png"
-          img-alt="Image"
-          img-top
+            </div>
+          </div>
+        </b-carousel-slide>
+      </b-carousel>
+    </div>
+    <!--Что такое МеталлКорп?-->
+    <div class="p-2 mt-4">
+      <h3>Что такое МеталлКорп?</h3>
+    </div>
+    <!--Описание МеталлКорпа-->
+    <div class="p-2 d-flex flex-row flex-wrap">
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild3339-3939-4032-b633-306336663931/1.svg"></b-img>
+        <div class="h5 mt-2 px-3">Бесплатный выезд замерщика, к Вам на склад</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild3431-3364-4863-a633-316132323966/2.svg"></b-img>
+        <div class="h5 mt-2 px-3">Проектирование чертежей(планов расстановки складских стеллажей)</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild3466-6433-4466-a465-653764613865/3.svg"></b-img>
+        <div class="h5 mt-2 px-3">Поставка оборудования напрямую от Производителя</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild6363-3864-4666-a538-623166313432/4.svg"></b-img>
+        <div class="h5 mt-2 px-3">Составление сметы и Коммерческих предложений</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild3730-6535-4232-a461-626461646463/5.svg"></b-img>
+        <div class="h5 mt-0 pb-1 px-3">Реализация оборудования и услуг, исключительно по Договору поставки</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild6137-3362-4932-b465-623331323439/6.svg"></b-img>
+        <div class="h5 mt-n1 pb-1 px-3">Бесплатная доставка в любую точку города от 35 000 руб</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild6538-6435-4261-a432-316139366233/7.svg"></b-img>
+        <div class="h5 mt-2 px-3">Сборка металлических стеллажей и складского оборудования «Под ключ»</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild6238-6633-4338-a633-323539303030/8.svg"></b-img>
+        <div class="h5 mt-2 px-3">24 месяца гарантии и сервисного обслуживания</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-img src="https://static.tildacdn.com/tild6463-6138-4033-a531-626237613066/Barcode.svg"></b-img>
+        <div class="h4 mt-3 px-3">Удобные способы оплаты для Юридических и Частных лиц (с НДС и Без)</div>
+      </div>
+      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
+        <b-btn variant="corp" block href="https://metalcorp.org/">Подробнее о нас</b-btn>
+      </div>
+    </div>
+    <!--Каруселька №2-->
+    <div class="p-2 mt-4">
+      <b-carousel
+        class="shadow"
+        :interval="1000000"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+        img-height="480"
+        img-width="1024"
+      >
+        <b-carousel-slide
+          style="
+            background-image: url(https://i.ibb.co/hYRmNmT/storagemuzhik.png);
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 580px;
+          "
         >
-          <b-card-text class="h4"> Среднегрузовые / Складские стеллажи </b-card-text>
-          <b-btn variant="corp" block>Подробнее</b-btn>
-        </b-card>
-      </b-card-group>
+          <div class="h-100">
+            <div
+              class="position-absolute"
+              style="
+                background-image: url(https://i.ibb.co/qdd5SM3/man-4.png);
+                background-size: cover;
+                background-position: center;
+                width: 520px;
+                height: 450px;
+                right: 0;
+                bottom: 0;
+              "
+            ></div>
+            <div class="text-left position-relative h-100 d-flex flex-column">
+              <h3>Бесплатный выезд замерщика</h3>
+              <h2 class="font-weight-bolder">Закажите бесплатный выезд замерщика и получите в течении дня</h2>
+              <h3 class="mt-3">- Точный замер</h3>
+              <h3>- Расчет сметы</h3>
+              <h3>- Сроки поставки и установки стеллажей</h3>
+              <div class="d-flex align-items-end h-100">
+                <b-btn variant="corp" size="lg" class="px-5 py-4" @click="openModal()">Оставить заявку</b-btn>
+              </div>
+            </div>
+          </div>
+        </b-carousel-slide>
+
+        <b-carousel-slide
+          style="
+            background-image: url(https://i.ibb.co/ZLRp1Cf/storage2.png);
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 580px;
+          "
+        >
+          <div class="text-left">
+            <h3>Комплексное решение для вашего склада</h3>
+          </div>
+          <div class="text-left">
+            <h1 class="font-weight-bolder">
+              Складские стеллажи от производителя с установкой под ключ и гарантией 24 месяца
+            </h1>
+          </div>
+        </b-carousel-slide>
+      </b-carousel>
     </div>
   </div>
 </template>
@@ -164,6 +187,12 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.$store.commit('setActiveModal', {
+        modalName: 'dimensionModal',
+        modalStatus: true,
+      })
+    },
     onSlideStart(slide) {
       this.sliding = true
     },
@@ -175,10 +204,13 @@ export default {
 </script>
 <style lang="scss">
 .carousel-caption {
-  h1 {
-    padding-left: 10px;
-    padding-right: 10px;
-    background: #5472f99e;
-  }
+  height: 100%;
+  width: 100%;
+  padding: 2.5rem 3rem;
+  //h1 {
+  //  padding-left: 10px;
+  //  padding-right: 10px;
+  //  //background: #5472f99e;
+  //}
 }
 </style>
