@@ -1,34 +1,67 @@
 <template>
-  <div class="h-100 w-100 overflow-auto">
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column m-3">
+  <div class="h-100 w-100 overflow-auto jus">
+    <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-column m-3 w-100">
         <h3>{{ getTypeByUuid.title ? getTypeByUuid.title : '' }}</h3>
         <div class="mt-3">
-          <img :src="getTypeByUuid.image" style="width: 60%" />
+          <img :src="getTypeByUuid.image" style="width: 30%" />
         </div>
         <div class="mt-2">
+          <div class="d-flex flex-row text-left">
+            <div class="mt-2">
+              <div class="w-100 text-truncate" v-if="getTypeByUuid.shelf_load">
+                <label>Нагрузка на полку: </label>
+                <span class="ml-2">
+                  <b> {{ getTypeByUuid.shelf_load }}кг </b>
+                </span>
+              </div>
+              <div class="w-100 text-truncate" v-if="getTypeByUuid.section_load">
+                <label>Нагрузка на секцию: </label>
+                <span class="ml-2">
+                  <b> {{ getTypeByUuid.section_load }}кг </b>
+                </span>
+              </div>
+              <div class="w-100 text-truncate" v-if="getTypeByUuid.rack_load">
+                <label>Нагрузка на стеллаж: </label>
+                <span class="ml-2">
+                  <b> {{ getTypeByUuid.rack_load }}кг </b>
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <div class="d-flex flex-fill flex-row-reverse w-50">
+        <div class="d-flex flex-column">
           <h4>Описание:</h4>
           <span>{{ getTypeByUuid.description }}</span>
         </div>
       </div>
-      <div class="d-flex w-100 flex-column">
-        <div class="d-flex flex-row align-self-end">
-          <b-input-group>
-            <label>Высота:</label>
-            <b-dd
-              block
-              no-caret
-              variant="corp"
-              :text="
-                selectedRackHeight.rack_parameter_value ? selectedRackHeight.rack_parameter_value + ' мм' : 'Выберите'
-              "
-            >
-              <template v-for="item in getRackHeight">
-                <b-dd-item :key="item.uuid" @click="selectHeight(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
-              </template>
-            </b-dd>
-          </b-input-group>
-          <b-input-group>
+      <div class="d-flex flex-row-reverse p-3">
+        <div class="d-flex flex-column">
+          <div>
+            <div>
+              <label class="text-right">Высота:</label>
+            </div>
+            <div>
+              <b-dd
+                block
+                no-caret
+                variant="corp"
+                :text="
+                  selectedRackHeight.rack_parameter_value ? selectedRackHeight.rack_parameter_value + ' мм' : 'Выберите'
+                "
+              >
+                <template v-for="item in getRackHeight">
+                  <b-dd-item :key="item.uuid" @click="selectHeight(item)">
+                    {{ item.rack_parameter_value }} мм
+                  </b-dd-item>
+                </template>
+              </b-dd>
+            </div>
+          </div>
+          <div>
             <label>Ширина:</label>
             <b-dd
               block
@@ -42,8 +75,8 @@
                 <b-dd-item :key="item.uuid" @click="selectWidth(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
-          </b-input-group>
-          <b-input-group>
+          </div>
+          <div>
             <label>Глубина:</label>
             <b-dd
               block
@@ -57,8 +90,8 @@
                 <b-dd-item :key="item.uuid" @click="selectDepth(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
-          </b-input-group>
-          <b-input-group>
+          </div>
+          <div>
             <label>Кол-во полок:</label>
             <b-dd
               block
@@ -74,8 +107,8 @@
                 </b-dd-item>
               </template>
             </b-dd>
-          </b-input-group>
-          <b-input-group>
+          </div>
+          <div>
             <label>Настил:</label>
             <b-dd
               block
@@ -87,36 +120,14 @@
                 <b-dd-item :key="item.uuid" @click="selectDeck(item)"> {{ item.rack_parameter_value }} </b-dd-item>
               </template>
             </b-dd>
-          </b-input-group>
-        </div>
-        <div class="d-flex flex-row align-self-end text-right">
-          <div class="mt-2">
-            <div class="w-100 text-truncate" v-if="getTypeByUuid.shelf_load">
-              <label>Нагрузка на полку: </label>
-              <span class="ml-2"
-                ><b> {{ getTypeByUuid.shelf_load }}кг </b></span
-              >
-            </div>
-            <div class="w-100 text-truncate" v-if="getTypeByUuid.section_load">
-              <label>Нагрузка на секцию: </label>
-              <span class="ml-2"
-                ><b> {{ getTypeByUuid.section_load }}кг </b></span
-              >
-            </div>
-            <div class="w-100 text-truncate" v-if="getTypeByUuid.rack_load">
-              <label>Нагрузка на стеллаж: </label>
-              <span class="ml-2"
-                ><b> {{ getTypeByUuid.rack_load }}кг </b></span
-              >
-            </div>
           </div>
-        </div>
-        <div class="m-3 d-flex align-self-end flex-column">
-          <label>Кол-во стеллажей:</label>
-          <b-spinbutton inline v-model="form.rack_count" min="1" step="1" inputmode="true"></b-spinbutton>
-        </div>
-        <div class="m-3 d-flex align-self-end">
-          <b-btn block variant="corp" @click="addProduct()">Добавить в заказ</b-btn>
+          <div class="m-3 d-flex align-self-end flex-column">
+            <label>Кол-во стеллажей:</label>
+            <b-spinbutton inline v-model="form.rack_count" min="1" step="1" inputmode="true"></b-spinbutton>
+          </div>
+          <div class="m-3 d-flex align-self-end">
+            <b-btn block variant="corp" @click="addProduct()">Добавить в заказ</b-btn>
+          </div>
         </div>
       </div>
     </div>
