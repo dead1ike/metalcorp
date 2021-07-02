@@ -5,7 +5,7 @@
     <template v-if="$store.getters.getActivePublicCategoryItemDescription">
       <public-category-item-description />
     </template>
-    <div class="overflow-hidden"><public-dashboard-footer /></div>
+    <div class="overflow-hidden"><manager-dashboard-footer></manager-dashboard-footer></div>
   </div>
 </template>
 

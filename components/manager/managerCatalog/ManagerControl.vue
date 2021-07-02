@@ -143,11 +143,13 @@
               </div>
               <div class="input-group d-flex justify-content-end">
                 <b-dd variant="corp" text="Выбрать">
+                  <b-dd-item>2</b-dd-item>
                   <b-dd-item>3</b-dd-item>
                   <b-dd-item>4</b-dd-item>
                   <b-dd-item>5</b-dd-item>
                   <b-dd-item>6</b-dd-item>
                   <b-dd-item>7</b-dd-item>
+                  <b-dd-item>8</b-dd-item>
                 </b-dd>
               </div>
             </div>
