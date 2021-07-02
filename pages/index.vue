@@ -1,9 +1,10 @@
 <template>
   <div class="overflow-auto h-100">
+    <!--Каруселька №1-->
     <div class="p-2">
       <b-carousel
         class="shadow"
-        :interval="15000"
+        :interval="1000000"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
         img-height="480"
@@ -63,9 +64,11 @@
         </b-carousel-slide>
       </b-carousel>
     </div>
+    <!--Что такое МеталлКорп?-->
     <div class="p-2 mt-4">
       <h3>Что такое МеталлКорп?</h3>
     </div>
+    <!--Описание МеталлКорпа-->
     <div class="p-2 d-flex flex-row flex-wrap">
       <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
         <b-img src="https://static.tildacdn.com/tild3339-3939-4032-b633-306336663931/1.svg"></b-img>
@@ -107,11 +110,11 @@
         <b-btn variant="corp" block href="https://metalcorp.org/">Подробнее о нас</b-btn>
       </div>
     </div>
-
+    <!--Каруселька №2-->
     <div class="p-2 mt-4">
       <b-carousel
         class="shadow"
-        :interval="15000"
+        :interval="1000000"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
         img-height="480"
