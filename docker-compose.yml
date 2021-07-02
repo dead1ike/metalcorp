@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+
+  skladskoi-dev:
+    container_name: skladskoi-dev
+    image: node:16.3-buster
+    command: sh -c "yarn && yarn dev"
+    ports:
+      - 8811:3000
+    working_dir: /var/www/app
+    volumes:
+      - ./:/var/www/app
+    networks:
+      skladskoi:
+        aliases:
+          - skladskoi-dev
+
+networks:
+  skladskoi:
+    driver: bridge
+
+volumes:
+  sockets:
