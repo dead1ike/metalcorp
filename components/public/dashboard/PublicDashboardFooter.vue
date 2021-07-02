@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-100">
     <div>
       <b-img
         class="position-relative"
@@ -9,7 +9,7 @@
     </div>
     <div class="text-white w-100 bg-black p-4">
       <div class="d-flex w-100">
-        <div class="d-flex flex-fill flex-row justify-content-center">
+        <div class="d-flex flex-fill flex-row justify-content-center flex-wrap">
           <div class="m-4 px-5">
             <b-img
               src="https://thumb.tildacdn.com/tild6536-3538-4137-b034-373731613935/-/resize/130x/-/format/webp/__2_2.png"
