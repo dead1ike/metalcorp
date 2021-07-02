@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-auto h-100">
     <!--Каруселька №1-->
-    <div class="p-2">
+    <div>
       <div class="shadow d-flex flex-fill">
         <div
           style="
@@ -10,28 +10,28 @@
             background-position: center;
             width: 100%;
           "
-          class="text-white p-3 d-flex flex-fill flex-column"
+          class="text-white d-flex flex-fill flex-column"
         >
-          <div class="text-left p-2">
+          <div class="text-left p-4">
             <h3>Комплексное решение для вашего склада</h3>
           </div>
-          <div class="text-left p-2">
+          <div class="text-left p-4">
             <h1 class="font-weight-bolder">
               Складские стеллажи от производителя с установкой под ключ и гарантией 24 месяца
             </h1>
           </div>
-          <div class="pt-8 ml-5 mb-4">
-            <b-btn variant="corp" to="/category">Перейти в каталог</b-btn>
+          <div class="pt-8 m-4 text-center text-md-left">
+            <b-btn variant="corp" size="lg" class="px-5 py-4" to="/category">Перейти в каталог</b-btn>
           </div>
         </div>
       </div>
     </div>
     <!--Что такое МеталлКорп?-->
-    <div class="p-2 mt-4">
+    <div class="p-2 mt-4 container-fluid" style="max-width: 1520px">
       <h3>Что такое МеталлКорп?</h3>
     </div>
     <!--Описание МеталлКорпа-->
-    <div class="p-2 d-flex flex-row flex-wrap">
+    <div class="p-2 d-flex flex-row flex-wrap container-fluid" style="max-width: 1520px">
       <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
         <b-img src="https://static.tildacdn.com/tild3339-3939-4032-b633-306336663931/1.svg"></b-img>
         <div class="h5 mt-2 px-3">Бесплатный выезд замерщика, к Вам на склад</div>
@@ -73,7 +73,7 @@
       </div>
     </div>
     <!--Каруселька №2-->
-    <div class="p-2 mt-4">
+    <div class="mt-4">
       <b-carousel
         class="shadow"
         :interval="1000000"
@@ -112,7 +112,7 @@
               <h3 class="mt-3">- Точный замер</h3>
               <h3>- Расчет сметы</h3>
               <h3>- Сроки поставки и установки стеллажей</h3>
-              <div class="d-flex align-items-end h-100">
+              <div class="d-flex align-items-end ml-4 h-100">
                 <b-btn variant="corp" size="lg" class="px-5 py-4" @click="openModal()">Оставить заявку</b-btn>
               </div>
             </div>
@@ -125,7 +125,7 @@
     <!--Каталог 2-->
     <div>Catalog 2</div>
     <!--Конечная индексной-->
-    <div class="p-2">
+    <div>
       <div class="shadow d-flex flex-fill">
         <div
           style="
@@ -142,8 +142,8 @@
           <div class="text-center p-4">
             <h1 class="font-weight-bolder">Поможем определиться и подобрать лучшие для Вас товары из каталога!</h1>
           </div>
-          <div class="pt-4 ml-2">
-            <b-btn variant="corp" block class="px-5 py-2" @click="openModal()">Получить консультацию</b-btn>
+          <div class="pt-4 mb-2 text-center text-md-left">
+            <b-btn variant="corp" class="px-5 py-4" size="lg" @click="openModal()">Получить консультацию</b-btn>
           </div>
         </div>
       </div>

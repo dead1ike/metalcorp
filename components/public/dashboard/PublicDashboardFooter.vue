@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100">
+  <div>
     <div>
       <b-img
         class="position-relative"
@@ -15,7 +15,7 @@
               src="https://thumb.tildacdn.com/tild6536-3538-4137-b034-373731613935/-/resize/130x/-/format/webp/__2_2.png"
             ></b-img>
           </div>
-          <div class="d-flex flex-row">
+          <div class="d-flex flex-row flex-wrap">
             <div class="m-4 d-flex flex-column text-left">
               <div>
                 ОБЩЕСТВО С ОГРАНИЧЕННОЙ <br />
