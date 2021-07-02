@@ -8,7 +8,7 @@
       <b-form-input class="p-2" v-model="form.phone" placeholder="+7(999)123-14-55"></b-form-input>
     </div>
     <template #modal-footer>
-      <b-btn variant="danger" @click="closeModal()">Отминет</b-btn>
+      <b-btn variant="danger" @click="closeModal()">Отменить</b-btn>
       <b-btn variant="corp" @click="closeModal()">Отправить</b-btn>
     </template>
   </b-modal>
