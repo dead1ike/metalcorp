@@ -121,9 +121,45 @@
       </b-carousel>
     </div>
     <!--Каталог 1-->
-    <div>Catalog 1</div>
-    <!--Каталог 2-->
-    <div>Catalog 2</div>
+    <div class="d-flex flex-row justify-content-center">
+      <div class="align-self-center">
+        <b-btn variant="link" size="sm" @click="show = !show">
+          <b-icon icon="chevron-double-left" />
+        </b-btn>
+      </div>
+      <template v-if="show">
+        <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
+          <div v-for="item in showFirstFive" :key="item.uuid" class="mx-1 my-2 border">
+            <div class="d-flex flex-column align-items-center">
+              <span class="my-3">{{ item.title }}</span>
+              <b-img :src="item.image" style="max-height: 300px" class="" />
+            </div>
+            <div class="d-flex align-items-end m-3">
+              <b-btn variant="corp">Заказать</b-btn>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
+          <div v-for="item in showSecondFive" :key="item.uuid" class="mx-1 my-2 border">
+            <div class="d-flex flex-column align-items-center">
+              <span class="my-3">{{ item.title }}</span>
+              <b-img :src="item.image" style="max-height: 300px" class="" />
+            </div>
+            <div class="d-flex align-items-end m-3">
+              <b-btn variant="corp">Заказать</b-btn>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <div class="align-self-center">
+        <b-btn variant="link" size="sm" @click="show = !show">
+          <b-icon icon="chevron-double-right" />
+        </b-btn>
+      </div>
+    </div>
     <!--Конечная индексной-->
     <div>
       <div class="shadow d-flex flex-fill">
@@ -158,7 +194,20 @@ export default {
     return {
       slide: 0,
       sliding: null,
+      show: true,
     }
+  },
+  mounted() {},
+  computed: {
+    getTestItems() {
+      return this.$store.getters['basket/getTestItems']
+    },
+    showFirstFive() {
+      return this.getTestItems.slice(0, 5)
+    },
+    showSecondFive() {
+      return this.getTestItems.slice(5, 10)
+    },
   },
   methods: {
     openModal() {
