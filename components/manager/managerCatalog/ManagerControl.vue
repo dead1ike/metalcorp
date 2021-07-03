@@ -4,11 +4,11 @@
       <b-input-group>
         <b-form-input type="search" placeholder="Введите наименование"></b-form-input>
         <b-btn variant="corp">
-          <span><b-icon icon="search" variant="corp" class="b-icon mr-2" scale="0.8"></b-icon>Поиск</span>
+          <span>Поиск</span>
         </b-btn>
       </b-input-group>
     </div>
-    <b-btn v-b-popover.hover.top="'Добавить новый стеллаж,ебать'" v-b-modal.modal-add-rack class="mb-2" variant="corp">
+    <b-btn v-b-popover.hover.top="'Добавить новый стеллаж'" v-b-modal.modal-add-rack class="mb-2" variant="corp">
       <b-icon icon="plus"></b-icon>
     </b-btn>
     <b-modal
