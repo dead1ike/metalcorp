@@ -5,19 +5,19 @@ export const state = () => ({
 })
 export const actions = {
   async fetchCategory({ commit }) {
-    const { data } = await this.$axios.get('http://skladskoi.com:8820/api/category')
+    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/category')
     console.warn('fetchCategory', data.data)
     commit('setCategory', data.data)
   },
   postCategory({ commit }, data) {
-    return this.$axios.post('http://skladskoi.com:8820/api/category', {
+    return this.$axios.post('https://api-dev.skladskoi.com/api/category', {
       ...data,
     })
   },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
-    return this.$axios.post(`http://skladskoi.com:8820/api/category/${data.uuid}`, uploadingFile)
+    return this.$axios.post(`https://api-dev.skladskoi.com/api/category/${data.uuid}`, uploadingFile)
   },
   putBlank({ commit }, data) {},
 }
