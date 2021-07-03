@@ -9,7 +9,11 @@ export const actions = {
     console.warn('fetchCategory', data.data)
     commit('setCategory', data.data)
   },
-  postBlank({ commit }, data) {},
+  postCategory({ commit }, data) {
+    return this.$axios.post('http://skladskoi.com:8820/api/category', {
+      ...data,
+    })
+  },
   putBlank({ commit }, data) {},
 }
 export const mutations = {

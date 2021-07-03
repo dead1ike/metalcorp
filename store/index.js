@@ -72,6 +72,7 @@ export const state = () => ({
   },
   activeModals: {
     dimensionModal: false,
+    managerCategoryAdd: false,
   },
 })
 export const actions = {
@@ -87,6 +88,9 @@ export const mutations = {
   setBlank2(state, data) {},
 }
 export const getters = {
+  getActiveManagerCategoryAddModal(state) {
+    return state.activeModals.managerCategoryAdd
+  },
   getActiveDimensionModal(state) {
     return state.activeModals.dimensionModal
   },
