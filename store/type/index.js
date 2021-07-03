@@ -14,7 +14,11 @@ export const actions = {
     console.warn('fetchTypes', data.data)
     commit('setTypes', data.data)
   },
-  postBlank({ commit }, data) {},
+  postParameter({ commit }, data) {
+    this.$axios.post('https://api-dev.skladskoi.com/api/rackParameter', {
+      ...data,
+    })
+  },
   putBlank({ commit }, data) {},
 }
 export const mutations = {

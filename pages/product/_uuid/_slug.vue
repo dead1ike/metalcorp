@@ -123,7 +123,7 @@
           </div>
           <div class="m-3 d-flex align-self-end flex-column">
             <label>Кол-во стеллажей:</label>
-            <b-spinbutton inline v-model="form.rack_count" min="1" step="1" inputmode="true"></b-spinbutton>
+            <b-spinbutton v-model="form.rack_count" inline min="1" step="1" inputmode="true"></b-spinbutton>
           </div>
           <div class="m-3 d-flex align-self-end">
             <b-btn block variant="corp" @click="addProduct()">Добавить в заказ</b-btn>

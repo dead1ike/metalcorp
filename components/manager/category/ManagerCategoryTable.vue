@@ -5,10 +5,22 @@
         {{ data.item.title + ' (' + showParent(data.item.parent_uuid).title + ')' }}
       </template>
       <template #cell(image)="data">
-        {{ data.item.image ? data.item.image : 'Картинка не добавлена. Добавить?' }}
-        <div class="d-inline-flex flex-row">
-          <b-file v-model="form.image" plain @change="categoryUuid(data.item)"></b-file>
+        <div class="d-flex flex-column">
+          <div style="max-width: 100px; max-height: 100px" v-if="data.item.image !== null">
+            <b-img :src="data.item.image" style="max-width: 100px; max-height: 100px" />
+          </div>
+          <div v-else>
+            <span>Картинка отсутствует. Добавить?</span>
+          </div>
+          <div class="d-inline-flex flex-row align-self-center">
+            <b-file v-model="form.image" plain @load="categoryUuid(data.item)"></b-file>
+          </div>
         </div>
+      </template>
+      <template #cell(actions)="data">
+        <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link" @click="deleteItem(data.item)">
+          <b-icon icon="x-circle" variant="danger"></b-icon
+        ></b-btn>
       </template>
     </b-table>
   </div>
@@ -48,19 +60,25 @@ export default {
     },
   },
   methods: {
+    deleteItem(item) {
+      this.$store.dispatch('category/deleteCategory', item.uuid).then(() => {
+        this.$store.dispatch('category/fetchCategory')
+      })
+    },
     categoryUuid(item) {
       this.form.category_uuid = item.uuid
     },
     uploadImage() {
+      console.warn('dadadadada')
       this.$store
         .dispatch('category/uploadFile', {
           uuid: this.form.category_uuid,
           image: this.form.image,
         })
         .then(() => {
-          this.form.image = null
           this.makeToast('Картинка успешно загружена')
           this.$store.dispatch('category/fetchCategory')
+          this.form.image = null
         })
     },
     showParent(uuid) {

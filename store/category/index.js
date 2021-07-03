@@ -19,7 +19,9 @@ export const actions = {
     uploadingFile.set('image', data.image)
     return this.$axios.post(`https://api-dev.skladskoi.com/api/category/${data.uuid}`, uploadingFile)
   },
-  putBlank({ commit }, data) {},
+  deleteCategory({ commit }, uuid) {
+    return this.$axios.delete(`https://api-dev.skladskoi.com/api/category/${uuid}`)
+  },
 }
 export const mutations = {
   setCategory(state, data) {
