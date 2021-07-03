@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex flex-column">
-    <public-dashboard-navbar />
+    <manager-dashboard-navbar></manager-dashboard-navbar>
     <Nuxt class="h-100 container-fluid" style="max-width: 1520px" />
-    <template v-if="$store.getters.getActiveManagerCategoryAddModal">
-      <manager-category-add />
-    </template>
-    <div class="overflow-hidden"><manager-dashboard-footer></manager-dashboard-footer></div>
+    <!--    <template v-if="$store.getters.getActiveManagerCategoryAddModal">-->
+    <!--      <manager-category-add />-->
+    <!--    </template>-->
+    <!--    <div class="overflow-hidden"><manager-dashboard-footer></manager-dashboard-footer></div>-->
   </div>
 </template>
 
