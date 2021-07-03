@@ -122,11 +122,21 @@ export const state = () => ({
         label: 'Нагрузка на секцию',
         class: 'align-middle text-center',
       },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
     ],
     managerParameter: [
       {
         key: 'title',
         label: 'Название параметра',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
         class: 'align-middle text-center',
       },
     ],
@@ -137,28 +147,18 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
       {
-        key: 'rack_height',
-        label: 'Высота стеллажа',
+        key: 'rack_parameter_title',
+        label: 'Параметр',
         class: 'align-middle text-center',
       },
       {
-        key: 'rack_width',
-        label: 'Ширина стеллажа',
+        key: 'rack_parameter_value',
+        label: 'Значение',
         class: 'align-middle text-center',
       },
       {
-        key: 'rack_depth',
-        label: 'Глубина стеллажа',
-        class: 'align-middle text-center',
-      },
-      {
-        key: 'rack_shelves_count',
-        label: 'Количество полок',
-        class: 'align-middle text-center',
-      },
-      {
-        key: 'rack_deck',
-        label: 'Настил',
+        key: 'actions',
+        label: '',
         class: 'align-middle text-center',
       },
     ],

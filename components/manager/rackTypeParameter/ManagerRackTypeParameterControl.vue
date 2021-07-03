@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-btn variant="corp">+</b-btn>
+    <b-btn variant="corp" @click="rackTypeParameterAdd">+</b-btn>
   </div>
 </template>
 

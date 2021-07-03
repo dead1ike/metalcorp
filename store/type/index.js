@@ -19,7 +19,19 @@ export const actions = {
       ...data,
     })
   },
-  putBlank({ commit }, data) {},
+  postRackType({ commit }, data) {
+    return this.$axios.post('https://api-dev.skladskoi.com/api/rackType', {
+      ...data,
+    })
+  },
+  deleteRackType({ commit }, uuid) {
+    return this.$axios.delete(`https://api-dev.skladskoi.com/api/rackType/${uuid}`)
+  },
+  uploadFile({ commit }, data) {
+    const uploadingFile = new FormData()
+    uploadingFile.set('image', data.image)
+    return this.$axios.post(`https://api-dev.skladskoi.com/api/rackType/${data.uuid}`, uploadingFile)
+  },
 }
 export const mutations = {
   setType(state, data) {

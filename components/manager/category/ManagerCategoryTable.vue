@@ -13,7 +13,7 @@
             <span>Картинка отсутствует. Добавить?</span>
           </div>
           <div class="d-inline-flex flex-row align-self-center">
-            <b-file v-model="form.image" plain @load="categoryUuid(data.item)"></b-file>
+            <b-file v-model="form.image" plain @input="categoryUuid(data.item)"></b-file>
           </div>
         </div>
       </template>
@@ -56,7 +56,7 @@ export default {
   watch: {
     'form.image'(newValue, oldValue) {
       console.warn(this.form.image)
-      this.uploadImage()
+      if (newValue) this.uploadImage()
     },
   },
   methods: {

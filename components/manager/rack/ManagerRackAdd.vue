@@ -3,9 +3,11 @@
     <template #modal-header>
       <h4>Добавление стеллажа:</h4>
     </template>
-    <b-dd :text="selectedCategory.title ? selectedCategory.title : 'Выберите'">
+    <b-dd variant="corp" :text="selectedCategory.title ? selectedCategory.title : 'Выберите'">
       <template v-for="item in getCategoryOptions">
-        <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectCategory(item.uuid)"></b-dd-item>
+        <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectCategory(item.uuid)">
+          {{ item.title }}
+        </b-dd-item>
       </template>
     </b-dd>
     <b-input-group class="d-flex flex-column">
@@ -29,7 +31,7 @@
       <b-textarea v-model="form.description" class="w-100"></b-textarea>
     </b-input-group>
     <template #modal-footer>
-      <b-btn variant="corp">Добавить</b-btn>
+      <b-btn variant="corp" @click="addRackType">Добавить</b-btn>
       <b-btn variant="danger" @click="closeModal">Отменить</b-btn>
     </template>
   </b-modal>
@@ -68,6 +70,16 @@ export default {
     this.$bvModal.show('manager-rack-add')
   },
   methods: {
+    addRackType() {
+      this.$store
+        .dispatch('type/postRackType', {
+          ...this.form,
+          uuid: this.getUuid(),
+        })
+        .then(() => {
+          this.closeModal()
+        })
+    },
     selectCategory(uuid) {
       this.form.category_uuid = uuid
     },
@@ -75,6 +87,12 @@ export default {
       return this.$store.getters.getNewUuid(new Date())
     },
     closeModal() {
+      this.form.section_load = ''
+      this.form.load = ''
+      this.form.shelf_load = ''
+      this.form.title = ''
+      this.form.description = ''
+      this.form.category_uuid = null
       this.$store.commit('setActiveModal', {
         modalName: 'managerRackAdd',
         modalStatus: false,

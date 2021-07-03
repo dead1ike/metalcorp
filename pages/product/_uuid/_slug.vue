@@ -21,10 +21,10 @@
                   <b> {{ getTypeByUuid.section_load }}кг </b>
                 </span>
               </div>
-              <div class="w-100 text-truncate" v-if="getTypeByUuid.rack_load">
+              <div class="w-100 text-truncate" v-if="getTypeByUuid.load">
                 <label>Нагрузка на стеллаж: </label>
                 <span class="ml-2">
-                  <b> {{ getTypeByUuid.rack_load }}кг </b>
+                  <b> {{ getTypeByUuid.load }}кг </b>
                 </span>
               </div>
             </div>
@@ -162,30 +162,42 @@ export default {
     getRackHeight() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === 'a8fa4af4-85ca-4be0-b111-71a02e97ad07'
+          return item.rack_parameter_uuid === 'b2b2928e-5f7b-45f3-8797-5cd03ca378c1'
         })
       }
-      return {}
+      return []
     },
     getRackWidth() {
-      return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-        return item.rack_parameter_uuid === '11e9ebff-cf3e-438e-88bc-3da542169cf6'
-      })
+      if (this.getTypeByUuid.rack_type_parameters) {
+        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
+          return item.rack_parameter_uuid === 'bc335e6a-768b-4f85-b652-52bc2d09aa64'
+        })
+      }
+      return []
     },
     getRackDepth() {
-      return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-        return item.rack_parameter_uuid === '2cc05daf-d674-45a2-96e6-39ba73605e00'
-      })
+      if (this.getTypeByUuid.rack_type_parameters) {
+        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
+          return item.rack_parameter_uuid === 'f0c368ae-73bf-42c8-a9fe-4e6b2c04d0a4'
+        })
+      }
+      return []
     },
     getRackDeck() {
-      return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-        return item.rack_parameter_uuid === '91c13c4a-d604-4029-b189-fbc8f2949265'
-      })
+      if (this.getTypeByUuid.rack_type_parameters) {
+        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
+          return item.rack_parameter_uuid === '56c3377e-b4b9-4fe4-a716-10a3278e7f3d'
+        })
+      }
+      return []
     },
     getRackShelves() {
-      return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-        return item.rack_parameter_uuid === '64edbba5-8480-447b-8989-c83846ece32e'
-      })
+      if (this.getTypeByUuid.rack_type_parameters) {
+        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
+          return item.rack_parameter_uuid === 'ba4a2bf9-d1b0-4171-9cf8-aaff2eb78219'
+        })
+      }
+      return []
     },
     selectedRackHeight() {
       if (this.getRackHeight.find((rack) => rack.uuid === this.form.rack_height.uuid)) {
@@ -218,7 +230,7 @@ export default {
       return {}
     },
     getTypeByUuid() {
-      return this.$store.getters['type/getTypeById'](this.typeUuid)
+      return this.$store.getters['type/getTypeById'](this.typeUuid) || {}
     },
   },
   mounted() {
