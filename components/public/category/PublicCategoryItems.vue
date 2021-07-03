@@ -60,7 +60,7 @@ export default {
   computed: {
     getCategoryItems() {
       return this.$store.getters['category/getCategoryItems'].filter((item) => {
-        return item.parent_uuid === '46840200-d2ac-4bb2-b412-f112707ddc82'
+        return item.parent_uuid === '6292d098-6445-40e8-86ed-1f5ed66931f1'
       })
     },
     getTypeItems() {

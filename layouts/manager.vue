@@ -5,6 +5,15 @@
     <template v-if="$store.getters.getActiveManagerCategoryAddModal">
       <manager-category-add />
     </template>
+    <template v-if="$store.getters.getActiveManagerRackAddModal">
+      <manager-rack-add />
+    </template>
+    <template v-if="$store.getters.getActiveManagerParameterAddModal">
+      <manager-parameter-add />
+    </template>
+    <template v-if="$store.getters.getActiveManagerRackTypeParameterAddModal">
+      <manager-rack-type-parameter-add />
+    </template>
     <div class="overflow-hidden"><manager-dashboard-footer></manager-dashboard-footer></div>
   </div>
 </template>
@@ -16,6 +25,21 @@ export default {
       if (modalId === 'manager-category-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerCategoryAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-rack-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerRackAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-parameter-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerParameterAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-rack-type-parameter-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerRackTypeParameterAdd',
           modalStatus: false,
         })
       }
