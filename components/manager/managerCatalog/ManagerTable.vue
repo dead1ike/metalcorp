@@ -31,10 +31,7 @@ export default {
       items: [],
       fields: [
         { key: 'rack_name', label: 'Название', sortable: true },
-        { key: 'rack_description', label: 'Описание', sortable: true },
-        { key: 'rack_image', label: 'Изображение', sortable: true },
         { key: 'rack_category', label: 'Категория', sortable: true },
-        { key: 'rack_type', label: 'Тип', sortable: true },
         { key: 'rack_type_parameters', label: 'Параметры стеллажа', sortable: true },
         { key: 'rack_shelf_load', label: 'Нагрузка на полку', sortable: true },
         { key: 'rack_load', label: 'Нагрузка на стеллаж', sortable: true },
