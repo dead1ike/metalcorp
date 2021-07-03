@@ -6,7 +6,7 @@
         style="max-height: 350px; max-width: 429px; bottom: 0px; right: -64px"
         :src="getImg"
       ></b-img>
-      <audio :src="require('@/assets/pepega.mp3')" controls></audio>
+      <audio :src="require('@/assets/pepega.mp3')"></audio>
     </div>
     <div class="text-white w-100 bg-black p-4">
       <div class="d-flex w-100">

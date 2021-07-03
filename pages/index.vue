@@ -77,10 +77,10 @@
       <b-carousel
         class="shadow"
         :interval="1000000"
-        @sliding-start="onSlideStart"
-        @sliding-end="onSlideEnd"
         img-height="480"
         img-width="1024"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
       >
         <b-carousel-slide
           style="
@@ -123,39 +123,23 @@
     <!--Каталог 1-->
     <div class="d-flex flex-row justify-content-center">
       <div class="align-self-center">
-        <b-btn variant="link" size="sm" @click="show = !show">
+        <b-btn variant="link" size="sm" :disabled="slidePage <= 0" @click="slidePage--">
           <b-icon icon="chevron-double-left" />
         </b-btn>
       </div>
-      <template v-if="show">
-        <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
-          <div v-for="item in showFirstFive" :key="item.uuid" class="mx-1 my-2 border">
-            <div class="d-flex flex-column align-items-center">
-              <span class="my-3">{{ item.title }}</span>
-              <b-img :src="item.image" style="max-height: 300px" class="" />
-            </div>
-            <div class="d-flex align-items-end m-3">
-              <b-btn variant="corp">Заказать</b-btn>
-            </div>
+      <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
+        <div v-for="item in showSlides" :key="item.uuid" class="mx-1 my-2 border">
+          <div class="d-flex flex-column align-items-center">
+            <span class="my-3">{{ item.title }}</span>
+            <b-img :src="item.image" style="max-height: 300px" class="" />
+          </div>
+          <div class="d-flex align-items-end m-3">
+            <b-btn variant="corp">Заказать</b-btn>
           </div>
         </div>
-      </template>
-      <template v-else>
-        <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
-          <div v-for="item in showSecondFive" :key="item.uuid" class="mx-1 my-2 border">
-            <div class="d-flex flex-column align-items-center">
-              <span class="my-3">{{ item.title }}</span>
-              <b-img :src="item.image" style="max-height: 300px" class="" />
-            </div>
-            <div class="d-flex align-items-end m-3">
-              <b-btn variant="corp">Заказать</b-btn>
-            </div>
-          </div>
-        </div>
-      </template>
-
+      </div>
       <div class="align-self-center">
-        <b-btn variant="link" size="sm" @click="show = !show">
+        <b-btn variant="link" size="sm" :disabled="isPageMax" @click="slidePage++">
           <b-icon icon="chevron-double-right" />
         </b-btn>
       </div>
@@ -195,12 +179,28 @@ export default {
       slide: 0,
       sliding: null,
       show: true,
+      slidePage: 0,
+      slideCount: 5,
+      slideCurrent: 0,
     }
   },
-  mounted() {},
   computed: {
     getTestItems() {
       return this.$store.getters['basket/getTestItems']
+    },
+    isPageMax() {
+      return this.getTestItems.length / this.slideCount <= this.slidePage + 1
+    },
+    showSlides() {
+      const slideCurrent = this.slidePage * this.slideCount
+      const slides = this.getTestItems.slice(slideCurrent, this.slideCount + slideCurrent)
+      console.warn(slides.length)
+      if (slides.length < this.slideCount) {
+        console.warn(this.getTestItems.slice(0, this.slideCount))
+        // this.slidePage = 1
+        slides.concat(slides, this.getTestItems.slice(0, this.slideCount))
+      }
+      return slides
     },
     showFirstFive() {
       return this.getTestItems.slice(0, 5)
@@ -209,6 +209,12 @@ export default {
       return this.getTestItems.slice(5, 10)
     },
   },
+  // watch: {
+  //   slidePage(newValue, oldValue) {
+  //     this.slideCurrent = this.slidePage * this.slideCount
+  //   },
+  // },
+  mounted() {},
   methods: {
     openModal() {
       this.$store.commit('setActiveModal', {
