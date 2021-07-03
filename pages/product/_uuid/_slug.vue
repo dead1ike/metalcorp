@@ -108,7 +108,7 @@
               </template>
             </b-dd>
           </div>
-          <div>
+          <div v-if="getRackDeck.length !== 0">
             <label>Настил:</label>
             <b-dd
               block
@@ -162,7 +162,7 @@ export default {
     getRackHeight() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === 'ad5c39ff-23d0-4bf3-be2c-cb7eb2474516'
+          return item.rack_parameter_uuid === 'a8fa4af4-85ca-4be0-b111-71a02e97ad07'
         })
       }
       return {}

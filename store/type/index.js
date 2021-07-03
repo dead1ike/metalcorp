@@ -10,7 +10,7 @@ export const state = () => ({
 
 export const actions = {
   async fetchTypes({ commit }) {
-    const { data } = await this.$axios.get('http://skladskoi.com:8820/api/rackType')
+    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/rackType')
     console.warn('fetchTypes', data.data)
     commit('setTypes', data.data)
   },
