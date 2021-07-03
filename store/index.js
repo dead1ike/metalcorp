@@ -80,11 +80,95 @@ export const state = () => ({
         label: 'Картинка',
         class: 'align-middle text-center',
       },
+      {
+        key: 'description',
+        label: 'Описание',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
+    managerRack: [
+      {
+        key: 'title',
+        label: 'Наименование',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'image',
+        label: 'Картинка',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'description',
+        label: 'Описание',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'load',
+        label: 'Нагрузка на стеллаж',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'shelf_load',
+        label: 'Нагрузка на полку',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'section_load',
+        label: 'Нагрузка на секцию',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
+    managerParameter: [
+      {
+        key: 'title',
+        label: 'Название параметра',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
+    managerRackTypeParameters: [
+      {
+        key: 'title',
+        label: 'Название стеллажа',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_parameter_title',
+        label: 'Параметр',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_parameter_value',
+        label: 'Значение',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
     ],
   },
   activeModals: {
     dimensionModal: false,
     managerCategoryAdd: false,
+    managerRackAdd: false,
+    managerParameterAdd: false,
+    managerRackTypeParameterAdd: false,
   },
 })
 export const actions = {
@@ -103,12 +187,30 @@ export const getters = {
   getActiveManagerCategoryAddModal(state) {
     return state.activeModals.managerCategoryAdd
   },
+  getActiveManagerRackAddModal(state) {
+    return state.activeModals.managerRackAdd
+  },
+  getActiveManagerParameterAddModal(state) {
+    return state.activeModals.managerParameterAdd
+  },
+  getActiveManagerRackTypeParameterAddModal(state) {
+    return state.activeModals.managerRackTypeParameterAdd
+  },
   getActiveDimensionModal(state) {
     return state.activeModals.dimensionModal
   },
 
+  getManagerRackTypeParametersFields(state) {
+    return state.fields.managerRackTypeParameters
+  },
   getManagerCategoryFields(state) {
     return state.fields.managerCategory
+  },
+  getManagerRackFields(state) {
+    return state.fields.managerRack
+  },
+  getManagerParameterFields(state) {
+    return state.fields.managerParameter
   },
   getOfferManageFields(state) {
     return state.fields.offerManage

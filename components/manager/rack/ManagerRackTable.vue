@@ -1,9 +1,6 @@
 <template>
   <div>
-    <b-table borderless striped hover :fields="getManagerCategoryFields" :items="getManagerCategoryItems">
-      <template #cell(title)="data">
-        {{ data.item.title + ' (' + showParent(data.item.parent_uuid).title + ')' }}
-      </template>
+    <b-table hover striped borderless :fields="getManagerRackFields" :items="getManagerRackItems">
       <template #cell(image)="data">
         <div class="d-flex flex-column">
           <div style="max-width: 100px; max-height: 100px" v-if="data.item.image !== null">
@@ -13,7 +10,7 @@
             <span>Картинка отсутствует. Добавить?</span>
           </div>
           <div class="d-inline-flex flex-row align-self-center">
-            <b-file v-model="form.image" plain @input="categoryUuid(data.item)"></b-file>
+            <b-file v-model="form.image" plain @input="typeUuid(data.item)"></b-file>
           </div>
         </div>
       </template>
@@ -28,64 +25,55 @@
 
 <script>
 export default {
-  name: 'ManagerCategoryTable',
+  name: 'ManagerRackTable',
   data() {
     return {
       form: {
         image: null,
-        category_uuid: null,
+        type_uuid: null,
       },
     }
   },
   computed: {
-    getManagerCategoryFields() {
-      return this.$store.getters.getManagerCategoryFields
+    getManagerRackFields() {
+      return this.$store.getters.getManagerRackFields
     },
-    getManagerCategoryItems() {
-      return this.$store.getters['category/getCategoryItems'].filter((item) => {
-        return item.parent_uuid !== null
-      })
+    getManagerRackItems() {
+      return this.$store.getters['type/getTypes']
     },
-    getCategoryItems() {
-      return this.$store.getters['category/getCategoryItems']
+    getRackTypes() {
+      return this.$store.getters['type/getTypes']
     },
   },
   mounted() {
-    this.$store.dispatch('category/fetchCategory')
+    this.$store.dispatch('type/fetchTypes')
   },
   watch: {
     'form.image'(newValue, oldValue) {
-      console.warn(this.form.image)
       if (newValue) this.uploadImage()
     },
   },
   methods: {
     deleteItem(item) {
-      this.$store.dispatch('category/deleteCategory', item.uuid).then(() => {
-        this.$store.dispatch('category/fetchCategory')
+      console.warn('item', item)
+      this.$store.dispatch('type/deleteRackType', item.uuid).then(() => {
+        this.$store.dispatch('type/fetchTypes')
       })
     },
-    categoryUuid(item) {
-      this.form.category_uuid = item.uuid
+    typeUuid(item) {
+      this.form.type_uuid = item.uuid
     },
     uploadImage() {
-      console.warn('dadadadada')
       this.$store
-        .dispatch('category/uploadFile', {
-          uuid: this.form.category_uuid,
+        .dispatch('type/uploadFile', {
+          uuid: this.form.type_uuid,
           image: this.form.image,
         })
         .then(() => {
           this.makeToast('Картинка успешно загружена')
-          this.$store.dispatch('category/fetchCategory')
+          this.$store.dispatch('type/fetchTypes')
           this.form.image = null
         })
-    },
-    showParent(uuid) {
-      if (this.getCategoryItems.find((item) => item.uuid === uuid)) {
-        return this.getCategoryItems.find((item) => item.uuid === uuid)
-      }
-      return {}
     },
     makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
       this.$bvToast.toast(body, {

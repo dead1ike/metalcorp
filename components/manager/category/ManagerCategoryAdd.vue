@@ -3,15 +3,24 @@
     <template #modal-header>
       <h5>Добавление категории</h5>
     </template>
-    <b-input-group class="d-flex flex-column">
-      <h4>Введите наименование категории:</h4>
-      <b-form-input v-model="form.title" class="w-100"></b-form-input>
-    </b-input-group>
-    <b-dd variant="corp" :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'">
+    <b-dd
+      variant="corp"
+      class="my-2"
+      :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'"
+    >
       <template v-for="item in getCategoryOptions">
         <b-dd-item @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
       </template>
     </b-dd>
+    <b-input-group class="d-flex flex-column">
+      <h4>Введите наименование категории:</h4>
+      <b-form-input v-model="form.title" class="w-100"></b-form-input>
+    </b-input-group>
+
+    <b-input-group class="d-flex flex-column">
+      <h4>Описание:</h4>
+      <b-textarea class="w-100" v-model="form.description"></b-textarea>
+    </b-input-group>
     <template #modal-footer>
       <b-btn variant="corp" @click="addCategory">Добавить</b-btn>
       <b-btn variant="danger" @click="closeCategoryAdd">Отмена</b-btn>
@@ -27,6 +36,7 @@ export default {
       form: {
         title: '',
         category_uuid: null,
+        description: '',
       },
     }
   },
@@ -54,6 +64,7 @@ export default {
     },
     closeCategoryAdd() {
       this.form.title = ''
+      this.form.description = ''
       this.$store.commit('setActiveModal', {
         modalName: 'managerCategoryAdd',
         modalStatus: false,
@@ -65,6 +76,7 @@ export default {
           uuid: this.getUuid(),
           title: this.form.title,
           parent_uuid: this.form.category_uuid,
+          description: this.form.description,
         })
         .then(() => {
           this.$store.dispatch('category/fetchCategory')
