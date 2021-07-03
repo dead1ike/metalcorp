@@ -1,12 +1,15 @@
 <template>
   <div>
-    <div @click="countClick++">
+    <div>
       <b-img
-        class="position-relative"
+        class="position-relative noselect"
         style="max-height: 350px; max-width: 429px; bottom: 0px; right: -64px"
         :src="getImg"
+        @click="countClick++"
       ></b-img>
-      <audio :src="require('@/assets/pepega.mp3')"></audio>
+      <template v-if="countClick >= 10">
+        <audio class="p-5" src="http://skladskoi.com:8820/pepega.mp3" controls></audio>
+      </template>
     </div>
     <div class="text-white w-100 bg-black p-4">
       <div class="d-flex w-100">
