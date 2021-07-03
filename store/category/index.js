@@ -14,6 +14,11 @@ export const actions = {
       ...data,
     })
   },
+  uploadFile({ commit }, data) {
+    const uploadingFile = new FormData()
+    uploadingFile.set('image', data.image)
+    return this.$axios.post(`http://skladskoi.com:8820/api/category/${data.uuid}`, uploadingFile)
+  },
   putBlank({ commit }, data) {},
 }
 export const mutations = {

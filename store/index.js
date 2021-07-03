@@ -69,6 +69,18 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
     ],
+    managerCategory: [
+      {
+        key: 'title',
+        label: 'Название суб-категории',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'image',
+        label: 'Картинка',
+        class: 'align-middle text-center',
+      },
+    ],
   },
   activeModals: {
     dimensionModal: false,
@@ -93,6 +105,10 @@ export const getters = {
   },
   getActiveDimensionModal(state) {
     return state.activeModals.dimensionModal
+  },
+
+  getManagerCategoryFields(state) {
+    return state.fields.managerCategory
   },
   getOfferManageFields(state) {
     return state.fields.offerManage
