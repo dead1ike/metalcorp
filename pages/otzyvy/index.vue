@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <public-feedback-manage />
+  </div>
 </template>
 
 <script>
