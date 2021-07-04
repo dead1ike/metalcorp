@@ -21,7 +21,7 @@
         <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">
           <public-offer-basket />
         </b-nav-item>
-        <b-btn class="text-truncate p-2 m-3" variant="corp" @click="openModal()"> Заказать звонок </b-btn>
+        <b-btn pill class="text-truncate p-2 m-3" variant="corp" @click="openModal()"> Заказать звонок </b-btn>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
     </b-collapse>

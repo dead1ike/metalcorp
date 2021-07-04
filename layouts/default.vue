@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <public-dashboard-navbar />
+    <public-dashboard-control />
     <Nuxt class="h-100 container-fluid p-0" style="max-width: 1520px" />
     <template v-if="$store.getters.getActiveDimensionModal">
       <public-dimension-modal />
