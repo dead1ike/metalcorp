@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column h-100 overflow-hidden">
     <manager-dashboard-navbar></manager-dashboard-navbar>
     <Nuxt class="h-100 container-fluid" style="max-width: 1520px" />
     <template v-if="$store.getters.getActiveManagerCategoryAddModal">

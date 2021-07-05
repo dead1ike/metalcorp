@@ -10,26 +10,26 @@ export const state = () => ({
 
 export const actions = {
   async fetchTypes({ commit }) {
-    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/rackType')
+    const { data } = await this.$axios.get('/api/rackType')
     commit('setTypes', data.data)
   },
   postParameter({ commit }, data) {
-    this.$axios.post('https://api-dev.skladskoi.com/api/rackParameter', {
+    this.$axios.post('/api/rackParameter', {
       ...data,
     })
   },
   postRackType({ commit }, data) {
-    return this.$axios.post('https://api-dev.skladskoi.com/api/rackType', {
+    return this.$axios.post('/api/rackType', {
       ...data,
     })
   },
   deleteRackType({ commit }, uuid) {
-    return this.$axios.delete(`https://api-dev.skladskoi.com/api/rackType/${uuid}`)
+    return this.$axios.delete(`/api/rackType/${uuid}`)
   },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
-    return this.$axios.post(`https://api-dev.skladskoi.com/api/rackType/${data.uuid}`, uploadingFile)
+    return this.$axios.post(`/api/rackType/${data.uuid}`, uploadingFile)
   },
 }
 export const mutations = {

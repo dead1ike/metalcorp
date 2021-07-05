@@ -6,7 +6,7 @@ export const state = () => ({
 })
 export const actions = {
   async fetchFeedback({ commit }) {
-    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/feedback')
+    const { data } = await this.$axios.get('/api/feedback')
     commit('setFeedback', data.data)
   },
   postFeedback({ commit }, data) {
@@ -15,7 +15,7 @@ export const actions = {
     boundaryForm.set('text', data.text)
     boundaryForm.set('username', data.username)
     boundaryForm.set('uuid', data.uuid)
-    return this.$axios.post('https://api-dev.skladskoi.com/api/feedback', boundaryForm)
+    return this.$axios.post('/api/feedback', boundaryForm)
   },
   putBlank({ commit }, data) {},
 }

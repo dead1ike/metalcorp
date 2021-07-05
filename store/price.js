@@ -6,11 +6,11 @@ export const state = () => ({
 })
 export const actions = {
   async fetchParameterPrice({ commit }) {
-    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/rackPriceParameter')
+    const { data } = await this.$axios.get('/api/rackPriceParameter')
     commit('setParameterPrice', data.data)
   },
   postParameterPrice({ commit }, data) {
-    return this.$axios.post('https://api-dev.skladskoi.com/api/rackPriceParameter', {
+    return this.$axios.post('/api/rackPriceParameter', {
       ...data,
     })
   },

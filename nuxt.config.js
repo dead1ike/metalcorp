@@ -9,6 +9,10 @@ export default {
 
   resourceHints: false,
 
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL,
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: '«МЕТАЛЛКОРП»',
@@ -47,12 +51,17 @@ export default {
     '@nuxtjs/pwa',
   ],
 
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // prefix: '/api/',
+    credentials: true,
+    proxy: false,
+    baseURL: process.env.API_URL || 'https://local-api/',
+  },
+
   router: {
     trailingSlash: false,
   },
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
 
   bootstrapVue: {
     bootstrapCSS: false,

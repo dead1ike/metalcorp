@@ -5,21 +5,21 @@ export const state = () => ({
 })
 export const actions = {
   async fetchCategory({ commit }) {
-    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/category')
+    const { data } = await this.$axios.get('/api/category')
     commit('setCategory', data.data)
   },
   postCategory({ commit }, data) {
-    return this.$axios.post('https://api-dev.skladskoi.com/api/category', {
+    return this.$axios.post('/api/category', {
       ...data,
     })
   },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
-    return this.$axios.post(`https://api-dev.skladskoi.com/api/category/${data.uuid}`, uploadingFile)
+    return this.$axios.post(`/api/category/${data.uuid}`, uploadingFile)
   },
   deleteCategory({ commit }, uuid) {
-    return this.$axios.delete(`https://api-dev.skladskoi.com/api/category/${uuid}`)
+    return this.$axios.delete(`/api/category/${uuid}`)
   },
 }
 export const mutations = {

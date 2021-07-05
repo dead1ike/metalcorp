@@ -89,3 +89,13 @@ table#manager-table .flip-list-move {
 }
 
 
+li.nav-item {
+  a.nuxt-link-active,
+  a.active {
+    //text-decoration: underline #6610f2;
+    border-bottom: 1px dashed #a3523e;
+    margin: 0.5rem 1rem;
+    padding: 0;
+    color: #116525;
+  }
+}

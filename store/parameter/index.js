@@ -7,28 +7,28 @@ export const state = () => ({
 })
 export const actions = {
   async fetchParameter({ commit }) {
-    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/rackParameter')
+    const { data } = await this.$axios.get('/api/rackParameter')
     commit('setParameter', data.data)
   },
   async fetchRackTypeParameter({ commit }) {
-    const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/rackTypeParameter')
+    const { data } = await this.$axios.get('/api/rackTypeParameter')
     commit('setRackTypeParameter', data.data)
   },
   postParameter({ commit }, data) {
-    return this.$axios.post('https://api-dev.skladskoi.com/api/rackParameter', {
+    return this.$axios.post('/api/rackParameter', {
       ...data,
     })
   },
   postRackTypeParameter({ commit }, data) {
-    return this.$axios.post('https://api-dev.skladskoi.com/api/rackTypeParameter', {
+    return this.$axios.post('/api/rackTypeParameter', {
       ...data,
     })
   },
   deleteRackTypeParameter({ commit }, uuid) {
-    return this.$axios.delete(`https://api-dev.skladskoi.com/api/rackTypeParameter/${uuid}`)
+    return this.$axios.delete(`/api/rackTypeParameter/${uuid}`)
   },
   deleteParameter({ commit }, uuid) {
-    return this.$axios.delete(`https://api-dev.skladskoi.com/api/rackParameter/${uuid}`)
+    return this.$axios.delete(`/api/rackParameter/${uuid}`)
   },
 }
 export const mutations = {

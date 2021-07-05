@@ -6,7 +6,7 @@ export const state = () => ({
 
 export const actions = {
   fetchChats({ commit }) {
-    this.$axios.get('https://api-dev.skladskoi.com/api/avito/chat').then(({ data }) => {
+    this.$axios.get('/api/avito/chat').then(({ data }) => {
       commit('setChats', data.chats)
     })
   },
