@@ -16,6 +16,18 @@
 <script>
 export default {
   layout: 'manager',
+  head() {
+    return {
+      title: 'Avito Manager',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description',
+        },
+      ],
+    }
+  },
   computed: {
     getChats() {
       return this.$store.getters['manager/avito/chats/getChats']
