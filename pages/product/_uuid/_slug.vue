@@ -9,19 +9,19 @@
         <div class="mt-2">
           <div class="d-flex flex-row text-left">
             <div class="mt-2">
-              <div class="w-100 text-truncate" v-if="getTypeByUuid.shelf_load">
+              <div v-if="getTypeByUuid.shelf_load" class="w-100 text-truncate">
                 <label>Нагрузка на полку: </label>
                 <span class="ml-2">
                   <b> {{ getTypeByUuid.shelf_load }}кг </b>
                 </span>
               </div>
-              <div class="w-100 text-truncate" v-if="getTypeByUuid.section_load">
+              <div v-if="getTypeByUuid.section_load" class="w-100 text-truncate">
                 <label>Нагрузка на секцию: </label>
                 <span class="ml-2">
                   <b> {{ getTypeByUuid.section_load }}кг </b>
                 </span>
               </div>
-              <div class="w-100 text-truncate" v-if="getTypeByUuid.load">
+              <div v-if="getTypeByUuid.load" class="w-100 text-truncate">
                 <label>Нагрузка на стеллаж: </label>
                 <span class="ml-2">
                   <b> {{ getTypeByUuid.load }}кг </b>
@@ -126,7 +126,7 @@
             <b-spinbutton v-model="form.rack_count" inline min="1" step="1" inputmode="true"></b-spinbutton>
           </div>
           <div>
-            <p>Цена:</p>
+            <p>Цена: {{ rackPrice + ' ' }}руб</p>
           </div>
           <div class="m-3 d-flex align-self-end">
             <b-btn block variant="corp" @click="addProduct()">Добавить в заказ</b-btn>
@@ -161,7 +161,21 @@ export default {
   },
 
   computed: {
-    rackPrice() {},
+    rackPrice() {
+      if (this.getTypeByUuid.title === 'СТФЛ') {
+        if (this.selectedRackDepthPrice && this.form.rack_shelves_count && this.selectedRackHeightPrice) {
+          const depth = Number(this.selectedRackDepthPrice.rack_price_parameter)
+          const shelf = Number(this.form.rack_shelves_count.rack_parameter_value)
+          const height = Number(this.selectedRackHeightPrice.rack_price_parameter)
+          const count = Number(this.form.rack_count)
+          const price = (depth * shelf + height) * count
+          return price
+        }
+        return 'pepega'
+      }
+      return 'Неизвестный летающий стеллаж'
+    },
+
     getRackHeight() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
@@ -244,6 +258,24 @@ export default {
       }
       return {}
     },
+    selectedRackWidthPrice() {
+      if (
+        this.getRackParameterPrice.find((parameter) => parameter.rack_type_parameter.uuid === this.form.rack_width.uuid)
+      ) {
+        return this.getRackParameterPrice.find(
+          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_width.uuid
+        )
+      }
+      return {}
+    },
+    selectedRackDepthParameter() {
+      return this.getRackParameterPrice.filter((paremeter) => paremeter.rack_type_parameter_extra)
+    },
+    selectedRackDepthPrice() {
+      return this.selectedRackDepthParameter.find(
+        (item) => item.rack_type_parameter_extra.uuid === this.form.rack_depth.uuid
+      )
+    },
 
     getRackParameterPrice() {
       return this.$store.getters['price/getParameterPrice']
@@ -259,23 +291,24 @@ export default {
       this.form.description = this.getTypeByUuid.description
       this.form.image = this.getTypeByUuid.image
     })
-    console.warn('params', this.getRackParameterPrice)
   },
 
   methods: {
     selectHeight(item) {
-      console.warn('height', item)
       this.form.rack_height = item
-      console.warn('selectedHeight', this.selectedRackHeightPrice)
+      console.warn('selectedHeightPrice', this.selectedRackHeightPrice)
     },
     selectWidth(item) {
       this.form.rack_width = item
+      console.warn('selectedWidthPrice', this.selectedRackWidthPrice)
     },
     selectDepth(item) {
       this.form.rack_depth = item
+      console.warn('selectedRackDepthPrice', this.selectedRackDepthPrice)
     },
     selectShelves(item) {
       this.form.rack_shelves_count = item
+      console.warn('selectedRackShelves', this.form.rack_shelves_count.rack_parameter_value)
     },
     selectDeck(item) {
       this.form.rack_deck = item

@@ -10,16 +10,20 @@
             data.item.rack_type_parameter.rack_parameter_value
           }}мм
         </p>
-        <p v-if="data.item.rack_type_parameter_uuid_extra">
+        <p v-if="data.item.rack_type_parameter_extra">
           {{
-            data.item.rack_type_parameter_uuid_extra.rack_parameter_title +
+            data.item.rack_type_parameter_extra.rack_parameter_title +
             ' ' +
-            data.item.rack_type_parameter_uuid_extra.rack_parameter_value
+            data.item.rack_type_parameter_extra.rack_parameter_value
           }}мм
         </p>
       </template>
       <template #cell(price)="data"> {{ data.item.rack_price_parameter }}руб </template>
-      <template #cell(actions)="data"></template>
+      <template #cell(actions)="data">
+        <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link" @click="deleteItem(data.item)">
+          <b-icon icon="x-circle" variant="danger"></b-icon
+        ></b-btn>
+      </template>
     </b-table>
   </div>
 </template>
@@ -40,6 +44,11 @@ export default {
     console.warn('getRackPriceParameter', this.getRackPriceParameter)
   },
   methods: {
+    deleteItem(item) {
+      this.$store.dispatch('price/deletePriceItem', item.uuid).then(() => {
+        this.$store.dispatch('price/fetchParameterPrice')
+      })
+    },
     fetchRackTypes() {
       this.$store.dispatch('type/fetchTypes')
     },

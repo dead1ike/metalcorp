@@ -14,7 +14,9 @@ export const actions = {
       ...data,
     })
   },
-  putBlank({ commit }, data) {},
+  deletePriceItem({ commit }, uuid) {
+    return this.$axios.delete(`https://api-dev.skladskoi.com/api/rackPriceParameter/${uuid}`)
+  },
 }
 export const mutations = {
   setParameterPrice(state, data) {
