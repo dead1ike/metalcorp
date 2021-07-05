@@ -92,7 +92,9 @@
         <b-list-group-item class="d-flex justify-content-between align-items-center">
           <div>profile_url</div>
           <div class="px-2"></div>
-          <div>{{ form.account.profile_url }}</div>
+          <div>
+            <a :href="form.account.profile_url" target="_blank">{{ form.account.profile_url }}</a>
+          </div>
         </b-list-group-item>
 
         <b-list-group-item class="d-flex justify-content-between align-items-center">
