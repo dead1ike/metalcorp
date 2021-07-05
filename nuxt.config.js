@@ -4,10 +4,10 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
-  resourceHints: false,
-
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  // resourceHints: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
