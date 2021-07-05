@@ -4,6 +4,8 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  resourceHints: false,
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -12,7 +14,7 @@ export default {
     title: '«МЕТАЛЛКОРП»',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=0.9, maximum-scale=0.9, minimum-scale=0.9' },
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
@@ -44,6 +46,10 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
+
+  router: {
+    trailingSlash: false,
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -78,14 +84,5 @@ export default {
         _: 'lodash',
       }),
     ],
-    extend(config, ctx) {
-      config.module.rules.push({
-        test: /\.(ogg|mp3|wav|mpe?g)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-        },
-      })
-    },
   },
 }
