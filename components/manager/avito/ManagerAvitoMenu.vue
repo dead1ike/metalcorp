@@ -1,6 +1,6 @@
 <template>
-  <div class="overflow-hidden" style="min-width: 580px">
-    <b-nav class="overflow-auto">
+  <div class="w-100 overflow-hidden">
+    <b-nav class="overflow-auto flex-nowrap">
       <b-nav-item v-for="itemLink in links" :key="itemLink.name" :to="itemLink">
         {{ getLinkTitle(itemLink.path) }}
       </b-nav-item>

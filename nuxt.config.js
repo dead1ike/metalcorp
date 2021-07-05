@@ -37,7 +37,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
-    '@nuxtjs/moment',
+    ['@nuxtjs/moment', ['ru']],
     '@nuxtjs/dotenv',
   ],
 

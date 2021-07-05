@@ -15,7 +15,7 @@ export const actions = {
       commit('setSettngs', data.data)
     })
   },
-  saveBlank({ commit }, payload) {
+  saveSettngs({ commit }, payload) {
     return this.$axios.put('/api/resource', {
       ...payload,
     })
@@ -38,13 +38,22 @@ export const mutations = {
 }
 
 export const getters = {
-  getAuthorizationCode(state) {
+  getItemAuthorizationCode(state) {
     return state.item.authorization_code
   },
-  getToken(state) {
+  getItemToken(state) {
     return state.item.token
   },
-  getAccount(state) {
+  getItemAccount(state) {
     return state.item.account
+  },
+  getAuthorizationCode(state) {
+    return _.find(state.items.settings, ['key', 'authorization_code']) || {}
+  },
+  getToken(state) {
+    return _.find(state.items.settings, ['key', 'token']) || {}
+  },
+  getAccount(state) {
+    return _.find(state.items.settings, ['key', 'account']) || {}
   },
 }

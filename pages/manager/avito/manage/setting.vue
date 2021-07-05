@@ -11,10 +11,96 @@
         </b-form-group>
       </b-form-group>
 
-      <div class="text-right w-100">
-        <b-btn variant="danger" @click="fetchSettngs()">Сбросить</b-btn>
-        <b-btn variant="success" @click="saveSettngs()">Сохранить</b-btn>
+      <div class="d-flex flex-column flex-sm-row w-100 justify-content-between">
+        <b-btn class="m-1" variant="danger" :disabled="!isChange" @click="fetchSettngs()">Сбросить</b-btn>
+        <b-btn class="m-1" variant="success" :disabled="!isChange" @click="saveSettngs()">Сохранить</b-btn>
       </div>
+    </div>
+
+    <div class="d-flex flex-column">
+      <b-list-group class="p-2">
+        <b-list-group-item class="d-flex justify-content-between align-items-center" variant="light">
+          <div>token</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>expires_in</div>
+          <div class="px-2"></div>
+          <div>{{ form.token.expires_in }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>token_type</div>
+          <div class="px-2"></div>
+          <div>{{ form.token.token_type }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>access_token</div>
+          <div class="px-2"></div>
+          <div>{{ form.token.access_token }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>Окончание</div>
+          <div class="px-2"></div>
+          <div>
+            {{
+              $moment(getToken.updated_at)
+                .add(form.token.expires_in / 60, 'minutes')
+                .fromNow()
+            }}
+          </div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>updated_at</div>
+          <div class="px-2"></div>
+          <div>{{ $moment(getToken.updated_at).fromNow() }}</div>
+        </b-list-group-item>
+      </b-list-group>
+
+      <b-list-group class="p-2">
+        <b-list-group-item class="d-flex justify-content-between align-items-center" variant="light">
+          <div>account</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>id</div>
+          <div class="px-2"></div>
+          <div>{{ form.account.id }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>name</div>
+          <div class="px-2"></div>
+          <div>{{ form.account.name }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>email</div>
+          <div class="px-2"></div>
+          <div>{{ form.account.email }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>phone</div>
+          <div class="px-2"></div>
+          <div>{{ form.account.phone }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>profile_url</div>
+          <div class="px-2"></div>
+          <div>{{ form.account.profile_url }}</div>
+        </b-list-group-item>
+
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          <div>updated_at</div>
+          <div class="px-2"></div>
+          <div>{{ $moment(getAccount.updated_at).fromNow() }}</div>
+        </b-list-group-item>
+      </b-list-group>
     </div>
   </div>
 </template>
@@ -47,6 +133,23 @@ export default {
       },
     }
   },
+  computed: {
+    getToken() {
+      return this.$store.getters['manager/avito/setting/getToken'] || {}
+    },
+    getAccount() {
+      return this.$store.getters['manager/avito/setting/getAccount'] || {}
+    },
+    getItemAuthorizationCode() {
+      return this.$store.getters['manager/avito/setting/getItemAuthorizationCode'] || {}
+    },
+    isChange() {
+      return (
+        this.form.authorization_code.client_id !== this.getItemAuthorizationCode.client_id ||
+        this.form.authorization_code.client_secret !== this.getItemAuthorizationCode.client_secret
+      )
+    },
+  },
   mounted() {
     this.fetchSettngs()
   },
@@ -61,13 +164,9 @@ export default {
       })
     },
     setForm() {
-      this.form.authorization_code = _.merge(
-        this.form.authorization_code,
-        this.$store.getters['manager/avito/setting/getAuthorizationCode']
-      )
-      this.form.token = _.merge(this.form.token, this.$store.getters['manager/avito/setting/getToken'])
-      this.form.account = _.merge(this.form.account, this.$store.getters['manager/avito/setting/getAccount'])
-      console.warn(this.form)
+      this.form.authorization_code = _.merge(this.form.authorization_code, this.getItemAuthorizationCode)
+      this.form.token = _.merge(this.form.token, this.getToken.value)
+      this.form.account = _.merge(this.form.account, this.getAccount.value)
     },
   },
 }
