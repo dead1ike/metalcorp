@@ -162,6 +162,28 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
     ],
+    priceParameter: [
+      {
+        key: 'title',
+        label: 'Наименование стеллажа',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'parameter',
+        label: 'Параметр',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'price',
+        label: 'Цена',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
   },
   activeModals: {
     dimensionModal: false,
@@ -169,6 +191,7 @@ export const state = () => ({
     managerRackAdd: false,
     managerParameterAdd: false,
     managerRackTypeParameterAdd: false,
+    managerRackPriceParameterAdd: false,
   },
 })
 export const actions = {
@@ -193,6 +216,9 @@ export const getters = {
   getActiveManagerParameterAddModal(state) {
     return state.activeModals.managerParameterAdd
   },
+  getActiveManagerPriceParameterAddModal(state) {
+    return state.activeModals.managerRackPriceParameterAdd
+  },
   getActiveManagerRackTypeParameterAddModal(state) {
     return state.activeModals.managerRackTypeParameterAdd
   },
@@ -200,6 +226,9 @@ export const getters = {
     return state.activeModals.dimensionModal
   },
 
+  getPriceParameterFields(state) {
+    return state.fields.priceParameter
+  },
   getManagerRackTypeParametersFields(state) {
     return state.fields.managerRackTypeParameters
   },

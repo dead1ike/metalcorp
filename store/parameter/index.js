@@ -36,7 +36,6 @@ export const mutations = {
     state.items.parameter = data
   },
   setRackTypeParameter(state, data) {
-    console.warn('rackTypeParameters', data)
     state.items.rackTypeParameter = data
   },
   setBlank2(state, data) {},

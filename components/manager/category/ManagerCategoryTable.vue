@@ -55,7 +55,6 @@ export default {
   },
   watch: {
     'form.image'(newValue, oldValue) {
-      console.warn(this.form.image)
       if (newValue) this.uploadImage()
     },
   },
@@ -69,7 +68,6 @@ export default {
       this.form.category_uuid = item.uuid
     },
     uploadImage() {
-      console.warn('dadadadada')
       this.$store
         .dispatch('category/uploadFile', {
           uuid: this.form.category_uuid,

@@ -125,6 +125,9 @@
             <label>Кол-во стеллажей:</label>
             <b-spinbutton v-model="form.rack_count" inline min="1" step="1" inputmode="true"></b-spinbutton>
           </div>
+          <div>
+            <p>Цена:</p>
+          </div>
           <div class="m-3 d-flex align-self-end">
             <b-btn block variant="corp" @click="addProduct()">Добавить в заказ</b-btn>
           </div>
@@ -137,7 +140,6 @@
 <script>
 export default {
   asyncData({ params }) {
-    console.warn('typeParams', params)
     const typeSlug = params.slug
     const typeUuid = params.uuid
     return { typeSlug, typeUuid }
@@ -159,10 +161,11 @@ export default {
   },
 
   computed: {
+    rackPrice() {},
     getRackHeight() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === 'b2b2928e-5f7b-45f3-8797-5cd03ca378c1'
+          return item.rack_parameter_title === 'Высота'
         })
       }
       return []
@@ -170,7 +173,7 @@ export default {
     getRackWidth() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === 'bc335e6a-768b-4f85-b652-52bc2d09aa64'
+          return item.rack_parameter_title === 'Ширина'
         })
       }
       return []
@@ -178,7 +181,7 @@ export default {
     getRackDepth() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === 'f0c368ae-73bf-42c8-a9fe-4e6b2c04d0a4'
+          return item.rack_parameter_title === 'Глубина'
         })
       }
       return []
@@ -186,7 +189,7 @@ export default {
     getRackDeck() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === '56c3377e-b4b9-4fe4-a716-10a3278e7f3d'
+          return item.rack_parameter_title === 'Настил'
         })
       }
       return []
@@ -194,7 +197,7 @@ export default {
     getRackShelves() {
       if (this.getTypeByUuid.rack_type_parameters) {
         return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_uuid === 'ba4a2bf9-d1b0-4171-9cf8-aaff2eb78219'
+          return item.rack_parameter_title === 'Количество полок'
         })
       }
       return []
@@ -229,22 +232,41 @@ export default {
       }
       return {}
     },
+    selectedRackHeightPrice() {
+      if (
+        this.getRackParameterPrice.find(
+          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_height.uuid
+        )
+      ) {
+        return this.getRackParameterPrice.find(
+          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_height.uuid
+        )
+      }
+      return {}
+    },
+
+    getRackParameterPrice() {
+      return this.$store.getters['price/getParameterPrice']
+    },
     getTypeByUuid() {
       return this.$store.getters['type/getTypeById'](this.typeUuid) || {}
     },
   },
   mounted() {
+    this.$store.dispatch('price/fetchParameterPrice')
     this.$store.dispatch('type/fetchTypes').then(() => {
       this.form.title = this.getTypeByUuid.title
       this.form.description = this.getTypeByUuid.description
       this.form.image = this.getTypeByUuid.image
     })
-    console.warn('currentRack', this.getTypeByUuid)
+    console.warn('params', this.getRackParameterPrice)
   },
 
   methods: {
     selectHeight(item) {
+      console.warn('height', item)
       this.form.rack_height = item
+      console.warn('selectedHeight', this.selectedRackHeightPrice)
     },
     selectWidth(item) {
       this.form.rack_width = item

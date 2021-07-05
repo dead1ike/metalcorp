@@ -194,9 +194,7 @@ export default {
     showSlides() {
       const slideCurrent = this.slidePage * this.slideCount
       const slides = this.getTestItems.slice(slideCurrent, this.slideCount + slideCurrent)
-      console.warn(slides.length)
       if (slides.length < this.slideCount) {
-        console.warn(this.getTestItems.slice(0, this.slideCount))
         // this.slidePage = 1
         slides.concat(slides, this.getTestItems.slice(0, this.slideCount))
       }

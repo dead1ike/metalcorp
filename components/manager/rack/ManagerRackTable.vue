@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     deleteItem(item) {
-      console.warn('item', item)
       this.$store.dispatch('type/deleteRackType', item.uuid).then(() => {
         this.$store.dispatch('type/fetchTypes')
       })

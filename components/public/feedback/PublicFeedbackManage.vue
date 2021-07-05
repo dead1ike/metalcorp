@@ -35,7 +35,7 @@
                 <h4 class="m-0">{{ item.text }}</h4>
               </div>
               <div v-if="item.image" class="p-2 m-4 text-break">
-                <b-img :src="item.image" style="max-width: 500px; max-height: 500px" />
+                <b-img :src="item.image" style="max-width: 300px; max-height: 300px" />
               </div>
             </div>
           </div>

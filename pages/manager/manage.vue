@@ -17,6 +17,10 @@
         <manager-rack-type-parameter-control />
         <manager-rack-type-parameter-table />
       </b-tab>
+      <b-tab title="Прайс">
+        <manager-price-control />
+        <manager-price-table />
+      </b-tab>
     </b-tabs>
   </div>
 </template>

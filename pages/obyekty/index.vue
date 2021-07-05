@@ -7,10 +7,9 @@
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
     <div class="w-100 d-flex flex-wrap">
-      <b-card-group class="w-100 h-100" columns v-for="item in getObjectItems">
+      <b-card-group v-for="item in getObjectItems" :key="item.uuid" class="w-100 h-100" columns>
         <b-card
           v-if="item.uuid !== null"
-          :key="item.uuid"
           :title="item.title"
           :img-src="item.image"
           img-height="300"

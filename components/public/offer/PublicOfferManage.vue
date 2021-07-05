@@ -53,12 +53,9 @@ export default {
       return this.$store.getters['type/getBasketProduct']
     },
   },
-  mounted() {
-    console.warn('getBasketProd', this.getOfferManageItems)
-  },
+  mounted() {},
   methods: {
     rackCountEdit(count) {
-      console.warn(count)
       this.$store.commit('type/setEditCount', count)
     },
 

@@ -29,7 +29,6 @@
 <script>
 export default {
   asyncData({ params }) {
-    console.warn('categoryParams', params)
     const categorySlug = params.slug
     const categoryUuid = params.uuid
     return { categorySlug, categoryUuid }

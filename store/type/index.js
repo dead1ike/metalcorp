@@ -11,7 +11,6 @@ export const state = () => ({
 export const actions = {
   async fetchTypes({ commit }) {
     const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/rackType')
-    console.warn('fetchTypes', data.data)
     commit('setTypes', data.data)
   },
   postParameter({ commit }, data) {
@@ -41,9 +40,7 @@ export const mutations = {
     state.items.types = data
   },
   setAddBasketProduct(state, data) {
-    console.warn('beforeset', data)
     state.items.basketProduct.push(data)
-    console.warn('afterset', state.items.basketProduct)
   },
   setDelBasketProduct(state, data) {
     state.items.basketProduct = _.filter(state.items.basketProduct, (item) => {

@@ -14,6 +14,9 @@
     <template v-if="$store.getters.getActiveManagerRackTypeParameterAddModal">
       <manager-rack-type-parameter-add />
     </template>
+    <template v-if="$store.getters.getActiveManagerPriceParameterAddModal">
+      <manager-price-add />
+    </template>
   </div>
 </template>
 
@@ -39,6 +42,11 @@ export default {
       } else if (modalId === 'manager-rack-type-parameter-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerRackTypeParameterAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-price-parameter-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerRackPriceParameterAdd',
           modalStatus: false,
         })
       }

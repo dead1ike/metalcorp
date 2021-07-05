@@ -78,6 +78,7 @@ export default {
         })
         .then(() => {
           this.closeModal()
+          this.$store.dispatch('type/fetchTypes')
         })
     },
     selectCategory(uuid) {

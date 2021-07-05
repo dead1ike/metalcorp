@@ -6,7 +6,6 @@ export const state = () => ({
 export const actions = {
   async fetchCategory({ commit }) {
     const { data } = await this.$axios.get('https://api-dev.skladskoi.com/api/category')
-    console.warn('fetchCategory', data.data)
     commit('setCategory', data.data)
   },
   postCategory({ commit }, data) {
