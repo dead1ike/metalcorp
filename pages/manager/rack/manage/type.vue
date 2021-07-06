@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-auto w-100 h-100"></div>
+  <div>t</div>
 </template>
 
 <script>

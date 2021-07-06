@@ -69,9 +69,7 @@ export default {
       return this.getOfferConfirmItems.reduce((summ, item) => summ + item.summ, 0)
     },
   },
-  mounted() {
-    console.warn(this.getSumm)
-  },
+  mounted() {},
   methods: {
     goBack() {
       this.$router.push('/offer')

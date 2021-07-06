@@ -37,7 +37,9 @@
           <h4>Описание:</h4>
           <span>{{ form.description }}</span>
           {{ getKeyShelfSize }}<br />
-          {{ getPriceByKeyShelfSize }}
+          {{ getKeyRamSize }}<br />
+          {{ getPriceByKeyShelfSize }}<br />
+          {{ getPriceByKeyRamSize }}
         </div>
       </div>
       <div class="d-flex flex-row-reverse p-3">
@@ -170,8 +172,11 @@ export default {
         const height = Number(this.selectedRackHeightPrice.rack_price_parameter)
         const count = Number(this.form.rack_count)
         const deck = Number(this.selectedRackDeckPrice.rack_price_parameter)
+        const ram = Number(this.getPriceByKeyRamSize.price)
         if (deck) {
           return (depth * shelf + height + deck) * count
+        } else if (ram) {
+          return (depth * shelf + height * (count + 1)) * count
         }
         return (depth * shelf + height) * count
       }
@@ -272,10 +277,15 @@ export default {
     },
     getKeyShelfSize() {
       let key = null
-      console.warn(this.selectedRackDepth)
-      console.warn(this.selectedRackWidth)
       if (this.selectedRackDepth.uuid && this.selectedRackWidth.uuid) {
         key = this.selectedRackWidth.rack_parameter_value + 'x' + this.selectedRackDepth.rack_parameter_value
+      }
+      return key
+    },
+    getKeyRamSize() {
+      let key = null
+      if (this.selectedRackDepth.uuid && this.selectedRackHeight.uuid) {
+        key = this.selectedRackHeight.rack_parameter_value + 'x' + this.selectedRackDepth.rack_parameter_value
       }
       return key
     },
@@ -283,6 +293,13 @@ export default {
       let price = false
       if (this.getKeyShelfSize) {
         price = this.getMapRackParameterPrice.find((item) => item.key === this.getKeyShelfSize) || false
+      }
+      return price
+    },
+    getPriceByKeyRamSize() {
+      let price = false
+      if (this.getKeyRamSize) {
+        price = this.getMapRackParameterPrice.find((item) => item.key === this.getKeyRamSize) || false
       }
       return price
     },

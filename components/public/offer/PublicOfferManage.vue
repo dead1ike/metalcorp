@@ -56,9 +56,7 @@ export default {
       return this.$store.getters['type/getBasketProduct']
     },
   },
-  mounted() {
-    console.warn(this.getOfferManageItems)
-  },
+  mounted() {},
   methods: {
     countIncrement(uuid) {
       this.$store.commit('type/setCountIncrement', uuid)
