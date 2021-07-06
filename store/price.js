@@ -22,6 +22,7 @@ export const mutations = {
   setParameterPrice(state, data) {
     state.items.parameterPrice = data
   },
+  setRackPrice(state, data) {},
   setBlank1(state, data) {},
   setBlank2(state, data) {},
 }

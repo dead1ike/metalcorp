@@ -3,7 +3,7 @@
     <b-table hover striped borderless :fields="getManagerRackFields" :items="getManagerRackItems">
       <template #cell(image)="data">
         <div class="d-flex flex-column">
-          <div style="max-width: 100px; max-height: 100px" v-if="data.item.image !== null">
+          <div v-if="data.item.image !== null" style="max-width: 100px; max-height: 100px">
             <b-img :src="data.item.image" style="max-width: 100px; max-height: 100px" />
           </div>
           <div v-else>
@@ -45,13 +45,15 @@ export default {
       return this.$store.getters['type/getTypes']
     },
   },
-  mounted() {
-    this.$store.dispatch('type/fetchTypes')
-  },
   watch: {
     'form.image'(newValue, oldValue) {
       if (newValue) this.uploadImage()
     },
+  },
+  mounted() {
+    this.$store.dispatch('type/fetchTypes').then(() => {
+      console.warn('getManagerRackItems', this.getManagerRackItems)
+    })
   },
   methods: {
     deleteItem(item) {

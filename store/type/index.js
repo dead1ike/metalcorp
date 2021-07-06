@@ -6,6 +6,15 @@ export const state = () => ({
   item: {
     type: {},
   },
+  filter: {
+    search: '',
+    uuid: [],
+    company_okved: [],
+    company_utc: [],
+    company_rate: [],
+    company_employee_count: 'all',
+    company_job: [],
+  },
 })
 
 export const actions = {
@@ -50,11 +59,20 @@ export const mutations = {
   setDelBasketProducts(state) {
     state.items.basketProduct = []
   },
-  setEditCount(state, data) {
-    state.items.basketProduct.rack_count = data
+  setCountIncrement(state, uuid) {
+    state.items.basketProduct.find((item) => item.uuid === uuid).rack_count++
+  },
+  setCountDecrement(state, uuid) {
+    state.items.basketProduct.find((item) => item.uuid === uuid).rack_count--
+  },
+  setFilterItem(state, { fieldName, value }) {
+    state.filter[fieldName] = value
   },
 }
 export const getters = {
+  getFilter(state) {
+    return state.filter
+  },
   getTypes(state) {
     return state.items.types
   },

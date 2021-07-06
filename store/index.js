@@ -74,16 +74,19 @@ export const state = () => ({
         key: 'title',
         label: 'Название суб-категории',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'image',
         label: 'Картинка',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'description',
         label: 'Описание',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'actions',
@@ -96,31 +99,37 @@ export const state = () => ({
         key: 'title',
         label: 'Наименование',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'image',
         label: 'Картинка',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'description',
         label: 'Описание',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'load',
         label: 'Нагрузка на стеллаж',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'shelf_load',
         label: 'Нагрузка на полку',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'section_load',
         label: 'Нагрузка на секцию',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'actions',
@@ -133,6 +142,7 @@ export const state = () => ({
         key: 'title',
         label: 'Название параметра',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'actions',
@@ -145,16 +155,19 @@ export const state = () => ({
         key: 'title',
         label: 'Название стеллажа',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'rack_parameter_title',
         label: 'Параметр',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'rack_parameter_value',
         label: 'Значение',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'actions',
@@ -167,16 +180,19 @@ export const state = () => ({
         key: 'title',
         label: 'Наименование стеллажа',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'parameter',
         label: 'Параметр',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'price',
         label: 'Цена',
         class: 'align-middle text-center',
+        sortable: true,
       },
       {
         key: 'actions',
@@ -185,6 +201,7 @@ export const state = () => ({
       },
     ],
   },
+
   activeModals: {
     dimensionModal: false,
     managerCategoryAdd: false,
