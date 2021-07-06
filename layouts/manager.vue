@@ -27,30 +27,30 @@ export default {
       if (modalId === 'manager-category-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerCategoryAdd',
-          modalStatus: false,
+          modalStatus: false
         })
       } else if (modalId === 'manager-rack-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerRackAdd',
-          modalStatus: false,
+          modalStatus: false
         })
       } else if (modalId === 'manager-parameter-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerParameterAdd',
-          modalStatus: false,
+          modalStatus: false
         })
       } else if (modalId === 'manager-rack-type-parameter-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerRackTypeParameterAdd',
-          modalStatus: false,
+          modalStatus: false
         })
       } else if (modalId === 'manager-price-parameter-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerRackPriceParameterAdd',
-          modalStatus: false,
+          modalStatus: false
         })
       }
     })
-  },
+  }
 }
 </script>

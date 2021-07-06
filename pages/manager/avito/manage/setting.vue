@@ -51,7 +51,6 @@
           <div>Окончание действия токена</div>
           <div class="px-2"></div>
           <div>
-            Дней: {{ getDuration(getToken.updated_at).days }}<br />
             Часов: {{ getDuration(getToken.updated_at).hours }}<br />
             Минут: {{ getDuration(getToken.updated_at).minutes }}<br />
           </div>
