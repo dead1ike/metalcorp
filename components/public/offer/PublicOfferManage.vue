@@ -22,15 +22,18 @@
           </template>
           <template #cell(rack_depth)="data">{{ data.item.rack_depth.rack_parameter_value }} </template>
           <template #cell(rack_count)="data">
-            <b-spinbutton :value="data.item.rack_count" inline @change="rackCountEdit">
+            <b-spinbutton :value="data.item.rack_count" inline>
               <template #decrement>
-                <b-btn size="sm" variant="link">-</b-btn>
+                <b-btn size="sm" variant="link" @click="countDecrement(data.item.uuid)">-</b-btn>
               </template>
               <template #increment>
-                <b-btn size="sm" variant="link">+</b-btn>
+                <b-btn size="sm" variant="link" @click="countIncrement(data.item.uuid)">+</b-btn>
               </template>
             </b-spinbutton>
           </template>
+          <!--          <template #cell(summ)="data">-->
+          <!--            {{ Number(data.item.price) * Number(data.item.rack_count) }}-->
+          <!--          </template>-->
           <template #cell(actions)="data">
             <b-btn class="live-edit btn-icon" variant="link">
               <b-icon icon="x-circle" scale="1" variant="danger" @click="deleteOfferItem(data.item.uuid)"></b-icon
@@ -53,12 +56,16 @@ export default {
       return this.$store.getters['type/getBasketProduct']
     },
   },
-  mounted() {},
+  mounted() {
+    console.warn(this.getOfferManageItems)
+  },
   methods: {
-    rackCountEdit(count) {
-      this.$store.commit('type/setEditCount', count)
+    countIncrement(uuid) {
+      this.$store.commit('type/setCountIncrement', uuid)
     },
-
+    countDecrement(uuid) {
+      this.$store.commit('type/setCountDecrement', uuid)
+    },
     toOfferConfirm() {
       this.$router.push('/offer/confirm')
     },

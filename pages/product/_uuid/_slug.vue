@@ -36,6 +36,8 @@
         <div class="d-flex flex-column">
           <h4>Описание:</h4>
           <span>{{ form.description }}</span>
+          {{ getKeyShelfSize }}<br />
+          {{ getPriceByKeyShelfSize }}
         </div>
       </div>
       <div class="d-flex flex-row-reverse p-3">
@@ -162,18 +164,18 @@ export default {
 
   computed: {
     rackPrice() {
-      if (this.getTypeByUuid.title === 'СТФЛ') {
-        if (this.selectedRackDepthPrice && this.form.rack_shelves_count && this.selectedRackHeightPrice) {
-          const depth = Number(this.selectedRackDepthPrice.rack_price_parameter)
-          const shelf = Number(this.form.rack_shelves_count.rack_parameter_value)
-          const height = Number(this.selectedRackHeightPrice.rack_price_parameter)
-          const count = Number(this.form.rack_count)
-          const price = (depth * shelf + height) * count
-          return price
+      if (this.getPriceByKeyShelfSize && this.form.rack_shelves_count && this.selectedRackHeightPrice) {
+        const depth = Number(this.getPriceByKeyShelfSize.price)
+        const shelf = Number(this.form.rack_shelves_count.rack_parameter_value)
+        const height = Number(this.selectedRackHeightPrice.rack_price_parameter)
+        const count = Number(this.form.rack_count)
+        const deck = Number(this.selectedRackDeckPrice.rack_price_parameter)
+        if (deck) {
+          return (depth * shelf + height + deck) * count
         }
-        return 'pepega'
+        return (depth * shelf + height) * count
       }
-      return 'Неизвестный летающий стеллаж'
+      return 0
     },
 
     getRackHeight() {
@@ -258,23 +260,43 @@ export default {
       }
       return {}
     },
-    selectedRackWidthPrice() {
+    selectedRackDeckPrice() {
       if (
-        this.getRackParameterPrice.find((parameter) => parameter.rack_type_parameter.uuid === this.form.rack_width.uuid)
+        this.getRackParameterPrice.find((parameter) => parameter.rack_type_parameter.uuid === this.form.rack_deck.uuid)
       ) {
         return this.getRackParameterPrice.find(
-          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_width.uuid
+          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_deck.uuid
         )
       }
       return {}
     },
-    selectedRackDepthParameter() {
-      return this.getRackParameterPrice.filter((paremeter) => paremeter.rack_type_parameter_extra)
+    getKeyShelfSize() {
+      let key = null
+      console.warn(this.selectedRackDepth)
+      console.warn(this.selectedRackWidth)
+      if (this.selectedRackDepth.uuid && this.selectedRackWidth.uuid) {
+        key = this.selectedRackWidth.rack_parameter_value + 'x' + this.selectedRackDepth.rack_parameter_value
+      }
+      return key
     },
-    selectedRackDepthPrice() {
-      return this.selectedRackDepthParameter.find(
-        (item) => item.rack_type_parameter_extra.uuid === this.form.rack_depth.uuid
-      )
+    getPriceByKeyShelfSize() {
+      let price = false
+      if (this.getKeyShelfSize) {
+        price = this.getMapRackParameterPrice.find((item) => item.key === this.getKeyShelfSize) || false
+      }
+      return price
+    },
+    getMapRackParameterPrice() {
+      return this.getRackParameterPrice
+        .filter((item) => item.rack_type_uuid === this.typeUuid)
+        .filter((item) => item.rack_type_parameter_extra !== null)
+        .map((item) => {
+          return {
+            key:
+              item.rack_type_parameter.rack_parameter_value + 'x' + item.rack_type_parameter_extra.rack_parameter_value,
+            price: item.rack_price_parameter,
+          }
+        })
     },
 
     getRackParameterPrice() {
@@ -291,6 +313,7 @@ export default {
       this.form.description = this.getTypeByUuid.description
       this.form.image = this.getTypeByUuid.image
     })
+    console.warn('price', this.getRackParameterPrice)
   },
 
   methods: {
@@ -326,6 +349,8 @@ export default {
         rack_shelves_count: this.form.rack_shelves_count,
         rack_count: this.form.rack_count,
         rack_deck: this.form.rack_deck,
+        price: this.rackPrice,
+        summ: Number(this.rackPrice) * Number(this.form.rack_count),
         uuid: this.getUuid(),
       })
     },

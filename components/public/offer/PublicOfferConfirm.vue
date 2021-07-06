@@ -34,11 +34,12 @@
             hover
             :fields="getOfferConfirmFields"
             :items="getOfferConfirmItems"
-          ></b-table>
+          >
+          </b-table>
         </div>
         <div class="d-flex justify-content-end">
           <span class="mr-2">Итого:</span>
-          <span> 52 600,00 рублей </span>
+          <span>{{ getSumm }} рублей </span>
         </div>
       </div>
     </div>
@@ -64,6 +65,12 @@ export default {
     getOfferConfirmFields() {
       return this.$store.getters.getOfferConfirmFields
     },
+    getSumm() {
+      return this.getOfferConfirmItems.reduce((summ, item) => summ + item.summ, 0)
+    },
+  },
+  mounted() {
+    console.warn(this.getSumm)
   },
   methods: {
     goBack() {
