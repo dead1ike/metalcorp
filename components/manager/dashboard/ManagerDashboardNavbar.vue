@@ -9,7 +9,7 @@
     </b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="/manager/rack/manage" class=""> Manager </b-nav-item>
+        <b-nav-item to="/manager/rack/manage" class=""> Стеллажи </b-nav-item>
         <b-nav-item to="/manager/avito/manage" class=""> Avito </b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->

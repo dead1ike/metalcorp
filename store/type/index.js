@@ -1,10 +1,10 @@
 export const state = () => ({
   items: {
-    types: [],
+    rack: [],
     basketProduct: [],
   },
   item: {
-    type: {},
+    rack: {},
   },
   filter: {
     search: '',
@@ -19,34 +19,29 @@ export const state = () => ({
 
 export const actions = {
   async fetchTypes({ commit }) {
-    const { data } = await this.$axios.get('/api/rack/rackType')
+    const { data } = await this.$axios.get('/api/rack/rack')
     commit('setTypes', data.data)
   },
-  postParameter({ commit }, data) {
-    this.$axios.post('/api/rack/rackParameter', {
-      ...data,
-    })
-  },
   postRackType({ commit }, data) {
-    return this.$axios.post('/api/rack/rackType', {
+    return this.$axios.post('/api/rack/rack', {
       ...data,
     })
   },
   deleteRackType({ commit }, uuid) {
-    return this.$axios.delete(`/api/rack/rackType/${uuid}`)
+    return this.$axios.delete(`/api/rack/rack/${uuid}`)
   },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
-    return this.$axios.post(`/api/rack/rackType/${data.uuid}`, uploadingFile)
+    return this.$axios.post(`/api/rack/rack/${data.uuid}`, uploadingFile)
   },
 }
 export const mutations = {
   setType(state, data) {
-    state.item.type = data
+    state.item.rack = data
   },
   setTypes(state, data) {
-    state.items.types = data
+    state.items.rack = data
   },
   setAddBasketProduct(state, data) {
     state.items.basketProduct.push(data)
@@ -74,15 +69,15 @@ export const getters = {
     return state.filter
   },
   getTypes(state) {
-    return state.items.types
+    return state.items.rack
   },
   getTypesByCategoryUuid: (state) => (categoryUuid) => {
-    return state.items.types.filter((item) => {
+    return state.items.rack.filter((item) => {
       return item.category.uuid === categoryUuid
     })
   },
   getTypeById: (state) => (typeUuid) => {
-    return state.items.types.find((item) => {
+    return state.items.rack.find((item) => {
       return item.uuid === typeUuid
     })
   },

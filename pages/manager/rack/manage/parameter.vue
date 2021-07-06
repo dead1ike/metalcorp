@@ -16,7 +16,7 @@ export default {
     managerParameterAdd() {
       this.$store.commit('setActiveModal', {
         modalName: 'managerParameterAdd',
-        modalStatus: false,
+        modalStatus: true,
       })
     },
   },
