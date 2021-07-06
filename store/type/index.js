@@ -19,26 +19,26 @@ export const state = () => ({
 
 export const actions = {
   async fetchTypes({ commit }) {
-    const { data } = await this.$axios.get('/api/rackType')
+    const { data } = await this.$axios.get('/api/rack/rackType')
     commit('setTypes', data.data)
   },
   postParameter({ commit }, data) {
-    this.$axios.post('/api/rackParameter', {
+    this.$axios.post('/api/rack/rackParameter', {
       ...data,
     })
   },
   postRackType({ commit }, data) {
-    return this.$axios.post('/api/rackType', {
+    return this.$axios.post('/api/rack/rackType', {
       ...data,
     })
   },
   deleteRackType({ commit }, uuid) {
-    return this.$axios.delete(`/api/rackType/${uuid}`)
+    return this.$axios.delete(`/api/rack/rackType/${uuid}`)
   },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
-    return this.$axios.post(`/api/rackType/${data.uuid}`, uploadingFile)
+    return this.$axios.post(`/api/rack/rackType/${data.uuid}`, uploadingFile)
   },
 }
 export const mutations = {

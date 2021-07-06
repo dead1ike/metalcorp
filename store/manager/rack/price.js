@@ -6,16 +6,16 @@ export const state = () => ({
 })
 export const actions = {
   async fetchParameterPrice({ commit }) {
-    const { data } = await this.$axios.get('/api/rackPriceParameter')
+    const { data } = await this.$axios.get('/api/rack/rackPriceParameter')
     commit('setParameterPrice', data.data)
   },
   postParameterPrice({ commit }, data) {
-    return this.$axios.post('/api/rackPriceParameter', {
+    return this.$axios.post('/api/rack/rackPriceParameter', {
       ...data,
     })
   },
   deletePriceItem({ commit }, uuid) {
-    return this.$axios.delete(`https://api-dev.skladskoi.com/api/rackPriceParameter/${uuid}`)
+    return this.$axios.delete(`/api/rack/rackPriceParameter/${uuid}`)
   },
 }
 export const mutations = {

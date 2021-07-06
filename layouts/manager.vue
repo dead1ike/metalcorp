@@ -3,19 +3,19 @@
     <manager-dashboard-navbar></manager-dashboard-navbar>
     <Nuxt class="h-100 container-fluid" style="max-width: 1520px" />
     <template v-if="$store.getters.getActiveManagerCategoryAddModal">
-      <manager-category-add />
+      <manager-rack-category-add />
     </template>
     <template v-if="$store.getters.getActiveManagerRackAddModal">
-      <manager-rack-add />
+      <manager-rack-type-add />
     </template>
     <template v-if="$store.getters.getActiveManagerParameterAddModal">
-      <manager-parameter-add />
+      <manager-rack-parameter-add />
     </template>
     <template v-if="$store.getters.getActiveManagerRackTypeParameterAddModal">
       <manager-rack-type-parameter-add />
     </template>
     <template v-if="$store.getters.getActiveManagerPriceParameterAddModal">
-      <manager-price-add />
+      <manager-rack-price-add />
     </template>
   </div>
 </template>

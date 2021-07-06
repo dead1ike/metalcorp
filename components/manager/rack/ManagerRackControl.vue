@@ -52,6 +52,10 @@ export default {
           path: 'price',
           title: 'Цена',
         },
+        {
+          path: 'type_parameter',
+          title: 'Параметр стеллажа',
+        },
       ],
     }
   },

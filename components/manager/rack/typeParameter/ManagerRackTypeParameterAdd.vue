@@ -1,22 +1,22 @@
 <template>
-  <b-modal id="manager-price-parameter-add" size="lg" class="w-100 h-100">
+  <b-modal id="manager-rack-type-parameter-add" no-close-on-backdrop no-close-on-esc>
     <template #modal-header>
-      <h5>Добавление цены для параметра:</h5>
+      <h4>Добавление параметров стеллажа:</h4>
     </template>
     <template #modal-footer>
       <b-btn variant="corp">Добавить</b-btn>
-      <b-btn variant="danger" @click="closeModal()">Отменить</b-btn>
+      <b-btn variant="danger" @click="closeModal">Отменить</b-btn>
     </template>
   </b-modal>
 </template>
 
 <script>
 export default {
-  name: 'ManagerRackPriceAdd',
+  name: 'ManagerRackTypeParameterAdd',
   methods: {
     closeModal() {
       this.$store.commit('setActiveModal', {
-        modalName: 'managerRackPriceParameterAdd',
+        modalName: 'managerRackTypeParameterAdd',
         modalStatus: false,
       })
     },

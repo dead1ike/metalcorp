@@ -7,28 +7,28 @@ export const state = () => ({
 })
 export const actions = {
   async fetchParameter({ commit }) {
-    const { data } = await this.$axios.get('/api/rackParameter')
+    const { data } = await this.$axios.get('/api/rack/rackParameter')
     commit('setParameter', data.data)
   },
   async fetchRackTypeParameter({ commit }) {
-    const { data } = await this.$axios.get('/api/rackTypeParameter')
+    const { data } = await this.$axios.get('/api/rack/rackTypeParameter')
     commit('setRackTypeParameter', data.data)
   },
   postParameter({ commit }, data) {
-    return this.$axios.post('/api/rackParameter', {
+    return this.$axios.post('/api/rack/rackParameter', {
       ...data,
     })
   },
   postRackTypeParameter({ commit }, data) {
-    return this.$axios.post('/api/rackTypeParameter', {
+    return this.$axios.post('/api/rack/rackTypeParameter', {
       ...data,
     })
   },
   deleteRackTypeParameter({ commit }, uuid) {
-    return this.$axios.delete(`/api/rackTypeParameter/${uuid}`)
+    return this.$axios.delete(`/api/rack/rackTypeParameter/${uuid}`)
   },
   deleteParameter({ commit }, uuid) {
-    return this.$axios.delete(`/api/rackParameter/${uuid}`)
+    return this.$axios.delete(`/api/rack/rackParameter/${uuid}`)
   },
 }
 export const mutations = {
