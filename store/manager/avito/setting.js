@@ -1,40 +1,40 @@
 export const state = () => ({
   items: {
-    settings: [],
+    settings: []
   },
   item: {
     authorization_code: {},
     token: {},
-    account: {},
-  },
+    account: {}
+  }
 })
 
 export const actions = {
   fetchSettngs({ commit }) {
-    return this.$axios.get('/api/avito/setting').then(({ data }) => {
+    return this.$axios.get('/api/avito/avitoSetting').then(({ data }) => {
       commit('setSettngs', data.data)
     })
   },
   saveSettngs({ commit }, payload) {
     return this.$axios.put('/api/resource', {
-      ...payload,
+      ...payload
     })
-  },
+  }
 }
 
 export const mutations = {
   setSettngs(state, settings) {
     state.items.settings = settings
 
-    const authorizationCode = settings.find((itemSetting) => itemSetting.key === 'authorization_code')
+    const authorizationCode = settings.find(itemSetting => itemSetting.key === 'authorization_code')
     state.item.authorization_code = authorizationCode && authorizationCode.value ? authorizationCode.value : {}
 
-    const token = settings.find((itemSetting) => itemSetting.key === 'token')
+    const token = settings.find(itemSetting => itemSetting.key === 'token')
     state.item.token = token && token.value ? token.value : {}
 
-    const account = settings.find((itemSetting) => itemSetting.key === 'account')
+    const account = settings.find(itemSetting => itemSetting.key === 'account')
     state.item.account = account && account.value ? account.value : {}
-  },
+  }
 }
 
 export const getters = {
@@ -55,5 +55,5 @@ export const getters = {
   },
   getAccount(state) {
     return _.find(state.items.settings, ['key', 'account']) || {}
-  },
+  }
 }

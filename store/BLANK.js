@@ -1,31 +1,63 @@
 export const state = () => ({
-  items: {},
-  item: {},
+  items: {
+    datas: [
+      //
+    ]
+  },
+  item: {
+    data: {
+      //
+    }
+  }
 })
 
 export const actions = {
-  fetchBlank({ commit }) {
+  fetchBlankItems({ commit }) {
     return this.$axios.get('/api/resource').then(({ data }) => {
-      commit('setBlank', data.data)
+      commit('setBlankItems', data.data)
     })
   },
-  saveBlank({ commit }, payload) {
-    return this.$axios.put('/api/resource', {
-      ...payload,
+  fetchBlankItem({ commit }, payload) {
+    return this.$axios
+      .post('/api/resource/' + payload.uuid, {
+        ...payload
+      })
+      .then(({ data }) => {
+        commit('setBlankItem', data.data)
+      })
+  },
+  postBlank({ commit }, payload) {
+    return this.$axios.post('/api/resource', {
+      ...payload
     })
   },
-  postBlank({ commit }, data) {},
-  putBlank({ commit }, data) {},
+  updateBlank({ commit }, payload) {
+    return this.$axios.put('/api/resource/' + payload.uuid, {
+      ...payload
+    })
+  }
 }
 
 export const mutations = {
-  setBlank(state, data) {},
-  setBlank1(state, data) {},
-  setBlank2(state, data) {},
+  setBlankItems(state, datas) {
+    state.items.datas = datas
+  },
+  setBlankItem(state, data) {
+    state.item.data = data
+  },
+  setBlank(state, data) {
+    //
+  }
 }
 
 export const getters = {
-  getBlank(state) {},
-  getBlank1(state) {},
-  getBlank2(state) {},
+  getBlankItems(state) {
+    return state.items.datas
+  },
+  getBlankItem(state) {
+    return state.item.data
+  },
+  getBlank(state) {
+    //
+  }
 }
