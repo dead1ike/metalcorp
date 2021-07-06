@@ -10,7 +10,7 @@ export default {
   resourceHints: false,
 
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL,
+    apiURL: process.env.API_URL
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -18,17 +18,22 @@ export default {
     title: '«МЕТАЛЛКОРП»',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=0.9, maximum-scale=0.9, minimum-scale=0.9' },
-      { hid: 'description', name: 'description', content: '' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8' },
+      { hid: 'description', name: 'description', content: '' }
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/persistedState.client.js' }],
+  plugins: [
+    { src: '~/plugins/persistedState.client.js' },
+    { src: '~/plugins/DateTime' },
+    { src: '~/plugins/Duration' },
+    { src: '~/plugins/Interval' }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,8 +42,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
-    ['@nuxtjs/moment', ['ru']],
-    '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -48,7 +52,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -56,17 +60,18 @@ export default {
     // prefix: '/api/',
     credentials: true,
     proxy: false,
-    baseURL: process.env.API_URL || 'https://local-api/',
+    baseURL: process.env.API_URL || 'https://local-api/'
   },
 
   router: {
-    trailingSlash: false,
+    trailingSlash: false
   },
 
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: false,
-    icons: true,
+    icons: true
+    // components: ['BIcon', 'BIconAlertFill', 'BIconCalendar', 'BIconGears'],
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -77,21 +82,24 @@ export default {
       description: '«МЕТАЛЛКОРП»',
       lang: 'ru',
       background_color: '#5472f9',
-      theme_color: '#5472f9',
+      theme_color: '#5472f9'
       // start_url: '/',
-    },
+    }
   },
 
   server: {
-    host: '0.0.0.0',
+    host: '0.0.0.0'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    babel: {
+      compact: true
+    },
     plugins: [
       new webpack.ProvidePlugin({
-        _: 'lodash',
-      }),
-    ],
-  },
+        _: 'lodash'
+      })
+    ]
+  }
 }
