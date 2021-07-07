@@ -107,8 +107,8 @@ export const state = () => ({
     ],
     managerPrice: [
       {
-        key: 'title',
-        label: 'Наименование стеллажа',
+        key: 'component',
+        label: 'Компонент',
         class: 'align-middle text-center',
         sortable: true,
       },
@@ -159,6 +159,12 @@ export const state = () => ({
       {
         key: 'is_constructor',
         label: 'Состоит из комплектующих?',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
+        key: 'child',
+        label: 'Комплектующие',
         class: 'align-middle text-center',
         sortable: true,
       },

@@ -36,10 +36,8 @@
         <div class="d-flex flex-column">
           <h4>Описание:</h4>
           <span>{{ form.description }}</span>
-          {{ getKeyShelfSize }}<br />
-          {{ getKeyRamSize }}<br />
-          {{ getPriceByKeyShelfSize }}<br />
-          {{ getPriceByKeyRamSize }}
+
+          {{ rackPrice }}<br />
         </div>
       </div>
       <div class="d-flex flex-row-reverse p-3">
@@ -53,14 +51,10 @@
                 block
                 no-caret
                 variant="corp"
-                :text="
-                  selectedRackHeight.rack_parameter_value ? selectedRackHeight.rack_parameter_value + ' мм' : 'Выберите'
-                "
+                :text="selectedRackHeight.parameter_value ? selectedRackHeight.parameter_value + ' мм' : 'Выберите'"
               >
                 <template v-for="item in getRackHeight">
-                  <b-dd-item :key="item.uuid" @click="selectHeight(item)">
-                    {{ item.rack_parameter_value }} мм
-                  </b-dd-item>
+                  <b-dd-item :key="item.uuid" @click="selectHeight(item)"> {{ item.parameter_value }} мм </b-dd-item>
                 </template>
               </b-dd>
             </div>
@@ -71,12 +65,10 @@
               block
               no-caret
               variant="corp"
-              :text="
-                selectedRackWidth.rack_parameter_value ? selectedRackWidth.rack_parameter_value + ' мм' : 'Выберите'
-              "
+              :text="selectedRackWidth.parameter_value ? selectedRackWidth.parameter_value + ' мм' : 'Выберите'"
             >
-              <template v-for="item in getRackWidth">
-                <b-dd-item :key="item.uuid" @click="selectWidth(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
+              <template v-for="item in getWidth">
+                <b-dd-item :key="item.uuid" @click="selectWidth(item)"> {{ item.parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
           </div>
@@ -86,12 +78,10 @@
               block
               no-caret
               variant="corp"
-              :text="
-                selectedRackDepth.rack_parameter_value ? selectedRackDepth.rack_parameter_value + ' мм' : 'Выберите'
-              "
+              :text="selectedRackDepth.parameter_value ? selectedRackDepth.parameter_value + ' мм' : 'Выберите'"
             >
               <template v-for="item in getRackDepth">
-                <b-dd-item :key="item.uuid" @click="selectDepth(item)"> {{ item.rack_parameter_value }} мм </b-dd-item>
+                <b-dd-item :key="item.uuid" @click="selectDepth(item)"> {{ item.parameter_value }} мм </b-dd-item>
               </template>
             </b-dd>
           </div>
@@ -101,14 +91,10 @@
               block
               no-caret
               variant="corp"
-              :text="
-                selectedRackShelves.rack_parameter_value ? selectedRackShelves.rack_parameter_value + ' шт' : 'Выберите'
-              "
+              :text="selectedRackShelves.parameter_value ? selectedRackShelves.parameter_value + ' шт' : 'Выберите'"
             >
               <template v-for="item in getRackShelves">
-                <b-dd-item :key="item.uuid" @click="selectShelves(item)">
-                  {{ item.rack_parameter_value }} шт
-                </b-dd-item>
+                <b-dd-item :key="item.uuid" @click="selectShelves(item)"> {{ item.parameter_value }} шт </b-dd-item>
               </template>
             </b-dd>
           </div>
@@ -118,10 +104,10 @@
               block
               no-caret
               variant="corp"
-              :text="selectedRackDeck.rack_parameter_value ? selectedRackDeck.rack_parameter_value : 'Выберите'"
+              :text="selectedRackDeck.parameter_value ? selectedRackDeck.parameter_value : 'Выберите'"
             >
               <template v-for="item in getRackDeck">
-                <b-dd-item :key="item.uuid" @click="selectDeck(item)"> {{ item.rack_parameter_value }} </b-dd-item>
+                <b-dd-item :key="item.uuid" @click="selectDeck(item)"> {{ item.parameter_value }} </b-dd-item>
               </template>
             </b-dd>
           </div>
@@ -166,59 +152,65 @@ export default {
 
   computed: {
     rackPrice() {
-      if (this.getPriceByKeyShelfSize && this.form.rack_shelves_count && this.selectedRackHeightPrice) {
-        const depth = Number(this.getPriceByKeyShelfSize.price)
-        const shelf = Number(this.form.rack_shelves_count.rack_parameter_value)
-        const height = Number(this.selectedRackHeightPrice.rack_price_parameter)
+      if (this.form.rack_height.price && this.form.rack_shelves_count && this.form.rack_width.price) {
+        const width = Number(this.form.rack_width.price)
+        const depth = Number(this.form.rack_depth.price)
+        const shelf = Number(this.form.rack_shelves_count.parameter_value)
+        const height = Number(this.form.rack_height.price)
         const count = Number(this.form.rack_count)
-        const deck = Number(this.selectedRackDeckPrice.rack_price_parameter)
-        const ram = Number(this.getPriceByKeyRamSize.price)
+        const deck = Number(this.form.rack_deck.price)
         if (deck) {
-          return (depth * shelf + height + deck) * count
-        } else if (ram) {
-          return (depth * shelf + height * (count + 1)) * count
+          return ((depth * 2 + width * 2 + deck) * shelf + height * 4) * count
+        } else if (depth === width) {
+          return (depth * shelf + height * 4) * count
         }
-        return (depth * shelf + height) * count
+        return ((depth * 2 + width * 2) * shelf + height * 4) * count
       }
       return 0
     },
-
+    getHeight() {
+      return _.intersection(this.getRackHeight)
+    },
+    getWidth() {
+      // return _.uniqBy(this.getRackWidth, this.getRackWidth.parameter_value)
+      return _.uniqBy(this.getRackWidth, this.getRackWidth.parameter_value)
+    },
     getRackHeight() {
-      if (this.getTypeByUuid.rack_type_parameters) {
-        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_title === 'Высота'
+      if (this.getRackComponentByUuid) {
+        return this.getRackComponentByUuid.filter((item) => {
+          return item.parameter.title === 'Высота'
         })
       }
       return []
     },
     getRackWidth() {
-      if (this.getTypeByUuid.rack_type_parameters) {
-        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_title === 'Ширина'
+      if (this.getRackComponentByUuid) {
+        return this.getRackComponentByUuid.filter((item) => {
+          return item.parameter.title === 'Ширина'
         })
       }
       return []
     },
     getRackDepth() {
-      if (this.getTypeByUuid.rack_type_parameters) {
-        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_title === 'Глубина'
+      if (this.getRackComponentByUuid) {
+        return this.getRackComponentByUuid.filter((item) => {
+          return item.parameter.title === 'Глубина'
         })
       }
       return []
     },
     getRackDeck() {
-      if (this.getTypeByUuid.rack_type_parameters) {
-        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_title === 'Настил'
+      if (this.getRackComponentByUuid) {
+        return this.getRackComponentByUuid.filter((item) => {
+          return item.parameter.title === 'Настил'
         })
       }
       return []
     },
     getRackShelves() {
-      if (this.getTypeByUuid.rack_type_parameters) {
-        return this.getTypeByUuid.rack_type_parameters.filter((item) => {
-          return item.rack_parameter_title === 'Количество полок'
+      if (this.getRackComponentByUuid) {
+        return this.getRackComponentByUuid.filter((item) => {
+          return item.parameter.title === 'Количество полок'
         })
       }
       return []
@@ -253,68 +245,6 @@ export default {
       }
       return {}
     },
-    selectedRackHeightPrice() {
-      if (
-        this.getRackParameterPrice.find(
-          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_height.uuid
-        )
-      ) {
-        return this.getRackParameterPrice.find(
-          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_height.uuid
-        )
-      }
-      return {}
-    },
-    selectedRackDeckPrice() {
-      if (
-        this.getRackParameterPrice.find((parameter) => parameter.rack_type_parameter.uuid === this.form.rack_deck.uuid)
-      ) {
-        return this.getRackParameterPrice.find(
-          (parameter) => parameter.rack_type_parameter.uuid === this.form.rack_deck.uuid
-        )
-      }
-      return {}
-    },
-    getKeyShelfSize() {
-      let key = null
-      if (this.selectedRackDepth.uuid && this.selectedRackWidth.uuid) {
-        key = this.selectedRackWidth.rack_parameter_value + 'x' + this.selectedRackDepth.rack_parameter_value
-      }
-      return key
-    },
-    getKeyRamSize() {
-      let key = null
-      if (this.selectedRackDepth.uuid && this.selectedRackHeight.uuid) {
-        key = this.selectedRackHeight.rack_parameter_value + 'x' + this.selectedRackDepth.rack_parameter_value
-      }
-      return key
-    },
-    getPriceByKeyShelfSize() {
-      let price = false
-      if (this.getKeyShelfSize) {
-        price = this.getMapRackParameterPrice.find((item) => item.key === this.getKeyShelfSize) || false
-      }
-      return price
-    },
-    getPriceByKeyRamSize() {
-      let price = false
-      if (this.getKeyRamSize) {
-        price = this.getMapRackParameterPrice.find((item) => item.key === this.getKeyRamSize) || false
-      }
-      return price
-    },
-    getMapRackParameterPrice() {
-      return this.getRackParameterPrice
-        .filter((item) => item.rack_type_uuid === this.typeUuid)
-        .filter((item) => item.rack_type_parameter_extra !== null)
-        .map((item) => {
-          return {
-            key:
-              item.rack_type_parameter.rack_parameter_value + 'x' + item.rack_type_parameter_extra.rack_parameter_value,
-            price: item.rack_price_parameter,
-          }
-        })
-    },
 
     getRackParameterPrice() {
       return this.$store.getters['price/getParameterPrice']
@@ -322,32 +252,38 @@ export default {
     getTypeByUuid() {
       return this.$store.getters['type/getTypeById'](this.typeUuid) || {}
     },
+    getRackComponentByUuid() {
+      return this.$store.getters['manager/rack/price/getComponentPriceByUuid'](this.typeUuid) || {}
+    },
   },
   mounted() {
-    this.$store.dispatch('price/fetchParameterPrice')
+    this.$store.dispatch('manager/rack/price/fetchComponentPrice')
     this.$store.dispatch('type/fetchTypes').then(() => {
       this.form.title = this.getTypeByUuid.title
       this.form.description = this.getTypeByUuid.description
       this.form.image = this.getTypeByUuid.image
     })
-    console.warn('price', this.getRackParameterPrice)
   },
 
   methods: {
     selectHeight(item) {
       this.form.rack_height = item
+      console.warn('height', item)
       console.warn('selectedHeightPrice', this.selectedRackHeightPrice)
     },
     selectWidth(item) {
       this.form.rack_width = item
+      console.warn('width', item.price)
       console.warn('selectedWidthPrice', this.selectedRackWidthPrice)
     },
     selectDepth(item) {
       this.form.rack_depth = item
+      console.warn('depth', item)
       console.warn('selectedRackDepthPrice', this.selectedRackDepthPrice)
     },
     selectShelves(item) {
       this.form.rack_shelves_count = item
+      console.warn('shelves', item.price)
       console.warn('selectedRackShelves', this.form.rack_shelves_count.rack_parameter_value)
     },
     selectDeck(item) {

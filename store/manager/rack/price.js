@@ -1,34 +1,39 @@
 export const state = () => ({
   items: {
-    parameterPrice: [],
+    price: [],
   },
   item: {},
 })
 export const actions = {
-  async fetchParameterPrice({ commit }) {
-    const { data } = await this.$axios.get('/api/rack/rackPriceParameter')
-    commit('setParameterPrice', data.data)
+  async fetchComponentPrice({ commit }) {
+    const { data } = await this.$axios.get('/api/rack/rackComponentParameter')
+    commit('setComponentPrice', data.data)
   },
-  postParameterPrice({ commit }, data) {
-    return this.$axios.post('/api/rack/rackPriceParameter', {
+  postComponentPrice({ commit }, data) {
+    return this.$axios.post('/api/rack/rackComponentParameter', {
       ...data,
     })
   },
   deletePriceItem({ commit }, uuid) {
-    return this.$axios.delete(`/api/rack/rackPriceParameter/${uuid}`)
+    return this.$axios.delete(`/api/rack/rackComponentParameter/${uuid}`)
   },
 }
 export const mutations = {
-  setParameterPrice(state, data) {
-    state.items.parameterPrice = data
+  setComponentPrice(state, data) {
+    state.items.price = data
   },
   setRackPrice(state, data) {},
   setBlank1(state, data) {},
   setBlank2(state, data) {},
 }
 export const getters = {
-  getParameterPrice(state) {
-    return state.items.parameterPrice
+  getComponentPrice(state) {
+    return state.items.price
+  },
+  getComponentPriceByUuid: (state) => (rackUuid) => {
+    return state.items.price.filter((item) => {
+      return item.rack_component.rack_uuid === rackUuid
+    })
   },
   getBlank1(state) {},
   getBlank2(state) {},

@@ -27,6 +27,11 @@ export const actions = {
       ...data,
     })
   },
+  postRackComponent({ commit }, data) {
+    return this.$axios.post('/api/rack/rackComponent', {
+      ...data,
+    })
+  },
   deleteComponent({ commit }, uuid) {
     return this.$axios.delete(`/api/component/${uuid}`)
   },

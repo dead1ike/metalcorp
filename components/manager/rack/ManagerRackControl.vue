@@ -1,8 +1,8 @@
 <template>
   <div class="w-100 overflow-hidden">
     <b-nav class="overflow-auto flex-nowrap">
-      <b-nav-item v-for="itemLink in items" :key="itemLink.path" :to="itemLink">
-        {{ getLinkTitle(itemLink.title) }}
+      <b-nav-item v-for="itemLink in links" :key="itemLink.name" :to="itemLink">
+        {{ getLinkTitle(itemLink.path) }}
       </b-nav-item>
     </b-nav>
   </div>
@@ -31,37 +31,39 @@ export default {
         parameter: {
           title: 'Параметры',
         },
+        component: {
+          title: 'Компонент',
+        },
+        rack_component: {
+          title: 'Компонент стеллажа',
+        },
         price: {
           title: 'Цена',
         },
       },
       items: [
         {
-          path: 'category',
+          path: 'manage/category',
           title: 'Категория',
         },
         {
-          path: 'type',
+          path: 'manage/type',
           title: 'Тип',
         },
         {
-          path: 'parameter',
+          path: 'manage/parameter',
           title: 'Параметры',
         },
         {
-          path: 'rack_parameter',
-          title: 'Параметр стеллажа',
-        },
-        {
-          path: 'component',
+          path: 'manage/component',
           title: 'Компонент',
         },
         {
-          path: 'rack_component',
+          path: 'manage/rack_component',
           title: 'Компонент стеллажа',
         },
         {
-          path: 'price',
+          path: 'manage/price',
           title: 'Цена',
         },
       ],

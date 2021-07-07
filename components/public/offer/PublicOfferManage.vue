@@ -15,12 +15,12 @@
           :fields="getOfferManageFields"
           :items="getOfferManageItems"
         >
-          <template #cell(rack_height)="data">{{ data.item.rack_height.rack_parameter_value }} </template>
-          <template #cell(rack_width)="data"> {{ data.item.rack_width.rack_parameter_value }} </template>
+          <template #cell(rack_height)="data">{{ data.item.rack_height.parameter_value }} </template>
+          <template #cell(rack_width)="data"> {{ data.item.rack_width.parameter_value }} </template>
           <template #cell(rack_shelves_count)="data">
-            {{ data.item.rack_shelves_count.rack_parameter_value }}
+            {{ data.item.rack_shelves_count.parameter_value }}
           </template>
-          <template #cell(rack_depth)="data">{{ data.item.rack_depth.rack_parameter_value }} </template>
+          <template #cell(rack_depth)="data">{{ data.item.rack_depth.parameter_value }} </template>
           <template #cell(rack_count)="data">
             <b-spinbutton :value="data.item.rack_count" inline>
               <template #decrement>
@@ -31,9 +31,9 @@
               </template>
             </b-spinbutton>
           </template>
-          <!--          <template #cell(summ)="data">-->
-          <!--            {{ Number(data.item.price) * Number(data.item.rack_count) }}-->
-          <!--          </template>-->
+          <template #cell(summ)="data">
+            {{ Number(data.item.price) * Number(data.item.rack_count) }}
+          </template>
           <template #cell(actions)="data">
             <b-btn class="live-edit btn-icon" variant="link">
               <b-icon icon="x-circle" scale="1" variant="danger" @click="deleteOfferItem(data.item.uuid)"></b-icon
@@ -55,6 +55,9 @@ export default {
     getOfferManageItems() {
       return this.$store.getters['type/getBasketProduct']
     },
+  },
+  watch: {
+    data(newValue, oldValue) {},
   },
   mounted() {},
   methods: {
