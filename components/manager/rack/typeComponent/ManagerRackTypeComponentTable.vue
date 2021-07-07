@@ -1,6 +1,9 @@
 <template>
   <div>
     <b-table hover striped borderless :fields="getManagerComponentFields" :items="getManagerComponentItems">
+      <template #cell(rack_title)="data">
+        {{ data.item.rack.title }}
+      </template>
       <template #cell(is_constructor)="data">
         {{ data.item.is_constructor === false ? 'Нет' : 'Да' }}
       </template>
@@ -8,8 +11,8 @@
         {{ data.item.rack_component_value }}
       </template>
       <template #cell(child)="data">
-        <div v-if="data.item.child_rack_components.length !== 0">
-          <div v-for="item in data.item.child_rack_components" :key="item.uuid">
+        <div v-if="data.item.rack_component_childs.length !== 0">
+          <div v-for="item in data.item.rack_component_childs" :key="item.uuid">
             {{ item.rack_component_value }}
           </div>
         </div>
@@ -34,9 +37,7 @@ export default {
       return this.$store.getters['manager/rack/field/getManagerRackComponentFields']
     },
     getManagerComponentItems() {
-      return this.$store.getters['manager/rack/component/getRackComponent'].filter(
-        (item) => item.parent_rack_component === null
-      )
+      return this.$store.getters['manager/rack/component/getRackComponent']
     },
     getComponents() {
       return this.$store.getters['manager/rack/component/getComponent']

@@ -10,29 +10,30 @@
           variant="corp"
           :text="
             selectedRackComponent.rack_component_value
-              ? selectedRackComponent.rack_title + ' ' + selectedRackComponent.rack_component_value
+              ? selectedRackComponent.rack.title + ' ' + selectedRackComponent.rack_component_value
               : 'Выберите'
           "
         >
           <template v-for="item in getRackComponents">
-            <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectRackComponent(item.uuid)">
-              {{ item.rack_title + ' ' + item.rack_component_value }}
+            <b-dd-item :key="item.uuid" @click="selectRackComponent(item.uuid)">
+              {{ item.rack.title + ' ' + item.rack_component_value }}
             </b-dd-item>
           </template>
         </b-dd>
       </div>
       <div v-if="selectedRackComponent.is_constructor === true" class="mx-2">
         <h6>Комплектующий</h6>
+        {{ selectedRackComponent }}
         <b-dd
           variant="corp"
           :text="
-            selectedChildRackComponent.rack_component_value
+            selectedRackComponent.rack_component_childs.length > 0
               ? selectedChildRackComponent.rack_component_value
               : 'Выберите'
           "
         >
-          <template v-for="item in getCurrentChild">
-            <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectRackChildComponent(item.uuid)">
+          <template v-for="item in selectedRackComponent.rack_component_childs">
+            <b-dd-item :key="item.uuid" @click="selectRackChildComponent(item.uuid)">
               {{ item.rack_component_value }}
             </b-dd-item>
           </template>
@@ -83,13 +84,7 @@ export default {
   },
   computed: {
     getRackComponents() {
-      return this.$store.getters['manager/rack/component/getRackComponent'].filter((item) => item.parent_uuid === null)
-    },
-    getRackChildComponents() {
-      return this.$store.getters['manager/rack/component/getRackComponent'].filter((item) => item.parent_uuid !== null)
-    },
-    getCurrentChild() {
-      return this.getRackChildComponents.filter((item) => item.parent_uuid === this.form.rack_component_uuid)
+      return this.$store.getters['manager/rack/component/getRackComponent']
     },
     getParameters() {
       return this.$store.getters['manager/rack/parameter/getParameter']
@@ -101,8 +96,14 @@ export default {
       return {}
     },
     selectedChildRackComponent() {
-      if (this.getRackChildComponents.find((item) => item.uuid === this.form.rack_child_component_uuid)) {
-        return this.getRackChildComponents.find((item) => item.uuid === this.form.rack_child_component_uuid)
+      if (
+        this.selectedRackComponent.rack_component_childs.find(
+          (item) => item.uuid === this.form.rack_child_component_uuid,
+        )
+      ) {
+        return this.selectedRackComponent.rack_component_childs.find(
+          (item) => item.uuid === this.form.rack_child_component_uuid,
+        )
       }
       return {}
     },
@@ -126,6 +127,7 @@ export default {
       return this.$store.getters.getNewUuid(new Date())
     },
     selectRackComponent(uuid) {
+      console.warn('uuid', uuid)
       this.form.rack_component_uuid = uuid
     },
     selectRackChildComponent(uuid) {

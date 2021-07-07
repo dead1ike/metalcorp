@@ -113,6 +113,12 @@ export const state = () => ({
         sortable: true,
       },
       {
+        key: 'sub_component',
+        label: 'Подкомпонент',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
         key: 'parameter',
         label: 'Параметр',
         class: 'align-middle text-center',

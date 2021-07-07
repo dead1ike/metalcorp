@@ -37,7 +37,7 @@
           <h4>Описание:</h4>
           <span>{{ form.description }}</span>
 
-          {{ rackPrice }}<br />
+          {{ getRackComponentByUuid }}<br />
         </div>
       </div>
       <div class="d-flex flex-row-reverse p-3">
@@ -168,13 +168,6 @@ export default {
       }
       return 0
     },
-    getHeight() {
-      return _.intersection(this.getRackHeight)
-    },
-    getWidth() {
-      // return _.uniqBy(this.getRackWidth, this.getRackWidth.parameter_value)
-      return _.uniqBy(this.getRackWidth, this.getRackWidth.parameter_value)
-    },
     getRackHeight() {
       if (this.getRackComponentByUuid) {
         return this.getRackComponentByUuid.filter((item) => {
@@ -246,9 +239,6 @@ export default {
       return {}
     },
 
-    getRackParameterPrice() {
-      return this.$store.getters['price/getParameterPrice']
-    },
     getTypeByUuid() {
       return this.$store.getters['type/getTypeById'](this.typeUuid) || {}
     },

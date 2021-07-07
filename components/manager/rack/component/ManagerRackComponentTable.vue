@@ -31,7 +31,9 @@ export default {
       })
     },
     fetchComponent() {
-      this.$store.dispatch('manager/rack/component/fetchComponent')
+      this.$store.dispatch('manager/rack/component/fetchComponent').then(() => {
+        console.warn('getManagerComponentItems', this.getManagerComponentItems)
+      })
     },
   },
 }

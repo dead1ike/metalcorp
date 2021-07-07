@@ -45,7 +45,6 @@ export const mutations = {
     state.items.component = data
   },
   setRackComponent(state, data) {
-    console.warn('data', data)
     state.items.rack_component = data
   },
   setBlank2(state, data) {},
