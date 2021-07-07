@@ -1,25 +1,25 @@
 export const state = () => ({
   items: {
-    chats: [],
+    users: [],
   },
 })
 
 export const actions = {
-  fetchChats({ commit }) {
-    this.$axios.get('/api/avito/chat').then(({ data }) => {
-      commit('setChats', data.chats)
+  fetchUsers({ commit }) {
+    return this.$axios.get('/api/avito/avitoUser').then(({ data }) => {
+      commit('setUsers', data.data)
     })
   },
 }
 
 export const mutations = {
-  setChats(state, chats) {
-    state.items.chats = chats
+  setUsers(state, users) {
+    state.items.users = users
   },
 }
 
 export const getters = {
-  getChats(state) {
-    return state.items.chats
+  getUsers(state) {
+    return state.items.users
   },
 }
