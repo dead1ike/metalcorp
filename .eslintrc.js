@@ -10,7 +10,10 @@ module.exports = {
   extends: ['@nuxtjs', 'plugin:prettier/recommended', 'plugin:nuxt/recommended'],
   plugins: [],
   // add your custom rules here
-  rules: { 'no-console': 0 },
+  rules: {
+    'no-console': 0,
+    'comma-dangle': ['error', 'only-multiline'],
+  },
 
   globals: {
     _: true,
