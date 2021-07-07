@@ -10,7 +10,13 @@
         bordered
         hover
         no-border-collapse
-      ></b-table>
+      >
+        <template #cell(avatar)="data">
+          <div style="max-width: 110px">
+            <b-img :src="data.item.avatar" thumbnail></b-img>
+          </div>
+        </template>
+      </b-table>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
@@ -33,10 +39,10 @@ export default {
     getFields() {
       return [
         {
-          key: 'name',
+          key: 'avatar',
         },
         {
-          key: 'avatar',
+          key: 'name',
         },
         {
           key: 'actions',
