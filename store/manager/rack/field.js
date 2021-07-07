@@ -130,6 +130,44 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
     ],
+    managerComponent: [
+      {
+        key: 'title',
+        label: 'Название компонента',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
+    managerRackComponent: [
+      {
+        key: 'rack_title',
+        label: 'Тип стеллажа',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
+        key: 'rack_component_value',
+        label: 'Название компонента',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
+        key: 'is_constructor',
+        label: 'Состоит из комплектующих?',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
   },
   item: {},
 })
@@ -156,6 +194,12 @@ export const mutations = {
 }
 
 export const getters = {
+  getManagerRackComponentFields(state) {
+    return state.field.managerRackComponent
+  },
+  getManagerComponentFields(state) {
+    return state.field.managerComponent
+  },
   getManagerCategoryFields(state) {
     return state.field.managerCategory
   },

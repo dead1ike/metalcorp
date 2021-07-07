@@ -17,6 +17,12 @@
     <template v-if="$store.getters.getActiveManagerPriceParameterAddModal">
       <manager-rack-price-add />
     </template>
+    <template v-if="$store.getters.getActiveManagerComponentAddModal">
+      <manager-rack-component-add />
+    </template>
+    <template v-if="$store.getters.getActiveManagerRackComponentAddModal">
+      <manager-rack-type-component-add />
+    </template>
   </div>
 </template>
 
@@ -48,6 +54,16 @@ export default {
         this.$store.commit('setActiveModal', {
           modalName: 'managerRackPriceParameterAdd',
           modalStatus: false
+        })
+      } else if (modalId === 'manager-component-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerComponentAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-type-component-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerRackComponentAdd',
+          modalStatus: false,
         })
       }
     })

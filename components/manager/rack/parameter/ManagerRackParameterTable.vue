@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-table borderless striped hover :fields="getManagerParameterFields">
+    <b-table borderless striped hover :fields="getManagerParameterFields" :items="getManagerParameterItems">
       <template #cell(actions)="data">
-        <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link">
+        <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link" @click="deleteItem(data.item.uuid)">
           <b-icon icon="x-circle" variant="danger"></b-icon
         ></b-btn>
       </template>
@@ -17,8 +17,22 @@ export default {
     getManagerParameterFields() {
       return this.$store.getters['manager/rack/field/getManagerParameterFields']
     },
+    getManagerParameterItems() {
+      return this.$store.getters['manager/rack/parameter/getParameter']
+    },
   },
-
-  methods: {},
+  mounted() {
+    this.fetchParameters()
+  },
+  methods: {
+    deleteItem(uuid) {
+      this.$store.dispatch('manager/rack/parameter/deleteParameter', uuid).then(() => {
+        this.fetchParameters()
+      })
+    },
+    fetchParameters() {
+      this.$store.dispatch('manager/rack/parameter/fetchParameter')
+    },
+  },
 }
 </script>

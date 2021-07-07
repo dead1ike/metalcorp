@@ -209,6 +209,8 @@ export const state = () => ({
     managerParameterAdd: false,
     managerRackTypeParameterAdd: false,
     managerRackPriceParameterAdd: false,
+    managerComponentAdd: false,
+    managerRackComponentAdd: false,
   },
 })
 export const actions = {
@@ -224,6 +226,12 @@ export const mutations = {
   setBlank2(state, data) {},
 }
 export const getters = {
+  getActiveManagerRackComponentAddModal(state) {
+    return state.activeModals.managerRackComponentAdd
+  },
+  getActiveManagerComponentAddModal(state) {
+    return state.activeModals.managerComponentAdd
+  },
   getActiveManagerCategoryAddModal(state) {
     return state.activeModals.managerCategoryAdd
   },

@@ -49,19 +49,26 @@ export default {
           title: 'Параметры',
         },
         {
-          path: 'price',
-          title: 'Цена',
+          path: 'rack_parameter',
+          title: 'Параметр стеллажа',
         },
         {
-          path: 'type_parameter',
-          title: 'Параметр стеллажа',
+          path: 'component',
+          title: 'Компонент',
+        },
+        {
+          path: 'rack_component',
+          title: 'Компонент стеллажа',
+        },
+        {
+          path: 'price',
+          title: 'Цена',
         },
       ],
     }
   },
   methods: {
     getLinkTitle(linkPath) {
-      console.warn(this.links)
       if (this.linkPathMaps[linkPath]) {
         return this.linkPathMaps[linkPath].title
       }

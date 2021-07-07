@@ -33,13 +33,13 @@ export default {
     },
     addParameter() {
       this.$store
-        .dispatch('parameter/postParameter', {
+        .dispatch('manager/rack/parameter/postParameter', {
           title: this.form.title,
           uuid: this.getUuid(),
         })
         .then(() => {
           this.closeModal()
-          this.$store.dispatch('parameter/fetchParameter')
+          this.$store.dispatch('manager/rack/parameter/fetchParameter')
         })
     },
     closeModal() {
