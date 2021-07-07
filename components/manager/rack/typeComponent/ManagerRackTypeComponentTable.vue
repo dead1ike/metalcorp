@@ -5,11 +5,17 @@
         {{ data.item.is_constructor === false ? 'Нет' : 'Да' }}
       </template>
       <template #cell(rack_component_value)="data">
-        {{
-          data.item.child_rack_components
-            ? data.item.rack_component_value + '(' + data.item.child_rack_components.rack_component_value + ')'
-            : data.item.rack_component_value
-        }}
+        {{ data.item.rack_component_value }}
+      </template>
+      <template #cell(child)="data">
+        <div v-if="data.item.child_rack_components.length !== 0">
+          <div v-for="item in data.item.child_rack_components" :key="item.uuid">
+            {{ item.rack_component_value }}
+          </div>
+        </div>
+        <div v-else>
+          <p>Самостоятельный компонент</p>
+        </div>
       </template>
       <template #cell(actions)="data">
         <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link" @click="deleteItem(data.item.uuid)">
@@ -28,19 +34,16 @@ export default {
       return this.$store.getters['manager/rack/field/getManagerRackComponentFields']
     },
     getManagerComponentItems() {
-      return this.$store.getters['manager/rack/component/getRackComponent']
+      return this.$store.getters['manager/rack/component/getRackComponent'].filter(
+        (item) => item.parent_rack_component === null
+      )
     },
     getComponents() {
       return this.$store.getters['manager/rack/component/getComponent']
     },
-    getChildComponents() {
-      if (this.getManagerComponentItems.child_rack_components)
-        return this.getManagerComponentItems.child_rack_components
-    },
   },
   mounted() {
     this.fetchComponent()
-    console.warn(this.getManagerComponentItems)
   },
   methods: {
     deleteItem(uuid) {
@@ -49,7 +52,9 @@ export default {
       })
     },
     fetchComponent() {
-      this.$store.dispatch('manager/rack/component/fetchRackComponent')
+      this.$store.dispatch('manager/rack/component/fetchRackComponent').then(() => {
+        console.warn(this.getManagerComponentItems)
+      })
     },
   },
 }

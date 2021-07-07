@@ -33,7 +33,7 @@ export const actions = {
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
-    return this.$axios.post(`/api/rack/rack/${data.uuid}`, uploadingFile)
+    return this.$axios.put(`/api/rack/rack/${data.uuid}`, uploadingFile)
   },
 }
 export const mutations = {
@@ -44,6 +44,7 @@ export const mutations = {
     state.items.rack = data
   },
   setAddBasketProduct(state, data) {
+    console.warn('data', data)
     state.items.basketProduct.push(data)
   },
   setDelBasketProduct(state, data) {
@@ -73,7 +74,7 @@ export const getters = {
   },
   getTypesByCategoryUuid: (state) => (categoryUuid) => {
     return state.items.rack.filter((item) => {
-      return item.category.uuid === categoryUuid
+      return item.category_uuid === categoryUuid
     })
   },
   getTypeById: (state) => (typeUuid) => {
