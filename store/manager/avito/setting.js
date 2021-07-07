@@ -1,12 +1,12 @@
 export const state = () => ({
   items: {
-    settings: []
+    settings: [],
   },
   item: {
     authorization_code: {},
     token: {},
-    account: {}
-  }
+    account: {},
+  },
 })
 
 export const actions = {
@@ -15,11 +15,17 @@ export const actions = {
       commit('setSettngs', data.data)
     })
   },
+  fetchSettngToken() {
+    return this.$axios.post('/api/avito/avitoSetting/fetchToken')
+  },
+  fetchSettngAccount() {
+    return this.$axios.post('/api/avito/avitoSetting/fetchAccount')
+  },
   saveSettngs({ commit }, payload) {
     return this.$axios.put('/api/resource', {
-      ...payload
+      ...payload,
     })
-  }
+  },
 }
 
 export const mutations = {
@@ -34,7 +40,7 @@ export const mutations = {
 
     const account = settings.find(itemSetting => itemSetting.key === 'account')
     state.item.account = account && account.value ? account.value : {}
-  }
+  },
 }
 
 export const getters = {
@@ -55,5 +61,5 @@ export const getters = {
   },
   getAccount(state) {
     return _.find(state.items.settings, ['key', 'account']) || {}
-  }
+  },
 }

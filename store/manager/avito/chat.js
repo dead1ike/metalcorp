@@ -6,8 +6,13 @@ export const state = () => ({
 
 export const actions = {
   fetchChats({ commit }) {
-    this.$axios.get('/api/avito/chat').then(({ data }) => {
+    return this.$axios.get('/api/avito/chat').then(({ data }) => {
       commit('setChats', data.chats)
+    })
+  },
+  fetchChatsTemp({ commit }) {
+    return this.$axios.post('/api/avito/avitoChat/fetch').then(({ data }) => {
+      commit('setChats', data)
     })
   },
 }
