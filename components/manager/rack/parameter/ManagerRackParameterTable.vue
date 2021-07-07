@@ -31,7 +31,9 @@ export default {
       })
     },
     fetchParameters() {
-      this.$store.dispatch('manager/rack/parameter/fetchParameter')
+      this.$store.dispatch('manager/rack/parameter/fetchParameter').then(() => {
+        console.warn('getManagerParameterItems', this.getManagerParameterItems)
+      })
     },
   },
 }

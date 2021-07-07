@@ -7,6 +7,9 @@
       <template #cell(component)="data">
         {{ data.item.rack_component.rack_title + ' ' + data.item.rack_component.component.title }}
       </template>
+      <template #cell(sub_component)="data">
+        {{ data.item.rack_component.child_rack_components }}
+      </template>
       <template #cell(price)="data"> {{ data.item.price }} руб </template>
       <template #cell(actions)="data">
         <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link" @click="deleteItem(data.item)">
