@@ -144,12 +144,17 @@ export default {
           return 0
         }
       }
-
-      const summ = _.sumBy(this.getWhiteParameters(component.rack_component_parameters), item => {
-        return item.price * item.count
+      let isGroupSumm = true
+      return _.sumBy(this.getWhiteParameters(component.rack_component_parameters), item => {
+        if (item.parameter.group_uuid === groupUuid) {
+          if (isGroupSumm) {
+            isGroupSumm = false
+            return item.price * item.count
+          }
+        } else {
+          return item.price * item.count
+        }
       })
-
-      return summ
     },
     getWhiteParameters(parameters) {
       return _.filter(parameters, item => {
