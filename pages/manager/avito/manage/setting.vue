@@ -28,7 +28,7 @@
           <div>
             <b-btn
               variant="primary"
-              :disabled="getDuration(getToken.updated_at).seconds >= 0"
+              :disabled="getDuration(getToken.fetching_at).seconds >= 0"
               @click="fetchSettngToken()"
             >
               Получить новый токен
@@ -57,15 +57,15 @@
         <b-list-group-item
           class="d-flex justify-content-between align-items-center"
           :class="{
-            'bg-danger': getDuration(getToken.updated_at).seconds <= 0,
-            'bg-success': getDuration(getToken.updated_at).seconds >= 0,
+            'bg-danger': getDuration(getToken.fetching_at).seconds <= 0,
+            'bg-success': getDuration(getToken.fetching_at).seconds >= 0,
           }"
         >
           <div>Окончание действия токена</div>
           <div class="px-2"></div>
           <div>
-            Часов: {{ getDuration(getToken.updated_at).hours }}<br />
-            Минут: {{ getDuration(getToken.updated_at).minutes }}<br />
+            Часов: {{ getDuration(getToken.fetching_at).hours }}<br />
+            Минут: {{ getDuration(getToken.fetching_at).minutes }}<br />
           </div>
         </b-list-group-item>
 
@@ -75,7 +75,7 @@
           <div>
             {{
               $DateTime
-                .fromISO(getToken.updated_at)
+                .fromISO(getToken.fetching_at)
                 .setLocale('ru')
                 .toLocaleString($DateTime.DATETIME_SHORT)
             }}
@@ -230,7 +230,6 @@ export default {
       this.form.authorization_code = _.merge(this.form.authorization_code, this.getItemAuthorizationCode)
       this.form.token = _.merge(this.form.token, this.getToken.value)
       this.form.account = _.merge(this.form.account, this.getAccount.value)
-      console.warn(this.getToken.updated_at)
     },
   },
 }

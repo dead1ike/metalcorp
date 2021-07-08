@@ -5,9 +5,9 @@ export const state = () => ({
 })
 
 export const actions = {
-  fetchChats({ commit }) {
+  fetchMessages({ commit }) {
     return this.$axios.get('/api/avito/avitoMessage').then(({ data }) => {
-      commit('setChats', data.data)
+      commit('setMessages', data.data)
     })
   },
 }

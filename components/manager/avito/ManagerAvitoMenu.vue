@@ -1,9 +1,14 @@
 <template>
   <div class="w-100 overflow-hidden">
     <b-nav class="overflow-auto flex-nowrap">
-      <b-nav-item v-for="itemLink in links" :key="itemLink.name" :to="itemLink">
-        {{ getLinkTitle(itemLink.path) }}
+      <b-nav-item class="btn-light" @click="fetchAll()">
+        <b-icon-arrow-clockwise variant="primary" :animation="busy.fetchAll ? 'spin' : ''"></b-icon-arrow-clockwise>
       </b-nav-item>
+      <template v-for="itemLink in links">
+        <b-nav-item v-if="itemLink.path" :key="itemLink.name" class="btn-light" :to="itemLink">
+          {{ getLinkTitle(itemLink.path) }}
+        </b-nav-item>
+      </template>
     </b-nav>
   </div>
 </template>
@@ -21,6 +26,9 @@ export default {
   },
   data() {
     return {
+      busy: {
+        fetchAll: false,
+      },
       linkPathMaps: {
         chat: {
           title: 'Чаты',
@@ -46,6 +54,19 @@ export default {
         return this.linkPathMaps[linkPath].title
       }
       return linkPath
+    },
+    fetchAll() {
+      console.warn('fetchAll')
+      this.busy.fetchAll = true
+      Promise.all([
+        this.$store.dispatch('manager/avito/setting/fetchSettngs'),
+        this.$store.dispatch('manager/avito/item/fetchItems'),
+        this.$store.dispatch('manager/avito/user/fetchUsers'),
+        this.$store.dispatch('manager/avito/message/fetchMessages'),
+        this.$store.dispatch('manager/avito/chat/fetchChats'),
+      ]).finally(() => {
+        this.busy.fetchAll = false
+      })
     },
   },
 }

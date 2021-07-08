@@ -17,42 +17,44 @@
               <b-img :src="data.item.avito_user.avatar" thumbnail></b-img>
             </div>
             <div>
-              {{ data.item.avito_user.price_string }}
-            </div>
-            <div>
               <a :href="data.item.avito_user.url" target="_blank">{{ data.item.avito_user.name }}</a>
-            </div>
-            <div>
-              {{ data.item.avito_user.location_title }}
             </div>
           </div>
         </template>
         <template #cell(avito_item_id)="data">
-          <div>
+          <div v-if="data.item.avito_item">
             <div>
+              {{ data.item.avito_item.location_title }}
+            </div>
+            <div class="text-success">
               {{ data.item.avito_item.price_string }}
             </div>
             <div>
               <a :href="data.item.avito_item.url" target="_blank">{{ data.item.avito_item.title }}</a>
             </div>
-            <div>
-              {{ data.item.avito_item.location_title }}
-            </div>
           </div>
         </template>
-        <template #cell(last_message_content)="data">
+        <template #cell(last_message)="data">
           <div class="d-flex flex-column">
-            <div class="">
-              {{
-                $DateTime
-                  .fromISO(data.item.last_message_created_at)
-                  .setLocale('ru')
-                  .toLocaleString($DateTime.DATETIME_SHORT)
-              }}
+            <div class="d-flex">
+              <div class="flex-fill">
+                {{
+                  $DateTime
+                    .fromISO(data.item.last_message_created_at)
+                    .setLocale('ru')
+                    .toLocaleString($DateTime.DATETIME_SHORT)
+                }}
+              </div>
+              <div>
+                <template v-if="data.item.last_message.direction === 'in'">
+                  <b-icon-envelope-fill scale="1.75" animation="fade" variant="corp" class="mx-2" />
+                </template>
+                <!--                <b-icon-box-arrow-in-down-right v-else scale="1.75" variant="corp" />-->
+              </div>
               <hr />
             </div>
             <div>
-              {{ data.item.last_message_content.text }}
+              {{ data.item.last_message.content.text }}
             </div>
           </div>
         </template>
@@ -85,7 +87,7 @@ export default {
           key: 'avito_item_id',
         },
         {
-          key: 'last_message_content',
+          key: 'last_message',
         },
         {
           key: 'actions',
