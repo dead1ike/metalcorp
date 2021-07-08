@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-table hover striped borderless :fields="getManagerPriceFields" :items="getComponentPrices">
-      <!--      <template #cell(parameter)="data">-->
-      <!--        {{ data.item.parameter.title !== null ? data.item.parameter.title + ' ' + data.item.parameter_value : ' ' }}-->
-      <!--      </template>-->
+      <template #cell(parameter)="data">
+        {{ data.item.parameter.title !== null ? data.item.parameter.title + ' ' + data.item.parameter_value : ' ' }}
+      </template>
       <template #cell(component)="data">
         {{ data.item }}
       </template>
@@ -30,12 +30,22 @@ export default {
     getManagerPriceFields() {
       return this.$store.getters['manager/rack/field/getManagerPriceFields']
     },
+    getRacks() {
+      return this.$store.getters['type/getTypes']
+    },
   },
   mounted() {
     this.$store.dispatch('manager/rack/price/fetchComponentPrice')
+    this.$store.dispatch('type/fetchTypes')
     console.warn('getComponentPrices', this.getComponentPrices)
   },
   methods: {
+    showRackTitle(uuid) {
+      if (this.getRacks.find(item => item.uuid === uuid)) {
+        return this.getRacks.find(item => item.uuid === uuid)
+      }
+      return {}
+    },
     deleteItem(item) {
       this.$store.dispatch('manager/rack/price/deletePriceItem', item.uuid).then(() => {
         this.$store.dispatch('manager/rack/price/fetchComponentPrice')

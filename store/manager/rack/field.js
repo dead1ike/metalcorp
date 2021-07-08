@@ -113,11 +113,17 @@ export const state = () => ({
         sortable: true,
       },
       {
-        key: 'sub_component',
-        label: 'Подкомпонент',
+        key: 'count',
+        label: 'Количество на стеллаж',
         class: 'align-middle text-center',
         sortable: true,
       },
+      // {
+      //   key: 'sub_component',
+      //   label: 'Подкомпонент',
+      //   class: 'align-middle text-center',
+      //   sortable: true,
+      // },
       {
         key: 'parameter',
         label: 'Параметр',
@@ -161,6 +167,11 @@ export const state = () => ({
         label: 'Название компонента',
         class: 'align-middle text-center',
         sortable: true,
+      },
+      {
+        key: 'rack_component_parameters',
+        label: 'Параметры',
+        class: 'align-middle text-center',
       },
       {
         key: 'is_constructor',

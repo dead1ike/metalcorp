@@ -30,21 +30,22 @@
           variant="corp"
           :text="
             selectedRackComponent.rack_component_value
-              ? selectedRackComponent.rack_title + ' ' + selectedRackComponent.rack_component_value
+              ? selectedRackComponent.rack.title + ' ' + selectedRackComponent.rack_component_value
               : 'Выберите'
           "
         >
           <template v-for="item in getRackComponents">
             <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectRackComponent(item.uuid)">
-              {{ item.rack_title + ' ' + item.rack_component_value }}
+              {{ item.rack.title + ' ' + item.rack_component_value }}
             </b-dd-item>
           </template>
         </b-dd>
       </div>
     </div>
     <div class="d-flex flex-column my-2">
-      <h6>Введите название комплектующего:</h6>
+      <h6>Введите название компонента:</h6>
       <b-input v-model="form.title"></b-input>
+
       <h5 class="my-2">Состоит из комплектующих?</h5>
       <div class="d-flex flex-row mt-2">
         <b-icon
@@ -82,28 +83,28 @@ export default {
     },
     getRackComponents() {
       return this.$store.getters['manager/rack/component/getRackComponent']
-        .filter((item) => item.is_constructor === true)
-        .filter((item) => item.rack_uuid === this.form.rack_type_uuid)
+        .filter(item => item.is_constructor === true)
+        .filter(item => item.rack_uuid === this.form.rack_type_uuid)
     },
     getComponents() {
       return this.$store.getters['manager/rack/component/getComponent']
     },
 
     selectedRack() {
-      if (this.getRacks.find((item) => item.uuid === this.form.rack_type_uuid)) {
-        return this.getRacks.find((item) => item.uuid === this.form.rack_type_uuid)
+      if (this.getRacks.find(item => item.uuid === this.form.rack_type_uuid)) {
+        return this.getRacks.find(item => item.uuid === this.form.rack_type_uuid)
       }
       return {}
     },
     selectedComponent() {
-      if (this.getComponents.find((item) => item.uuid === this.form.component_uuid)) {
-        return this.getComponents.find((item) => item.uuid === this.form.component_uuid)
+      if (this.getComponents.find(item => item.uuid === this.form.component_uuid)) {
+        return this.getComponents.find(item => item.uuid === this.form.component_uuid)
       }
       return {}
     },
     selectedRackComponent() {
-      if (this.getRackComponents.find((item) => item.uuid === this.form.rack_component_uuid)) {
-        return this.getRackComponents.find((item) => item.uuid === this.form.rack_component_uuid)
+      if (this.getRackComponents.find(item => item.uuid === this.form.rack_component_uuid)) {
+        return this.getRackComponents.find(item => item.uuid === this.form.rack_component_uuid)
       }
       return {}
     },

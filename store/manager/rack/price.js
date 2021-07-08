@@ -10,6 +10,7 @@ export const actions = {
     commit('setComponentPrice', data.data)
   },
   postComponentPrice({ commit }, data) {
+    console.warn('data', data)
     return this.$axios.post('/api/rack/rackComponentParameter', {
       ...data,
     })
@@ -30,8 +31,8 @@ export const getters = {
   getComponentPrice(state) {
     return state.items.price
   },
-  getComponentPriceByUuid: (state) => (rackUuid) => {
-    return state.items.price.filter((item) => {
+  getComponentPriceByUuid: state => rackUuid => {
+    return state.items.price.filter(item => {
       return item.rack_component.rack_uuid === rackUuid
     })
   },
