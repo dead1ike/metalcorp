@@ -10,10 +10,13 @@ export const actions = {
       commit('setChats', data.data)
     })
   },
-  fetchChatsTemp({ commit }) {
-    return this.$axios.post('/api/avito/avitoChat/fetch').then(({ data }) => {
-      // commit('setChats', data)
+  fetchMessageChat({ commit }, payload) {
+    return this.$axios.post('/api/avito/avitoMessage/fetchChat', {
+      ...payload,
     })
+  },
+  fetchAvitoChats({ commit }) {
+    return this.$axios.post('/api/avito/avitoChat/fetch')
   },
 }
 

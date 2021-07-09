@@ -14,7 +14,7 @@
         <template #cell(avito_user_id)="data">
           <div v-if="data.item.avito_user">
             <div>
-              <b-img :src="data.item.avito_user.avatar" thumbnail></b-img>
+              <b-avatar size="6rem" rounded :src="data.item.avito_user.avatar"></b-avatar>
             </div>
             <div>
               <a :href="data.item.avito_user.url" target="_blank">{{ data.item.avito_user.name }}</a>
@@ -58,6 +58,11 @@
             </div>
           </div>
         </template>
+        <template #cell(actions)="data">
+          <b-btn class="btn-icon" variant="link" @click="fetchMessageChat(data.item)">
+            <b-icon-download></b-icon-download>
+          </b-btn>
+        </template>
       </b-table>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
@@ -65,7 +70,7 @@
         <b-pagination pills :total-rows="100" class="p-2 m-1 "></b-pagination>
       </div>
       <div>
-        <b-btn variant="primary" class="py-2 m-1" @click="fetchChats()">Получить чаты</b-btn>
+        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAvitoChats()">Обновить с Avito</b-btn>
       </div>
     </div>
   </div>
@@ -99,9 +104,16 @@ export default {
     fetchChats() {
       this.$store.dispatch('manager/avito/chat/fetchChats')
     },
-    // fetchChatsTemp() {
-    //   this.$store.dispatch('manager/avito/chat/fetchChatsTemp')
-    // },
+    fetchMessageChat(itemChat) {
+      console.warn(itemChat)
+      this.$store.dispatch('manager/avito/chat/fetchMessageChat', {
+        chat_id: itemChat.id,
+        item_id: itemChat.avito_item_id,
+      })
+    },
+    fetchAvitoChats() {
+      this.$store.dispatch('manager/avito/chat/fetchAvitoChats').then(() => this.fetchChats())
+    },
   },
 }
 </script>

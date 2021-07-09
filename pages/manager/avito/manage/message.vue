@@ -10,7 +10,42 @@
         bordered
         hover
         no-border-collapse
-      ></b-table>
+      >
+        <template #cell(author_id)="data">
+          <div v-if="data.item.avito_user">
+            <div>
+              <b-avatar size="6rem" rounded :src="data.item.avito_user.avatar"></b-avatar>
+            </div>
+            <div>
+              <a :href="data.item.avito_user.url" target="_blank">{{ data.item.avito_user.name }}</a>
+            </div>
+          </div>
+        </template>
+        <template #cell(content)="data">
+          <div class="d-flex flex-column">
+            <div class="d-flex">
+              <div class="flex-fill">
+                {{
+                  $DateTime
+                    .fromISO(data.item.created_at)
+                    .setLocale('ru')
+                    .toLocaleString($DateTime.DATETIME_SHORT)
+                }}
+              </div>
+              <div>
+                <!--                <template v-if="data.item.last_message.direction === 'in'">-->
+                <!--                  <b-icon-envelope-fill scale="1.75" animation="fade" variant="corp" class="mx-2" />-->
+                <!--                </template>-->
+                <!--                <b-icon-box-arrow-in-down-right v-else scale="1.75" variant="corp" />-->
+              </div>
+              <hr />
+            </div>
+            <div>
+              {{ data.item.content.text }}
+            </div>
+          </div>
+        </template>
+      </b-table>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
@@ -32,9 +67,9 @@ export default {
     },
     getFields() {
       return [
-        {
-          key: 'avito_chat_id',
-        },
+        // {
+        //   key: 'avito_chat_id',
+        // },
         {
           key: 'author_id',
         },
