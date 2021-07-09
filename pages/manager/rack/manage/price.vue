@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-btn variant="corp" size="sm" block @click="managerPriceAdd()">Добавить цену для параметра</b-btn>
+      <b-btn variant="corp" size="sm" @click="managerPriceAdd()">Добавить цену для параметра</b-btn>
     </div>
     <div>
       <manager-rack-price-table />

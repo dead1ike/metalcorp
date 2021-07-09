@@ -5,7 +5,7 @@
         {{ data.item.parameter.title !== null ? data.item.parameter.title + ' ' + data.item.parameter_value : ' ' }}
       </template>
       <template #cell(component)="data">
-        {{ data.item }}
+        {{ showRackComponents(data.item.rack_component_uuid).rack_component_value }}
       </template>
       <!--      <template #cell(sub_component)="data">-->
       <!--        {{ data.item.rack_component.child_rack_components }}-->
@@ -30,19 +30,20 @@ export default {
     getManagerPriceFields() {
       return this.$store.getters['manager/rack/field/getManagerPriceFields']
     },
-    getRacks() {
-      return this.$store.getters['type/getTypes']
+    getRackComponents() {
+      return this.$store.getters['manager/rack/component/getRackComponent']
     },
   },
   mounted() {
     this.$store.dispatch('manager/rack/price/fetchComponentPrice')
     this.$store.dispatch('type/fetchTypes')
     console.warn('getComponentPrices', this.getComponentPrices)
+    console.warn('getRackComponents', this.getRackComponents)
   },
   methods: {
-    showRackTitle(uuid) {
-      if (this.getRacks.find(item => item.uuid === uuid)) {
-        return this.getRacks.find(item => item.uuid === uuid)
+    showRackComponents(uuid) {
+      if (this.getRackComponents.find(item => item.uuid === uuid)) {
+        return this.getRackComponents.find(item => item.uuid === uuid)
       }
       return {}
     },

@@ -1,11 +1,32 @@
 <template>
   <div class="h-100 w-100 overflow-auto jus">
-    <div class="d-flex flex-row justify-content-between">
-      <pre class=" overflow-auto" style="max-height: 800px"> {{ getRackParamsGroup }}</pre>
-      <div>
+    <div class=" d-flex flex-row justify-content-around">
+      <!--      <pre class=" overflow-auto" style="max-height: 800px"> {{ getRackParamsGroup }}</pre>-->
+      <div class="p-5">
+        <div class="my-3">
+          <h3>{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h3>
+        </div>
+        <div>
+          <b-img :src="getTypeByUuid.image"></b-img>
+        </div>
+      </div>
+      <div class="p-5 h-100">
+        <div class="my-3">
+          <h3>Описание:</h3>
+          <h4>{{ getTypeByUuid.description }}</h4>
+        </div>
+        <div class="my-3">
+          <h4>Нагрузки:</h4>
+          <h5>{{ 'Нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
+          <h5>{{ 'Нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>
+          <h5>{{ 'Нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
+        </div>
+      </div>
+      <div class="p-5">
         <div v-for="(itemParameters, indexGroup) in getRackParamsGroup" :key="itemParameters.parameter_uuid">
           <label> {{ getLabel(itemParameters) }}</label>
           <b-dd
+            variant="corp"
             :text="
               getGroupParamTitle(indexGroup).parameter_value
                 ? getGroupParamTitle(indexGroup).parameter_value
@@ -35,6 +56,7 @@ export default {
   data() {
     return {
       selectedGroupParams: [],
+      rack_count: '1',
     }
   },
   computed: {
@@ -77,6 +99,7 @@ export default {
   },
   created() {
     this.$store.dispatch('type/fetchTypes').then(() => {
+      // console.warn('Rack', this.getTypeByUuid)
       // console.warn('getTypeByUuid', this.getTypeByUuid.rack_components)
     })
   },
@@ -99,31 +122,51 @@ export default {
       return _.reduce(
         components,
         (params, item) => {
+          console.warn(item.rack_component_parameters)
           item.rack_component_parameters.forEach(itemParam => {
-            params.push({
-              parameter_uuid: itemParam.parameter_uuid,
-              parameter_value: itemParam.parameter_value,
-              parameter_title: itemParam.parameter.title,
-              uuid: itemParam.uuid,
-            })
+            if (itemParam.parameter.slug !== 'price')
+              params.push({
+                parameter_uuid: itemParam.parameter_uuid,
+                parameter_value: itemParam.parameter_value,
+                parameter_title: itemParam.parameter.title,
+                uuid: itemParam.uuid,
+              })
           })
           if (item.is_constructor === true) {
-            params = _.concat(params, this.getRackParams(item.component_childs))
+            params = _.concat(params, this.getRackParams(item.rack_component_childs))
           }
           return params
         },
         [],
       )
     },
-    priceManager(components) {
+    priceManager(components, isChild = false) {
       return parseInt(
         _.reduce(
           components,
           (sum, item) => {
-            return (
-              sum +
-              (item.is_constructor === true ? this.priceManager(item.rack_component_childs) : this.priceWorker(item))
-            )
+            if (sum === false) return
+            let sumComponent = 0
+            if (item.is_constructor === true) {
+              sumComponent = this.priceManager(item.rack_component_childs, true)
+              if (sumComponent === 0) {
+                sum = false
+              } else {
+                sum = sum + sumComponent
+              }
+            } else {
+              sumComponent = this.priceWorker(item)
+              sum = sum + sumComponent
+            }
+            console.warn('item', item.rack_component_value, sumComponent)
+
+            // return (
+            //   sum +
+            //   (item.is_constructor === true
+            //     ? this.priceManager(item.rack_component_childs, true)
+            //     : this.priceWorker(item))
+            // )
+            return sum
           },
           0,
         ),
@@ -138,22 +181,35 @@ export default {
         return 0
       }
 
+      // console.warn('params.length', component.rack_component_parameters)
+      // console.warn('params.length', this.getWhiteParameters(component.rack_component_parameters))
+      // if (
+      //   component.rack_component_parameters.length !==
+      //   this.getWhiteParameters(component.rack_component_parameters).length
+      // ) {
+      //   return 0
+      // }
       const paramFilter = _.filter(component.rack_component_parameters, item => item.parameter.group_uuid === groupUuid)
       if (paramFilter.length > 1) {
         if (paramFilter.length !== this.getWhiteParameters(paramFilter).length) {
           return 0
         }
       }
-      let isGroupSumm = true
+      const isGroupSumm = true
       return _.sumBy(this.getWhiteParameters(component.rack_component_parameters), item => {
-        if (item.parameter.group_uuid === groupUuid) {
-          if (isGroupSumm) {
-            isGroupSumm = false
-            return item.price * item.count
-          }
+        // if (item.parameter.group_uuid === groupUuid) {
+        //   if (isGroupSumm) {
+        //     isGroupSumm = false
+        //     return item.price * item.count
+        //   }
+        // } else {
+        console.warn(item)
+        if (item.parameter.slug === 'price') {
+          return parseInt(item.parameter_value) * item.count
         } else {
-          return item.price * item.count
+          return 0
         }
+        // }
       })
     },
     getWhiteParameters(parameters) {

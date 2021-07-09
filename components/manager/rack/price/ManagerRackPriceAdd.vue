@@ -5,6 +5,16 @@
     </template>
     <div class="d-flex flex-row">
       <div class="mx-2">
+        <h6>Стеллаж</h6>
+        <b-dd variant="corp" :text="selectedRack.title ? selectedRack.title : 'Выберите'">
+          <template v-for="item in getRacks">
+            <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectRack(item.uuid)">
+              {{ item.title }}
+            </b-dd-item>
+          </template>
+        </b-dd>
+      </div>
+      <div class="mx-2">
         <h6>Компонент</h6>
         <b-dd
           variant="corp"
@@ -21,23 +31,23 @@
           </template>
         </b-dd>
       </div>
-      <!--      <div v-if="selectedRackComponent.is_constructor === true" class="mx-2">-->
-      <!--        <h6>Комплектующий</h6>-->
-      <!--        <b-dd-->
-      <!--          variant="corp"-->
-      <!--          :text="-->
-      <!--            selectedChildRackComponent.rack_component_value-->
-      <!--              ? selectedChildRackComponent.rack_component_value-->
-      <!--              : 'Выберите'-->
-      <!--          "-->
-      <!--        >-->
-      <!--          <template v-for="item in selectedRackComponent.rack_component_childs">-->
-      <!--            <b-dd-item :key="item.uuid" @click="selectRackChildComponent(item.uuid)">-->
-      <!--              {{ item.rack_component_value }}-->
-      <!--            </b-dd-item>-->
-      <!--          </template>-->
-      <!--        </b-dd>-->
-      <!--      </div>-->
+      <div v-if="selectedRackComponent.is_constructor === true" class="mx-2">
+        <h6>Комплектующий</h6>
+        <b-dd
+          variant="corp"
+          :text="
+            selectedChildRackComponent.rack_component_value
+              ? selectedChildRackComponent.rack_component_value
+              : 'Выберите'
+          "
+        >
+          <template v-for="item in selectedRackComponent.rack_component_childs">
+            <b-dd-item :key="item.uuid" @click="selectRackChildComponent(item.uuid)">
+              {{ item.rack_component_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
+      </div>
       <div class="mx-2">
         <h6>Параметр</h6>
         <b-dd variant="corp" :text="selectedParameter.title ? selectedParameter.title : 'Выберите'">
@@ -80,6 +90,7 @@ export default {
         price: '',
         parameter_value: '',
         parameter_uuid: null,
+        rack_type_uuid: null,
         rack_component_uuid: null,
         rack_child_component_uuid: null,
         count: '1',
@@ -96,7 +107,9 @@ export default {
       return null
     },
     getRackComponents() {
-      return this.$store.getters['manager/rack/component/getRackComponent']
+      return this.$store.getters['manager/rack/component/getRackComponent'].filter(
+        item => item.rack_uuid === this.form.rack_type_uuid,
+      )
     },
     getParameters() {
       return this.$store.getters['manager/rack/parameter/getParameter']
@@ -123,15 +136,28 @@ export default {
       }
       return {}
     },
+    selectedRack() {
+      if (this.getRacks.find(item => item.uuid === this.form.rack_type_uuid)) {
+        return this.getRacks.find(item => item.uuid === this.form.rack_type_uuid)
+      }
+      return {}
+    },
+    getRacks() {
+      return this.$store.getters['type/getTypes']
+    },
   },
   mounted() {
     this.$bvModal.show('manager-price-parameter-add')
+    this.$store.dispatch('type/fetchTypes')
     this.$store.dispatch('manager/rack/parameter/fetchParameter')
     this.$store
       .dispatch('manager/rack/component/fetchRackComponent')
       .then(() => console.warn('asdasdasd', this.getRackComponents))
   },
   methods: {
+    selectRack(uuid) {
+      this.form.rack_type_uuid = uuid
+    },
     getUuid() {
       return this.$store.getters.getNewUuid(new Date())
     },
