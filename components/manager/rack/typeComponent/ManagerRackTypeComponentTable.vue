@@ -10,10 +10,20 @@
       <template #cell(rack_component_value)="data">
         {{ data.item.rack_component_value }}
       </template>
+      <template #cell(rack_component_parameters)="data">
+        <table>
+          <tr v-for="item in data.item.rack_component_parameters" :key="item.uuid">
+            <td>{{ item.parameter.title }}</td>
+            <td>{{ item.parameter_value }}</td>
+          </tr>
+        </table>
+      </template>
       <template #cell(child)="data">
         <div v-if="data.item.rack_component_childs.length !== 0">
           <div v-for="item in data.item.rack_component_childs" :key="item.uuid">
-            {{ item.rack_component_value }}
+            <div v-for="parameter in item.rack_component_parameters" :key="parameter.uuid">
+              {{ item.rack_component_value + ' ' + parameter.parameter_value + ' ' + parameter.price + 'руб' }}
+            </div>
           </div>
         </div>
         <div v-else>
@@ -41,6 +51,9 @@ export default {
     },
     getComponents() {
       return this.$store.getters['manager/rack/component/getComponent']
+    },
+    getComponentsPrice() {
+      return this.getManagerComponentItems
     },
   },
   mounted() {

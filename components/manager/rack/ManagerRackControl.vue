@@ -41,32 +41,6 @@ export default {
           title: 'Цена',
         },
       },
-      items: [
-        {
-          path: 'manage/category',
-          title: 'Категория',
-        },
-        {
-          path: 'manage/type',
-          title: 'Тип',
-        },
-        {
-          path: 'manage/parameter',
-          title: 'Параметры',
-        },
-        {
-          path: 'manage/component',
-          title: 'Компонент',
-        },
-        {
-          path: 'manage/rack_component',
-          title: 'Компонент стеллажа',
-        },
-        {
-          path: 'manage/price',
-          title: 'Цена',
-        },
-      ],
     }
   },
   methods: {

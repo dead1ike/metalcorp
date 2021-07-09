@@ -1,7 +1,7 @@
 <template>
   <b-modal id="manager-price-parameter-add" size="lg" class="w-100 h-100">
     <template #modal-header>
-      <h5>Добавление цены для комплектующего:</h5>
+      <h5>Добавление цены для компонента:</h5>
     </template>
     <div class="d-flex flex-row">
       <div class="mx-2">
@@ -21,24 +21,23 @@
           </template>
         </b-dd>
       </div>
-      <div v-if="selectedRackComponent.is_constructor === true" class="mx-2">
-        <h6>Комплектующий</h6>
-        {{ selectedRackComponent }}
-        <b-dd
-          variant="corp"
-          :text="
-            selectedRackComponent.rack_component_childs.length > 0
-              ? selectedChildRackComponent.rack_component_value
-              : 'Выберите'
-          "
-        >
-          <template v-for="item in selectedRackComponent.rack_component_childs">
-            <b-dd-item :key="item.uuid" @click="selectRackChildComponent(item.uuid)">
-              {{ item.rack_component_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
+      <!--      <div v-if="selectedRackComponent.is_constructor === true" class="mx-2">-->
+      <!--        <h6>Комплектующий</h6>-->
+      <!--        <b-dd-->
+      <!--          variant="corp"-->
+      <!--          :text="-->
+      <!--            selectedChildRackComponent.rack_component_value-->
+      <!--              ? selectedChildRackComponent.rack_component_value-->
+      <!--              : 'Выберите'-->
+      <!--          "-->
+      <!--        >-->
+      <!--          <template v-for="item in selectedRackComponent.rack_component_childs">-->
+      <!--            <b-dd-item :key="item.uuid" @click="selectRackChildComponent(item.uuid)">-->
+      <!--              {{ item.rack_component_value }}-->
+      <!--            </b-dd-item>-->
+      <!--          </template>-->
+      <!--        </b-dd>-->
+      <!--      </div>-->
       <div class="mx-2">
         <h6>Параметр</h6>
         <b-dd variant="corp" :text="selectedParameter.title ? selectedParameter.title : 'Выберите'">
@@ -52,6 +51,10 @@
     </div>
 
     <div class="d-flex flex-column">
+      <div>
+        <h6>Введите количество компонентов на стеллаж::</h6>
+        <b-input v-model="form.count"></b-input>
+      </div>
       <div>
         <h6>Введите значение параметра</h6>
         <b-input v-model="form.parameter_value"></b-input>
@@ -79,10 +82,19 @@ export default {
         parameter_uuid: null,
         rack_component_uuid: null,
         rack_child_component_uuid: null,
+        count: '1',
       },
     }
   },
   computed: {
+    getSelectedComponentUuid() {
+      if (this.form.rack_child_component_uuid !== null) {
+        return this.form.rack_child_component_uuid
+      } else if (this.form.rack_component_uuid !== null) {
+        return this.form.rack_component_uuid
+      }
+      return null
+    },
     getRackComponents() {
       return this.$store.getters['manager/rack/component/getRackComponent']
     },
@@ -90,26 +102,24 @@ export default {
       return this.$store.getters['manager/rack/parameter/getParameter']
     },
     selectedRackComponent() {
-      if (this.getRackComponents.find((item) => item.uuid === this.form.rack_component_uuid)) {
-        return this.getRackComponents.find((item) => item.uuid === this.form.rack_component_uuid)
+      if (this.getRackComponents.find(item => item.uuid === this.form.rack_component_uuid)) {
+        return this.getRackComponents.find(item => item.uuid === this.form.rack_component_uuid)
       }
       return {}
     },
     selectedChildRackComponent() {
       if (
-        this.selectedRackComponent.rack_component_childs.find(
-          (item) => item.uuid === this.form.rack_child_component_uuid,
-        )
+        this.selectedRackComponent.rack_component_childs.find(item => item.uuid === this.form.rack_child_component_uuid)
       ) {
         return this.selectedRackComponent.rack_component_childs.find(
-          (item) => item.uuid === this.form.rack_child_component_uuid,
+          item => item.uuid === this.form.rack_child_component_uuid,
         )
       }
       return {}
     },
     selectedParameter() {
-      if (this.getParameters.find((item) => item.uuid === this.form.parameter_uuid)) {
-        return this.getParameters.find((item) => item.uuid === this.form.parameter_uuid)
+      if (this.getParameters.find(item => item.uuid === this.form.parameter_uuid)) {
+        return this.getParameters.find(item => item.uuid === this.form.parameter_uuid)
       }
       return {}
     },
@@ -120,7 +130,6 @@ export default {
     this.$store
       .dispatch('manager/rack/component/fetchRackComponent')
       .then(() => console.warn('asdasdasd', this.getRackComponents))
-    console.warn('asdasdasd', this.getRackComponents)
   },
   methods: {
     getUuid() {
@@ -143,13 +152,15 @@ export default {
           price: this.form.price,
           parameter_value: this.form.parameter_value,
           parameter_uuid: this.form.parameter_uuid,
-          rack_component_uuid: this.form.rack_component_uuid,
+          rack_component_uuid: this.getSelectedComponentUuid,
+          count: this.form.count,
           uuid: this.getUuid(),
         })
         .then(() => {
           this.$store.dispatch('manager/rack/price/fetchComponentPrice')
           this.form.price = ''
           this.form.parameter_value = ''
+          this.form.count = '1'
           this.form.parameter_uuid = null
           this.form.rack_component_uuid = null
           this.closeModal()
