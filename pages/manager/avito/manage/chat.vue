@@ -1,6 +1,36 @@
 <template>
   <div class="d-flex flex-column overflow-hidden">
     <div class="overflow-hidden h-100">
+      <b-list-group class="overflow-auto h-100">
+        <template v-for="itemChat in getChats">
+          <b-list-group-item :key="itemChat.id">
+            <div>
+              <div>
+                <div class="text-success">
+                  {{ itemChat.avito_item.location_title }} - {{ itemChat.avito_item.price_string }}
+                  <a :href="itemChat.avito_item.url" target="_blank">{{ itemChat.avito_item.title }}</a>
+                </div>
+              </div>
+
+              <div>
+                <div>
+                  <b-avatar size="6rem" rounded :src="itemChat.avito_user.avatar"></b-avatar>
+                </div>
+                <div>
+                  {{ itemChat }}
+                </div>
+                <div>
+                  {{ itemChat }}
+                </div>
+              </div>
+            </div>
+          </b-list-group-item>
+        </template>
+        <!--        <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>-->
+        <!--        <b-list-group-item>Morbi leo risus</b-list-group-item>-->
+        <!--        <b-list-group-item>Porta ac consectetur ac</b-list-group-item>-->
+        <!--        <b-list-group-item>Vestibulum at eros</b-list-group-item>-->
+      </b-list-group>
       <b-table
         striped
         :items="getChats"
@@ -11,16 +41,6 @@
         hover
         no-border-collapse
       >
-        <template #cell(avito_user_id)="data">
-          <div v-if="data.item.avito_user">
-            <div>
-              <b-avatar size="6rem" rounded :src="data.item.avito_user.avatar"></b-avatar>
-            </div>
-            <div>
-              <a :href="data.item.avito_user.url" target="_blank">{{ data.item.avito_user.name }}</a>
-            </div>
-          </div>
-        </template>
         <template #cell(avito_item_id)="data">
           <div v-if="data.item.avito_item">
             <div>
@@ -54,7 +74,11 @@
               <hr />
             </div>
             <div>
-              {{ data.item.last_message.content.text }}
+              <div>
+                <b-avatar size="4rem" :src="data.item.avito_user.avatar" class="mr-2"></b-avatar>
+
+                {{ data.item.last_message.content.text }}
+              </div>
             </div>
           </div>
         </template>
@@ -85,9 +109,9 @@ export default {
     },
     getFields() {
       return [
-        {
-          key: 'avito_user_id',
-        },
+        // {
+        //   key: 'avito_user_id',
+        // },
         {
           key: 'avito_item_id',
         },
