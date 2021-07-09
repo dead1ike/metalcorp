@@ -10,7 +10,15 @@
         bordered
         hover
         no-border-collapse
-      ></b-table>
+      >
+        <template #cell(title)="data">
+          <div>
+            <div>
+              <a :href="data.item.url" target="_blank">{{ data.item.title }}</a>
+            </div>
+          </div>
+        </template>
+      </b-table>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
@@ -35,12 +43,12 @@ export default {
         {
           key: 'title',
         },
-        {
-          key: 'user_id',
-        },
-        {
-          key: 'status_id',
-        },
+        // {
+        //   key: 'user_id',
+        // },
+        // {
+        //   key: 'status_id',
+        // },
         {
           key: 'price_string',
         },
