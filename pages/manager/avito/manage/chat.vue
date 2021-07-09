@@ -3,24 +3,52 @@
     <div class="overflow-hidden h-100">
       <b-list-group class="overflow-auto h-100">
         <template v-for="itemChat in getChats">
-          <b-list-group-item :key="itemChat.id">
+          <b-list-group-item :key="itemChat.id" class="btn-light">
             <div>
               <div>
-                <div class="text-success">
-                  {{ itemChat.avito_item.location_title }} - {{ itemChat.avito_item.price_string }}
+                <div>
+                  <span class="text-secondary">{{ itemChat.avito_item.location_title }}: </span>
+                  <span class="text-success">{{ itemChat.avito_item.price_string }} - </span>
                   <a :href="itemChat.avito_item.url" target="_blank">{{ itemChat.avito_item.title }}</a>
                 </div>
               </div>
 
-              <div>
-                <div>
-                  <b-avatar size="6rem" rounded :src="itemChat.avito_user.avatar"></b-avatar>
+              <div class="d-flex">
+                <div class="py-2">
+                  <b-avatar
+                    size="6rem"
+                    :src="
+                      itemChat.avito_user.avatar !== 'https://static.avito.ru/stub_avatars/_/14_256x256.png'
+                        ? itemChat.avito_user.avatar
+                        : null
+                    "
+                    :text="itemChat.avito_user.name.substr(0, 2)"
+                  ></b-avatar>
                 </div>
-                <div>
-                  {{ itemChat }}
-                </div>
-                <div>
-                  {{ itemChat }}
+                <div class="p-2 w-100">
+                  <div class="border-bottom">
+                    <a :href="itemChat.avito_user.url" target="_blank">{{ itemChat.avito_user.name }}</a>
+                    <span> | </span>
+                    {{
+                      $DateTime
+                        .fromISO(itemChat.last_message_created_at)
+                        .setLocale('ru')
+                        .toLocaleString($DateTime.DATETIME_SHORT)
+                    }}
+                  </div>
+                  <div class="p-2">
+                    {{ itemChat.last_message.content.text }}
+                    <div class="d-flex">
+                      <div class="flex-fill">
+                        <b-textarea v-model="itemChat.textOutMessage" size="sm"></b-textarea>
+                      </div>
+                      <div class="m-1">
+                        <b-btn class="btn-icon" variant="primary" @click="sendMessageChat(itemChat)">
+                          <b-icon-forward></b-icon-forward>
+                        </b-btn>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,7 +133,7 @@ export default {
   layout: 'manager',
   computed: {
     getChats() {
-      return this.$store.getters['manager/avito/chat/getChats']
+      return _.merge([], this.$store.getters['manager/avito/chat/getChats'])
     },
     getFields() {
       return [
@@ -127,6 +155,13 @@ export default {
   methods: {
     fetchChats() {
       this.$store.dispatch('manager/avito/chat/fetchChats')
+    },
+    sendMessageChat(itemChat) {
+      console.warn('itemChat', itemChat)
+      this.$store.dispatch('manager/avito/chat/sendMessageChat', {
+        chat_id: itemChat.id,
+        text: itemChat.textOutMessage,
+      })
     },
     fetchMessageChat(itemChat) {
       console.warn(itemChat)

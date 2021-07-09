@@ -15,6 +15,11 @@ export const actions = {
       ...payload,
     })
   },
+  sendMessageChat({ commit }, payload) {
+    return this.$axios.post('/api/avito/avitoMessage/sendMessageChat', {
+      ...payload,
+    })
+  },
   fetchAvitoChats({ commit }) {
     return this.$axios.post('/api/avito/avitoChat/fetch')
   },

@@ -48,6 +48,9 @@ export default {
       },
     }
   },
+  mounted() {
+    this.fetchAll()
+  },
   methods: {
     getLinkTitle(linkPath) {
       if (this.linkPathMaps[linkPath]) {
