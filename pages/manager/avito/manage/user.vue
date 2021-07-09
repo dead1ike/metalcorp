@@ -12,8 +12,8 @@
         no-border-collapse
       >
         <template #cell(avatar)="data">
-          <div style="max-width: 110px">
-            <b-img :src="data.item.avatar" thumbnail></b-img>
+          <div>
+            <b-avatar size="6rem" rounded :src="data.item.avatar"></b-avatar>
           </div>
         </template>
       </b-table>
