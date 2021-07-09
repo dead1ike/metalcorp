@@ -84,7 +84,6 @@ export default {
       set(payload) {
         // const selectedGroupParams = Object.assign({}, this.selectedGroupParams)
         // selectedGroupParams[payload.key] = payload.value
-        // console.warn('selectedGroupParams', selectedGroupParams)
         // Object.assign(this.selectedGroupParams, selectedGroupParams)
         const index = this.selectedGroupParams.findIndex(item => {
           return item.parameter_uuid === payload.value.parameter_uuid
@@ -98,10 +97,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('type/fetchTypes').then(() => {
-      // console.warn('Rack', this.getTypeByUuid)
-      // console.warn('getTypeByUuid', this.getTypeByUuid.rack_components)
-    })
+    this.$store.dispatch('type/fetchTypes').then(() => {})
   },
   methods: {
     selectParameter(indexGroup, itemParameter) {
@@ -122,7 +118,6 @@ export default {
       return _.reduce(
         components,
         (params, item) => {
-          console.warn(item.rack_component_parameters)
           item.rack_component_parameters.forEach(itemParam => {
             if (itemParam.parameter.slug !== 'price')
               params.push({
@@ -158,7 +153,6 @@ export default {
               sumComponent = this.priceWorker(item)
               sum = sum + sumComponent
             }
-            console.warn('item', item.rack_component_value, sumComponent)
 
             // return (
             //   sum +
@@ -173,7 +167,7 @@ export default {
       )
     },
     priceWorker(component) {
-      const groupUuid = '5252a4ed-979c-4206-8fcf-7dae42627fe1'
+      // const groupUuid = '5252a4ed-979c-4206-8fcf-7dae42627fe1'
       if (
         component.rack_component_parameters.length !==
         this.getWhiteParameters(component.rack_component_parameters).length
@@ -181,36 +175,38 @@ export default {
         return 0
       }
 
-      // console.warn('params.length', component.rack_component_parameters)
-      // console.warn('params.length', this.getWhiteParameters(component.rack_component_parameters))
-      // if (
-      //   component.rack_component_parameters.length !==
-      //   this.getWhiteParameters(component.rack_component_parameters).length
-      // ) {
-      //   return 0
+      // const paramFilter = _.filter(component.rack_component_parameters, item => item.parameter.group_uuid === groupUuid)
+      // if (paramFilter.length > 1) {
+      //   if (paramFilter.length !== this.getWhiteParameters(paramFilter).length) {
+      //     return 0
+      //   }
       // }
-      const paramFilter = _.filter(component.rack_component_parameters, item => item.parameter.group_uuid === groupUuid)
-      if (paramFilter.length > 1) {
-        if (paramFilter.length !== this.getWhiteParameters(paramFilter).length) {
-          return 0
-        }
-      }
-      const isGroupSumm = true
-      return _.sumBy(this.getWhiteParameters(component.rack_component_parameters), item => {
-        // if (item.parameter.group_uuid === groupUuid) {
-        //   if (isGroupSumm) {
-        //     isGroupSumm = false
-        //     return item.price * item.count
-        //   }
-        // } else {
-        console.warn(item)
-        if (item.parameter.slug === 'price') {
-          return parseInt(item.parameter_value) * item.count
-        } else {
-          return 0
-        }
-        // }
+
+      const parameterPrice = _.find(this.getWhiteParameters(component.rack_component_parameters), item => {
+        return item.parameter.slug === 'price'
       })
+
+      if (parameterPrice) {
+        return parseInt(parameterPrice.parameter_value) * parameterPrice.count
+      } else {
+        return 0
+      }
+
+      // const isGroupSumm = true
+      // return _.sumBy(this.getWhiteParameters(component.rack_component_parameters), item => {
+      //   // if (item.parameter.group_uuid === groupUuid) {
+      //   //   if (isGroupSumm) {
+      //   //     isGroupSumm = false
+      //   //     return item.price * item.count
+      //   //   }
+      //   // } else {
+      //   if (item.parameter.slug === 'price') {
+      //     return parseInt(item.parameter_value) * item.count
+      //   } else {
+      //     return 0
+      //   }
+      //   // }
+      // })
     },
     getWhiteParameters(parameters) {
       return _.filter(parameters, item => {
