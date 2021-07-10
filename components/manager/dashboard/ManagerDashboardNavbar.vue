@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="sm" type="dark" style="background: #5472f9">
-    <b-navbar-brand to="/"> Manager </b-navbar-brand>
+    <b-navbar-brand to="/manager/manage"> Manager </b-navbar-brand>
     <b-navbar-toggle target="nav-collapse">
       <template #default="{ expanded }">
         <b-icon v-if="expanded" icon="chevron-double-up" variant="white"></b-icon>

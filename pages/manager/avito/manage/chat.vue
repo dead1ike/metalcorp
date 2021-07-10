@@ -3,9 +3,9 @@
     <div class="overflow-hidden h-100">
       <b-list-group class="overflow-auto h-100">
         <template v-for="itemChat in getChats">
-          <b-list-group-item :key="itemChat.id" class="btn-light">
-            <div>
-              <div>
+          <b-list-group-item :key="itemChat.id" class="btn-light p-0 mb-1">
+            <div class="">
+              <div class="p-2 bg-dark">
                 <div>
                   <span class="text-secondary">{{ itemChat.avito_item.location_title }}: </span>
                   <span class="text-success">{{ itemChat.avito_item.price_string }} - </span>
@@ -14,8 +14,11 @@
               </div>
 
               <div class="d-flex">
-                <div class="py-2">
+                <div class="p-2">
                   <b-avatar
+                    v-if="itemChat.avito_user"
+                    :href="itemChat.avito_user.url"
+                    target="_blank"
                     size="6rem"
                     :src="
                       itemChat.avito_user.avatar !== 'https://static.avito.ru/stub_avatars/_/14_256x256.png'
@@ -23,11 +26,14 @@
                         : null
                     "
                     :text="itemChat.avito_user.name.substr(0, 2)"
-                  ></b-avatar>
+                    :style="'background-color: #' + intToRGB(hashCode(itemChat.avito_user.name))"
+                  />
                 </div>
                 <div class="p-2 w-100">
                   <div class="border-bottom">
-                    <a :href="itemChat.avito_user.url" target="_blank">{{ itemChat.avito_user.name }}</a>
+                    <a class="font-weight-bold" :href="itemChat.avito_user.url" target="_blank">
+                      {{ itemChat.avito_user.name }}
+                    </a>
                     <span> | </span>
                     {{
                       $DateTime
@@ -37,13 +43,73 @@
                     }}
                   </div>
                   <div class="p-2">
-                    {{ itemChat.last_message.content.text }}
+                    <div class="d-flex" :class="{ 'flex-row-reverse': itemChat.last_message.direction === 'out' }">
+                      <template v-if="itemChat.last_message.type === 'text'">
+                        <div class="px-2">
+                          <b-icon-reply-fill
+                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
+                            variant="success"
+                            scale="1.5"
+                          />
+                        </div>
+
+                        <b-alert show="" variant="light">
+                          <div v-for="itemText in itemChat.last_message.content.text.split('\n')" :key="itemText">
+                            {{ itemText }}
+                          </div>
+                        </b-alert>
+
+                        <div class="px-4"></div>
+                      </template>
+
+                      <template v-else-if="itemChat.last_message.type === 'image'">
+                        <div class="px-2">
+                          <b-icon-reply-fill
+                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
+                            variant="success"
+                            scale="1.5"
+                          />
+                        </div>
+
+                        <b-alert show="" variant="light">
+                          <div>
+                            {{ itemChat.last_message.content.image }}
+                          </div>
+                        </b-alert>
+
+                        <div class="px-4"></div>
+                      </template>
+
+                      <template v-else-if="itemChat.last_message.type === 'call'">
+                        <div class="px-2">
+                          <b-icon-telephone-outbound
+                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
+                            :variant="itemChat.last_message.content.call.status === 'missed' ? 'danger' : 'success'"
+                            scale="1.5"
+                          />
+                        </div>
+
+                        <b-alert show="" variant="light">
+                          <div>
+                            {{
+                              itemChat.last_message.content.call.status === 'missed'
+                                ? 'Пропущенный звонок'
+                                : 'Принятый звонок'
+                            }}
+                            {{ itemChat.last_message.content.call }}
+                          </div>
+                        </b-alert>
+
+                        <div class="px-4"></div>
+                      </template>
+                    </div>
+
                     <div class="d-flex">
-                      <div class="flex-fill">
+                      <div class="flex-fill pt-2">
                         <b-textarea v-model="itemChat.textOutMessage" size="sm"></b-textarea>
                       </div>
-                      <div class="m-1">
-                        <b-btn class="btn-icon" variant="primary" @click="sendMessageChat(itemChat)">
+                      <div class="p-2">
+                        <b-btn class="btn-icon" variant="outline-primary" @click="sendMessageChat(itemChat)">
                           <b-icon-forward></b-icon-forward>
                         </b-btn>
                       </div>
@@ -59,70 +125,15 @@
         <!--        <b-list-group-item>Porta ac consectetur ac</b-list-group-item>-->
         <!--        <b-list-group-item>Vestibulum at eros</b-list-group-item>-->
       </b-list-group>
-      <b-table
-        striped
-        :items="getChats"
-        :fields="getFields"
-        head-variant="light"
-        sticky-header="100%"
-        bordered
-        hover
-        no-border-collapse
-      >
-        <template #cell(avito_item_id)="data">
-          <div v-if="data.item.avito_item">
-            <div>
-              {{ data.item.avito_item.location_title }}
-            </div>
-            <div class="text-success">
-              {{ data.item.avito_item.price_string }}
-            </div>
-            <div>
-              <a :href="data.item.avito_item.url" target="_blank">{{ data.item.avito_item.title }}</a>
-            </div>
-          </div>
-        </template>
-        <template #cell(last_message)="data">
-          <div class="d-flex flex-column">
-            <div class="d-flex">
-              <div class="flex-fill">
-                {{
-                  $DateTime
-                    .fromISO(data.item.last_message_created_at)
-                    .setLocale('ru')
-                    .toLocaleString($DateTime.DATETIME_SHORT)
-                }}
-              </div>
-              <div>
-                <template v-if="data.item.last_message.direction === 'in'">
-                  <b-icon-envelope-fill scale="1.75" animation="fade" variant="corp" class="mx-2" />
-                </template>
-                <!--                <b-icon-box-arrow-in-down-right v-else scale="1.75" variant="corp" />-->
-              </div>
-              <hr />
-            </div>
-            <div>
-              <div>
-                <b-avatar size="4rem" :src="data.item.avito_user.avatar" class="mr-2"></b-avatar>
-
-                {{ data.item.last_message.content.text }}
-              </div>
-            </div>
-          </div>
-        </template>
-        <template #cell(actions)="data">
-          <b-btn class="btn-icon" variant="link" @click="fetchMessageChat(data.item)">
-            <b-icon-download></b-icon-download>
-          </b-btn>
-        </template>
-      </b-table>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
         <b-pagination pills :total-rows="100" class="p-2 m-1 "></b-pagination>
       </div>
       <div>
-        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAvitoChats()">Обновить с Avito</b-btn>
+        <!--        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAccountOther()">U</b-btn>-->
+        <!--        <b-btn variant="outline-primary" class="py-2 m-1" @click="sendMessageChats()">T</b-btn>-->
+        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAvitoChats()">Get Avito</b-btn>
       </div>
     </div>
   </div>
@@ -153,6 +164,18 @@ export default {
     },
   },
   methods: {
+    hashCode(str) {
+      // java String#hashCode
+      let hash = 0
+      for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash)
+      }
+      return hash
+    },
+    intToRGB(i) {
+      const c = (i & 0x00ffffff).toString(16).toUpperCase()
+      return '00000'.substring(0, 6 - c.length) + c
+    },
     fetchChats() {
       this.$store.dispatch('manager/avito/chat/fetchChats')
     },
@@ -172,6 +195,12 @@ export default {
     },
     fetchAvitoChats() {
       this.$store.dispatch('manager/avito/chat/fetchAvitoChats').then(() => this.fetchChats())
+    },
+    sendMessageChats() {
+      this.$store.dispatch('manager/avito/chat/sendMessageChats').then(() => this.fetchChats())
+    },
+    fetchAccountOther() {
+      this.$store.dispatch('manager/avito/chat/fetchAccountOther').then(() => this.fetchChats())
     },
   },
 }
