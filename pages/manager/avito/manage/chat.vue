@@ -16,6 +16,8 @@
               <div class="d-flex">
                 <div class="py-2">
                   <b-avatar
+                    href="itemChat.avito_user.url"
+                    target="_blank"
                     size="6rem"
                     :src="
                       itemChat.avito_user.avatar !== 'https://static.avito.ru/stub_avatars/_/14_256x256.png'
@@ -23,6 +25,7 @@
                         : null
                     "
                     :text="itemChat.avito_user.name.substr(0, 2)"
+                    :style="'background-color: #' + intToRGB(hashCode(itemChat.avito_user.name))"
                   ></b-avatar>
                 </div>
                 <div class="p-2 w-100">
@@ -153,6 +156,18 @@ export default {
     },
   },
   methods: {
+    hashCode(str) {
+      // java String#hashCode
+      let hash = 0
+      for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash)
+      }
+      return hash
+    },
+    intToRGB(i) {
+      const c = (i & 0x00ffffff).toString(16).toUpperCase()
+      return '00000'.substring(0, 6 - c.length) + c
+    },
     fetchChats() {
       this.$store.dispatch('manager/avito/chat/fetchChats')
     },
