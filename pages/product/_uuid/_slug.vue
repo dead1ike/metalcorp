@@ -1,46 +1,65 @@
 <template>
   <div class="h-100 w-100 overflow-auto jus">
-    <div class=" d-flex flex-row justify-content-around">
+    <div class="d-flex flex-row justify-content-around">
       <!--      <pre class=" overflow-auto" style="max-height: 800px"> {{ getRackParamsGroup }}</pre>-->
       <div class="p-5">
         <div class="my-3">
-          <h3>{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h3>
+          <h3 class="text-center">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h3>
         </div>
         <div>
           <b-img :src="getTypeByUuid.image"></b-img>
         </div>
+        <div>В наличии : <b style="color: green">Много</b></div>
       </div>
       <div class="p-5 h-100">
         <div class="my-3">
-          <h3>Описание:</h3>
-          <h4>{{ getTypeByUuid.description }}</h4>
+          <h3 class="text-center">Описание:</h3>
+          <h5>{{ getTypeByUuid.description }}</h5>
         </div>
         <div class="my-3">
-          <h4>Нагрузки:</h4>
-          <h5>{{ 'Нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
-          <h5>{{ 'Нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>
-          <h5>{{ 'Нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
+          <h4>Допустимые нагрузки на данный стеллаж:</h4>
+          <h5>{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
+          <h5>{{ 'Максимальная нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>
+          <h5>{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
         </div>
       </div>
-      <div class="p-5">
+
+      <div class="p-5 mt-4">
+        <h4 class="text-center text-truncate">Задайте параметры стеллажа</h4>
+
         <div v-for="(itemParameters, indexGroup) in getRackParamsGroup" :key="itemParameters.parameter_uuid">
-          <label> {{ getLabel(itemParameters) }}</label>
-          <b-dd
-            variant="corp"
-            :text="
-              getGroupParamTitle(indexGroup).parameter_value
-                ? getGroupParamTitle(indexGroup).parameter_value
-                : 'Выберите'
-            "
-          >
-            <div v-for="itemParameter in itemParameters" :key="itemParameter.uuid">
-              <b-dd-item @click="selectParameter(indexGroup, itemParameter)">
-                {{ itemParameter.parameter_value }}
-              </b-dd-item>
+          <div class="d-flex flex-row">
+            <div class="d-flex flex-fill m-3 mr-3 p-2">
+              <label class="h5"> {{ getLabel(itemParameters) }}</label>
             </div>
-          </b-dd>
+            <div class="p-2">
+              <b-dd
+                block
+                style="min-width: 224px"
+                variant="corp"
+                :text="
+                  getGroupParamTitle(indexGroup).parameter_value
+                    ? getGroupParamTitle(indexGroup).parameter_value
+                    : 'Выберите'
+                "
+              >
+                <div v-for="itemParameter in itemParameters" :key="itemParameter.uuid">
+                  <b-dd-item @click="selectParameter(indexGroup, itemParameter)">
+                    {{ itemParameter.parameter_value }}
+                  </b-dd-item>
+                </div>
+              </b-dd>
+            </div>
+          </div>
         </div>
-        priceManager:{{ priceManager(getTypeByUuid.rack_components) }}
+        <div class="w-100 mt-5 d-flex text-center justify-content-around flex-row">
+          <div>
+            <h5 class="mr-"><b>Итоговая цена :</b></h5>
+          </div>
+          <div>
+            <h5>{{ priceManager(getTypeByUuid.rack_components) }} руб.</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -61,7 +80,7 @@ export default {
   },
   computed: {
     getRackParamsGroup() {
-      const group = _.uniqBy(this.getRackComponentParams, item => {
+      const group = _.uniqBy(this.getRackComponentParams, (item) => {
         return item.parameter_value + item.parameter_uuid
       })
       return _.groupBy(group, 'parameter_uuid')
@@ -85,7 +104,7 @@ export default {
         // const selectedGroupParams = Object.assign({}, this.selectedGroupParams)
         // selectedGroupParams[payload.key] = payload.value
         // Object.assign(this.selectedGroupParams, selectedGroupParams)
-        const index = this.selectedGroupParams.findIndex(item => {
+        const index = this.selectedGroupParams.findIndex((item) => {
           return item.parameter_uuid === payload.value.parameter_uuid
         })
         if (index >= 0) {
@@ -105,7 +124,7 @@ export default {
     },
     getGroupParamTitle(indexGroup) {
       return (
-        this.getSelectedGroupParams.find(item => {
+        this.getSelectedGroupParams.find((item) => {
           return item.parameter_uuid === indexGroup
         }) || {}
       )
@@ -118,7 +137,7 @@ export default {
       return _.reduce(
         components,
         (params, item) => {
-          item.rack_component_parameters.forEach(itemParam => {
+          item.rack_component_parameters.forEach((itemParam) => {
             if (itemParam.parameter.slug !== 'price')
               params.push({
                 parameter_uuid: itemParam.parameter_uuid,
@@ -182,7 +201,7 @@ export default {
       //   }
       // }
 
-      const parameterPrice = _.find(this.getWhiteParameters(component.rack_component_parameters), item => {
+      const parameterPrice = _.find(this.getWhiteParameters(component.rack_component_parameters), (item) => {
         return item.parameter.slug === 'price'
       })
 
@@ -209,7 +228,7 @@ export default {
       // })
     },
     getWhiteParameters(parameters) {
-      return _.filter(parameters, item => {
+      return _.filter(parameters, (item) => {
         const isBlackList = _.includes(this.getBlackList, item.parameter_uuid)
         if (isBlackList) {
           return _.find(this.getSelectedGroupParams, {

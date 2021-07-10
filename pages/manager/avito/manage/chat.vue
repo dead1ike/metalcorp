@@ -43,7 +43,67 @@
                     }}
                   </div>
                   <div class="p-2">
-                    {{ itemChat.last_message.content.text }}
+                    <div class="d-flex" :class="{ 'flex-row-reverse': itemChat.last_message.direction === 'out' }">
+                      <template v-if="itemChat.last_message.type === 'text'">
+                        <div class="px-2">
+                          <b-icon-reply-fill
+                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
+                            variant="success"
+                            scale="1.5"
+                          />
+                        </div>
+
+                        <b-alert show="" variant="light">
+                          <div v-for="itemText in itemChat.last_message.content.text.split('\n')" :key="itemText">
+                            {{ itemText }}
+                          </div>
+                        </b-alert>
+
+                        <div class="px-4"></div>
+                      </template>
+
+                      <template v-else-if="itemChat.last_message.type === 'image'">
+                        <div class="px-2">
+                          <b-icon-reply-fill
+                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
+                            variant="success"
+                            scale="1.5"
+                          />
+                        </div>
+
+                        <b-alert show="" variant="light">
+                          <div>
+                            {{ itemChat.last_message.content.image }}
+                          </div>
+                        </b-alert>
+
+                        <div class="px-4"></div>
+                      </template>
+
+                      <template v-else-if="itemChat.last_message.type === 'call'">
+                        <div class="px-2">
+                          <b-icon-telephone-outbound
+                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
+                            :variant="itemChat.last_message.content.call.status === 'missed' ? 'danger' : 'success'"
+                            scale="1.5"
+                          />
+                        </div>
+
+                        <b-alert show="" variant="light">
+                          <div>
+                            {{
+                              itemChat.last_message.content.call.status === 'missed'
+                                ? 'Пропущенный звонок'
+                                : 'Принятый звонок'
+                            }}
+                            {{ itemChat.last_message.content.call }}
+                          </div>
+                        </b-alert>
+
+                        <div class="px-4"></div>
+                      </template>
+                    </div>
+
                     <div class="d-flex">
                       <div class="flex-fill pt-2">
                         <b-textarea v-model="itemChat.textOutMessage" size="sm"></b-textarea>
@@ -71,9 +131,9 @@
         <b-pagination pills :total-rows="100" class="p-2 m-1 "></b-pagination>
       </div>
       <div>
-        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAccountOther()">U</b-btn>
-        <b-btn variant="outline-primary" class="py-2 m-1" @click="sendMessageChats()">T</b-btn>
-        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAvitoChats()">Обновить с Avito</b-btn>
+        <!--        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAccountOther()">U</b-btn>-->
+        <!--        <b-btn variant="outline-primary" class="py-2 m-1" @click="sendMessageChats()">T</b-btn>-->
+        <b-btn variant="outline-primary" class="py-2 m-1" @click="fetchAvitoChats()">Get Avito</b-btn>
       </div>
     </div>
   </div>
