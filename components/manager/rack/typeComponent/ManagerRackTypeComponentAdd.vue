@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="manager-type-component-add" no-close-on-backdrop no-close-on-esc>
+  <b-modal id="manager-type-component-add" size="xl" no-close-on-backdrop no-close-on-esc>
     <template #modal-header>
       <h5>Добавление компонента стеллажа:</h5>
     </template>
@@ -45,7 +45,6 @@
     <div class="d-flex flex-column my-2">
       <h6>Введите название компонента:</h6>
       <b-input v-model="form.title"></b-input>
-
       <h5 class="my-2">Состоит из комплектующих?</h5>
       <div class="d-flex flex-row mt-2">
         <b-icon
@@ -78,6 +77,9 @@ export default {
     }
   },
   computed: {
+    getParameters() {
+      return this.$store.getters['manager/rack/parameter/getParameter']
+    },
     getRacks() {
       return this.$store.getters['type/getTypes']
     },
@@ -108,14 +110,24 @@ export default {
       }
       return {}
     },
+    selectedParameter() {
+      if (this.getParameters.find(item => item.uuid === this.form.parameter_uuid)) {
+        return this.getParameters.find(item => item.uuid === this.form.parameter_uuid)
+      }
+      return {}
+    },
   },
   mounted() {
     this.$bvModal.show('manager-type-component-add')
     this.$store.dispatch('type/fetchTypes')
+    this.$store.dispatch('manager/rack/parameter/fetchParameter')
     this.$store.dispatch('manager/rack/component/fetchComponent')
     this.$store.dispatch('manager/rack/component/fetchRackComponent')
   },
   methods: {
+    selectParameter(uuid) {
+      this.form.parameter_uuid = uuid
+    },
     selectComponent(uuid) {
       this.form.component_uuid = uuid
     },

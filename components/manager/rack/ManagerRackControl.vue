@@ -6,7 +6,7 @@
       <b-nav-item to="/manager/rack/manage/parameter"> Параметр </b-nav-item>
       <b-nav-item to="/manager/rack/manage/component"> Компонент </b-nav-item>
       <b-nav-item to="/manager/rack/manage/rack_component"> Компонент стеллажа </b-nav-item>
-      <b-nav-item to="/manager/rack/manage/price"> Цена компонента стеллажа </b-nav-item>
+      <!--      <b-nav-item to="/manager/rack/manage/price"> Цена компонента стеллажа </b-nav-item>-->
     </b-nav>
   </div>
 </template>

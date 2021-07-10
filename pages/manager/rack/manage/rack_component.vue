@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-btn variant="corp" size="sm" block @click="managerRackComponent()">Добавить компонент стеллажа</b-btn>
+      <b-btn variant="corp" size="sm" @click="managerRackComponent()">Добавить компонент стеллажа</b-btn>
     </div>
     <div>
       <manager-rack-type-component-table />
@@ -16,6 +16,12 @@ export default {
     managerRackComponent() {
       this.$store.commit('setActiveModal', {
         modalName: 'managerRackComponentAdd',
+        modalStatus: true,
+      })
+    },
+    managerPriceAdd() {
+      this.$store.commit('setActiveModal', {
+        modalName: 'managerRackPriceParameterAdd',
         modalStatus: true,
       })
     },

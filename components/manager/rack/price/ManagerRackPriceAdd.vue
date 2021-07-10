@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="manager-price-parameter-add" size="lg" class="w-100 h-100">
+  <b-modal id="manager-price-parameter-add" size="xl" class="w-100 h-100">
     <template #modal-header>
       <h5>Добавление цены для компонента:</h5>
     </template>
@@ -17,6 +17,7 @@
       <div class="mx-2">
         <h6>Компонент</h6>
         <b-dd
+          style="min-width: 290px"
           variant="corp"
           :text="
             selectedRackComponent.rack_component_value
@@ -34,6 +35,7 @@
       <div v-if="selectedRackComponent.is_constructor === true" class="mx-2">
         <h6>Комплектующий</h6>
         <b-dd
+          style="min-width: 330px"
           variant="corp"
           :text="
             selectedChildRackComponent.rack_component_value
@@ -69,10 +71,10 @@
         <h6>Введите значение параметра</h6>
         <b-input v-model="form.parameter_value"></b-input>
       </div>
-      <div>
-        <h6>Введите цену параметра</h6>
-        <b-input v-model="form.price"></b-input>
-      </div>
+      <!--      <div>-->
+      <!--        <h6>Введите цену параметра</h6>-->
+      <!--        <b-input v-model="form.price"></b-input>-->
+      <!--      </div>-->
     </div>
     <template #modal-footer>
       <b-btn variant="corp" @click="addComponentPrice()">Добавить</b-btn>
@@ -87,7 +89,7 @@ export default {
   data() {
     return {
       form: {
-        price: '',
+        // price: '',
         parameter_value: '',
         parameter_uuid: null,
         rack_type_uuid: null,
@@ -98,6 +100,9 @@ export default {
     }
   },
   computed: {
+    getCurrentComponent() {
+      return this.$store.getters['manager/rack/component/getCurrentComponent']
+    },
     getSelectedComponentUuid() {
       if (this.form.rack_child_component_uuid !== null) {
         return this.form.rack_child_component_uuid
@@ -150,9 +155,11 @@ export default {
     this.$bvModal.show('manager-price-parameter-add')
     this.$store.dispatch('type/fetchTypes')
     this.$store.dispatch('manager/rack/parameter/fetchParameter')
-    this.$store
-      .dispatch('manager/rack/component/fetchRackComponent')
-      .then(() => console.warn('asdasdasd', this.getRackComponents))
+    this.$store.dispatch('manager/rack/component/fetchRackComponent').then(() => {
+      console.warn('asdasdasd', this.getCurrentComponent)
+      this.form.rack_type_uuid = this.getCurrentComponent.rack_uuid
+      this.form.rack_component_uuid = this.getCurrentComponent.uuid
+    })
   },
   methods: {
     selectRack(uuid) {

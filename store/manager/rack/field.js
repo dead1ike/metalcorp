@@ -169,11 +169,6 @@ export const state = () => ({
         sortable: true,
       },
       {
-        key: 'rack_component_parameters',
-        label: 'Параметры',
-        class: 'align-middle text-center',
-      },
-      {
         key: 'is_constructor',
         label: 'Состоит из комплектующих?',
         class: 'align-middle text-center',
@@ -184,6 +179,11 @@ export const state = () => ({
         label: 'Комплектующие',
         class: 'align-middle text-center',
         sortable: true,
+      },
+      {
+        key: 'rack_component_parameters',
+        label: '',
+        class: 'align-middle text-center',
       },
       {
         key: 'actions',

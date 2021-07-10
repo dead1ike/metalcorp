@@ -3,7 +3,9 @@ export const state = () => ({
     component: [],
     rack_component: [],
   },
-  item: {},
+  item: {
+    rack_component: {},
+  },
 })
 
 export const actions = {
@@ -47,10 +49,15 @@ export const mutations = {
   setRackComponent(state, data) {
     state.items.rack_component = data
   },
-  setBlank2(state, data) {},
+  setCurrentComponent(state, data) {
+    state.item.rack_component = data
+  },
 }
 
 export const getters = {
+  getCurrentComponent(state) {
+    return state.item.rack_component
+  },
   getComponent(state) {
     return state.items.component
   },
