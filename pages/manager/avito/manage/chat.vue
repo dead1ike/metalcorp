@@ -30,6 +30,7 @@
                   />
                 </div>
                 <div class="p-2 w-100">
+                  <!-- Имя и дата -->
                   <div class="border-bottom">
                     <a class="font-weight-bold" :href="itemChat.avito_user.url" target="_blank">
                       {{ itemChat.avito_user.name }}
@@ -42,8 +43,10 @@
                         .toLocaleString($DateTime.DATETIME_SHORT)
                     }}
                   </div>
+                  <!-- Содержимое сообщения -->
                   <div class="p-2">
                     <div class="d-flex" :class="{ 'flex-row-reverse': itemChat.last_message.direction === 'out' }">
+                      <!-- Тип text -->
                       <template v-if="itemChat.last_message.type === 'text'">
                         <div class="px-2">
                           <b-icon-reply-fill
@@ -61,7 +64,7 @@
 
                         <div class="px-4"></div>
                       </template>
-
+                      <!-- Тип image -->
                       <template v-else-if="itemChat.last_message.type === 'image'">
                         <div class="px-2">
                           <b-icon-reply-fill
@@ -79,7 +82,7 @@
 
                         <div class="px-4"></div>
                       </template>
-
+                      <!-- Тип call -->
                       <template v-else-if="itemChat.last_message.type === 'call'">
                         <div class="px-2">
                           <b-icon-telephone-outbound
@@ -104,6 +107,7 @@
                       </template>
                     </div>
 
+                    <!-- Отправить сообщение -->
                     <div class="d-flex">
                       <div class="flex-fill pt-2">
                         <b-textarea v-model="itemChat.textOutMessage" size="sm"></b-textarea>
@@ -120,10 +124,6 @@
             </div>
           </b-list-group-item>
         </template>
-        <!--        <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>-->
-        <!--        <b-list-group-item>Morbi leo risus</b-list-group-item>-->
-        <!--        <b-list-group-item>Porta ac consectetur ac</b-list-group-item>-->
-        <!--        <b-list-group-item>Vestibulum at eros</b-list-group-item>-->
       </b-list-group>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
@@ -181,10 +181,14 @@ export default {
     },
     sendMessageChat(itemChat) {
       console.warn('itemChat', itemChat)
-      this.$store.dispatch('manager/avito/chat/sendMessageChat', {
-        chat_id: itemChat.id,
-        text: itemChat.textOutMessage,
-      })
+      if (itemChat.textOutMessage && itemChat.textOutMessage.length >= 1) {
+        this.$store.dispatch('manager/avito/chat/sendMessageChat', {
+          chat_id: itemChat.id,
+          text: itemChat.textOutMessage,
+        })
+      } else {
+        this.makeToast('Нечего отправлять, напишите текст', 'danger')
+      }
     },
     fetchMessageChat(itemChat) {
       console.warn(itemChat)
@@ -201,6 +205,15 @@ export default {
     },
     fetchAccountOther() {
       this.$store.dispatch('manager/avito/chat/fetchAccountOther').then(() => this.fetchChats())
+    },
+    makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
+      this.$bvToast.toast(body, {
+        title,
+        autoHideDelay: 5000,
+        appendToast: false,
+        variant,
+        toaster: 'b-toaster-bottom-right',
+      })
     },
   },
 }
