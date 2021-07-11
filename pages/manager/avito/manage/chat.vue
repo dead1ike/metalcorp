@@ -45,68 +45,73 @@
                   </div>
                   <!-- Содержимое сообщения -->
                   <div class="p-2">
-                    <div class="d-flex" :class="{ 'flex-row-reverse': itemChat.last_message.direction === 'out' }">
-                      <!-- Тип text -->
-                      <template v-if="itemChat.last_message.type === 'text'">
-                        <div class="px-2">
-                          <b-icon-reply-fill
-                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
-                            variant="success"
-                            scale="1.5"
-                          />
-                        </div>
-
-                        <b-alert show="" variant="light">
-                          <div v-for="itemText in itemChat.last_message.content.text.split('\n')" :key="itemText">
-                            {{ itemText }}
+                    <template v-for="lastMessage in itemChat.avito_last_messages">
+                      <div
+                        :key="lastMessage.id"
+                        class="d-flex"
+                        :class="{ 'flex-row-reverse': lastMessage.direction === 'out' }"
+                      >
+                        <!-- Тип text -->
+                        <template v-if="lastMessage.type === 'text'">
+                          <div class="px-2">
+                            <b-icon-reply-fill
+                              :rotate="lastMessage.direction === 'out' ? 240 : 90"
+                              variant="success"
+                              scale="1.5"
+                            />
                           </div>
-                        </b-alert>
 
-                        <div class="px-4"></div>
-                      </template>
-                      <!-- Тип image -->
-                      <template v-else-if="itemChat.last_message.type === 'image'">
-                        <div class="px-2">
-                          <b-icon-reply-fill
-                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
-                            variant="success"
-                            scale="1.5"
-                          />
-                        </div>
+                          <b-alert show="" variant="light">
+                            <div v-for="itemText in lastMessage.content.text.split('\n')" :key="itemText">
+                              {{ itemText }}
+                            </div>
+                          </b-alert>
 
-                        <b-alert show="" variant="light">
-                          <div>
-                            {{ itemChat.last_message.content.image }}
+                          <div class="px-4"></div>
+                        </template>
+                        <!-- Тип image -->
+                        <template v-else-if="lastMessage.type === 'image'">
+                          <div class="px-2">
+                            <b-icon-reply-fill
+                              :rotate="lastMessage.direction === 'out' ? 240 : 90"
+                              variant="success"
+                              scale="1.5"
+                            />
                           </div>
-                        </b-alert>
 
-                        <div class="px-4"></div>
-                      </template>
-                      <!-- Тип call -->
-                      <template v-else-if="itemChat.last_message.type === 'call'">
-                        <div class="px-2">
-                          <b-icon-telephone-outbound
-                            :rotate="itemChat.last_message.direction === 'out' ? 240 : 90"
-                            :variant="itemChat.last_message.content.call.status === 'missed' ? 'danger' : 'success'"
-                            scale="1.5"
-                          />
-                        </div>
+                          <b-alert show="" variant="light">
+                            <div>
+                              <a :href="lastMessage.content.image.sizes['1280x960']" target="_blank">
+                                <b-img :src="lastMessage.content.image.sizes['140x105']" />
+                              </a>
+                            </div>
+                          </b-alert>
 
-                        <b-alert show="" variant="light">
-                          <div>
-                            {{
-                              itemChat.last_message.content.call.status === 'missed'
-                                ? 'Пропущенный звонок'
-                                : 'Принятый звонок'
-                            }}
-                            {{ itemChat.last_message.content.call }}
+                          <div class="px-4"></div>
+                        </template>
+                        <!-- Тип call -->
+                        <template v-else-if="lastMessage.type === 'call'">
+                          <div class="px-2">
+                            <b-icon-telephone-outbound
+                              :rotate="lastMessage.direction === 'out' ? 240 : 90"
+                              :variant="lastMessage.content.call.status === 'missed' ? 'danger' : 'success'"
+                              scale="1.5"
+                            />
                           </div>
-                        </b-alert>
 
-                        <div class="px-4"></div>
-                      </template>
-                    </div>
+                          <b-alert show="" variant="light">
+                            <div>
+                              {{
+                                lastMessage.content.call.status === 'missed' ? 'Пропущенный звонок' : 'Принятый звонок'
+                              }}
+                              {{ lastMessage.content.call }}
+                            </div>
+                          </b-alert>
 
+                          <div class="px-4"></div>
+                        </template>
+                      </div>
+                    </template>
                     <!-- Отправить сообщение -->
                     <div class="d-flex">
                       <div class="flex-fill pt-2">
