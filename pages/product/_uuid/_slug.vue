@@ -52,12 +52,21 @@
             </div>
           </div>
         </div>
+        <div class="d-flex align-items-end flex-column">
+          <label> Количество полок:</label>
+          <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
+        </div>
+        <div class="d-flex align-items-end flex-column">
+          <label> Количество стеллажей:</label>
+          <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
+        </div>
         <div class="w-100 mt-5 d-flex text-center justify-content-around flex-row">
           <div>
             <h5 class="mr-"><b>Итоговая цена :</b></h5>
           </div>
           <div>
             <h5>{{ priceManager(getTypeByUuid.rack_components) }} руб.</h5>
+            <h5>{{ getFinalResult }} руб.</h5>
           </div>
         </div>
       </div>
@@ -75,12 +84,19 @@ export default {
   data() {
     return {
       selectedGroupParams: [],
-      rack_count: '1',
+      form: {
+        shelf_count: 2,
+        rack_count: 1,
+      },
     }
   },
   computed: {
+    getFinalResult() {
+      const result = this.priceManager(this.getTypeByUuid.rack_components) * this.form.rack_count
+      return result
+    },
     getRackParamsGroup() {
-      const group = _.uniqBy(this.getRackComponentParams, (item) => {
+      const group = _.uniqBy(this.getRackComponentParams, item => {
         return item.parameter_value + item.parameter_uuid
       })
       return _.groupBy(group, 'parameter_uuid')
@@ -104,7 +120,7 @@ export default {
         // const selectedGroupParams = Object.assign({}, this.selectedGroupParams)
         // selectedGroupParams[payload.key] = payload.value
         // Object.assign(this.selectedGroupParams, selectedGroupParams)
-        const index = this.selectedGroupParams.findIndex((item) => {
+        const index = this.selectedGroupParams.findIndex(item => {
           return item.parameter_uuid === payload.value.parameter_uuid
         })
         if (index >= 0) {
@@ -124,7 +140,7 @@ export default {
     },
     getGroupParamTitle(indexGroup) {
       return (
-        this.getSelectedGroupParams.find((item) => {
+        this.getSelectedGroupParams.find(item => {
           return item.parameter_uuid === indexGroup
         }) || {}
       )
@@ -137,7 +153,7 @@ export default {
       return _.reduce(
         components,
         (params, item) => {
-          item.rack_component_parameters.forEach((itemParam) => {
+          item.rack_component_parameters.forEach(itemParam => {
             if (itemParam.parameter.slug !== 'price')
               params.push({
                 parameter_uuid: itemParam.parameter_uuid,
@@ -163,6 +179,14 @@ export default {
             let sumComponent = 0
             if (item.is_constructor === true) {
               sumComponent = this.priceManager(item.rack_component_childs, true)
+              console.warn('item', item)
+              if (item.component) {
+                if (item.component.slug === 'polka') {
+                  sumComponent = sumComponent * this.form.shelf_count
+                } else if (item.component.slug === 'rama') {
+                  sumComponent = sumComponent * this.form.rack_count + 1
+                }
+              }
               if (sumComponent === 0) {
                 sum = false
               } else {
@@ -179,6 +203,8 @@ export default {
             //     ? this.priceManager(item.rack_component_childs, true)
             //     : this.priceWorker(item))
             // )
+
+            console.warn('summa', sum)
             return sum
           },
           0,
@@ -201,10 +227,9 @@ export default {
       //   }
       // }
 
-      const parameterPrice = _.find(this.getWhiteParameters(component.rack_component_parameters), (item) => {
+      const parameterPrice = _.find(this.getWhiteParameters(component.rack_component_parameters), item => {
         return item.parameter.slug === 'price'
       })
-
       if (parameterPrice) {
         return parseInt(parameterPrice.parameter_value) * parameterPrice.count
       } else {
@@ -228,7 +253,7 @@ export default {
       // })
     },
     getWhiteParameters(parameters) {
-      return _.filter(parameters, (item) => {
+      return _.filter(parameters, item => {
         const isBlackList = _.includes(this.getBlackList, item.parameter_uuid)
         if (isBlackList) {
           return _.find(this.getSelectedGroupParams, {
