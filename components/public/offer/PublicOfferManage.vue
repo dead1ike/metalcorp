@@ -15,14 +15,21 @@
           :fields="getOfferManageFields"
           :items="getOfferManageItems"
         >
-          <template #cell(rack_height)="data">{{ data.item.rack_height.parameter_value }} </template>
-          <template #cell(rack_width)="data"> {{ data.item.rack_width.parameter_value }} </template>
-          <template #cell(rack_shelves_count)="data">
-            {{ data.item.rack_shelves_count.parameter_value }}
+          <template #cell(title)="data"
+            ><span>Стеллаж</span> <b> {{ data.item.title }}</b></template
+          >
+          <template #cell(parameters)="data">
+            <div class="d-flex justify-content-center">
+              <table>
+                <tr v-for="item in data.item.parameters" :key="item.uuid">
+                  <td>{{ item.parameter_title }}</td>
+                  <td>{{ item.parameter_value }}</td>
+                </tr>
+              </table>
+            </div>
           </template>
-          <template #cell(rack_depth)="data">{{ data.item.rack_depth.parameter_value }} </template>
           <template #cell(rack_count)="data">
-            <b-spinbutton :value="data.item.rack_count" inline>
+            <b-spinbutton :value="data.item.rack_count" inline min="1">
               <template #decrement>
                 <b-btn size="sm" variant="link" @click="countDecrement(data.item.uuid)">-</b-btn>
               </template>
@@ -32,7 +39,7 @@
             </b-spinbutton>
           </template>
           <template #cell(summ)="data">
-            {{ Number(data.item.price) * Number(data.item.rack_count) }}
+            {{ data.item.total }}
           </template>
           <template #cell(actions)="data">
             <b-btn class="live-edit btn-icon" variant="link">
@@ -63,9 +70,11 @@ export default {
   methods: {
     countIncrement(uuid) {
       this.$store.commit('type/setCountIncrement', uuid)
+      return this.getOfferManageItems
     },
     countDecrement(uuid) {
       this.$store.commit('type/setCountDecrement', uuid)
+      return this.getOfferManageItems
     },
     toOfferConfirm() {
       this.$router.push('/offer/confirm')

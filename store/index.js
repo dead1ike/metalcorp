@@ -7,23 +7,13 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
       {
-        key: 'rack_height',
-        label: 'Высота',
+        key: 'parameters',
+        label: 'Параметры',
         class: 'align-middle text-center',
       },
       {
-        key: 'rack_width',
-        label: 'Ширина',
-        class: 'align-middle text-center',
-      },
-      {
-        key: 'rack_depth',
-        label: 'Глубина',
-        class: 'align-middle text-center',
-      },
-      {
-        key: 'rack_shelves_count',
-        label: 'Кол-во полок',
+        key: 'shelf_count',
+        label: 'Количество полок',
         class: 'align-middle text-center',
       },
       {
@@ -33,7 +23,7 @@ export const state = () => ({
       },
       {
         key: 'rack_count',
-        label: 'Количество',
+        label: 'Количество стеллажей',
         class: 'align-middle text-center',
       },
       {
@@ -64,7 +54,7 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
       {
-        key: 'summ',
+        key: 'total',
         label: 'Сумма',
         class: 'align-middle text-center',
       },
@@ -272,9 +262,9 @@ export const getters = {
   getOfferConfirmFields(state) {
     return state.fields.offerConfirm
   },
-  getNewUuid: (state) => (payload) => {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
-      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+  getNewUuid: state => payload => {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16),
     )
   },
 }

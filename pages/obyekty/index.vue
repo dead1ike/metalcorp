@@ -1,13 +1,13 @@
 <template>
   <div class="overflow-hidden w-100 h-100">
     <div class="w-100 d-flex justify-content-center mt-5">
-      <h2>Контакты</h2>
+      <h2>Объекты</h2>
     </div>
     <div class="w-100 d-flex justify-content-center mt-1">
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
-    <div class="w-100 d-flex flex-wrap">
-      <b-card-group v-for="item in getObjectItems" :key="item.uuid" class="w-100 h-100" columns>
+    <div class="w-100 d-flex flex-wrap justify-content-center">
+      <b-card-group v-for="item in getObjectItems" :key="item.uuid" class="m-2">
         <b-card
           v-if="item.uuid !== null"
           :title="item.title"

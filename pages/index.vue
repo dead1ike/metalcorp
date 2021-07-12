@@ -130,11 +130,11 @@
       <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
         <div v-for="item in showSlides" :key="item.uuid" class="mx-1 my-2 border">
           <div class="d-flex flex-column align-items-center">
-            <span class="my-3">{{ item.title }}</span>
+            <span class="my-3"> Стеллаж {{ item.title }}</span>
             <b-img :src="item.image" style="max-height: 300px" class="" />
           </div>
           <div class="d-flex align-items-end m-3">
-            <b-btn variant="corp">Заказать</b-btn>
+            <b-btn variant="corp" @click="description(item)">Заказать</b-btn>
           </div>
         </div>
       </div>
@@ -180,13 +180,13 @@ export default {
       sliding: null,
       show: true,
       slidePage: 0,
-      slideCount: 5,
+      slideCount: 4,
       slideCurrent: 0,
     }
   },
   computed: {
     getTestItems() {
-      return this.$store.getters['basket/getTestItems']
+      return this.$store.getters['type/getTypes']
     },
     isPageMax() {
       return this.getTestItems.length / this.slideCount <= this.slidePage + 1
@@ -214,6 +214,9 @@ export default {
   // },
   mounted() {},
   methods: {
+    description(item) {
+      this.$router.push(`/product/${item.uuid}/${item.slug}`)
+    },
     openModal() {
       this.$store.commit('setActiveModal', {
         modalName: 'dimensionModal',

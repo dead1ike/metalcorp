@@ -1,9 +1,9 @@
 <template>
-  <div class="h-100 w-100 overflow-auto">
+  <div class="h-100 w-100 overflow-auto d-flex flex-column align-items-center">
     <div
       v-for="item in getTypeByCategoryUuid"
       :key="item.uuid"
-      class="w-100 d-flex flex-row justify-content-between m-4 shadow p-4"
+      class="w-100 d-flex flex-row justify-content-center m-4 shadow p-4"
       style="max-width: 1024px"
     >
       <div class="w-100 pr-2 h-100">

@@ -66,7 +66,7 @@ export default {
       return this.$store.getters.getOfferConfirmFields
     },
     getSumm() {
-      return this.getOfferConfirmItems.reduce((summ, item) => summ + item.summ, 0)
+      return this.getOfferConfirmItems.reduce((summ, item) => summ + item.total, 0)
     },
   },
   mounted() {},

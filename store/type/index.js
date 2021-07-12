@@ -48,7 +48,7 @@ export const mutations = {
     state.items.basketProduct.push(data)
   },
   setDelBasketProduct(state, data) {
-    state.items.basketProduct = _.filter(state.items.basketProduct, (item) => {
+    state.items.basketProduct = _.filter(state.items.basketProduct, item => {
       return data.uuid !== item.uuid
     })
   },
@@ -56,10 +56,17 @@ export const mutations = {
     state.items.basketProduct = []
   },
   setCountIncrement(state, uuid) {
-    state.items.basketProduct.find((item) => item.uuid === uuid).rack_count++
+    state.items.basketProduct.find(item => item.uuid === uuid).rack_count++
+    const count = state.items.basketProduct.find(item => item.uuid === uuid).rack_count
+    const price = state.items.basketProduct.find(item => item.uuid === uuid).price
+    state.items.basketProduct.find(item => item.uuid === uuid).total = price * count
+    console.warn('basket', state.items.basketProduct)
   },
   setCountDecrement(state, uuid) {
-    state.items.basketProduct.find((item) => item.uuid === uuid).rack_count--
+    state.items.basketProduct.find(item => item.uuid === uuid).rack_count--
+    const count = state.items.basketProduct.find(item => item.uuid === uuid).rack_count
+    const price = state.items.basketProduct.find(item => item.uuid === uuid).price
+    state.items.basketProduct.find(item => item.uuid === uuid).total = price * count
   },
   setFilterItem(state, { fieldName, value }) {
     state.filter[fieldName] = value
@@ -72,13 +79,13 @@ export const getters = {
   getTypes(state) {
     return state.items.rack
   },
-  getTypesByCategoryUuid: (state) => (categoryUuid) => {
-    return state.items.rack.filter((item) => {
+  getTypesByCategoryUuid: state => categoryUuid => {
+    return state.items.rack.filter(item => {
       return item.category_uuid === categoryUuid
     })
   },
-  getTypeById: (state) => (typeUuid) => {
-    return state.items.rack.find((item) => {
+  getTypeById: state => typeUuid => {
+    return state.items.rack.find(item => {
       return item.uuid === typeUuid
     })
   },

@@ -18,9 +18,17 @@
         </div>
       </template>
       <template #cell(actions)="data">
-        <b-btn v-b-popover.hover.topleft="'Удалить'" variant="link" @click="deleteItem(data.item)">
-          <b-icon icon="x-circle" variant="danger"></b-icon
-        ></b-btn>
+        <b-dd v-b-popover.hover.topleft="'Удалить'" variant="link" no-caret size="sm">
+          <template #button-content>
+            <b-icon icon="x-circle" scale="1.6" variant="danger"></b-icon>
+          </template>
+          <b-dd-item>
+            <b-btn variant="danger" size="sm" block @click="deleteItem(data.item.uuid)">Да</b-btn>
+          </b-dd-item>
+          <b-dd-item>
+            <b-btn variant="corp" size="sm" block>Нет</b-btn>
+          </b-dd-item>
+        </b-dd>
       </template>
     </b-table>
   </div>
@@ -42,7 +50,7 @@ export default {
       return this.$store.getters['manager/rack/field/getManagerCategoryFields']
     },
     getManagerCategoryItems() {
-      return this.$store.getters['category/getCategoryItems'].filter((item) => {
+      return this.$store.getters['category/getCategoryItems'].filter(item => {
         return item.parent_uuid !== null
       })
     },
@@ -80,8 +88,8 @@ export default {
         })
     },
     showParent(uuid) {
-      if (this.getCategoryItems.find((item) => item.uuid === uuid)) {
-        return this.getCategoryItems.find((item) => item.uuid === uuid)
+      if (this.getCategoryItems.find(item => item.uuid === uuid)) {
+        return this.getCategoryItems.find(item => item.uuid === uuid)
       }
       return {}
     },

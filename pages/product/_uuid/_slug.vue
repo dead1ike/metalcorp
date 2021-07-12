@@ -22,6 +22,9 @@
           <h5>{{ 'Максимальная нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>
           <h5>{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
         </div>
+        <div>
+          <!--          <pre>  {{ getRackComponent(getTypeByUuid.rack_components) }}</pre>-->
+        </div>
       </div>
 
       <div class="p-5 mt-4">
@@ -60,13 +63,25 @@
           <label> Количество стеллажей:</label>
           <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
         </div>
-        <div class="w-100 mt-5 d-flex text-center justify-content-around flex-row">
-          <div>
-            <h5 class="mr-"><b>Итоговая цена :</b></h5>
+        <div class="w-100 mt-5 d-flex flex-column">
+          <div class="d-flex flex-row justify-content-around">
+            <div>
+              <h5 class="mr-"><b>Цена за стеллаж:</b></h5>
+            </div>
+            <div class="text-left">
+              <h5>{{ getRackPrice }} руб.</h5>
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-around">
+            <div>
+              <h5 class="mr-"><b>Итоговая сумма :</b></h5>
+            </div>
+            <div class="text-left">
+              <h5>{{ getFinalResult }} руб.</h5>
+            </div>
           </div>
           <div>
-            <h5>{{ priceManager(getTypeByUuid.rack_components) }} руб.</h5>
-            <h5>{{ getFinalResult }} руб.</h5>
+            <b-btn variant="corp" @click="addProduct">Добавить в заказ</b-btn>
           </div>
         </div>
       </div>
@@ -95,6 +110,10 @@ export default {
       const result = this.priceManager(this.getTypeByUuid.rack_components) * this.form.rack_count
       return result
     },
+    getRackPrice() {
+      const result = this.priceManager(this.getTypeByUuid.rack_components)
+      return result
+    },
     getRackParamsGroup() {
       const group = _.uniqBy(this.getRackComponentParams, item => {
         return item.parameter_value + item.parameter_uuid
@@ -102,6 +121,9 @@ export default {
       return _.groupBy(group, 'parameter_uuid')
     },
     getRackComponentParams() {
+      return this.getRackParams(this.getTypeByUuid.rack_components)
+    },
+    getRackComponents() {
       return this.getRackParams(this.getTypeByUuid.rack_components)
     },
     getBlackList() {
@@ -132,9 +154,25 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('type/fetchTypes').then(() => {})
+    this.$store.dispatch('type/fetchTypes').then(() => {
+      this.form.title = this.getTypeByUuid.title
+    })
   },
   methods: {
+    getUuid() {
+      return this.$store.getters.getNewUuid(new Date())
+    },
+    addProduct() {
+      this.$store.commit('type/setAddBasketProduct', {
+        ...this.form,
+        parameters: this.selectedGroupParams,
+        title: this.getTypeByUuid.title,
+        price: this.getRackPrice,
+        total: this.getFinalResult,
+        uuid: this.getUuid(),
+      })
+    },
+
     selectParameter(indexGroup, itemParameter) {
       this.getSelectedGroupParams = { key: indexGroup, value: itemParameter }
     },
@@ -148,7 +186,21 @@ export default {
     getLabel(parameters) {
       return _.head(parameters).parameter_title
     },
-
+    getRackComponent(components) {
+      return _.reduce(
+        components,
+        (component, item) => {
+          item.rack_component_childs.forEach(itemComponent => {
+            component.push({
+              uuid: itemComponent.uuid,
+              title: itemComponent.rack_component_value,
+            })
+          })
+          return component
+        },
+        [],
+      )
+    },
     getRackParams(components) {
       return _.reduce(
         components,
@@ -179,7 +231,6 @@ export default {
             let sumComponent = 0
             if (item.is_constructor === true) {
               sumComponent = this.priceManager(item.rack_component_childs, true)
-              console.warn('item', item)
               if (item.component) {
                 if (item.component.slug === 'polka') {
                   sumComponent = sumComponent * this.form.shelf_count
@@ -204,7 +255,6 @@ export default {
             //     : this.priceWorker(item))
             // )
 
-            console.warn('summa', sum)
             return sum
           },
           0,
