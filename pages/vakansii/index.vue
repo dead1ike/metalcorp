@@ -9,7 +9,7 @@
     <div class="d-flex flex-column align-items-center">
       <div class="d-flex bg-light p-3 rounded-lg flex-row w-100 justify-content-between">
         <h2><b>Бухгалтер</b></h2>
-        <h4 class="text-corp ml-6"><b> от 75.000 Р</b></h4>
+        <h4 class="text-corp ml-3"><b> от 75.000 Р</b></h4>
         <div class="d-flex flex-column">
           <p>Требуемый опыт работы: 3-6 лет</p>
           <p>Полная занятость, полный день</p>
@@ -17,7 +17,7 @@
       </div>
       <hr />
       <div class="w-100 d-flex flex-column">
-        <h4 class="mb-2"><b>Обязанности:</b></h4>
+        <h4 class="mb-2 ml-2"><b>Обязанности:</b></h4>
         <div class="rounded-lg bg-light p-3 m-4">
           <ul>
             <li>поиск и привлечение клиентов (металлообработка), ведение переговоров, консультирование клиентов</li>
@@ -29,7 +29,7 @@
           </ul>
         </div>
 
-        <h4 class="mb-2"><b>Требования:</b></h4>
+        <h4 class="mb-2 ml-2"><b>Требования:</b></h4>
         <div class="rounded-lg bg-light p-3 m-4">
           <ul>
             <li>высшее техническое образование</li>
@@ -39,7 +39,7 @@
             <li>навыки чтения машиностроительных чертежей, финансового анализа</li>
           </ul>
         </div>
-        <h4 class="mb-2"><b>Условия:</b></h4>
+        <h4 class="mb-2 ml-2"><b>Условия:</b></h4>
         <div class="rounded-lg bg-light p-3 m-4">
           <ul>
             <li>полное соблюдение трудового законодательства</li>
@@ -53,7 +53,7 @@
     <div class="d-flex flex-column align-items-center">
       <div class="d-flex bg-light p-3 rounded-lg flex-row w-100 justify-content-between">
         <h2><b>Менеджер</b></h2>
-        <h4 class="text-corp ml-6"><b> от 75.000 Р</b></h4>
+        <h4 class="text-corp ml-3"><b> от 75.000 Р</b></h4>
         <div class="d-flex flex-column">
           <p>Требуемый опыт работы: 3-6 лет</p>
           <p>Полная занятость, полный день</p>
@@ -61,7 +61,7 @@
       </div>
       <hr />
       <div class="w-100 d-flex flex-column">
-        <h4 class="mb-2"><b>Обязанности:</b></h4>
+        <h4 class="mb-2 ml-2"><b>Обязанности:</b></h4>
         <div class="rounded-lg bg-light p-3 m-4">
           <ul>
             <li>поиск и привлечение клиентов (металлообработка), ведение переговоров, консультирование клиентов</li>
@@ -73,7 +73,7 @@
           </ul>
         </div>
 
-        <h4 class="mb-2"><b>Требования:</b></h4>
+        <h4 class="mb-2 ml-2"><b>Требования:</b></h4>
         <div class="rounded-lg bg-light p-3 m-4">
           <ul>
             <li>высшее техническое образование</li>
@@ -83,7 +83,7 @@
             <li>навыки чтения машиностроительных чертежей, финансового анализа</li>
           </ul>
         </div>
-        <h4 class="mb-2"><b>Условия:</b></h4>
+        <h4 class="mb-2 ml-2"><b>Условия:</b></h4>
         <div class="rounded-lg bg-light p-3 m-4">
           <ul>
             <li>полное соблюдение трудового законодательства</li>

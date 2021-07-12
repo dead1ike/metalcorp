@@ -9,9 +9,8 @@
         <div>
           <b-img :src="getTypeByUuid.image"></b-img>
         </div>
-        <div>В наличии : <b style="color: green">Много</b></div>
       </div>
-      <div class="p-5 h-100">
+      <div class="p-5 h-100 d-flex flex-column">
         <div class="my-3">
           <h3 class="text-center">Описание:</h3>
           <h5>{{ getTypeByUuid.description }}</h5>
@@ -21,6 +20,9 @@
           <h5>{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
           <h5>{{ 'Максимальная нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>
           <h5>{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
+        </div>
+        <div v-for="item in selectedGroupParams">
+          <p :key="item.component_uuid">{{ showComponent(item.component_uuid) }}</p>
         </div>
         <div>
           <!--          <pre>  {{ getRackComponent(getTypeByUuid.rack_components) }}</pre>-->
@@ -32,14 +34,15 @@
 
         <div v-for="(itemParameters, indexGroup) in getRackParamsGroup" :key="itemParameters.parameter_uuid">
           <div class="d-flex flex-row">
-            <div class="d-flex flex-fill m-3 mr-3 p-2">
-              <label class="h5"> {{ getLabel(itemParameters) }}</label>
+            <div class="d-flex flex-fill m-3 mr-3 p-2 text-right">
+              <label class="h5"> {{ getLabel(itemParameters) }}:</label>
             </div>
             <div class="p-2">
               <b-dd
                 block
                 style="min-width: 224px"
                 variant="corp"
+                no-caret
                 :text="
                   getGroupParamTitle(indexGroup).parameter_value
                     ? getGroupParamTitle(indexGroup).parameter_value
@@ -55,32 +58,34 @@
             </div>
           </div>
         </div>
-        <div class="d-flex align-items-end flex-column">
+        <div class="d-flex align-items-end flex-column m-2">
           <label> Количество полок:</label>
           <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
         </div>
-        <div class="d-flex align-items-end flex-column">
+        <div class="d-flex align-items-end flex-column m-2">
           <label> Количество стеллажей:</label>
           <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
+          <div class="mt-3">В наличии : <b style="color: green">Много</b></div>
         </div>
+
         <div class="w-100 mt-5 d-flex flex-column">
-          <div class="d-flex flex-row justify-content-around">
-            <div>
-              <h5 class="mr-"><b>Цена за стеллаж:</b></h5>
+          <div class="d-flex flex-row justify-content-end m-2">
+            <div class="text-right mr-5">
+              <h5><b>Цена за стеллаж :</b></h5>
             </div>
             <div class="text-left">
               <h5>{{ getRackPrice }} руб.</h5>
             </div>
           </div>
-          <div class="d-flex flex-row justify-content-around">
-            <div>
-              <h5 class="mr-"><b>Итоговая сумма :</b></h5>
+          <div class="d-flex flex-row justify-content-end m-2">
+            <div class="text-right mr-5">
+              <h5><b>Итоговая сумма :</b></h5>
             </div>
-            <div class="text-left">
+            <div class="text-right">
               <h5>{{ getFinalResult }} руб.</h5>
             </div>
           </div>
-          <div>
+          <div class="d-flex justify-content-end m-2">
             <b-btn variant="corp" @click="addProduct">Добавить в заказ</b-btn>
           </div>
         </div>
@@ -124,7 +129,10 @@ export default {
       return this.getRackParams(this.getTypeByUuid.rack_components)
     },
     getRackComponents() {
-      return this.getRackParams(this.getTypeByUuid.rack_components)
+      return this.getTypeByUuid.rack_components
+    },
+    getRackComponentChilds() {
+      return this.getRackComponents.rack_components_childs
     },
     getBlackList() {
       return _.uniq(_.map(this.getRackComponentParams, 'parameter_uuid'))
@@ -159,6 +167,11 @@ export default {
     })
   },
   methods: {
+    showComponent(uuid) {
+      console.warn(this.getRackComponents)
+      if (this.getRackComponents.find(item => item.uuid === uuid))
+        return this.getRackComponents.find(item => item.uuid === uuid).rack_component_value || {}
+    },
     getUuid() {
       return this.$store.getters.getNewUuid(new Date())
     },
@@ -211,6 +224,7 @@ export default {
                 parameter_uuid: itemParam.parameter_uuid,
                 parameter_value: itemParam.parameter_value,
                 parameter_title: itemParam.parameter.title,
+                component_uuid: itemParam.rack_component_uuid,
                 uuid: itemParam.uuid,
               })
           })
@@ -235,7 +249,7 @@ export default {
                 if (item.component.slug === 'polka') {
                   sumComponent = sumComponent * this.form.shelf_count
                 } else if (item.component.slug === 'rama') {
-                  sumComponent = sumComponent * this.form.rack_count + 1
+                  sumComponent = sumComponent * (this.form.rack_count + 1)
                 }
               }
               if (sumComponent === 0) {

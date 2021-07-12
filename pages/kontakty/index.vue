@@ -6,8 +6,8 @@
     <div class="w-100 d-flex justify-content-center mt-1">
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
-    <div class="d-flex justify-content-center flex-row w-100">
-      <div class="d-flex flex-column mx-6 p-1 shadow-lg bg-light">
+    <div class="d-flex justify-content-center flex-wrap flex-row w-100">
+      <div class="d-flex flex-column mx-6 my-3 p-1 shadow-lg bg-light">
         <h4 class="text-center"><b>Телефон</b></h4>
         <div class="d-flex flex-row">
           <div class="m-2">
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column mx-6 p-1 shadow-lg bg-light">
+      <div class="d-flex flex-column mx-6 my-3 p-1 shadow-lg bg-light">
         <h4 class="text-center"><b>Адрес</b></h4>
         <div class="d-flex flex-row">
           <div class="m-2">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column mx-6 p-1 shadow-lg bg-light">
+      <div class="d-flex flex-column mx-6 my-3 p-1 shadow-lg bg-light">
         <h4 class="text-center"><b>Почта</b></h4>
         <div class="d-flex flex-row">
           <div class="m-2">
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-center w-100 h-100 p-6">
-      <b-img class="shadow-lg w-100" src="https://i.ibb.co/t24tR0S/map.png" />
+      <b-img id="picture" class="shadow-lg w-100" src="https://i.ibb.co/t24tR0S/map.png" @ />
     </div>
   </div>
 </template>

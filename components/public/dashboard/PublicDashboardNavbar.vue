@@ -11,6 +11,7 @@
     </b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
+        <b-btn pill class="text-truncate p-2 m-3" variant="corp" @click="openModal()"> Заказать звонок </b-btn>
         <div class="d-flex flex-column">
           <b-nav-item href="tel:+79995601448" class="m-0 px-3 mt-2 font-weight-bolder text-truncate">
             <h4>+7 (999) 560-14-48</h4>
@@ -21,7 +22,6 @@
         <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">
           <public-offer-basket />
         </b-nav-item>
-        <b-btn pill class="text-truncate p-2 m-3" variant="corp" @click="openModal()"> Заказать звонок </b-btn>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
     </b-collapse>

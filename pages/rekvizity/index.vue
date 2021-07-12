@@ -8,7 +8,7 @@
     </div>
     <div class="d-flex justify-content-center flex-row w-100 h-100">
       <div>
-        <h3>Реквизиты ИП</h3>
+        <h3 class="d-flex justify-content-center">Реквизиты ИП</h3>
         <table class="table table-striped">
           <tbody>
             <tr>
@@ -60,7 +60,7 @@
           </tbody>
         </table>
         <hr />
-        <h3>Реквизиты ООО</h3>
+        <h3 class="d-flex justify-content-center pt-4">Реквизиты ООО</h3>
 
         <table class="table table-striped">
           <tbody>
