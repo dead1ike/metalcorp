@@ -80,7 +80,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-end m-2">
-            <b-btn variant="corp" @click="addProduct">Добавить в заказ</b-btn>
+            <b-btn :disabled="!buttonState" variant="corp" @click="addProduct">Добавить в заказ</b-btn>
           </div>
         </div>
       </div>
@@ -105,6 +105,11 @@ export default {
     }
   },
   computed: {
+    buttonState() {
+      let isValid = true
+      if (isNaN(this.getRackPrice)) isValid = false
+      return isValid
+    },
     getFinalResult() {
       const result = this.priceManager(this.getTypeByUuid.rack_components) * this.form.rack_count
       return result
@@ -167,6 +172,7 @@ export default {
         total: this.getFinalResult,
         uuid: this.getUuid(),
       })
+      this.makeToast('Стеллаж добавлен в корзину')
     },
 
     selectParameter(indexGroup, itemParameter) {
@@ -293,6 +299,15 @@ export default {
           })
         }
         return true
+      })
+    },
+    makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
+      this.$bvToast.toast(body, {
+        title,
+        autoHideDelay: 2000,
+        appendToast: false,
+        variant,
+        toaster: 'b-toaster-top-center',
       })
     },
   },
