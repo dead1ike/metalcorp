@@ -172,7 +172,7 @@ export default {
         total: this.getFinalResult,
         uuid: this.getUuid(),
       })
-      this.makeToast('Стеллаж добавлен в корзину')
+      this.makeToast('Стеллаж добавлен в корзину', 'success')
     },
 
     selectParameter(indexGroup, itemParameter) {
@@ -306,8 +306,9 @@ export default {
         title,
         autoHideDelay: 2000,
         appendToast: false,
+        solid: true,
         variant,
-        toaster: 'b-toaster-top-center',
+        toaster: 'b-toaster-top-right',
       })
     },
   },

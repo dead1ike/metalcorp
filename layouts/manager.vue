@@ -23,6 +23,9 @@
     <template v-if="$store.getters.getActiveManagerRackComponentAddModal">
       <manager-rack-type-component-add />
     </template>
+    <template v-if="$store.getters.getActiveOrderShowModal">
+      <manager-offer-show />
+    </template>
   </div>
 </template>
 
@@ -63,6 +66,11 @@ export default {
       } else if (modalId === 'manager-type-component-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerRackComponentAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'order-show') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerOrderShow',
           modalStatus: false,
         })
       }

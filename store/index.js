@@ -37,6 +37,38 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
     ],
+    orderShow: [
+      {
+        key: 'title',
+        label: 'Наименование',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'parameters',
+        label: 'Параметры',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'shelf_count',
+        label: 'Количество полок',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'price',
+        label: 'Цена',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'rack_count',
+        label: 'Количество стеллажей',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'summ',
+        label: 'Сумма',
+        class: 'align-middle text-center',
+      },
+    ],
     offerConfirm: [
       {
         key: 'title',
@@ -190,6 +222,38 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
     ],
+    managerOffer: [
+      {
+        key: 'name',
+        label: 'ФИО заказчика',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'email',
+        label: 'Email',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'phone',
+        label: 'Телефон',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'created_at',
+        label: 'Дата',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'total',
+        label: 'Сумма заказа',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-center',
+      },
+    ],
   },
 
   activeModals: {
@@ -201,6 +265,7 @@ export const state = () => ({
     managerRackPriceParameterAdd: false,
     managerComponentAdd: false,
     managerRackComponentAdd: false,
+    managerOrderShow: false,
   },
 })
 export const actions = {
@@ -240,7 +305,16 @@ export const getters = {
   getActiveDimensionModal(state) {
     return state.activeModals.dimensionModal
   },
+  getActiveOrderShowModal(state) {
+    return state.activeModals.managerOrderShow
+  },
 
+  getOrderShowFields(state) {
+    return state.fields.orderShow
+  },
+  getManagerOfferFields(state) {
+    return state.fields.managerOffer
+  },
   getPriceParameterFields(state) {
     return state.fields.priceParameter
   },
@@ -266,5 +340,25 @@ export const getters = {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
       (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16),
     )
+  },
+  validEmail: () => payload => {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(payload)) {
+      return false
+    } else if (payload.length < 6) {
+      return false
+    }
+    return true
+  },
+  validPhone: () => payload => {
+    if (!payload.match(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/)) {
+      return false
+    }
+    return true
+  },
+  validName: () => payload => {
+    if (payload.length === 0) {
+      return false
+    }
+    return true
   },
 }

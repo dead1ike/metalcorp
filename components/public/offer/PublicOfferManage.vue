@@ -45,9 +45,19 @@
             {{ data.item.total }}
           </template>
           <template #cell(actions)="data">
-            <b-btn class="live-edit btn-icon" variant="link">
-              <b-icon icon="x-circle" scale="1" variant="danger" @click="deleteOfferItem(data.item.uuid)"></b-icon
-            ></b-btn>
+            <b-dd v-b-popover.hover.topleft="'Удалить'" variant="link" no-caret size="sm">
+              <template #button-content>
+                <b-icon icon="x-circle" scale="1.6" variant="danger"></b-icon>
+              </template>
+              <h6 class="text-center">Вы уверены?</h6>
+              <hr />
+              <b-dd-item>
+                <b-btn variant="danger" size="sm" block @click="deleteItem(data.item.uuid)">Да</b-btn>
+              </b-dd-item>
+              <b-dd-item>
+                <b-btn variant="corp" size="sm" block>Нет</b-btn>
+              </b-dd-item>
+            </b-dd>
           </template>
         </b-table>
       </div>
@@ -82,7 +92,7 @@ export default {
     toOfferConfirm() {
       this.$router.push('/offer/confirm')
     },
-    deleteOfferItem(uuid) {
+    deleteItem(uuid) {
       this.$store.commit('type/setDelBasketProduct', {
         uuid,
       })
