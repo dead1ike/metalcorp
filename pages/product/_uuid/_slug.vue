@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100 w-100 overflow-auto jus">
+  <div class="h-100 w-100 overflow-auto">
     <div class="d-flex flex-row justify-content-around">
       <!--      <pre class=" overflow-auto" style="max-height: 800px"> {{ getRackParamsGroup }}</pre>-->
       <div class="p-5">
@@ -20,12 +20,6 @@
           <h5>{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
           <h5>{{ 'Максимальная нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>
           <h5>{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
-        </div>
-        <div v-for="item in selectedGroupParams">
-          <p :key="item.component_uuid">{{ showComponent(item.component_uuid) }}</p>
-        </div>
-        <div>
-          <!--          <pre>  {{ getRackComponent(getTypeByUuid.rack_components) }}</pre>-->
         </div>
       </div>
 
@@ -58,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex align-items-end flex-column m-2">
+        <div v-if="typeSlug !== 'mzprofil'" class="d-flex align-items-end flex-column m-2">
           <label> Количество полок:</label>
           <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
         </div>
@@ -128,17 +122,11 @@ export default {
     getRackComponentParams() {
       return this.getRackParams(this.getTypeByUuid.rack_components)
     },
-    getRackComponents() {
-      return this.getTypeByUuid.rack_components
-    },
-    getRackComponentChilds() {
-      return this.getRackComponents.rack_components_childs
-    },
     getBlackList() {
       return _.uniq(_.map(this.getRackComponentParams, 'parameter_uuid'))
     },
     getTypeByUuid() {
-      return this.$store.getters['type/getTypeById'](this.typeUuid) || {}
+      return this.$store.getters['type/getRack'] || {}
     },
     getSelectedGroupParams: {
       // геттер:
@@ -162,16 +150,11 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('type/fetchTypes').then(() => {
+    this.$store.dispatch('type/fetchType', this.typeUuid).then(() => {
       this.form.title = this.getTypeByUuid.title
     })
   },
   methods: {
-    showComponent(uuid) {
-      console.warn(this.getRackComponents)
-      if (this.getRackComponents.find(item => item.uuid === uuid))
-        return this.getRackComponents.find(item => item.uuid === uuid).rack_component_value || {}
-    },
     getUuid() {
       return this.$store.getters.getNewUuid(new Date())
     },
@@ -199,21 +182,6 @@ export default {
     getLabel(parameters) {
       return _.head(parameters).parameter_title
     },
-    getRackComponent(components) {
-      return _.reduce(
-        components,
-        (component, item) => {
-          item.rack_component_childs.forEach(itemComponent => {
-            component.push({
-              uuid: itemComponent.uuid,
-              title: itemComponent.rack_component_value,
-            })
-          })
-          return component
-        },
-        [],
-      )
-    },
     getRackParams(components) {
       return _.reduce(
         components,
@@ -224,7 +192,6 @@ export default {
                 parameter_uuid: itemParam.parameter_uuid,
                 parameter_value: itemParam.parameter_value,
                 parameter_title: itemParam.parameter.title,
-                component_uuid: itemParam.rack_component_uuid,
                 uuid: itemParam.uuid,
               })
           })

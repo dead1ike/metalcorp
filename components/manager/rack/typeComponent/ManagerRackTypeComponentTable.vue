@@ -26,7 +26,7 @@
               <td>{{ item.rack_component_value }}</td>
               <td>
                 <div v-for="parameter in item.rack_component_parameters" :key="parameter.uuid" class="text-justify">
-                  {{ parameter.parameter.title + ' ' + parameter.parameter_value }}
+                  {{ parameter.count + 'x' + ' ' + parameter.parameter.title + ' ' + parameter.parameter_value }}
                 </div>
               </td>
             </tr>

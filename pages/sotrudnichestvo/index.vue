@@ -38,7 +38,7 @@
           <p>Также мы приглашаем к взаимовыгодному сотрудничеству компании-производители стеллажного оборудования.</p>
           <h4><b>Преимущества сотрудничества с компанией «METALCORP»</b></h4>
         </div>
-        <div class="border rounded-lg bg-light p-3 mx-3 mb-5 d-flex flex-row">
+        <div class="border rounded-lg bg-light p-3 mx-3 mb-5 ">
           <b-img class="m-2" src="https://i.ibb.co/MPgT7nc/li1.png" />
           <p class="mt-3">
             Мы ценим долгосрочные, взаимовыгодные отношения, залогом которых является прозрачность и ясность
@@ -46,7 +46,7 @@
             партнерских отношений.
           </p>
         </div>
-        <div class="border rounded-lg bg-light p-3 mx-3 mb-5 d-flex flex-row">
+        <div class="border rounded-lg bg-light p-3 mx-3 mb-5">
           <b-img class="m-2" src="https://i.ibb.co/mSntwRM/li2.png" />
           <p class="mt-3">
             Мы ценим долгосрочные, взаимовыгодные отношения, залогом которых является прозрачность и ясность
@@ -54,7 +54,7 @@
             партнерских отношений.
           </p>
         </div>
-        <div class="border rounded-lg bg-light p-3 mx-3 mb-5 d-flex flex-row">
+        <div class="border rounded-lg bg-light p-3 mx-3 mb-5 ">
           <b-img class="m-2" src="https://i.ibb.co/KmWhY6y/li3.png" />
           <p class="mt-3">
             Мы ценим долгосрочные, взаимовыгодные отношения, залогом которых является прозрачность и ясность
@@ -62,7 +62,7 @@
             партнерских отношений.
           </p>
         </div>
-        <div class="border rounded-lg bg-light p-3 mx-3 mb-5 d-flex flex-row">
+        <div class="border rounded-lg bg-light p-3 mx-3 mb-5">
           <b-img class="m-2" src="https://i.ibb.co/Xscdfkz/li4.png" />
           <p class="mt-3">
             Мы ценим долгосрочные, взаимовыгодные отношения, залогом которых является прозрачность и ясность
@@ -72,7 +72,7 @@
         </div>
         <div class="rounded-lg bg-corp text-center text-white p-4 mx-3">
           <h4 class="text-white"><b>Чтобы узнать больше о наших услугах и предложениях для партнеров</b></h4>
-          <div class="d-flex flex-row mt-4 justify-content-around">
+          <div class="d-flex flex-row mt-4 flex-wrap justify-content-around">
             <div class="d-flex flex-row m-3">
               <div class="m-2">
                 <b-avatar variant="warning"> <b-icon variant="corp" scale="1.5" icon="at"></b-icon></b-avatar>
@@ -141,7 +141,7 @@
         </div>
         <div class="rounded-lg bg-corp text-center text-white p-4 mx-3">
           <h4 class="text-white"><b>Чтобы узнать больше о наших услугах и предложениях для партнеров</b></h4>
-          <div class="d-flex flex-row mt-4 justify-content-around">
+          <div class="d-flex flex-row mt-4 flex-wrap justify-content-around">
             <div class="d-flex flex-row m-3">
               <div class="m-2">
                 <b-avatar variant="warning"> <b-icon variant="corp" scale="1.5" icon="at"></b-icon></b-avatar>

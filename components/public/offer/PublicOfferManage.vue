@@ -28,6 +28,9 @@
               </table>
             </div>
           </template>
+          <template #cell(shelf_count)="data">
+            {{ data.item.title === 'MZ-Profil' ? '--' : data.item.shelf_count }}
+          </template>
           <template #cell(rack_count)="data">
             <b-spinbutton :value="data.item.rack_count" inline min="1">
               <template #decrement>

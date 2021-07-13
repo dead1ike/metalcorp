@@ -177,7 +177,7 @@ export const state = () => ({
       {
         key: 'child',
         label: 'Комплектующие',
-        class: 'align-middle text-center',
+        class: 'align-middle text-center d-flex flex-fill',
         sortable: true,
       },
       {

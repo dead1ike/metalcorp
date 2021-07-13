@@ -103,6 +103,7 @@ export default {
     getCurrentComponent() {
       return this.$store.getters['manager/rack/component/getCurrentComponent']
     },
+
     getSelectedComponentUuid() {
       if (this.form.rack_child_component_uuid !== null) {
         return this.form.rack_child_component_uuid
