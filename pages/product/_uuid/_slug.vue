@@ -57,7 +57,8 @@
           <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
         </div>
         <div class="d-flex align-items-end flex-column m-2">
-          <label> Количество стеллажей:</label>
+          <label v-if="typeSlug !== 'sgr'"> Количество стеллажей:</label>
+          <label v-else>Количество рам:</label>
           <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
           <div class="mt-3">В наличии : <b style="color: green">Много</b></div>
         </div>
@@ -71,7 +72,7 @@
               <h5>{{ getRackPrice }} руб.</h5>
             </div>
           </div>
-          <div class="d-flex flex-row justify-content-end m-2">
+          <div v-if="typeSlug !== 'sgr'" class="d-flex flex-row justify-content-end m-2">
             <div class="text-right mr-5">
               <h5><b>Итоговая сумма :</b></h5>
             </div>
@@ -222,7 +223,7 @@ export default {
                 if (item.component.slug === 'polka') {
                   sumComponent = sumComponent * this.form.shelf_count
                 } else if (item.component.slug === 'rama') {
-                  sumComponent = sumComponent * (this.form.rack_count + 1)
+                  sumComponent = sumComponent * this.form.rack_count
                 }
               }
               if (sumComponent === 0) {

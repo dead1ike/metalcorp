@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="dimension-modal" no-close-on-esc no-close-on-backdrop>
+  <b-modal id="category-modal" no-close-on-esc no-close-on-backdrop>
     <template #modal-header>
       <h3>Заказать обратный звонок</h3>
     </template>
@@ -18,21 +18,29 @@
 
 <script>
 export default {
-  name: 'PublicDimensionModal',
+  name: 'PublicCategoryOrderModal',
   data() {
     return {
       form: {
         phone: '',
+        title: '',
       },
     }
   },
+  computed: {
+    getTitle() {
+      return this.$store.getters['category/getCurrentCategory']
+    },
+  },
   mounted() {
-    this.$bvModal.show('dimension-modal')
+    this.$bvModal.show('category-modal')
+    console.warn('adadadawwwwww', this.getTitle)
+    this.form.title = this.getTitle.category_title
   },
   methods: {
     closeModal() {
       this.$store.commit('setActiveModal', {
-        modalName: 'dimensionModal',
+        modalName: 'categoryModal',
         modalStatus: false,
       })
     },

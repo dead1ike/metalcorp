@@ -26,7 +26,28 @@
       </div>
     </template>
     <template v-else>
-      pepega
+      <div class="d-flex flex-row justify-content-around">
+        <div class="p-5">
+          <div class="my-3">
+            <h3 class="text-center">{{ form.title }}</h3>
+          </div>
+          <div>
+            <b-img :src="getCategoryByUuid.image"></b-img>
+          </div>
+        </div>
+        <div class="p-5 h-100 d-flex flex-column">
+          <div class="my-3">
+            <h3 class="text-center">Описание:</h3>
+            <h5>{{ getCategoryByUuid.description }}</h5>
+          </div>
+          <div class="my-3">
+            <h4>Цена от {{ getCategoryByUuid.from }} рублей</h4>
+          </div>
+          <div>
+            <b-btn variant="corp" @click="openModal">Заказать</b-btn>
+          </div>
+        </div>
+      </div>
     </template>
   </div>
 </template>
@@ -38,18 +59,38 @@ export default {
     const categoryUuid = params.uuid
     return { categorySlug, categoryUuid }
   },
+  data() {
+    return {
+      form: {
+        title: '',
+      },
+    }
+  },
   computed: {
     getTypeByCategoryUuid() {
       return this.$store.getters['type/getTypesByCategoryUuid'](this.categoryUuid)
     },
     getCategoryByUuid() {
-      return this.$store.getters
+      return this.$store.getters['category/getCategoryByUuid'](this.categoryUuid) || {}
     },
   },
   created() {
+    this.$store.dispatch('category/fetchCategory').then(() => {
+      this.form.title = this.getCategoryByUuid.title
+    })
     this.$store.dispatch('type/fetchTypes')
+    console.warn(this.getCategoryByUuid)
   },
   methods: {
+    openModal() {
+      this.$store.commit('category/setCurrentCategory', {
+        category_title: this.form.title,
+      })
+      this.$store.commit('setActiveModal', {
+        modalName: 'categoryModal',
+        modalStatus: true,
+      })
+    },
     description(item) {
       this.$router.push(`/product/${item.uuid}/${item.slug}`)
     },

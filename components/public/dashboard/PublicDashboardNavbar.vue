@@ -10,15 +10,21 @@
       </template>
     </b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav class="ml-auto">
-        <b-btn pill class="text-truncate p-2 m-3" variant="corp" @click="openModal()"> Заказать звонок </b-btn>
-        <div class="d-flex flex-column">
-          <b-nav-item href="tel:+79995601448" class="m-0 px-3 mt-2 font-weight-bolder text-truncate">
-            <h4>+7 (999) 560-14-48</h4>
-          </b-nav-item>
-          <small class="text-muted ml-5 mt-0">График работы: с 09:00 до 21:00</small>
+      <b-navbar-nav class="w-100">
+        <b-nav-item class="mt-3 ml-3">
+          <b-btn size="sm" variant="outline" class="m-0 p-1 live-edit font-weight-bolder" @click="toCatalog">
+            <h3>Каталог</h3>
+          </b-btn>
+        </b-nav-item>
+        <div class="d-flex justify-content-center w-100">
+          <b-btn pill class="text-truncate px-4 m-3" variant="corp" @click="openModal()"> Заказать звонок </b-btn>
+          <div class="d-flex flex-column">
+            <b-nav-item href="tel:+79995601448" class="m-0 px-3 mt-2 font-weight-bolder text-truncate">
+              <h4>+7 (999) 560-14-48</h4>
+            </b-nav-item>
+            <small class="text-muted ml-5 mt-0">График работы: с 09:00 до 21:00</small>
+          </div>
         </div>
-        <b-nav-item to="/category" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">Каталог</b-nav-item>
         <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">
           <public-offer-basket />
         </b-nav-item>
@@ -32,6 +38,9 @@
 export default {
   name: 'PublicDashboardNavbar',
   methods: {
+    toCatalog() {
+      this.$router.push('/category')
+    },
     openModal() {
       this.$store.commit('setActiveModal', {
         modalName: 'dimensionModal',
