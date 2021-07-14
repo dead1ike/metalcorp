@@ -32,5 +32,10 @@ export const getters = {
   getCategoryItems(state) {
     return state.items.category
   },
+  getCategoryByUuid: state => uuid => {
+    return state.items.category.find(item => {
+      return item.uuid === uuid
+    })
+  },
   getBlank2(state) {},
 }
