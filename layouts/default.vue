@@ -6,6 +6,9 @@
     <template v-if="$store.getters.getActiveDimensionModal">
       <public-dimension-modal />
     </template>
+    <template v-if="$store.getters.getActiveCategoryModal">
+      <public-category-order-modal />
+    </template>
     <div class="overflow-hidden"><public-dashboard-footer /></div>
   </div>
 </template>
@@ -17,6 +20,11 @@ export default {
       if (modalId === 'dimension-modal') {
         this.$store.commit('setActiveModal', {
           modalName: 'dimensionModal',
+          modalStatus: false,
+        })
+      } else if (modalId === 'category-modal') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'categoryModal',
           modalStatus: false,
         })
       }

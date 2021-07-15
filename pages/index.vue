@@ -200,18 +200,7 @@ export default {
       }
       return slides
     },
-    showFirstFive() {
-      return this.getTestItems.slice(0, 5)
-    },
-    showSecondFive() {
-      return this.getTestItems.slice(5, 10)
-    },
   },
-  // watch: {
-  //   slidePage(newValue, oldValue) {
-  //     this.slideCurrent = this.slidePage * this.slideCount
-  //   },
-  // },
   mounted() {},
   methods: {
     description(item) {

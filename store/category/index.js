@@ -2,6 +2,9 @@ export const state = () => ({
   items: {
     category: [],
   },
+  item: {
+    category: {},
+  },
 })
 export const actions = {
   async fetchCategory({ commit }) {
@@ -26,11 +29,21 @@ export const mutations = {
   setCategory(state, data) {
     state.items.category = data
   },
-  setBlank2(state, data) {},
+  setCurrentCategory(state, data) {
+    console.warn('dadada', data)
+    state.item.category = data
+  },
 }
 export const getters = {
   getCategoryItems(state) {
     return state.items.category
   },
-  getBlank2(state) {},
+  getCategoryByUuid: state => uuid => {
+    return state.items.category.find(item => {
+      return item.uuid === uuid
+    })
+  },
+  getCurrentCategory(state) {
+    return state.item.category
+  },
 }

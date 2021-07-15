@@ -266,6 +266,7 @@ export const state = () => ({
     managerComponentAdd: false,
     managerRackComponentAdd: false,
     managerOrderShow: false,
+    categoryModal: false,
   },
 })
 export const actions = {
@@ -307,6 +308,9 @@ export const getters = {
   },
   getActiveOrderShowModal(state) {
     return state.activeModals.managerOrderShow
+  },
+  getActiveCategoryModal(state) {
+    return state.activeModals.categoryModal
   },
 
   getOrderShowFields(state) {
