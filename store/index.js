@@ -254,6 +254,18 @@ export const state = () => ({
         class: 'align-middle text-center',
       },
     ],
+    user: [
+      {
+        key: 'email',
+        label: 'Email пользователя',
+        class: 'align-middle company-actions text-center',
+      },
+      {
+        key: 'actions',
+        label: 'Функции',
+        class: 'align-middle company-actions text-center',
+      },
+    ],
   },
 
   activeModals: {
@@ -267,6 +279,7 @@ export const state = () => ({
     managerRackComponentAdd: false,
     managerOrderShow: false,
     categoryModal: false,
+    userAdd: false,
   },
 })
 export const actions = {
@@ -312,6 +325,9 @@ export const getters = {
   getActiveCategoryModal(state) {
     return state.activeModals.categoryModal
   },
+  getActiveModalUserAdd(state) {
+    return state.activeModals.userAdd
+  },
 
   getOrderShowFields(state) {
     return state.fields.orderShow
@@ -345,6 +361,7 @@ export const getters = {
       (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16),
     )
   },
+  getUserFields: state => state.fields.user,
   validEmail: () => payload => {
     if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(payload)) {
       return false

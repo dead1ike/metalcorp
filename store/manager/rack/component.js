@@ -6,6 +6,13 @@ export const state = () => ({
   item: {
     rack_component: {},
   },
+  filters: {
+    component: {
+      title: '',
+      page: 1,
+      limit: 50,
+    },
+  },
 })
 
 export const actions = {
@@ -14,10 +21,14 @@ export const actions = {
       commit('setComponent', data.data)
     })
   },
-  fetchRackComponent({ commit }) {
-    return this.$axios.get('/api/rack/rackComponent').then(({ data }) => {
-      commit('setRackComponent', data.data)
-    })
+  fetchRackComponent({ commit, getters }) {
+    return this.$axios
+      .get('/api/rack/rackComponent', {
+        params: getters.getComponentParams,
+      })
+      .then(({ data }) => {
+        commit('setRackComponent', data.data)
+      })
   },
   saveBlank({ commit }, payload) {
     return this.$axios.put('/api/resource', {
@@ -52,6 +63,9 @@ export const mutations = {
   setCurrentComponent(state, data) {
     state.item.rack_component = data
   },
+  setFilterComponent(state, data) {
+    state.filters.component[data.filterName] = data.filterData
+  },
 }
 
 export const getters = {
@@ -64,5 +78,7 @@ export const getters = {
   getRackComponent(state) {
     return state.items.rack_component
   },
-  getBlank2(state) {},
+  getComponentParams(state) {
+    return state.filters.component
+  },
 }

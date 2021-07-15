@@ -9,11 +9,6 @@ export const state = () => ({
   filter: {
     search: '',
     uuid: [],
-    company_okved: [],
-    company_utc: [],
-    company_rate: [],
-    company_employee_count: 'all',
-    company_job: [],
   },
 })
 

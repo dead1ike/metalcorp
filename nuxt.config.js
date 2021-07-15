@@ -10,7 +10,7 @@ export default {
   resourceHints: false,
 
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL
+    apiURL: process.env.API_URL,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -19,9 +19,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
+    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -32,7 +32,7 @@ export default {
     { src: '~/plugins/persistedState.client.js' },
     { src: '~/plugins/DateTime' },
     { src: '~/plugins/Duration' },
-    { src: '~/plugins/Interval' }
+    { src: '~/plugins/Interval' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,7 +42,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -52,7 +52,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -60,17 +60,74 @@ export default {
     // prefix: '/api/',
     credentials: true,
     proxy: false,
-    baseURL: process.env.API_URL || 'https://local-api/'
+    baseURL: process.env.API_URL || 'https://local-api/',
   },
 
   router: {
-    trailingSlash: false
+    trailingSlash: false,
+  },
+
+  auth: {
+    redirect: {
+      login: '/manager/login',
+      logout: '/',
+      callback: '/manager/login',
+      home: '/manage/manage',
+    },
+    watchLoggedIn: false,
+    token: {
+      prefix: '_token.',
+    },
+    localStorage: {
+      prefix: 'auth.',
+    },
+    cookie: false,
+    vuex: {
+      namespace: 'auth',
+    },
+    scopeKey: 'data',
+
+    strategies: {
+      local: {
+        token: {
+          property: false,
+          required: true,
+          type: 'Bearer',
+        },
+        user: {
+          autoFetch: false,
+          property: false,
+        },
+        clientId: process.env.PASSPORT_CLIENT_GRANT_ID,
+        clientSecret: process.env.PASSPORT_CLIENT_GRANT_SECRET,
+        grantType: 'password',
+        endpoints: {
+          login: {
+            baseURL: process.env.API_URL,
+            url: '/oauth/token',
+            method: 'post',
+            propertyName: 'access_token',
+          },
+          logout: {
+            baseURL: process.env.API_URL,
+            url: '/api/auth/logout',
+            method: 'post',
+          },
+          user: {
+            baseURL: process.env.API_URL,
+            url: '/api/auth/user',
+            method: 'get',
+            propertyName: 'user',
+          },
+        },
+      },
+    },
   },
 
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: false,
-    icons: true
+    icons: true,
     // components: ['BIcon', 'BIconAlertFill', 'BIconCalendar', 'BIconGears'],
   },
 
@@ -82,24 +139,24 @@ export default {
       description: '«МЕТАЛЛКОРП»',
       lang: 'ru',
       background_color: '#5472f9',
-      theme_color: '#5472f9'
+      theme_color: '#5472f9',
       // start_url: '/',
-    }
+    },
   },
 
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: {
-      compact: true
+      compact: true,
     },
     plugins: [
       new webpack.ProvidePlugin({
-        _: 'lodash'
-      })
-    ]
-  }
+        _: 'lodash',
+      }),
+    ],
+  },
 }

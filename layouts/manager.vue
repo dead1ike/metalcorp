@@ -26,6 +26,9 @@
     <template v-if="$store.getters.getActiveOrderShowModal">
       <manager-offer-show />
     </template>
+    <template v-if="$store.getters.getActiveModalUserAdd">
+      <manager-user-add />
+    </template>
   </div>
 </template>
 
@@ -71,6 +74,11 @@ export default {
       } else if (modalId === 'order-show') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerOrderShow',
+          modalStatus: false,
+        })
+      } else if (modalId === 'user-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'userAdd',
           modalStatus: false,
         })
       }

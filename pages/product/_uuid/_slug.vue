@@ -57,8 +57,9 @@
           <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
         </div>
         <div class="d-flex align-items-end flex-column m-2">
-          <label v-if="typeSlug !== 'sgr'"> Количество стеллажей:</label>
-          <label v-else>Количество рам:</label>
+          <label v-if="typeSlug === 'sgr'"> Количество рам:</label>
+          <label v-else-if="typeSlug === 'sfm'"> Количество рам:</label>
+          <label v-else>Количество стеллажей:</label>
           <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
           <div class="mt-3">В наличии : <b style="color: green">Много</b></div>
         </div>
@@ -72,7 +73,8 @@
               <h5>{{ getRackPrice }} руб.</h5>
             </div>
           </div>
-          <div v-if="typeSlug !== 'sgr'" class="d-flex flex-row justify-content-end m-2">
+          <div v-if="typeSlug === 'sgr' || typeSlug === 'sfm'" class="d-flex flex-row justify-content-end m-2"></div>
+          <div v-else class="d-flex flex-row justify-content-end m-2">
             <div class="text-right mr-5">
               <h5><b>Итоговая сумма :</b></h5>
             </div>
@@ -235,14 +237,6 @@ export default {
               sumComponent = this.priceWorker(item)
               sum = sum + sumComponent
             }
-
-            // return (
-            //   sum +
-            //   (item.is_constructor === true
-            //     ? this.priceManager(item.rack_component_childs, true)
-            //     : this.priceWorker(item))
-            // )
-
             return sum
           },
           0,
@@ -250,20 +244,12 @@ export default {
       )
     },
     priceWorker(component) {
-      // const groupUuid = '5252a4ed-979c-4206-8fcf-7dae42627fe1'
       if (
         component.rack_component_parameters.length !==
         this.getWhiteParameters(component.rack_component_parameters).length
       ) {
         return 0
       }
-
-      // const paramFilter = _.filter(component.rack_component_parameters, item => item.parameter.group_uuid === groupUuid)
-      // if (paramFilter.length > 1) {
-      //   if (paramFilter.length !== this.getWhiteParameters(paramFilter).length) {
-      //     return 0
-      //   }
-      // }
 
       const parameterPrice = _.find(this.getWhiteParameters(component.rack_component_parameters), item => {
         return item.parameter.slug === 'price'
@@ -273,22 +259,6 @@ export default {
       } else {
         return 0
       }
-
-      // const isGroupSumm = true
-      // return _.sumBy(this.getWhiteParameters(component.rack_component_parameters), item => {
-      //   // if (item.parameter.group_uuid === groupUuid) {
-      //   //   if (isGroupSumm) {
-      //   //     isGroupSumm = false
-      //   //     return item.price * item.count
-      //   //   }
-      //   // } else {
-      //   if (item.parameter.slug === 'price') {
-      //     return parseInt(item.parameter_value) * item.count
-      //   } else {
-      //     return 0
-      //   }
-      //   // }
-      // })
     },
     getWhiteParameters(parameters) {
       return _.filter(parameters, item => {

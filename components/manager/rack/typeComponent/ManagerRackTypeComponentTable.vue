@@ -1,5 +1,12 @@
 <template>
   <div>
+    <!--    <b-form-input-->
+    <!--      v-model="filter.title"-->
+    <!--      type="search"-->
+    <!--      size="lg"-->
+    <!--      placeholder="Введите наименование"-->
+    <!--      class="ml-5"-->
+    <!--    ></b-form-input>-->
     <b-table hover striped borderless :fields="getManagerComponentFields" :items="getManagerComponentItems">
       <template #cell(rack_title)="data">
         {{ data.item.rack.title }}
@@ -58,6 +65,13 @@
 <script>
 export default {
   name: 'ManagerRackTypeComponentTable',
+  data() {
+    return {
+      // filter: {
+      //   title: '',
+      // },
+    }
+  },
   computed: {
     getManagerComponentFields() {
       return this.$store.getters['manager/rack/field/getManagerRackComponentFields']
@@ -72,10 +86,25 @@ export default {
       return this.getManagerComponentItems
     },
   },
-  mounted() {
-    this.fetchComponent()
+  watch: {
+    // 'filter.title'(newValue) {
+    // this.setFilter('title', newValue)
+    // this.fetchComponent()
+    // },
   },
+  mounted() {
+    // this.fetchComponentD = _.debounce(this.fetchComponent, 1000)
+    this.fetchComponent()
+    // this.filter.title = this.$store.getters['manager/rack/component/getComponentParams']
+  },
+
   methods: {
+    // setFilter(filterName, filterData) {
+    //   this.$store.commit('manager/rack/component/setFilterComponent', {
+    //     filterName,
+    //     filterData,
+    //   })
+    // },
     managerPriceAdd(item) {
       this.$store.commit('setActiveModal', {
         modalName: 'managerRackPriceParameterAdd',
