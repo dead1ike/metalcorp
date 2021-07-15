@@ -5,7 +5,7 @@
     size="md"
     body-class="px-5"
     centered
-    :title="getEditUser.uuid ? 'Редактировать пользователя' : 'Создать пользователя'"
+    :title="getEditUser.id ? 'Редактировать пользователя' : 'Создать пользователя'"
     lazy
     no-close-on-backdrop
     no-close-on-esc
@@ -22,10 +22,10 @@
           placeholder="Введите пароль пользователя"
         ></b-form-input>
       </b-form-group>
-      <b-btn v-if="getEditUser.uuid" variant="success" @click="savePassword()">Сохранить пароль</b-btn>
+      <b-btn v-if="getEditUser.id" variant="success" @click="savePassword()">Сохранить пароль</b-btn>
     </div>
     <template #modal-footer>
-      <b-btn v-if="getEditUser.uuid" variant="success" @click="saveUser()">Сохранить</b-btn>
+      <b-btn v-if="getEditUser.id" variant="success" @click="saveUser()">Сохранить</b-btn>
 
       <b-btn v-else variant="light-blue" @click="addUser()">Создать</b-btn>
       <b-btn variant="danger" @click="closeUser()">Закрыть</b-btn>
@@ -51,7 +51,7 @@ export default {
   },
   mounted() {
     this.$bvModal.show('user-add')
-    if (this.getEditUser.uuid) {
+    if (this.getEditUser.id) {
       this.form.email = this.getEditUser.email
     }
   },
@@ -112,7 +112,7 @@ export default {
       this.$store
         .dispatch('manager/user/putUser', {
           password: this.form.password,
-          uuid: this.getEditUser.uuid,
+          id: this.getEditUser.id,
         })
         .then(() => {
           this.makeToast('Пароль обновлен', 'success', 'УСПЕШНО')

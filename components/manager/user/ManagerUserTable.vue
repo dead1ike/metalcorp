@@ -40,7 +40,9 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('manager/user/fetchUsers')
+    this.$store.dispatch('manager/user/fetchUsers').then(() => {
+      console.warn(this.getUserItems)
+    })
   },
   methods: {
     addUser() {

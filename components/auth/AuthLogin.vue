@@ -29,8 +29,8 @@ export default {
         username: '',
         password: '',
         grant_type: 'password',
-        client_id: this.$config.PASSPORT_CLIENT_GRANT_ID,
-        client_secret: this.$config.PASSPORT_CLIENT_GRANT_SECRET,
+        client_id: process.env.PASSPORT_CLIENT_GRANT_ID,
+        client_secret: process.env.PASSPORT_CLIENT_GRANT_SECRET,
         scope: '',
       },
       error: {

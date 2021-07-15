@@ -1,6 +1,5 @@
 <template>
   <div class="h-100 w-100 overflow-hidden d-flex flex-column">
-    <public-dashboard-navbar></public-dashboard-navbar>
     <Nuxt class="h-100 w-100 d-flex overflow-hidden" />
   </div>
 </template>
