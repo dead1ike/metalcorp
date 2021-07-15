@@ -18,7 +18,7 @@
         {{ data.item.rack_component_value }}
       </template>
       <template #cell(rack_component_parameters)="data">
-        <b-btn class="corp" size="sm" @click="managerPriceAdd(data.item)">Установить цену для параметра</b-btn>
+        <b-btn class="corp" size="sm" @click="managerPriceAdd(data.item)">Добавить параметр</b-btn>
         <!--        <table>-->
         <!--          <tr v-for="item in data.item.rack_component_parameters" :key="item.uuid">-->
         <!--            <td>{{ item.parameter.title }}</td>-->
