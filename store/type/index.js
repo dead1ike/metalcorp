@@ -17,9 +17,10 @@ export const actions = {
     const { data } = await this.$axios.get('/api/rack/rack')
     commit('setTypes', data.data)
   },
-  async fetchType({ commit }, uuid) {
-    const { data } = await this.$axios.get(`/api/rack/rack/${uuid}`)
-    commit('setType', data.data)
+  fetchType({ commit }, uuid) {
+    return this.$axios.get(`/api/rack/rack/${uuid}`).then(({ data }) => {
+      commit('setType', data.data)
+    })
   },
   postRackType({ commit }, data) {
     return this.$axios.post('/api/rack/rack', {
