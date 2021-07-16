@@ -182,7 +182,6 @@ export default {
     this.$store.dispatch('type/fetchTypes')
     this.$store.dispatch('manager/rack/parameter/fetchParameter')
     this.$store.dispatch('manager/rack/component/fetchRackComponent').then(() => {
-      console.warn('asdasdasd', this.getCurrentComponent)
       this.form.rack_type_uuid = this.getCurrentComponent.rack_uuid
       this.form.rack_component_uuid = this.getCurrentComponent.uuid
     })
@@ -195,12 +194,10 @@ export default {
       return this.$store.getters.getNewUuid(new Date())
     },
     selectRackComponent(uuid) {
-      console.warn('uuid', uuid)
       this.form.rack_component_uuid = uuid
     },
     selectRackChildComponent(uuid) {
       this.form.rack_child_component_uuid = uuid
-      console.warn('child', this.selectedChildRackComponent)
     },
     selectParameter(uuid) {
       this.form.parameter_uuid = uuid

@@ -115,15 +115,10 @@ export default {
     getSelectedGroupParams: {
       // геттер:
       get() {
-        console.warn('this.selectedGroupParams', this.selectedGroupParams)
         return this.selectedGroupParams
       },
       // сеттер:
       set(payload) {
-        // const selectedGroupParams = Object.assign({}, this.selectedGroupParams)
-        // selectedGroupParams[payload.key] = payload.value
-        // console.warn('selectedGroupParams', selectedGroupParams)
-        // Object.assign(this.selectedGroupParams, selectedGroupParams)
         const index = this.selectedGroupParams.findIndex(item => {
           return item.title === payload.value.title
         })
@@ -138,7 +133,6 @@ export default {
   methods: {
     selectParameter(indexGroup, itemParameter) {
       this.getSelectedGroupParams = { key: indexGroup, value: itemParameter }
-      console.warn(this.getSelectedGroupParams)
     },
     getGroupParamTitle(indexGroup) {
       return (

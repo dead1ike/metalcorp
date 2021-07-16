@@ -30,7 +30,6 @@ export const mutations = {
     state.items.category = data
   },
   setCurrentCategory(state, data) {
-    console.warn('dadada', data)
     state.item.category = data
   },
 }

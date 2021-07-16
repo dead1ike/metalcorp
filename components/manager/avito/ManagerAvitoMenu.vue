@@ -59,7 +59,6 @@ export default {
       return linkPath
     },
     fetchAll() {
-      console.warn('fetchAll')
       this.busy.fetchAll = true
       Promise.all([
         this.$store.dispatch('manager/avito/setting/fetchSettngs'),

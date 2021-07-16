@@ -56,7 +56,6 @@ export default {
       })
     },
     deleteItem(uuid) {
-      console.warn(uuid)
       this.$store.dispatch('basket/deleteOrder', uuid).then(() => {
         this.$store.dispatch('basket/fetchOrder')
       })

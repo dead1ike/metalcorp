@@ -37,8 +37,6 @@ export default {
   mounted() {
     this.$store.dispatch('manager/rack/price/fetchComponentPrice')
     this.$store.dispatch('type/fetchTypes')
-    console.warn('getComponentPrices', this.getComponentPrices)
-    console.warn('getRackComponents', this.getRackComponents)
   },
   methods: {
     showRackComponents(uuid) {

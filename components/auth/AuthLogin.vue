@@ -60,12 +60,7 @@ export default {
       else this.error.password.valid = null
     },
   },
-  created() {
-    console.warn(process.env.PASSPORT_CLIENT_GRANT_ID)
-    console.warn(this.$config.PASSPORT_CLIENT_GRANT_ID)
-    console.warn(process.env.PASSPORT_CLIENT_GRANT_SECRET)
-    console.warn(this.$config.PASSPORT_CLIENT_GRANT_SECRET)
-  },
+  created() {},
   methods: {
     validateEmail() {
       if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.form.username)) {

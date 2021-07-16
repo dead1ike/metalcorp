@@ -79,7 +79,6 @@ export default {
       this.form.title = this.getCategoryByUuid.title
     })
     this.$store.dispatch('type/fetchTypes')
-    console.warn(this.getCategoryByUuid)
   },
   methods: {
     openModal() {

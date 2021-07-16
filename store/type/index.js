@@ -44,7 +44,6 @@ export const mutations = {
     state.items.rack = data
   },
   setAddBasketProduct(state, data) {
-    console.warn('data', data)
     state.items.basketProduct.push(data)
   },
   setDelBasketProduct(state, data) {
@@ -60,7 +59,6 @@ export const mutations = {
     const count = state.items.basketProduct.find(item => item.uuid === uuid).rack_count
     const price = state.items.basketProduct.find(item => item.uuid === uuid).price
     state.items.basketProduct.find(item => item.uuid === uuid).total = price * count
-    console.warn('basket', state.items.basketProduct)
   },
   setCountDecrement(state, uuid) {
     state.items.basketProduct.find(item => item.uuid === uuid).rack_count--

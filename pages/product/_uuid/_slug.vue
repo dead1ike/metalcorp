@@ -62,14 +62,7 @@
           <label v-else-if="typeSlug === 'sk'"> Количество рам:</label>
           <label v-else-if="typeSlug === 'mspro'"> Количество рам:</label>
           <label v-else>Количество стеллажей:</label>
-          <b-spinbutton
-            v-if="typeSlug === 'sgr' || typeSlug === 'sfm' || typeSlug === 'sk' || typeSlug === 'mspro'"
-            id="popover"
-            v-model="form.rack_count"
-            min="1"
-            style="max-width: 200px"
-          ></b-spinbutton>
-          <b-spinbutton v-else v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
+          <b-spinbutton id="popover" v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
           <b-popover triggers="hover" placement="top" target="popover"
             >На 1 стеллаж идёт 2 рамы, <br />
             на 2 стеллажа 3 рамы и т.д.</b-popover
@@ -177,7 +170,6 @@ export default {
     this.$store.dispatch('type/fetchTypes')
     this.$store.dispatch('type/fetchType', this.typeUuid).then(() => {
       this.form.title = this.getTypeByUuid.title
-      console.warn(this.getTypeByUuid)
     })
   },
   methods: {

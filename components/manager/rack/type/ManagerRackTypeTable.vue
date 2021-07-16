@@ -61,9 +61,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('type/fetchTypes').then(() => {
-      console.warn('getManagerRackItems', this.getManagerRackItems)
-    })
+    this.$store.dispatch('type/fetchTypes').then(() => {})
   },
   methods: {
     deleteItem(item) {

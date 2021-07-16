@@ -114,9 +114,7 @@ export default {
       })
     },
     fetchComponent() {
-      this.$store.dispatch('manager/rack/component/fetchRackComponent').then(() => {
-        console.warn(this.getManagerComponentItems)
-      })
+      this.$store.dispatch('manager/rack/component/fetchRackComponent').then(() => {})
     },
   },
 }

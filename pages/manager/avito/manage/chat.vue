@@ -185,7 +185,6 @@ export default {
       this.$store.dispatch('manager/avito/chat/fetchChats')
     },
     sendMessageChat(itemChat) {
-      console.warn('itemChat', itemChat)
       if (itemChat.textOutMessage && itemChat.textOutMessage.length >= 1) {
         this.$store.dispatch('manager/avito/chat/sendMessageChat', {
           chat_id: itemChat.id,
@@ -196,7 +195,6 @@ export default {
       }
     },
     fetchMessageChat(itemChat) {
-      console.warn(itemChat)
       this.$store.dispatch('manager/avito/chat/fetchMessageChat', {
         chat_id: itemChat.id,
         item_id: itemChat.avito_item_id,

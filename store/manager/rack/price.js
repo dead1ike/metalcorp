@@ -10,7 +10,6 @@ export const actions = {
     commit('setComponentPrice', data.data)
   },
   postComponentPrice({ commit }, data) {
-    console.warn('data', data)
     return this.$axios.post('/api/rack/rackComponentParameter', {
       ...data,
     })

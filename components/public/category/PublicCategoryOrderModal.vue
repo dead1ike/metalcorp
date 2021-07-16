@@ -34,7 +34,6 @@ export default {
   },
   mounted() {
     this.$bvModal.show('category-modal')
-    console.warn('adadadawwwwww', this.getTitle)
     this.form.title = this.getTitle.category_title
   },
   methods: {
