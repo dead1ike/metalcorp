@@ -34,6 +34,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   mounted() {
     this.$root.$on('bv::modal::hide', (bvEvent, modalId) => {
       if (modalId === 'manager-category-add') {
