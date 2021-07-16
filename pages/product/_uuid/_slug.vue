@@ -157,9 +157,11 @@ export default {
       },
     },
   },
-  created() {
+  mounted() {
+    this.$store.dispatch('type/fetchTypes')
     this.$store.dispatch('type/fetchType', this.typeUuid).then(() => {
       this.form.title = this.getTypeByUuid.title
+      console.warn(this.getTypeByUuid)
     })
   },
   methods: {

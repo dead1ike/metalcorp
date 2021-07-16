@@ -25,7 +25,7 @@
             <small class="text-muted ml-5 mt-0">График работы: с 09:00 до 21:00</small>
           </div>
         </div>
-        <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder text-truncate">
+        <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder mx-3">
           <public-offer-basket />
         </b-nav-item>
       </b-navbar-nav>
