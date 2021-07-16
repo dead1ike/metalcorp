@@ -7,7 +7,7 @@
       <b-dd :text="getGroupParamTitle(indexGroup).value ? getGroupParamTitle(indexGroup).value : 'Выберите'">
         <template v-for="itemParameter in itemParameters">
           <b-dd-item :key="itemParameter.value" @click="selectParameter(indexGroup, itemParameter)">
-            {{ itemParameter.value }}
+            {{ itemParameter.value }} фывфыв
           </b-dd-item>
         </template>
       </b-dd>
