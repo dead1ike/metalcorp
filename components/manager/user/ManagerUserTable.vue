@@ -13,11 +13,11 @@
         no-border-collapse
       >
         <template #cell(actions)="data">
-          <b-btn v-b-tooltip.top variant="link" title="В архив">
-            <b-icon icon="archive" style="color: red"></b-icon
-          ></b-btn>
           <b-btn v-b-tooltip.top variant="link" title="Редактировать" @click="editUser(data.item)">
             <b-icon icon="pencil" style="color: green"></b-icon
+          ></b-btn>
+          <b-btn v-b-tooltip.top variant="link" title="Удалить">
+            <b-icon icon="x" scale="1.5" style="color: red"></b-icon
           ></b-btn>
         </template>
       </b-table>

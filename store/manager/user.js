@@ -18,6 +18,7 @@ export const actions = {
     })
   },
   putUser({ commit }, data) {
+    console.warn(data)
     return this.$axios.put(`/api/user/${data.id}`, {
       ...data,
     })

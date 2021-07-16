@@ -20,7 +20,7 @@
           <h6 class="text-center">Вы уверены?</h6>
           <hr />
           <b-dd-item>
-            <b-btn variant="danger" size="sm" block @click="deleteItem(data.item)">Да</b-btn>
+            <b-btn variant="danger" size="sm" block @click="deleteItem(data.item.uuid)">Да</b-btn>
           </b-dd-item>
           <b-dd-item>
             <b-btn variant="corp" size="sm" block>Нет</b-btn>
@@ -56,8 +56,9 @@ export default {
       })
     },
     deleteItem(uuid) {
-      this.$store.commit('type/setDelBasketProduct', {
-        uuid,
+      console.warn(uuid)
+      this.$store.dispatch('basket/deleteOrder', uuid).then(() => {
+        this.$store.dispatch('basket/fetchOrder')
       })
     },
   },

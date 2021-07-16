@@ -19,12 +19,6 @@
       </template>
       <template #cell(rack_component_parameters)="data">
         <b-btn class="corp" size="sm" @click="managerPriceAdd(data.item)">Добавить параметр</b-btn>
-        <!--        <table>-->
-        <!--          <tr v-for="item in data.item.rack_component_parameters" :key="item.uuid">-->
-        <!--            <td>{{ item.parameter.title }}</td>-->
-        <!--            <td>{{ item.parameter_value }}</td>-->
-        <!--          </tr>-->
-        <!--        </table>-->
       </template>
       <template #cell(child)="data">
         <div v-if="data.item.rack_component_childs.length !== 0">
@@ -43,21 +37,21 @@
           <p>Самостоятельный компонент</p>
         </div>
       </template>
-      <template #cell(actions)="data">
-        <b-dd v-b-popover.hover.topleft="'Удалить'" variant="link" no-caret size="sm">
-          <template #button-content>
-            <b-icon icon="x-circle" scale="1.6" variant="danger"></b-icon>
-          </template>
-          <h6 class="text-center">Вы уверены?</h6>
-          <hr />
-          <b-dd-item>
-            <b-btn variant="danger" size="sm" block @click="deleteItem(data.item.uuid)">Да</b-btn>
-          </b-dd-item>
-          <b-dd-item>
-            <b-btn variant="corp" size="sm" block>Нет</b-btn>
-          </b-dd-item>
-        </b-dd>
-      </template>
+      <!--      <template #cell(actions)="data">-->
+      <!--        <b-dd v-b-popover.hover.topleft="'Удалить'" variant="link" no-caret size="sm">-->
+      <!--          <template #button-content>-->
+      <!--            <b-icon icon="x-circle" scale="1.6" variant="danger"></b-icon>-->
+      <!--          </template>-->
+      <!--          <h6 class="text-center">Вы уверены?</h6>-->
+      <!--          <hr />-->
+      <!--          <b-dd-item>-->
+      <!--            <b-btn variant="danger" size="sm" block @click="deleteItem(data.item.uuid)">Да</b-btn>-->
+      <!--          </b-dd-item>-->
+      <!--          <b-dd-item>-->
+      <!--            <b-btn variant="corp" size="sm" block>Нет</b-btn>-->
+      <!--          </b-dd-item>-->
+      <!--        </b-dd>-->
+      <!--      </template>-->
     </b-table>
   </div>
 </template>

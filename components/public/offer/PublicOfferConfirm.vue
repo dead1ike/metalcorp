@@ -48,20 +48,6 @@
         </div>
       </div>
     </div>
-    <b-modal id="alert-modal" size="sm" no-close-on-esc no-close-on-backdrop>
-      <template #modal-header>
-        <div class="m-3">
-          <h3><b>Внимание!</b></h3>
-        </div>
-      </template>
-      <div class="container m-2">
-        <p>Ваш заказ поступил в обработку менеджеру, ожидайте обратной связи</p>
-        <p>Спасибо за заказ</p>
-      </div>
-      <template #modal-footer>
-        <b-btn variant="corp" @click="hide">ОК</b-btn>
-      </template>
-    </b-modal>
   </div>
 </template>
 
@@ -107,10 +93,6 @@ export default {
   },
   mounted() {},
   methods: {
-    test() {},
-    hide() {
-      this.$bvModal.hide('alert-modal')
-    },
     goBack() {
       this.$router.push('/offer')
     },
@@ -122,11 +104,10 @@ export default {
           total: this.getSumm,
         })
         .then(() => {
-          // this.$bvModal.show('alert-modal')
-          // this.$store.commit('type/setDelBasketProducts')
-          // this.form.name = ''
-          // this.form.phone = ''
-          // this.form.email = ''
+          this.$store.commit('type/setDelBasketProducts')
+          this.form.name = ''
+          this.form.phone = ''
+          this.form.email = ''
         })
     },
   },

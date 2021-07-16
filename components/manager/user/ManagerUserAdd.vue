@@ -1,15 +1,8 @@
 <template>
-  <b-modal
-    id="user-add"
-    scrollable
-    size="md"
-    body-class="px-5"
-    centered
-    :title="getEditUser.id ? 'Редактировать пользователя' : 'Создать пользователя'"
-    lazy
-    no-close-on-backdrop
-    no-close-on-esc
-  >
+  <b-modal id="user-add" scrollable size="md" body-class="px-5" centered lazy no-close-on-backdrop no-close-on-esc>
+    <template #modal-header>
+      <h5>{{ getEditUser.id ? 'Редактировать пользователя' : 'Создать пользователя' }}</h5>
+    </template>
     <div @keyup.enter="addUser()">
       <b-form-group label="Email">
         <b-form-input v-model.trim="form.email" placeholder="Введите Email пользователя"></b-form-input>
@@ -22,12 +15,12 @@
           placeholder="Введите пароль пользователя"
         ></b-form-input>
       </b-form-group>
-      <b-btn v-if="getEditUser.id" variant="success" @click="savePassword()">Сохранить пароль</b-btn>
+      <b-btn v-if="getEditUser.id" variant="corp" @click="savePassword()">Сохранить пароль</b-btn>
     </div>
     <template #modal-footer>
-      <b-btn v-if="getEditUser.id" variant="success" @click="saveUser()">Сохранить</b-btn>
+      <b-btn v-if="getEditUser.id" variant="corp" @click="saveUser()">Сохранить</b-btn>
 
-      <b-btn v-else variant="light-blue" @click="addUser()">Создать</b-btn>
+      <b-btn v-else variant="corp" @click="addUser()">Создать</b-btn>
       <b-btn variant="danger" @click="closeUser()">Закрыть</b-btn>
     </template>
   </b-modal>
@@ -67,6 +60,7 @@ export default {
         })
         .then(() => {
           this.makeToast('Новый ползьзователь добавлен в базу', 'success', 'УСПЕШНО')
+          this.$store.dispatch('manager/user/fetchUsers')
           this.clearForm()
           this.closeUser()
         })
@@ -88,6 +82,7 @@ export default {
       this.$store
         .dispatch('manager/user/putUser', {
           email: this.form.email,
+          id: this.getEditUser.id,
         })
         .then(() => {
           this.makeToast('Данные обновлены', 'success', 'УСПЕШНО')

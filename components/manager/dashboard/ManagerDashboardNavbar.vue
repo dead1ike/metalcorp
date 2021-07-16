@@ -14,7 +14,7 @@
         <b-nav-item to="/manager/avito/manage/chat" class="mt-2 h5"> Avito </b-nav-item>
         <b-nav-dropdown no-caret class="mt-2">
           <template #button-content>
-            <b-icon icon="person-square" class="mb-1" variant="warning"></b-icon>
+            <b-avatar size="sm" class="mb-1" variant="warning"></b-avatar>
             <span class="h5 ml-1">{{ $auth.user.email }}</span>
           </template>
           <b-dd-item @click="logout">Выход</b-dd-item>

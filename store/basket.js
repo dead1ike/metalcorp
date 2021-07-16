@@ -18,6 +18,7 @@ export const actions = {
     })
   },
   deleteOrder({ commit }, uuid) {
+    console.warn('store', uuid)
     return this.$axios.delete(`/api/order/${uuid}`)
   },
 }
