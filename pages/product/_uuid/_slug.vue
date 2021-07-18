@@ -167,7 +167,10 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('type/fetchType', this.typeUuid).then(() => {})
+    this.$store.dispatch('type/fetchType', this.typeUuid).then(() => {
+      console.warn(this.getTypeByUuid)
+      return this.getTypeByUuid
+    })
   },
   methods: {
     getUuid() {

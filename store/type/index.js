@@ -15,12 +15,12 @@ export const state = () => ({
 export const actions = {
   fetchTypes({ commit }) {
     return this.$axios.get('/api/rack/rack').then(({ data }) => {
-      commit('setTypes', data.data)
+      commit('setTypes', data)
     })
   },
   fetchType({ commit }, uuid) {
     return this.$axios.get(`/api/rack/rack/${uuid}`).then(({ data }) => {
-      commit('setType', data.data)
+      commit('setType', data)
     })
   },
   postRackType({ commit }, data) {
@@ -39,6 +39,7 @@ export const actions = {
 }
 export const mutations = {
   setType(state, data) {
+    console.warn('set', data)
     state.item.rack = data
   },
   setTypes(state, data) {
