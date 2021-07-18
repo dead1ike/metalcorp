@@ -13,10 +13,9 @@ export const state = () => ({
 })
 
 export const actions = {
-  fetchTypes({ commit }) {
-    return this.$axios.get('/api/rack/rack').then(({ data }) => {
-      commit('setTypes', data)
-    })
+  async fetchTypes({ commit }) {
+    const { data } = await this.$axios.get('/api/rack/rack')
+    commit('setTypes', data.data)
   },
   fetchType({ commit }, uuid) {
     return this.$axios.get(`/api/rack/rack/${uuid}`).then(({ data }) => {
@@ -39,10 +38,11 @@ export const actions = {
 }
 export const mutations = {
   setType(state, data) {
-    console.warn('set', data)
     state.item.rack = data
   },
   setTypes(state, data) {
+    console.warn('set', data)
+
     state.items.rack = data
   },
   setAddBasketProduct(state, data) {
