@@ -45,8 +45,8 @@ export default {
       return this.$store.getters['category/getCategoryItems']
     },
     selectedCategory() {
-      if (this.getCategoryOptions.find((category) => category.uuid === this.form.category_uuid)) {
-        return this.getCategoryOptions.find((category) => category.uuid === this.form.category_uuid)
+      if (this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)) {
+        return this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)
       }
       return {}
     },

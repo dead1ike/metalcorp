@@ -12,6 +12,7 @@
         <b-nav-item to="/manager/user/manage" class="mt-2 h5"> Пользователи </b-nav-item>
         <b-nav-item to="/manager/rack/manage" class="mt-2 h5"> Стеллажи </b-nav-item>
         <b-nav-item to="/manager/avito/manage/chat" class="mt-2 h5"> Avito </b-nav-item>
+        <b-nav-item to="/manager/goods/manage" class="mt-2 h5"> Товары </b-nav-item>
         <b-nav-dropdown no-caret class="mt-2">
           <template #button-content>
             <b-avatar size="sm" class="mb-1" variant="warning"></b-avatar>
