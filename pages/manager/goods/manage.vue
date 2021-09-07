@@ -4,4 +4,8 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  layout: 'manager',
+}
+</script>

@@ -1,5 +1,23 @@
 export const state = () => ({
   fields: {
+    managerGoods: [
+      {
+        key: 'title',
+        label: 'Наименование',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'img',
+        label: 'Изображение',
+        class: 'align-middle text-center',
+      },
+      {
+        key: 'actions',
+        label: 'Действия',
+        class: 'align-middle text-center',
+      },
+    ],
+
     offerManage: [
       {
         key: 'title',
@@ -280,6 +298,8 @@ export const state = () => ({
     managerOrderShow: false,
     categoryModal: false,
     userAdd: false,
+    managerGoodsAdd: false,
+    managerGoodsParameter: false,
   },
 })
 export const actions = {
@@ -295,6 +315,12 @@ export const mutations = {
   setBlank2(state, data) {},
 }
 export const getters = {
+  getActiveManagerGoodsAddModal(state) {
+    return state.activeModals.managerGoodsAdd
+  },
+  getActiveManagerGoodsParameterModal(state) {
+    return state.activeModals.managerGoodsParameter
+  },
   getActiveManagerRackComponentAddModal(state) {
     return state.activeModals.managerRackComponentAdd
   },
@@ -352,6 +378,10 @@ export const getters = {
   },
   getOfferManageFields(state) {
     return state.fields.offerManage
+  },
+
+  getGoodFields(state) {
+    return state.fields.managerGoods
   },
   getOfferConfirmFields(state) {
     return state.fields.offerConfirm

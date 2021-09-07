@@ -29,6 +29,12 @@
     <template v-if="$store.getters.getActiveModalUserAdd">
       <manager-user-add />
     </template>
+    <template v-if="$store.getters.getActiveManagerGoodsAddModal">
+      <manager-goods-add />
+    </template>
+    <template v-if="$store.getters.getActiveManagerGoodsParameterModal">
+      <manager-goods-parameter />
+    </template>
   </div>
 </template>
 
@@ -80,6 +86,16 @@ export default {
       } else if (modalId === 'user-add') {
         this.$store.commit('setActiveModal', {
           modalName: 'userAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-goods-add') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerGoodsAdd',
+          modalStatus: false,
+        })
+      } else if (modalId === 'manager-goods-parameter') {
+        this.$store.commit('setActiveModal', {
+          modalName: 'managerGoodsParameter',
           modalStatus: false,
         })
       }
