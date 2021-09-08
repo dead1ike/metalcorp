@@ -44,7 +44,6 @@ export const mutations = {
 
 export const getters = {
   getGoodParameters(state) {
-    console.warn('getGoodParameters', state.items.goodParameters)
     return state.items.goodParameters
   },
   getGoodItem(state) {

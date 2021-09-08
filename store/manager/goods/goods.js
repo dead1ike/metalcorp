@@ -25,9 +25,13 @@ export const actions = {
       })
   },
   postGood({ commit }, data) {
-    return this.$axios.post('/api/good/good', {
-      ...data,
-    })
+    const uploadingFile = new FormData()
+    uploadingFile.set('image', data.image)
+    uploadingFile.set('description', data.description)
+    uploadingFile.set('title', data.title)
+    uploadingFile.set('uuid', data.uuid)
+    uploadingFile.set('category_uuid', data.category_uuid)
+    return this.$axios.post('/api/good/good', uploadingFile)
   },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()

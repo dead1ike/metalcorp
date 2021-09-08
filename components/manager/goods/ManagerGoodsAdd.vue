@@ -7,11 +7,7 @@
     <div class="d-flex flex-row">
       <div class="d-flex flex-column px-2 py-2">
         <span class="h3">Категория товаров</span>
-        <b-dd
-          variant="corp"
-          class="my-2"
-          :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'"
-        >
+        <b-dd variant="corp" :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'">
           <b-dd-item>
             <b-btn variant="corp" @click="managerCategoryAddModal()">
               Добавить категорию
@@ -28,6 +24,9 @@
       </b-input-group>
     </div>
     <!--    артинка описание-->
+    <div class="d-inline-flex flex-row align-self-center w-100 pt-4">
+      <b-file v-model="form.image"></b-file>
+    </div>
     <div class="d-flex flex-column py-2">
       <span class="h4 py-2">Описание товара</span>
       <b-form-textarea placeholder="Описание товара" v-model="form.description"></b-form-textarea>
@@ -74,11 +73,13 @@ export default {
   },
   methods: {
     addGood() {
+      console.warn(this.form.image)
       this.$store
         .dispatch('manager/goods/goods/postGood', {
           category_uuid: this.form.category_uuid,
           uuid: this.getUuid(),
           title: this.form.title,
+          image: this.form.image,
           description: this.form.description,
         })
         .then(() => {
