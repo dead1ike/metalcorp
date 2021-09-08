@@ -4,7 +4,7 @@
       <h2 class="d-flex align-self-center justify-content-center">Таблица товаров</h2>
       <b-btn class="mx-3" variant="corp" @click="openAddGoodModal()">Добавить товар</b-btn>
     </div>
-    <div class="overflow-hidden h-100 w-100">
+    <div class="overflow-auto h-100 w-100">
       <b-table striped hover :fields="getGoodsFields" :items="getGoodsItems" class="mb-5 h-100">
         <template #cell(actions)="data">
           <b-icon
@@ -25,17 +25,7 @@
           ></b-icon>
         </template>
         <template #cell(image)="data">
-          <!--        <div class="d-flex flex-row">-->
-          <!--          <div v-if="data.item.image !== null" style="max-width: 100px; max-height: 100px">-->
           <b-img :src="data.item.image" style="max-width: 120px; max-height: 120px" />
-          <!--          </div>-->
-          <!--          <div v-else>-->
-          <!--            <span>Картинка отсутствует. Добавить?</span>-->
-          <!--          </div>-->
-          <!--          <div class="d-inline-flex flex-row align-self-center">-->
-          <!--            <b-file v-model="form.image" plain @input="goodUuid(data.item)"></b-file>-->
-          <!--          </div>-->
-          <!--        </div>-->
         </template>
       </b-table>
     </div>
