@@ -7,6 +7,15 @@ export const state = () => ({
       //
     },
   },
+  pagination: {
+    goods: {
+      current_page: 1,
+    },
+  },
+  goodsPaginationFilter: {
+    limit: 50,
+    page: 1,
+  },
 })
 
 export const actions = {
@@ -45,15 +54,23 @@ export const mutations = {
   setGoods(state, data) {
     state.items.goods = data
   },
-  setBlankItem(state, data) {
-    state.item.data = data
+  setCurrentPageGoods(state, currentPage) {
+    if (state.pagination.goods.current_page === currentPage) return
+    state.pagination.goods.current_page = currentPage
+    state.goodsPaginationFilter.page = currentPage
   },
-  setBlank(state, data) {
-    //
+  setLimitGoods(state, limit) {
+    if (state.goodsPaginationFilter.limit === limit) return
+    state.goodsPaginationFilter.limit = limit
+    state.pagination.goods.current_page = 1
+    state.goodsPaginationFilter.page = 1
   },
 }
 
 export const getters = {
+  getGoodsPagination(state) {
+    return state.pagination.goods
+  },
   getGoodsItems(state) {
     return state.items.goods
   },

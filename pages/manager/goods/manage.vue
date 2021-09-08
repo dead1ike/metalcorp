@@ -1,8 +1,8 @@
 <template>
-  <div class="h-100 w-100 d-flex flex-row">
-    <div></div>
-    <div class="h-100 w-100 d-flex overflow-hidden">
-      <manager-goods-table />
+  <div class="d-flex flex-row h-100 overflow-hidden justify-content-between">
+    <div class="d-flex flex-column h-100 overflow-hidden flex-fill">
+      <manager-goods-control />
+      <manager-goods-table class="shadow h-100 overflow-auto" />
     </div>
   </div>
 </template>

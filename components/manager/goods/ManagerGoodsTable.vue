@@ -1,11 +1,19 @@
 <template>
-  <div class="d-flex w-100 h-100  flex-column">
-    <div class="d-flex flex-row py-2">
-      <h2 class="d-flex align-self-center justify-content-center">Таблица товаров</h2>
-      <b-btn class="mx-3" variant="corp" @click="openAddGoodModal()">Добавить товар</b-btn>
-    </div>
-    <div class="d-flex overflow-auto w-100">
-      <b-table striped hover :fields="getGoodsFields" :items="getGoodsItems" class="mb-5 h-100">
+  <div class="d-flex flex-column overflow-hidden">
+    <div class="overflow-hidden h-100">
+      <b-table
+        id="goods-table"
+        striped
+        hover
+        bordered
+        head-variant="light"
+        sticky-header="100%"
+        no-border-collapse
+        :per-page="pagination.perPage"
+        :current-page="pagination.currentPage"
+        :fields="getGoodsFields"
+        :items="getGoodsItems"
+      >
         <template #cell(actions)="data">
           <b-icon
             icon="pencil"
@@ -29,7 +37,18 @@
         </template>
       </b-table>
     </div>
-    <footer class="d-flex w-100">pepega</footer>
+    <div class="overflow-hidden text-center d-flex flex-row bg-light">
+      <div class="flex-fill d-flex justify-content-center">
+        <b-pagination
+          aria-controls="goods-table"
+          pills
+          v-model="pagination.currentPage"
+          :total-rows="rows"
+          :per-page="pagination.perPage"
+          class="p-2 m-1"
+        ></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -42,9 +61,16 @@ export default {
         image: null,
         good_uuid: null,
       },
+      pagination: {
+        currentPage: 1,
+        perPage: 20,
+      },
     }
   },
   computed: {
+    rows() {
+      return this.getGoodsItems.length
+    },
     getGoodsFields() {
       return this.$store.getters.getGoodFields
     },
@@ -89,12 +115,6 @@ export default {
     },
     fetchGoods() {
       this.$store.dispatch('manager/goods/goods/fetchGoods')
-    },
-    openAddGoodModal() {
-      this.$store.commit('setActiveModal', {
-        modalName: 'managerGoodsAdd',
-        modalStatus: true,
-      })
     },
     makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
       this.$bvToast.toast(body, {

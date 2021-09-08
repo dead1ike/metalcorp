@@ -2,11 +2,11 @@
   <div class="d-flex flex-column overflow-hidden">
     <div class="overflow-hidden h-100">
       <b-table
-        striped
         :items="getItems"
         :fields="getFields"
+        striped
         head-variant="light"
-        sticky-header="100%"
+        sticky-header
         bordered
         hover
         no-border-collapse

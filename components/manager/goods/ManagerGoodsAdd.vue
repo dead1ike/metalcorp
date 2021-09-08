@@ -33,7 +33,7 @@
       <b-form-textarea placeholder="Описание товара" v-model="form.description"></b-form-textarea>
     </div>
     <template #modal-footer>
-      <b-btn variant="corp" @click="addGood">Добавить</b-btn>
+      <b-btn variant="corp" @click="addGood" :disabled="!buttonState">Добавить</b-btn>
       <b-btn variant="danger" @click="closeModal">Отмена</b-btn>
     </template>
   </b-modal>
@@ -67,6 +67,9 @@ export default {
       }
       return {}
     },
+    buttonState() {
+      if (this.form.category_uuid !== null) return true
+    },
   },
 
   mounted() {
@@ -86,7 +89,11 @@ export default {
           image_url: this.form.image_url,
         })
         .then(() => {
+          this.makeToast('Товар успешно добавлен', 'success')
           this.closeModal()
+        })
+        .catch(() => {
+          this.makeToast('Ошибка', 'danger')
         })
     },
     managerCategoryAddModal() {
@@ -107,6 +114,15 @@ export default {
     },
     getUuid() {
       return this.$store.getters.getNewUuid(new Date())
+    },
+    makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
+      this.$bvToast.toast(body, {
+        title,
+        autoHideDelay: 5000,
+        appendToast: false,
+        variant,
+        toaster: 'b-toaster-bottom-right',
+      })
     },
   },
 }
