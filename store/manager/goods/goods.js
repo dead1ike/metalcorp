@@ -31,6 +31,7 @@ export const actions = {
     uploadingFile.set('title', data.title)
     uploadingFile.set('uuid', data.uuid)
     uploadingFile.set('category_uuid', data.category_uuid)
+    uploadingFile.set('image_url', data.image_url)
     return this.$axios.post('/api/good/good', uploadingFile)
   },
   uploadFile({ commit }, data) {

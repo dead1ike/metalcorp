@@ -4,7 +4,7 @@
       <h2 class="d-flex align-self-center justify-content-center">Таблица товаров</h2>
       <b-btn class="mx-3" variant="corp" @click="openAddGoodModal()">Добавить товар</b-btn>
     </div>
-    <div class="overflow-auto h-100 w-100">
+    <div class="d-flex overflow-auto w-100">
       <b-table striped hover :fields="getGoodsFields" :items="getGoodsItems" class="mb-5 h-100">
         <template #cell(actions)="data">
           <b-icon
@@ -29,7 +29,7 @@
         </template>
       </b-table>
     </div>
-    <footer>pepega</footer>
+    <footer class="d-flex w-100">pepega</footer>
   </div>
 </template>
 

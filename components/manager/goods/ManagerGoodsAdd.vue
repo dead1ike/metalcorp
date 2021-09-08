@@ -24,8 +24,9 @@
       </b-input-group>
     </div>
     <!--    артинка описание-->
-    <div class="d-inline-flex flex-row align-self-center w-100 pt-4">
+    <div class="d-inline-flex flex-column align-self-center w-100 pt-4">
       <b-file v-model="form.image"></b-file>
+      <b-form-input class="w-100 mt-2" v-model="form.image_url" placeholder="URL Картинки"> </b-form-input>
     </div>
     <div class="d-flex flex-column py-2">
       <span class="h4 py-2">Описание товара</span>
@@ -52,6 +53,7 @@ export default {
         parameter_value: '',
         image: null,
         uploadedImage: null,
+        image_url: '',
       },
     }
   },
@@ -81,6 +83,7 @@ export default {
           title: this.form.title,
           image: this.form.image,
           description: this.form.description,
+          image_url: this.form.image_url,
         })
         .then(() => {
           this.closeModal()
