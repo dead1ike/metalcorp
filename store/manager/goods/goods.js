@@ -7,9 +7,16 @@ export const state = () => ({
       //
     },
   },
+  filter: {
+    search: '',
+    category_uuid: '',
+    limit: 20,
+    page: 1,
+  },
   pagination: {
     goods: {
       current_page: 1,
+      total: 0,
     },
   },
   goodsPaginationFilter: {
@@ -19,10 +26,16 @@ export const state = () => ({
 })
 
 export const actions = {
-  fetchGoods({ commit }) {
-    return this.$axios.get('/api/good/good').then(({ data }) => {
-      commit('setGoods', data.data)
-    })
+  fetchGoods({ commit, getters }) {
+    return this.$axios
+      .get('/api/good/good', {
+        params: getters.getGoodsFilter,
+      })
+      .then(({ data }) => {
+        console.warn(data)
+        commit('setGoods', data.data)
+        commit('setGoodsTotal', data.meta.total)
+      })
   },
   fetchBlankItem({ commit }, payload) {
     return this.$axios
@@ -54,20 +67,29 @@ export const mutations = {
   setGoods(state, data) {
     state.items.goods = data
   },
+  setFilterItem(state, { fieldName, value }) {
+    state.filter[fieldName] = value
+  },
+  setGoodsTotal(state, total) {
+    state.pagination.goods.total = total
+  },
   setCurrentPageGoods(state, currentPage) {
-    if (state.pagination.goods.current_page === currentPage) return
-    state.pagination.goods.current_page = currentPage
-    state.goodsPaginationFilter.page = currentPage
+    if (state.filter.page === currentPage) return
+    state.filter.page = currentPage
   },
   setLimitGoods(state, limit) {
-    if (state.goodsPaginationFilter.limit === limit) return
-    state.goodsPaginationFilter.limit = limit
-    state.pagination.goods.current_page = 1
-    state.goodsPaginationFilter.page = 1
+    if (state.filter.limit === limit) return
+    state.filter.limit = limit
+  },
+  setGoodsCategoryFilter(state, categoryUuid) {
+    state.filter.category_uuid = categoryUuid
   },
 }
 
 export const getters = {
+  getGoodsFilter(state) {
+    return state.filter
+  },
   getGoodsPagination(state) {
     return state.pagination.goods
   },

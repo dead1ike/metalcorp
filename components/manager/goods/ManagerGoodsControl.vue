@@ -1,16 +1,30 @@
 <template>
   <div class="d-flex flex-row my-2">
     <b-btn variant="corp" style="padding:0 10px 0 10px" @click="openAddGoodModal()">Добавить товар</b-btn>
-    <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filter.title"></b-form-input>
-    <div>
-      <b-dd variant="corp" :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'">
-        <div style="max-height: 300px" class="overflow-auto">
-          <template v-for="item in getCategoryOptions">
-            <b-dd-item @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
+    <div class="mx-2">
+      <b-dd v-b-popover.hover.top="'Категории'" variant="outline-corp" toggle-class="live-edit" no-caret>
+        <template #button-content>
+          <span>Фильтр</span>
+        </template>
+        <div style="max-height: 300px; min-width: 400px" class="overflow-auto w-100">
+          <template v-for="item in getOptions">
+            <b-dd-form v-if="item.uuid !== null" :key="item.uuid">
+              <b-btn variant="outline-corp" class="b-check live-edit pr-1">
+                <b-icon v-if="checkSelectItem('category_uuid', item.uuid)" icon="record-circle" variant="corp"></b-icon>
+                <b-icon
+                  v-else
+                  icon="circle"
+                  variant="corp"
+                  @click="updateFilterItem('category_uuid', item.uuid)"
+                ></b-icon>
+              </b-btn>
+              {{ item.title }}
+            </b-dd-form>
           </template>
         </div>
       </b-dd>
     </div>
+    <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filter.search"></b-form-input>
   </div>
 </template>
 
@@ -20,34 +34,68 @@ export default {
   data() {
     return {
       filter: {
-        title: '',
-        category_uuid: null,
+        search: '',
       },
     }
   },
   computed: {
-    getCategoryOptions() {
-      return this.$store.getters['category/getCategoryItems']
+    getFilter() {
+      return this.$store.getters['manager/goods/goods/getGoodsFilter']
     },
-    selectedCategory() {
-      if (this.getCategoryOptions.find(category => category.uuid === this.filter.category_uuid)) {
-        return this.getCategoryOptions.find(category => category.uuid === this.filter.category_uuid)
-      }
-      return {}
+    getOptions() {
+      const all = [
+        {
+          title: 'Все',
+          category_uuid: null,
+        },
+      ]
+      return all.concat(this.getCategoryOptions)
+    },
+    getCategoryOptions() {
+      return this.$store.getters['category/getCategoryItems'].filter(item => {
+        return item.parent_uuid !== '09f947c3-23bf-42b1-9aee-34b12422d34e'
+      })
+    },
+  },
+  watch: {
+    'filter.search'(newValue) {
+      this.updateFilterItem('search', newValue)
+    },
+    getFilter: {
+      handler() {
+        this.fetchGoodsD()
+      },
+      deep: true,
     },
   },
   mounted() {
+    _.merge(this.filter, this.getFilter)
     this.$store.dispatch('category/fetchCategory')
+    console.warn('category', this.getCategoryOptions)
+  },
+  created() {
+    this.fetchGoodsD = _.debounce(this.fetchGoods, 500)
   },
   methods: {
+    checkSelectItem(fieldName, value) {
+      return this.$store.getters['manager/goods/goods/getGoodsFilter'][fieldName] === value
+    },
+    updateFilterItem(fieldName, value) {
+      console.warn('fieldName', fieldName)
+      console.warn('value', value)
+      this.$store.commit('manager/goods/goods/setFilterItem', {
+        fieldName,
+        value,
+      })
+    },
     openAddGoodModal() {
       this.$store.commit('setActiveModal', {
         modalName: 'managerGoodsAdd',
         modalStatus: true,
       })
     },
-    selectCategory(categoryUuid) {
-      this.filter.category_uuid = categoryUuid
+    fetchGoods() {
+      this.$store.dispatch('manager/goods/goods/fetchGoods')
     },
   },
 }

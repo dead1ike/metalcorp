@@ -9,8 +9,6 @@
         head-variant="light"
         sticky-header="100%"
         no-border-collapse
-        :per-page="pagination.perPage"
-        :current-page="pagination.currentPage"
         :fields="getGoodsFields"
         :items="getGoodsItems"
       >
@@ -43,10 +41,16 @@
           aria-controls="goods-table"
           pills
           v-model="pagination.currentPage"
-          :total-rows="rows"
+          :total-rows="getGoodsPagination.total"
           :per-page="pagination.perPage"
           class="p-2 m-1"
         ></b-pagination>
+      </div>
+      <div class="mt-3 mr-3 d-flex flex-row">
+        <strong class="mx-1">Кол-во</strong>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(15)">15</span>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(50)">50</span>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(100)">100</span>
       </div>
     </div>
   </div>
@@ -63,11 +67,14 @@ export default {
       },
       pagination: {
         currentPage: 1,
-        perPage: 20,
+        perPage: 0,
       },
     }
   },
   computed: {
+    getGoodsPagination() {
+      return this.$store.getters['manager/goods/goods/getGoodsPagination'] || {}
+    },
     rows() {
       return this.getGoodsItems.length
     },
@@ -82,12 +89,22 @@ export default {
     'form.image'(newValue) {
       if (newValue) this.uploadImage()
     },
+    'pagination.currentPage'(newValue) {
+      if (newValue) this.changePage()
+    },
   },
   mounted() {
     this.fetchGoods()
     console.warn(this.getGoodsItems)
   },
   methods: {
+    changeLimit(value) {
+      this.$store.commit('manager/goods/goods/setLimitGoods', value)
+    },
+    changePage() {
+      this.$store.commit('manager/goods/goods/setCurrentPageGoods', this.pagination.currentPage)
+    },
+
     goodUuid(item) {
       this.form.good_uuid = item.uuid
     },
