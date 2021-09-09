@@ -8,9 +8,11 @@
       class="my-2"
       :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'"
     >
-      <template v-for="item in getCategoryOptions">
-        <b-dd-item @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
-      </template>
+      <div class="overflow-auto" style="max-height: 400px">
+        <template v-for="item in getCategoryOptions">
+          <b-dd-item @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
+        </template>
+      </div>
     </b-dd>
     <b-input-group class="d-flex flex-column">
       <h4>Введите наименование категории:</h4>
