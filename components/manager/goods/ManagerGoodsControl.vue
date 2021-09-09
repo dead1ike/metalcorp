@@ -24,7 +24,12 @@
         </div>
       </b-dd>
     </div>
-    <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filter.search"></b-form-input>
+    <b-input-group>
+      <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filter.search"></b-form-input>
+      <b-input-group-append>
+        <b-btn variant="corp">Поиск</b-btn>
+      </b-input-group-append>
+    </b-input-group>
   </div>
 </template>
 
@@ -53,7 +58,7 @@ export default {
     },
     getCategoryOptions() {
       return this.$store.getters['category/getCategoryItems'].filter(item => {
-        return item.parent_uuid !== '09f947c3-23bf-42b1-9aee-34b12422d34e'
+        return item.parent_uuid !== '09f947c3-23bf-42b1-9aee-34b12422d34e' && item.parent_uuid !== null
       })
     },
   },
