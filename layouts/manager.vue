@@ -35,6 +35,7 @@
     <template v-if="$store.getters.getActiveManagerGoodsParameterModal">
       <manager-goods-parameter />
     </template>
+    <manager-dashboard-footer />
   </div>
 </template>
 
