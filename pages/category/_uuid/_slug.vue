@@ -25,6 +25,31 @@
         </div>
       </div>
     </template>
+    <template v-else-if="getGoodItems.length > 0">
+      <div
+        v-for="item in getGoodItems"
+        :key="item.uuid"
+        class="w-100 d-flex flex-row justify-content-center m-4 shadow p-4"
+        style="max-width: 1024px"
+      >
+        <div class="w-100 pr-2 h-100">
+          <b-img class="" :src="item.image" style="max-height: 300px" />
+        </div>
+        <div class="w-100 pl-2 d-flex flex-column">
+          <div class="h2 my-4">
+            {{ item.title }}
+          </div>
+          <div class="h-100 s align-self-stretch">
+            {{ item.description }}
+          </div>
+          <div class="text-right">
+            <b-btn variant="corp" class="mx-1 py-3 px-5" @click="description(item)">
+              <h5 class="m-0">Заказать</h5>
+            </b-btn>
+          </div>
+        </div>
+      </div>
+    </template>
     <template v-else>
       <div class="d-flex flex-row justify-content-around">
         <div class="p-5">
@@ -64,6 +89,11 @@ export default {
       form: {
         title: '',
       },
+      filters: {
+        category_uuid: null,
+        limit: 20,
+        page: 1,
+      },
     }
   },
   computed: {
@@ -73,12 +103,22 @@ export default {
     getCategoryByUuid() {
       return this.$store.getters['category/getCategoryByUuid'](this.categoryUuid) || {}
     },
+    getGoodsByCategoryUuid() {
+      return this.$store.getters['good/getGoodsByCategoryUuid'](this.categoryUuid)
+    },
+    getGoodItems() {
+      return this.$store.getters['good/getGoodItems']
+    },
   },
   created() {
+    this.filters.category_uuid = this.categoryUuid
     this.$store.dispatch('category/fetchCategory').then(() => {
       this.form.title = this.getCategoryByUuid.title
     })
-    this.$store.dispatch('type/fetchTypes')
+    this.$store.dispatch('type/fetchTypes').then(() => {})
+    this.$store.dispatch('good/fetchGoods', this.filters).then(() => {
+      console.warn('getGoods', this.getGoodItems)
+    })
   },
   methods: {
     openModal() {
