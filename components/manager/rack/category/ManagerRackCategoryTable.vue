@@ -52,7 +52,7 @@ export default {
       return this.$store.getters['manager/rack/field/getManagerCategoryFields']
     },
     getManagerCategoryItems() {
-      return this.$store.getters['category/getCategoryItems'].filter(item => {
+      return this.$store.getters['manager/goods/category/getCategoryItems'].filter(item => {
         return item.parent_uuid !== null
       })
     },
@@ -66,7 +66,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('category/fetchCategory')
+    this.$store.dispatch('manager/goods/category/fetchCategory')
   },
   methods: {
     deleteItem(item) {

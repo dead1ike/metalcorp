@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     getCategoryOptions() {
-      return this.$store.getters['category/getCategoryItems']
+      return this.$store.getters['manager/goods/category/getCategoryItems']
     },
     selectedCategory() {
       if (this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)) {
@@ -54,7 +54,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('category/fetchCategory')
+    this.$store.dispatch('manager/goods/category/fetchCategory')
     this.$bvModal.show('manager-category-add')
   },
   methods: {
