@@ -51,13 +51,13 @@ export default {
       const all = [
         {
           title: 'Все',
-          category_uuid: null,
+          uuid: 'all',
         },
       ]
       return all.concat(this.getCategoryOptions)
     },
     getCategoryOptions() {
-      return this.$store.getters['category/getCategoryItems'].filter(item => {
+      return this.$store.getters['manager/goods/category/getCategoryItems'].filter(item => {
         return item.parent_uuid !== '09f947c3-23bf-42b1-9aee-34b12422d34e' && item.parent_uuid !== null
       })
     },
@@ -75,8 +75,7 @@ export default {
   },
   mounted() {
     _.merge(this.filter, this.getFilter)
-    this.$store.dispatch('category/fetchCategory')
-    console.warn('category', this.getCategoryOptions)
+    this.$store.dispatch('manager/goods/category/fetchCategory')
   },
   created() {
     this.fetchGoodsD = _.debounce(this.fetchGoods, 500)
@@ -86,8 +85,6 @@ export default {
       return this.$store.getters['manager/goods/goods/getGoodsFilter'][fieldName] === value
     },
     updateFilterItem(fieldName, value) {
-      console.warn('fieldName', fieldName)
-      console.warn('value', value)
       this.$store.commit('manager/goods/goods/setFilterItem', {
         fieldName,
         value,

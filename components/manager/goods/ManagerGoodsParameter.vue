@@ -87,7 +87,6 @@ export default {
     this.$store.dispatch('manager/goods/goods/fetchGoods')
     this.fetchParametersByUuid()
     this.$bvModal.show('manager-goods-parameters')
-    console.warn(this.getGoodParameters)
   },
   methods: {
     managerParameterAdd() {

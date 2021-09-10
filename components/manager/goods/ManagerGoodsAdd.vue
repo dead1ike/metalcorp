@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     addGood() {
-      console.warn(this.form.image)
       this.$store
         .dispatch('manager/goods/goods/postGood', {
           category_uuid: this.form.category_uuid,

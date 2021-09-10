@@ -41,8 +41,6 @@ export const mutations = {
     state.item.rack = data
   },
   setTypes(state, data) {
-    console.warn('set', data)
-
     state.items.rack = data
   },
   setAddBasketProduct(state, data) {

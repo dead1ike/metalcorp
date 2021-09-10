@@ -32,18 +32,8 @@ export const actions = {
         params: getters.getGoodsFilter,
       })
       .then(({ data }) => {
-        console.warn(data)
         commit('setGoods', data.data)
         commit('setGoodsTotal', data.meta.total)
-      })
-  },
-  fetchBlankItem({ commit }, payload) {
-    return this.$axios
-      .post('/api/resource/' + payload.uuid, {
-        ...payload,
-      })
-      .then(({ data }) => {
-        commit('setBlankItem', data.data)
       })
   },
   postGood({ commit }, data) {
@@ -95,11 +85,5 @@ export const getters = {
   },
   getGoodsItems(state) {
     return state.items.goods
-  },
-  getBlankItem(state) {
-    return state.item.data
-  },
-  getBlank(state) {
-    //
   },
 }

@@ -6,7 +6,7 @@ export const state = () => ({
     category: {},
   },
   filter: {
-    parent_uuid: 'parent',
+    parent_uuid: 'all',
     limit: 100,
     page: 1,
   },
@@ -40,9 +40,6 @@ export const actions = {
   },
 }
 export const mutations = {
-  setCategory(state, data) {
-    state.items.category = data
-  },
   setFilterItem(state, { fieldName, value }) {
     state.filter[fieldName] = value
   },
@@ -54,16 +51,19 @@ export const mutations = {
     if (state.filter.page === currentPage) return
     state.filter.page = currentPage
   },
-  setLimitCategory(state, limit) {
-    console.warn('limit', limit)
-    if (state.filter.limit === limit) return
-    state.filter.limit = limit
+  setCategory(state, data) {
+    state.items.category = data
   },
   setCurrentCategory(state, data) {
     state.item.category = data
   },
   setCurrentCategoryUuid(state, data) {
     state.filter.parent_uuid = data
+  },
+  setLimitCategory(state, limit) {
+    console.warn('limit', limit)
+    if (state.filter.limit === limit) return
+    state.filter.limit = limit
   },
 }
 export const getters = {

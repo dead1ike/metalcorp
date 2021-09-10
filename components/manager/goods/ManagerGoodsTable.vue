@@ -2,7 +2,6 @@
   <div class="d-flex flex-column overflow-hidden">
     <div class="overflow-hidden h-100">
       <b-table
-        id="goods-table"
         striped
         hover
         bordered
@@ -38,7 +37,6 @@
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
         <b-pagination
-          aria-controls="goods-table"
           pills
           v-model="pagination.currentPage"
           :total-rows="getGoodsPagination.total"
@@ -75,9 +73,6 @@ export default {
     getGoodsPagination() {
       return this.$store.getters['manager/goods/goods/getGoodsPagination'] || {}
     },
-    rows() {
-      return this.getGoodsItems.length
-    },
     getGoodsFields() {
       return this.$store.getters.getGoodFields
     },
@@ -95,7 +90,6 @@ export default {
   },
   mounted() {
     this.fetchGoods()
-    console.warn(this.getGoodsItems)
   },
   methods: {
     changeLimit(value) {
@@ -103,10 +97,6 @@ export default {
     },
     changePage() {
       this.$store.commit('manager/goods/goods/setCurrentPageGoods', this.pagination.currentPage)
-    },
-
-    goodUuid(item) {
-      this.form.good_uuid = item.uuid
     },
     uploadImage() {
       this.$store

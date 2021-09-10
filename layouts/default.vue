@@ -1,15 +1,16 @@
 <template>
-  <div class="d-flex flex-column">
-    <public-dashboard-navbar />
-    <public-dashboard-control />
-    <Nuxt class="h-100 container-fluid p-0" style="max-width: 1520px" />
+  <div class="wrapper">
+    <div class="main-header">
+      <public-dashboard-navbar />
+    </div>
+    <Nuxt class="container__main" />
     <template v-if="$store.getters.getActiveDimensionModal">
       <public-dimension-modal />
     </template>
     <template v-if="$store.getters.getActiveCategoryModal">
       <public-category-order-modal />
     </template>
-    <div class="overflow-hidden"><public-dashboard-footer /></div>
+    <div><public-dashboard-footer /></div>
   </div>
 </template>
 
