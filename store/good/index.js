@@ -1,21 +1,23 @@
 export const state = () => ({
   items: {
     good: [],
-    basketProduct: [],
   },
   item: {
     good: {},
   },
   filter: {
     search: '',
+    parameter_slug: null,
+    parameter_value: '',
+    category_uuid: null,
     uuid: [],
   },
 })
 
 export const actions = {
-  async fetchGoods({ commit }, filters) {
+  async fetchGoods({ commit, getters }, filters) {
     const { data } = await this.$axios.get('/api/good/good', {
-      params: filters,
+      params: getters.getFilters,
     })
     console.warn('fetchGoods', data)
     commit('setGoods', data.data)
@@ -44,24 +46,23 @@ export const mutations = {
   setGoods(state, data) {
     state.items.good = data
   },
-  setBlank(state, data) {
-    //
+  setFilterItem(state, data) {
+    state.filter.parameter_slug = data.parameter_slug
+    state.filter.parameter_value = data.parameter_value
+  },
+  setCategoryUuid(state, uuid) {
+    state.filter.category_uuid = uuid
   },
 }
 
 export const getters = {
-  getGoodsByCategoryUuid: state => categoryUuid => {
-    return state.items.good.filter(item => {
-      return item.category_uuid === categoryUuid
-    })
-  },
   getGoodItems(state) {
     return state.items.good
   },
-  getBlankItem(state) {
-    return state.item.data
+  getGood(state) {
+    return state.item.good
   },
-  getBlank(state) {
-    //
+  getFilters(state) {
+    return state.filter
   },
 }

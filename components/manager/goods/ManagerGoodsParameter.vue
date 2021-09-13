@@ -38,7 +38,7 @@
     <div v-for="item in getGoodParameters" class="d-flex flex-row ">
       <div v-if="item.uuid !== null" :key="item.uuid" class="d-flex flex-row h4 justify-content-between w-100">
         <div class="p-2">
-          <span>{{ item.parameter_uuid.title }}</span>
+          <span>{{ item.parameter_title }}</span>
         </div>
         <div class="p-2">
           <span>{{ item.parameter_value }}</span>

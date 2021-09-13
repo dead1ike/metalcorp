@@ -107,9 +107,6 @@ export default {
     toRacksPage(item) {
       this.$router.push(`/category/${item.uuid}/${item.slug}`)
     },
-    description(item) {
-      this.$router.push(`/product/${item.uuid}/${item.slug}`)
-    },
     fetchCategory() {
       this.$store.dispatch('category/fetchCategory')
     },
