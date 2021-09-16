@@ -25,8 +25,8 @@ export const actions = {
       parameter_value: data.value,
     })
   },
-  deleteParameter({ commit }, data) {
-    return this.$axios.delete('/api/resource/' + data.uuid)
+  deleteGoodParameter({ commit }, goodParameterUuid) {
+    return this.$axios.delete('/api/good/goodParameter/' + goodParameterUuid)
   },
 }
 

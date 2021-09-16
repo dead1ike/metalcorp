@@ -42,53 +42,55 @@
                 г. Екатеринбург,ул. Радищева, 4, офис 611
               </div>
             </div>
-            <div class="d-flex flex-column m-4">
-              <ul style="list-style-type: none">
-                <li style="height: 50px;line-height: 50px">
-                  <a href="#" style="text-decoration: none;color: white">Наши объекты</a>
-                </li>
+            <div class="d-flex flex-row">
+              <div class="d-flex flex-column">
+                <ul style="list-style-type: none">
+                  <li style="height: 50px;line-height: 50px">
+                    <a href="#" style="text-decoration: none;color: white">Наши объекты</a>
+                  </li>
 
-                <li style="height: 50px;line-height: 50px">
-                  <a href="#" style="text-decoration: none;color: white">Отзывы</a>
-                </li>
-                <li style="height: 50px;line-height: 50px">
-                  <a href="#" style="text-decoration: none;color: white">Сотрудничество</a>
-                </li>
-                <li style="height: 50px;line-height: 50px">
-                  <a href="#" style="text-decoration: none;color: white">Вакансии</a>
-                </li>
-                <li style="height: 50px;line-height: 50px">
-                  <a href="#" style="text-decoration: none;color: white">Контакты</a>
-                </li>
-              </ul>
-            </div>
-            <div class="d-flex flex-column m-4">
-              <ul style="list-style-type: none">
-                <li style="height: 40px;line-height: 40px">
-                  <strong>Каталог</strong>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Архивные стеллажи</a>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Глубинные стеллажи</a>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Кабельные стеллажи</a>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Консольные стеллажи</a>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Паллетные стеллажи</a>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Среднегрузовые стеллажи</a>
-                </li>
-                <li style="height: 30px;line-height: 30px">
-                  <a href="#" style="text-decoration: none;color: white">Стеллажи для напольных покрытий</a>
-                </li>
-              </ul>
+                  <li style="height: 50px;line-height: 50px">
+                    <a href="#" style="text-decoration: none;color: white">Отзывы</a>
+                  </li>
+                  <li style="height: 50px;line-height: 50px">
+                    <a href="#" style="text-decoration: none;color: white">Сотрудничество</a>
+                  </li>
+                  <li style="height: 50px;line-height: 50px">
+                    <a href="#" style="text-decoration: none;color: white">Вакансии</a>
+                  </li>
+                  <li style="height: 50px;line-height: 50px">
+                    <a href="#" style="text-decoration: none;color: white">Контакты</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="d-flex flex-column">
+                <ul style="list-style-type: none" class="text-wrap">
+                  <li>
+                    <strong>Каталог</strong>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Архивные стеллажи</a>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Глубинные стеллажи</a>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Кабельные стеллажи</a>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Консольные стеллажи</a>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Паллетные стеллажи</a>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Среднегрузовые стеллажи</a>
+                  </li>
+                  <li style="line-height: 30px">
+                    <a href="#" style="text-decoration: none;color: white">Стеллажи для напольных покрытий</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

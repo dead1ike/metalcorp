@@ -1,174 +1,283 @@
 <template>
-  <div class="overflow-auto h-100">
-    <!--Каруселька №1-->
-    <div>
+  <div class="d-flex">
+    <div class="sidebar d-none d-lg-block">
+      <span>Каталог</span>
+      <div v-for="item in getCategories">
+        <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>
+      </div>
+      <div style="margin-top: 150px">
+        <p class="h5 px-3" style="color:white">+7 (906) 812-81-75</p>
+        <p class="h6 px-3" style="color:white">Ежедневно с 9:00 до 21:00</p>
+        <b-btn class="mx-3 mt-4" variant="light" style="font-weight: 700" @click="call()">Заказать звонок</b-btn>
+      </div>
+    </div>
+
+    <div class="overflow-auto h-100 container__main">
       <div class="shadow d-flex flex-fill">
         <div
           style="
-            background-image: url(https://i.ibb.co/ZLRp1Cf/storage2.png);
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-          "
-          class="text-white d-flex flex-fill flex-column"
+              background-image: url(https://i.ibb.co/Vgb03MM/background-1.jpg);
+              background-size: cover;
+              background-position: right 35% bottom 50%;
+              width: 100%;
+
+            "
+          class="text-white d-flex flex-fill flex-column banner justify-content-center"
         >
-          <div class="text-left p-4">
-            <h3>Комплексное решение для вашего склада</h3>
+          <div>
+            <p class="banner_header text-wrap">
+              Комплексное решение<br />
+              для вашего склада
+            </p>
           </div>
-          <div class="text-left p-4">
-            <h1 class="font-weight-bolder">
-              Складские стеллажи от производителя с установкой под ключ и гарантией 24 месяца
-            </h1>
+          <div class="banner_text text-wrap">
+            <p>
+              Складские стеллажи от производителя с установкой под ключ<br />
+              и гарантией 24 месяца
+            </p>
           </div>
-          <div class="pt-8 m-4 text-center text-md-left">
-            <b-btn variant="corp" size="lg" class="px-5 py-4" to="/category">Перейти в каталог</b-btn>
+          <div class="banner_button">
+            <b-btn variant="black" size="lg" class="px-lg-5 py-4" to="/category">Заказать</b-btn>
           </div>
         </div>
       </div>
-    </div>
-    <!--Что такое МеталлКорп?-->
-    <div class="p-2 mt-4 container-fluid" style="max-width: 1520px">
-      <h3>Что такое МеталлКорп?</h3>
-    </div>
-    <!--Описание МеталлКорпа-->
-    <div class="p-2 d-flex flex-row flex-wrap container-fluid" style="max-width: 1520px">
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild3339-3939-4032-b633-306336663931/1.svg"></b-img>
-        <div class="h5 mt-2 px-3">Бесплатный выезд замерщика, к Вам на склад</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild3431-3364-4863-a633-316132323966/2.svg"></b-img>
-        <div class="h5 mt-2 px-3">Проектирование чертежей(планов расстановки складских стеллажей)</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild3466-6433-4466-a465-653764613865/3.svg"></b-img>
-        <div class="h5 mt-2 px-3">Поставка оборудования напрямую от Производителя</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild6363-3864-4666-a538-623166313432/4.svg"></b-img>
-        <div class="h5 mt-2 px-3">Составление сметы и Коммерческих предложений</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild3730-6535-4232-a461-626461646463/5.svg"></b-img>
-        <div class="h5 mt-0 pb-1 px-3">Реализация оборудования и услуг, исключительно по Договору поставки</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild6137-3362-4932-b465-623331323439/6.svg"></b-img>
-        <div class="h5 mt-n1 pb-1 px-3">Бесплатная доставка в любую точку города от 35 000 руб</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild6538-6435-4261-a432-316139366233/7.svg"></b-img>
-        <div class="h5 mt-2 px-3">Сборка металлических стеллажей и складского оборудования «Под ключ»</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild6238-6633-4338-a633-323539303030/8.svg"></b-img>
-        <div class="h5 mt-2 px-3">24 месяца гарантии и сервисного обслуживания</div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-img src="https://static.tildacdn.com/tild6463-6138-4033-a531-626237613066/Barcode.svg"></b-img>
-        <div class="h4 mt-3 px-3"><h5>Удобные способы оплаты для Юридических и Частных лиц (с НДС и Без)</h5></div>
-      </div>
-      <div class="d-flex flex-fill border border-corp p-3 m-2 shadow">
-        <b-btn variant="corp" block href="https://metalcorp.org/">Подробнее о нас</b-btn>
-      </div>
-    </div>
-    <!--Каруселька №2-->
-    <div class="mt-4">
-      <b-carousel
-        class="shadow"
-        :interval="1000000"
-        img-height="480"
-        img-width="1024"
-        @sliding-start="onSlideStart"
-        @sliding-end="onSlideEnd"
-      >
-        <b-carousel-slide
-          style="
-            background-image: url(https://i.ibb.co/hYRmNmT/storagemuzhik.png);
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 580px;
-          "
+      <h2 class="p-4" style="font-weight: 700;font-size: 40px">Каталог</h2>
+      <div class="d-flex flex-wrap justify-content-around">
+        <div
+          class="p-3 m-2 d-flex flex-column justify-content-between"
+          v-for="item in getCategories"
+          v-if="item.uuid !== null"
+          :key="item.uuid"
+          style="max-width: 300px; max-height: 400px; border: black solid 1px"
         >
-          <div class="h-100">
-            <div
-              class="position-absolute"
-              style="
-                background-image: url(https://i.ibb.co/qdd5SM3/man-4.png);
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center bottom;
-                width: 520px;
-                height: 450px;
-                right: 0;
-                bottom: 0;
-                max-width: 100%;
-              "
-            ></div>
-            <div class="text-left position-relative h-100 d-flex flex-column">
-              <h3>Бесплатный выезд замерщика</h3>
-              <h2 class="font-weight-bolder">Закажите бесплатный выезд замерщика и получите в течении дня</h2>
-              <h3 class="mt-3">- Точный замер</h3>
-              <h3>- Расчет сметы</h3>
-              <h3>- Сроки поставки и установки стеллажей</h3>
-              <div class="d-flex align-items-end ml-4 h-100">
-                <b-btn variant="corp" size="lg" class="px-5 py-4" @click="openModal()">Оставить заявку</b-btn>
-              </div>
+          <div>
+            <h4 style="font-weight: 700">{{ item.title }}</h4>
+          </div>
+          <div class="align-self-center p-3" style="min-height: 200px">
+            <img :src="item.image" alt="1" style="max-height: 200px" />
+          </div>
+          <div class="align-self-center">
+            <b-btn variant="black" @click="toCategory(item)">Подробнее</b-btn>
+          </div>
+        </div>
+      </div>
+      <!--блок3-->
+      <div class="d-none d-lg-flex w-100 p-3">
+        <div
+          class="text-white d-flex flex-fill block3_banner flex-row justify-content-around align-self-center w-100"
+          style="background-image: url(https://i.ibb.co/2P5YRL9/background-2.jpg);background-repeat:no-repeat;background-size: cover"
+        >
+          <div class="d-flex flex-column w-100 justify-content-around">
+            <div>
+              <p class="block3_banner_header text-wrap">
+                Гарантируем качество<br />
+                и надежность
+              </p>
+            </div>
+            <div class="block3_banner_text text-wrap">
+              <p>
+                Закажите бесплатный выезд замерщика
+              </p>
+            </div>
+            <div class="block3_banner_button">
+              <h5 class="mb-1">Ваше имя</h5>
+              <b-form-input v-model="form.name" class="p-2" placeholder="Имя" style="max-width: 400px"></b-form-input>
+            </div>
+            <div class="block3_banner_button">
+              <h5 class="mb-1">Ваш телефон</h5>
+              <b-form-input
+                v-model="form.phone"
+                class="p-2"
+                placeholder="Телефон"
+                style="max-width: 400px"
+              ></b-form-input>
+            </div>
+            <div class="block3_banner_button">
+              <b-btn variant="light" class="px-lg-5 py-4">Оставить заявку</b-btn>
             </div>
           </div>
-        </b-carousel-slide>
-      </b-carousel>
-    </div>
-    <!--Каталог 1-->
-    <div class="d-flex flex-row justify-content-center">
-      <div class="align-self-center">
-        <b-btn variant="link" size="sm" :disabled="slidePage <= 0" @click="slidePage--">
-          <b-icon icon="chevron-double-left" />
-        </b-btn>
-      </div>
-      <div class="d-flex my-2 flex-row flex-wrap justify-content-center">
-        <div v-for="item in showSlides" :key="item.uuid" class="mx-1 my-2 border">
-          <div class="d-flex flex-column align-items-center">
-            <span class="my-3"> Стеллаж {{ item.title }}</span>
-            <b-img :src="item.image" style="max-height: 300px" class="" />
-          </div>
-          <div class="d-flex align-items-end m-3">
-            <b-btn variant="corp" @click="description(item)">Заказать</b-btn>
+          <div class="d-flex flex-column w-100 justify-content-around align-items-center" style="margin-left: 450px">
+            <div class="w-100">
+              <img
+                src="https://i.ibb.co/SxWYs9V/pencil-icon.png"
+                alt="pencil"
+                style="max-width: 89px;max-height: 89px"
+              />
+              <p class="h3 mt-4" style="font-weight: 700">Точный замер</p>
+            </div>
+            <div class="w-100">
+              <img src="https://i.ibb.co/VYc6Ln6/calc-icon.png" alt="calc" style="max-width: 74px;max-height: 96px" />
+              <p class="h3 mt-4" style="font-weight: 700">Расчет сметы</p>
+            </div>
+            <div class="w-100">
+              <img
+                src="https://i.ibb.co/Y87d2Ww/calendar-icon.png"
+                alt="calendar"
+                style="max-width: 96px;max-height: 96px"
+              />
+              <p class="h3 mt-4" style="font-weight: 700">
+                Сроки поставки <br />
+                и установки стеллажей
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="align-self-center">
-        <b-btn variant="link" size="sm" :disabled="isPageMax" @click="slidePage++">
-          <b-icon icon="chevron-double-right" />
-        </b-btn>
-      </div>
-    </div>
-    <!--Конечная индексной-->
-    <div>
-      <div class="shadow d-flex flex-fill">
+      <div class="d-flex d-lg-none flex-column w-100">
         <div
-          style="
-            background-image: url(https://thumb.tildacdn.com/tild3631-3733-4561-a139-343061303663/-/format/webp/A4_-_4.jpg);
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-          "
-          class="position-relative text-white p-3 d-flex flex-fill flex-column"
+          class="text-white d-flex flex-fill flex-column justify-content-center"
+          style="background-image: url(https://i.ibb.co/8MGDwfN/block3-left.jpg);background-repeat:no-repeat;background-size: cover"
         >
-          <div class="text-center p-4">
-            <h2>Затрудняетесь с выбором?</h2>
+          <div>
+            <p class="block3_mobile_header text-wrap">
+              Гарантируем качество<br />
+              и надежность
+            </p>
           </div>
-          <div class="text-center p-4">
-            <h1 class="font-weight-bolder">Поможем определиться и подобрать лучшие для Вас товары из каталога!</h1>
+          <div class="block3_mobile_text text-wrap">
+            <p>
+              Закажите бесплатный выезд замерщика
+            </p>
           </div>
-          <div class="pt-4 mb-2 text-center text-md-left">
-            <b-btn variant="corp" class="px-5 py-4" size="lg" @click="openModal()">Получить консультацию</b-btn>
+          <div class="block3_mobile_button my-2">
+            <h5 class="mb-1">Ваше имя</h5>
+            <b-form-input v-model="form.name" class="px-2" placeholder="Имя" style="max-width: 400px"></b-form-input>
+          </div>
+          <div class="block3_mobile_button my-2">
+            <h5 class="mb-1">Ваш телефон</h5>
+            <b-form-input
+              v-model="form.phone"
+              class="px-2"
+              type="tel"
+              placeholder="Телефон"
+              style="max-width: 400px"
+            ></b-form-input>
+          </div>
+          <div class="block3_mobile_button">
+            <b-btn variant="light" size="sm" class="px-lg-5 py-3 my-2">Оставить заявку</b-btn>
+          </div>
+        </div>
+        <div
+          class="text-white d-flex flex-column justify-content-center"
+          style="background-image: url(https://i.ibb.co/p2HCpp9/block3-right.jpg);background-repeat:no-repeat;background-size: cover"
+        >
+          <div class="d-flex flex-row justify-content-around w-100">
+            <div class="w-100 d-flex flex-column align-items-center mt-2">
+              <img
+                src="https://i.ibb.co/SxWYs9V/pencil-icon.png"
+                alt="pencil"
+                style="max-width: 89px;max-height: 89px"
+              />
+              <p class="h3 text-center" style="font-weight: 700;margin-top: 28px">Точный замер</p>
+            </div>
+            <div class="w-100 d-flex flex-column align-items-center mt-2">
+              <img src="https://i.ibb.co/VYc6Ln6/calc-icon.png" alt="calc" style="max-width: 74px;max-height: 96px" />
+              <p class="h3 mt-4 text-center" style="font-weight: 700">Расчет сметы</p>
+            </div>
+          </div>
+          <div class="w-100 justify-content-center align-items-center flex-column d-flex">
+            <img
+              src="https://i.ibb.co/Y87d2Ww/calendar-icon.png"
+              alt="calendar"
+              style="max-width: 96px;max-height: 96px"
+            />
+            <p class="h3 mt-4 text-center" style="font-weight: 700">
+              Сроки поставки <br />
+              и установки стеллажей
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--      блок 4-->
+      <div class="p-3">
+        <div class="d-flex flex-column flex-lg-row p-3" style="box-shadow: #00000050 0 0 10px">
+          <div class="d-flex flex-column justify-content-around flex-fill pr-5">
+            <div class="py-sm-3">
+              <div>
+                <p class="block3_banner_header text-wrap" style="font-size: 40px">
+                  У нас вы найдете все<br />
+                  необходимые стеллажи
+                </p>
+              </div>
+              <div class="block3_banner_text text-wrap">
+                <p>
+                  Наша компания является ведущим дилером крупнейших производителей, систем складского хранения, по всей
+                  территории РФ!
+                </p>
+                <p>
+                  Компания «МЕТАЛЛКОРП» предлагает для Вас комплексное решение по организации складского пространства,
+                  начиная от выезда специалиста к вам на склад, составления коммерческого предложения, заканчивая
+                  поставкой складского оборудования и его установкой.
+                </p>
+                <p>
+                  Более 5 лет мы реализуем проекты наших заказчиков! Нам доверяют более 100 компаний по всей территории
+                  РФ, от малых предприятий, до крупнейших изготовителей и поставщиков - таких как: Сбер-Маркет, OZON,
+                  Яндекс-Маркет, МАГНИТ, СДЭК, Деловые-Линии и др.
+                </p>
+              </div>
+            </div>
+            <div
+              class="d-flex flex-column flex-lg-row h-100 justify-content-around align-items-lg-end align-items-center"
+            >
+              <img src="https://i.ibb.co/ZHntwqp/yandex-logo.jpg" class="py-2" />
+
+              <img src="https://i.ibb.co/4mpvp3B/cdek.jpg" class="py-2" />
+
+              <img src="https://i.ibb.co/Swy9Q6x/dl.jpg" class="py-2" />
+            </div>
+          </div>
+          <div class="d-lg-none d-sm-flex"><hr /></div>
+          <div class="vl d-none d-lg-block"></div>
+          <div class="d-flex flex-column px-5">
+            <div class="block3_banner_text text-wrap">
+              <p>
+                Поставка оборудования напрямую от производителя
+              </p>
+              <p>
+                Сборка металлических стеллажей и складского оборудования «под ключ»
+              </p>
+              <p>
+                24 месяца гарантии и сервисного обслуживания
+              </p>
+              <p>
+                Бесплатный выезд замерщика, к Вам на склад
+              </p>
+              <p>
+                Проектирование чертежей(планов расстановки складских стеллажей)
+              </p>
+              <p>
+                Реализация оборудования и услуг, исключительно по договору поставки
+              </p>
+              <p>
+                Удобные способы оплаты для Юридических и Частных лиц (с НДС и Без)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--      блок 5-->
+      <div class="p-3">
+        <div
+          class="d-flex flex-column flex-lg-row p-3 text-white"
+          style="box-shadow: #00000050 0 0 10;background-color: #454545"
+        >
+          <div class="d-flex flex-column" style="padding: 50px">
+            <h3>Мы находимся</h3>
+            <p style="font-weight: 500; font-size: 20px;color: #5B95ED; padding: 40px 0 0 0">Адрес:</p>
+            <p>г. Екатеринбург, ул. Радищева, д.4, оф.661</p>
+            <p style="font-weight: 500; font-size: 20px;color: #5B95ED; padding: 40px 0 0 0">Телефон:</p>
+            <p>+7 (906) 812-81-75</p>
+            <p>Ежедневно с 9:00 до 21:00</p>
+          </div>
+          <div class="d-none d-lg-flex">
+            <img src="https://i.ibb.co/SxbBmKM/location.png" alt="1" />
+          </div>
+          <div class="d-sm-flex d-lg-none">
+            <img src="https://i.ibb.co/D7sFZjN/location-mobile.png" alt="1" />
           </div>
         </div>
       </div>
     </div>
-    <!--Отзывы-->
   </div>
 </template>
 
@@ -182,9 +291,23 @@ export default {
       slidePage: 0,
       slideCount: 4,
       slideCurrent: 0,
+      form: {
+        phone: '',
+        name: '',
+      },
     }
   },
   computed: {
+    getCategories() {
+      return this.$store.getters['category/getCategoryItems'].filter(item => {
+        return item.parent_uuid === null
+      })
+    },
+    getSubCategories() {
+      return this.$store.getters['category/getCategoryItems'].filter(item => {
+        return item.parent_uuid !== null
+      })
+    },
     getTestItems() {
       return this.$store.getters['type/getTypes']
     },
@@ -201,8 +324,23 @@ export default {
       return slides
     },
   },
-  mounted() {},
+  mounted() {
+    this.$store.dispatch('category/fetchCategory').then(() => {
+      return this.getCategories
+    })
+    console.warn('categories', this.getCategories)
+    console.warn('subcategories', this.getSubCategories)
+  },
   methods: {
+    call() {
+      this.$store.commit('setActiveModal', {
+        modalName: 'dimensionModal',
+        modalStatus: true,
+      })
+    },
+    toCategory(item) {
+      this.$router.push(`/category/${item.uuid}`)
+    },
     description(item) {
       this.$router.push(`/product/${item.uuid}/${item.slug}`)
     },

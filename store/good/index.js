@@ -7,19 +7,26 @@ export const state = () => ({
   },
   filter: {
     search: '',
-    parameter_slug: null,
-    parameter_value: '',
+    parameters: {
+      weight: '',
+      color: '',
+      cover: '',
+      width: '',
+      fireproof: '',
+      height: '',
+      price: '',
+      depth: '',
+    },
     category_uuid: null,
-    uuid: [],
   },
 })
 
 export const actions = {
-  async fetchGoods({ commit, getters }, filters) {
-    const { data } = await this.$axios.get('/api/good/good', {
-      params: getters.getFilters,
+  async fetchGoods({ commit, getters }) {
+    const { data } = await this.$axios.post('/api/good/good/list', {
+      ...getters.getFilters,
     })
-    console.warn('fetchGoods', data)
+    console.warn('fetchGoods', data.data)
     commit('setGoods', data.data)
   },
   fetchGood({ commit }, uuid) {
@@ -47,8 +54,10 @@ export const mutations = {
     state.items.good = data
   },
   setFilterItem(state, data) {
-    state.filter.parameter_slug = data.parameter_slug
-    state.filter.parameter_value = data.parameter_value
+    console.warn('slug', data.slug)
+    console.warn('value', data.value)
+    state.filter.parameters[data.slug] = data.value
+    console.warn('setFilter', state.filter.parameters)
   },
   setCategoryUuid(state, uuid) {
     state.filter.category_uuid = uuid

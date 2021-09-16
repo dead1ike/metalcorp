@@ -32,9 +32,9 @@
     <template v-if="$store.getters.getActiveManagerGoodsAddModal">
       <manager-goods-add />
     </template>
-    <template v-if="$store.getters.getActiveManagerGoodsParameterModal">
-      <manager-goods-parameter />
-    </template>
+    <!--    <template v-if="$store.getters.getActiveManagerGoodsParameterModal">-->
+    <!--      <manager-goods-parameter />-->
+    <!--    </template>-->
     <!--    <manager-dashboard-footer />-->
   </div>
 </template>
@@ -94,12 +94,12 @@ export default {
           modalName: 'managerGoodsAdd',
           modalStatus: false,
         })
-      } else if (modalId === 'manager-goods-parameter') {
+      } /*else if (modalId === 'manager-goods-parameter') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerGoodsParameter',
           modalStatus: false,
         })
-      }
+      }*/
     })
   },
 }

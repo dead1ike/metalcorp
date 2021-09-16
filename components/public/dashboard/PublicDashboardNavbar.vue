@@ -1,6 +1,6 @@
 <template>
   <div class="main-header-content">
-    <b-navbar toggleable="md">
+    <b-navbar toggleable="lg">
       <b-navbar-brand to="/">
         <b-img style="max-width: 150px; max-height: 63px" src="~/static/logo.png" />
       </b-navbar-brand>
@@ -11,26 +11,26 @@
         </template>
       </b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="w-100 d-flex justify-content-around">
+        <b-navbar-nav class="w-100 d-flex flex-wrap justify-content-between">
           <b-nav-item class="mt-3 ml-3">
-            <b-btn variant="outline-corp" size="sm" class="m-2 font-weight-bold live-edit" to="/rekvizity"
+            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/rekvizity"
               >Реквизиты</b-btn
             >
-            <b-btn variant="outline-corp" size="sm" class="m-2 font-weight-bold live-edit" to="/otzyvy">Отзывы</b-btn>
-            <b-btn variant="outline-corp" size="sm" class="m-2 font-weight-bold live-edit" to="/obyekty"
+            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/otzyvy">Отзывы</b-btn>
+            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/obyekty"
               >Наши объекты</b-btn
             >
-            <b-btn variant="outline-corp" size="sm" class="m-2 font-weight-bold live-edit" to="/vakansii"
+            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/vakansii"
               >Вакансии</b-btn
             >
-            <b-btn variant="outline-corp" size="sm" class="m-2 font-weight-bold live-edit" to="/kontakty"
+            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/kontakty"
               >Контакты</b-btn
             >
-            <b-btn variant="outline-corp" size="sm" class="m-2 font-weight-bold live-edit" to="/sotrudnichestvo">
+            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/sotrudnichestvo">
               Сотрудничество
             </b-btn>
           </b-nav-item>
-          <b-nav-item to="/offer" class="m-0 px-3 py-4 m-0 font-weight-bolder mx-3 align-items-end">
+          <b-nav-item to="/offer" class="m-0 px-1 py-4 font-weight-bolder mx-1 align-items-end">
             <public-offer-basket />
           </b-nav-item>
         </b-navbar-nav>

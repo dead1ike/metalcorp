@@ -7,7 +7,7 @@
       <div class="m-2 d-flex flex-column">
         <span class="h3">Вес,кг</span>
         <!--        <b-form-input placeholder="" v-model="filters.weight"></b-form-input>-->
-        <b-dd>
+        <b-dd :text="filters.weight ? filters.weight : 'Выберите'">
           <template v-for="item in getWeightOptions">
             <b-dd-item
               v-if="item.uuid !== null"
@@ -19,29 +19,103 @@
           </template>
         </b-dd>
       </div>
-      <div class="m-2">
+      <div class="m-2 d-flex flex-column">
         <span class="h3">Высота</span>
-        <b-form-input placeholder="" v-model="filters.height"></b-form-input>
+        <b-dd :text="filters.height ? filters.height : 'Выберите'">
+          <template v-for="item in getHeightOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
       </div>
-      <div class="m-2">
+      <div class="m-2 d-flex flex-column">
         <span class="h3">Ширина</span>
-        <b-form-input placeholder="" v-model="filters.width"></b-form-input>
+        <b-dd :text="filters.width ? filters.width : 'Выберите'">
+          <template v-for="item in getWidthOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
       </div>
-      <div class="m-2">
+      <div class="m-2 d-flex flex-column">
         <span class="h3">Глубина</span>
-        <b-form-input placeholder="" v-model="filters.depth"></b-form-input>
+        <b-dd :text="filters.depth ? filters.depth : 'Выберите'">
+          <template v-for="item in getDepthOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
       </div>
-      <div class="m-2">
+      <div class="m-2 d-flex flex-column">
         <span class="h3">Цена</span>
-        <b-form-input placeholder="" v-model="filters.price"></b-form-input>
+        <b-dd :text="filters.price ? filters.price : 'Выберите'">
+          <template v-for="item in getPriceOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
       </div>
-      <div class="m-2">
+      <div class="m-2 d-flex flex-column">
         <span class="h3">Покрытие</span>
-        <b-form-input placeholder="" v-model="filters.cover"></b-form-input>
+        <b-dd :text="filters.cover ? filters.cover : 'Выберите'">
+          <template v-for="item in getCoverOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
       </div>
-      <div class="m-2">
+      <div class="m-2 d-flex flex-column">
         <span class="h3">Цвет</span>
-        <b-form-input placeholder="" v-model="filters.color"></b-form-input>
+        <b-dd :text="filters.color ? filters.color : 'Выберите'">
+          <template v-for="item in getColorOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
+      </div>
+      <div class="m-2 d-flex flex-column">
+        <span class="h3">Огнестойкость</span>
+        <b-dd :text="filters.fireproof ? filters.fireproof : 'Выберите'">
+          <template v-for="item in getFireproofOptions">
+            <b-dd-item
+              v-if="item.uuid !== null"
+              :key="item.uuid"
+              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
+            >
+              {{ item.parameter_value }}
+            </b-dd-item>
+          </template>
+        </b-dd>
       </div>
     </div>
     <div class="h-100 w-100 overflow-hidden d-flex flex-column align-items-center">
@@ -136,14 +210,14 @@ export default {
         title: '',
       },
       filters: {
-        weight: '',
-        height: '',
         width: '',
+        height: '',
         depth: '',
+        weight: '',
+        fireproof: '',
         price: '',
         cover: '',
         color: '',
-        search: '',
         category_uuid: null,
         limit: 20,
         page: 1,
@@ -188,14 +262,26 @@ export default {
     },
     getColorOptions() {
       return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '01882074-0050-4264-a6e0-83d444119694'
+        return item.parameter_uuid === '1966482c-2ce6-44dc-a663-7d2e6e59544f'
+      })
+    },
+    getPriceOptions() {
+      return this.getGoodParams.filter(item => {
+        return item.parameter_uuid === '77b5dedf-94e9-40d9-a624-f40ef4de69ff'
+      })
+    },
+    getFireproofOptions() {
+      return this.getGoodParams.filter(item => {
+        return item.parameter_uuid === '0ea8d05a-838d-4bca-89cf-0c4818cc7b49'
+      })
+    },
+    getCoverOptions() {
+      return this.getGoodParams.filter(item => {
+        return item.parameter_uuid === '1c9638f4-0a99-4d15-b244-20156902b1ae'
       })
     },
   },
   watch: {
-    'filters.weight'(newValue) {
-      this.updateWeightFilter(newValue)
-    },
     getFilter: {
       handler() {
         this.fetchGoodsD()
@@ -218,19 +304,18 @@ export default {
     this.$store.dispatch('good/parameters/fetchGoodParameters')
   },
   methods: {
-    selectWeightParameter(value) {
-      this.filters.weight = value
-    },
     fetchGoods() {
       this.$store.dispatch('good/fetchGoods').then(() => {
         console.warn('getGoods', this.getGoodItems)
       })
     },
-    updateWeightFilter(value, slug) {
+    updateWeightFilter(slug, value) {
+      this.filters[slug] = value
       this.$store.commit('good/setFilterItem', {
-        parameter_value: value,
-        parameter_slug: slug,
+        slug,
+        value,
       })
+      console.warn(this.filters)
     },
     openModal() {
       this.$store.commit('category/setCurrentCategory', {
@@ -242,9 +327,15 @@ export default {
       })
     },
     description(item) {
+      if (!item.parent_uuid) {
+        this.$router.push(`/category/${item.uuid}/${item.slug}`)
+      }
       this.$router.push(`/rack/${item.uuid}/${item.slug}`)
     },
     order(item) {
+      if (!item.parent_uuid) {
+        this.$router.push(`/category/${item.uuid}/${item.slug}`)
+      }
       this.$router.push(`/product/${item.uuid}/${item.slug}`)
     },
   },

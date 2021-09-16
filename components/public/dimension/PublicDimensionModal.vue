@@ -10,7 +10,7 @@
     <template #modal-footer>
       <div class="d-flex mr-md-2 flex-column justify-content-end flex-sm-row w-100">
         <b-btn variant="danger" class="m-1" @click="closeModal()">Отменить </b-btn>
-        <b-btn variant="corp" class="m-1" @click="confirmOffer()">Отправить</b-btn>
+        <b-btn variant="black" class="m-1" @click="confirmOffer()">Отправить</b-btn>
       </div>
     </template>
   </b-modal>

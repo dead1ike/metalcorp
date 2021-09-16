@@ -11,26 +11,27 @@
         :fields="getGoodsFields"
         :items="getGoodsItems"
       >
-        <template #cell(actions)="data">
-          <b-icon
-            icon="pencil"
-            variant="success"
-            scale="1.4"
-            class="mx-2"
-            title="Редактировать"
-            @click="editGood(data.item)"
-          ></b-icon>
-          <b-icon
-            icon="X"
-            variant="danger"
-            scale="2.5"
-            class="mx-2"
-            title="Удалить"
-            @click="deleteGood(data.item)"
-          ></b-icon>
+        <template #cell(parameters)="data">
+          <manager-goods-parameter :row-data="data.item" />
         </template>
-        <template #cell(image)="data">
-          <b-img :src="data.item.image" style="max-width: 120px; max-height: 120px" />
+        <template #cell(actions)="data">
+          <!--          <b-icon-->
+          <!--            icon="pencil"-->
+          <!--            variant="success"-->
+          <!--            scale="1.4"-->
+          <!--            class="mx-2"-->
+          <!--            title="Редактировать"-->
+          <!--            @click="editGood(data.item)"-->
+          <!--          ></b-icon>-->
+          <b-btn variant="light" class="btn-icon" @click="deleteGood(data.item)">
+            <b-icon icon="trash" variant="danger" title="Удалить"></b-icon>
+          </b-btn>
+        </template>
+        <template #cell(title)="data">
+          <div>
+            <div><b-img thumbnail :src="data.item.image" style="max-width: 180px; max-height: 180px" /></div>
+            <div class="h3 py-2">{{ data.item.title }}</div>
+          </div>
         </template>
       </b-table>
     </div>
@@ -46,6 +47,7 @@
       </div>
       <div class="mt-3 mr-3 d-flex flex-row">
         <strong class="mx-1">Кол-во</strong>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(5)">5</span>
         <span class="mx-1" style="cursor: pointer" @click="changeLimit(15)">15</span>
         <span class="mx-1" style="cursor: pointer" @click="changeLimit(50)">50</span>
         <span class="mx-1" style="cursor: pointer" @click="changeLimit(100)">100</span>
@@ -121,6 +123,7 @@ export default {
       this.$store.dispatch('deleteGood', good)
     },
     fetchGoods() {
+      this.$store.dispatch('manager/rack/parameter/fetchParameter')
       this.$store.dispatch('manager/goods/goods/fetchGoods')
     },
     makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {

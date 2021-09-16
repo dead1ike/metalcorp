@@ -1,15 +1,17 @@
 <template>
-  <b-modal id="manager-goods-parameters" no-close-on-backdrop no-close-on-esc size="lg">
-    <template #modal-header>
-      <h3>{{ getGoodItem.title }}</h3>
-    </template>
-    <b-input-group class="py-2 d-flex flex-column">
-      <div class="d-flex flex-row">
-        <span class="h3 align-self-center">Параметры товара</span>
-      </div>
+  <div>
+    <!--    <template #modal-header>-->
+    <!--      <h3>{{ getGoodItem.title }}</h3>-->
+    <!--    </template>-->
+    <b-input-group class="d-flex flex-column">
       <div class="d-flex w-100">
         <div class="d-flex flex-fill p-2">
-          <b-dd variant="corp" :text="selectedParameter.title ? selectedParameter.title : 'Выберите'">
+          <b-dd
+            variant="corp"
+            :text="selectedParameter.title ? selectedParameter.title : 'Выберите'"
+            boundary="window"
+            lazy
+          >
             <b-dd-item>
               <b-btn variant="corp" size="sm" block @click="managerParameterAdd()">Добавить параметр</b-btn>
             </b-dd-item>
@@ -35,29 +37,42 @@
       </div>
     </b-input-group>
     <hr />
-    <div v-for="item in getGoodParameters" class="d-flex flex-row ">
-      <div v-if="item.uuid !== null" :key="item.uuid" class="d-flex flex-row h4 justify-content-between w-100">
+    <div v-for="itemParameter in rowData.good_parameters" class="d-flex flex-row">
+      <div
+        v-if="itemParameter.uuid !== null"
+        :key="itemParameter.uuid"
+        class="d-flex flex-row h4 justify-content-between w-100"
+      >
         <div class="p-2">
-          <span>{{ item.parameter_title }}</span>
+          <span>{{ itemParameter.title }}</span>
         </div>
         <div class="p-2">
-          <span>{{ item.parameter_value }}</span>
+          <span>{{ itemParameter.parameter_value }}</span>
+        </div>
+        <div class="p-2">
+          <b-btn class="btn-icon" variant="light" @click="deleteGoodParameter(itemParameter.uuid)">
+            <b-icon-trash variant="danger"></b-icon-trash
+          ></b-btn>
         </div>
       </div>
     </div>
-    <template #modal-footer>
-      <b-btn variant="danger" @click="closeModal">Закрыть</b-btn>
-    </template>
-  </b-modal>
+    <!--    <template #modal-footer>-->
+    <!--      <b-btn variant="danger" @click="closeModal">Закрыть</b-btn>-->
+    <!--    </template>-->
+  </div>
 </template>
 
 <script>
 export default {
   name: 'ManagerGoodsParameter',
+  props: {
+    rowData: {
+      type: Object,
+    },
+  },
   data() {
     return {
       form: {
-        parameters: [],
         parameter_uuid: null,
         parameter_value: '',
       },
@@ -66,11 +81,6 @@ export default {
   computed: {
     getGoodItem() {
       return this.$store.getters['manager/goods/parameters/getGoodItem']
-    },
-    getGoodParameters() {
-      return this.$store.getters['manager/goods/parameters/getGoodParameters'].filter(item => {
-        return item.good_uuid.uuid === this.getGoodItem.uuid
-      })
     },
     getParameters() {
       return this.$store.getters['manager/rack/parameter/getParameter']
@@ -82,13 +92,13 @@ export default {
       return {}
     },
   },
-  mounted() {
-    this.$store.dispatch('manager/rack/parameter/fetchParameter')
-    this.$store.dispatch('manager/goods/goods/fetchGoods')
-    this.fetchParametersByUuid()
-    this.$bvModal.show('manager-goods-parameters')
-  },
+  mounted() {},
   methods: {
+    deleteGoodParameter(goodParameterUuid) {
+      this.$store.dispatch('manager/goods/parameters/deleteGoodParameter', goodParameterUuid).then(() => {
+        this.$store.dispatch('manager/goods/goods/fetchGoods')
+      })
+    },
     managerParameterAdd() {
       this.$store.commit('setActiveModal', {
         modalName: 'managerParameterAdd',
@@ -98,35 +108,23 @@ export default {
     selectParameter(uuid) {
       this.form.parameter_uuid = uuid
     },
-    getUuid() {
-      return this.$store.getters.getNewUuid(new Date())
-    },
     clearForm() {
       this.form.parameter_value = ''
     },
     addParameter() {
       this.$store
         .dispatch('manager/goods/parameters/postParameter', {
-          good_uuid: this.getGoodItem.uuid,
+          good_uuid: this.rowData.uuid,
           parameter_uuid: this.form.parameter_uuid,
           value: this.form.parameter_value,
         })
         .then(() => {
-          this.fetchParametersByUuid()
+          this.$store.dispatch('manager/goods/goods/fetchGoods')
           this.clearForm()
         })
         .catch(e => {
           console.warn(e)
         })
-    },
-    fetchParametersByUuid() {
-      this.$store.dispatch('manager/goods/parameters/fetchGoodParameters', this.getGoodItem.uuid)
-    },
-    closeModal() {
-      this.$store.commit('setActiveModal', {
-        modalName: 'managerGoodsParameter',
-        modalStatus: false,
-      })
     },
   },
 }

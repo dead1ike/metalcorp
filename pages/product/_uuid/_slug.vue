@@ -1,9 +1,6 @@
 <template>
-  <div class="d-flex h-100 w-100">
-    <div>Название</div>
-    <div>Картинка</div>
-    <div>Описание</div>
-    <div>Характеристики</div>
+  <div class="h-100 w-100 overflow-auto">
+    asd
   </div>
 </template>
 

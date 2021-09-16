@@ -2,19 +2,14 @@ export const state = () => ({
   fields: {
     managerGoods: [
       {
-        key: 'image',
-        label: 'Изображение',
-        class: 'align-middle text-center',
-      },
-      {
         key: 'title',
         label: 'Наименование',
-        class: 'align-middle text-center',
+        class: 'align-middle text-left',
       },
       {
-        key: 'actions',
-        label: 'Действия',
-        class: 'align-middle text-center',
+        key: 'parameters',
+        label: 'Параметры',
+        class: 'align-middle text-left',
       },
     ],
 
