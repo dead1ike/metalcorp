@@ -1,16 +1,17 @@
 <template>
   <div class="d-flex">
-    <div class="sidebar d-none d-lg-block">
-      <span>Каталог</span>
-      <div v-for="item in getCategories">
-        <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>
-      </div>
-      <div style="margin-top: 150px">
-        <p class="h5 px-3" style="color:white">+7 (906) 812-81-75</p>
-        <p class="h6 px-3" style="color:white">Ежедневно с 9:00 до 21:00</p>
-        <b-btn class="mx-3 mt-4" variant="light" style="font-weight: 700" @click="call()">Заказать звонок</b-btn>
-      </div>
-    </div>
+    <public-widget-sidebar />
+    <!--    <div class="sidebar d-none d-lg-block">-->
+    <!--      <span>Каталог</span>-->
+    <!--      <div v-for="item in getCategories">-->
+    <!--        <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>-->
+    <!--      </div>-->
+    <!--      <div style="margin-top: 150px">-->
+    <!--        <p class="h5 px-3" style="color:white">+7 (906) 812-81-75</p>-->
+    <!--        <p class="h6 px-3" style="color:white">Ежедневно с 9:00 до 21:00</p>-->
+    <!--        <b-btn class="mx-3 mt-4" variant="light" style="font-weight: 700" @click="call()">Заказать звонок</b-btn>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
     <div class="overflow-auto h-100 container__main">
       <div class="shadow d-flex flex-fill">
@@ -43,23 +44,24 @@
       </div>
       <h2 class="p-4" style="font-weight: 700;font-size: 40px">Каталог</h2>
       <div class="d-flex flex-wrap justify-content-around">
-        <div
-          class="p-3 m-2 d-flex flex-column justify-content-between"
-          v-for="item in getCategories"
-          v-if="item.uuid !== null"
-          :key="item.uuid"
-          style="max-width: 300px; max-height: 400px; border: black solid 1px"
-        >
-          <div>
-            <h4 style="font-weight: 700">{{ item.title }}</h4>
-          </div>
-          <div class="align-self-center p-3" style="min-height: 200px">
-            <img :src="item.image" alt="1" style="max-height: 200px" />
-          </div>
-          <div class="align-self-center">
-            <b-btn variant="black" @click="toCategory(item)">Подробнее</b-btn>
-          </div>
-        </div>
+        <public-widget-catalog />
+        <!--        <div-->
+        <!--          class="p-3 m-2 d-flex flex-column justify-content-between"-->
+        <!--          v-for="item in getCategories"-->
+        <!--          v-if="item.uuid !== null"-->
+        <!--          :key="item.uuid"-->
+        <!--          style="max-width: 300px; max-height: 400px; border: black solid 1px"-->
+        <!--        >-->
+        <!--          <div>-->
+        <!--            <h4 style="font-weight: 700">{{ item.title }}</h4>-->
+        <!--          </div>-->
+        <!--          <div class="align-self-center p-3" style="min-height: 200px">-->
+        <!--            <img :src="item.image" alt="1" style="max-height: 200px" />-->
+        <!--          </div>-->
+        <!--          <div class="align-self-center">-->
+        <!--            <b-btn variant="black" @click="toCategory(item)">Подробнее</b-btn>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </div>
       <!--блок3-->
       <div class="d-none d-lg-flex w-100 p-3">
@@ -299,14 +301,7 @@ export default {
   },
   computed: {
     getCategories() {
-      return this.$store.getters['category/getCategoryItems'].filter(item => {
-        return item.parent_uuid === null
-      })
-    },
-    getSubCategories() {
-      return this.$store.getters['category/getCategoryItems'].filter(item => {
-        return item.parent_uuid !== null
-      })
+      return this.$store.getters['category/getCategoryItems']
     },
     getTestItems() {
       return this.$store.getters['type/getTypes']
@@ -325,11 +320,9 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('category/fetchCategory').then(() => {
-      return this.getCategories
-    })
+    this.$store.dispatch('category/fetchCategory')
+    console.warn('helloindex')
     console.warn('categories', this.getCategories)
-    console.warn('subcategories', this.getSubCategories)
   },
   methods: {
     call() {

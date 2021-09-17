@@ -13,20 +13,12 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="w-100 d-flex flex-wrap justify-content-between">
           <b-nav-item class="mt-3 ml-3">
-            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/rekvizity"
-              >Реквизиты</b-btn
-            >
-            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/otzyvy">Отзывы</b-btn>
-            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/obyekty"
-              >Наши объекты</b-btn
-            >
-            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/vakansii"
-              >Вакансии</b-btn
-            >
-            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/kontakty"
-              >Контакты</b-btn
-            >
-            <b-btn variant="outline-black" size="sm" class="m-1 font-weight-bold live-edit" to="/sotrudnichestvo">
+            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/rekvizity">Реквизиты</b-btn>
+            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/otzyvy">Отзывы</b-btn>
+            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/obyekty">Наши объекты</b-btn>
+            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/vakansii">Вакансии</b-btn>
+            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/kontakty">Контакты</b-btn>
+            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/sotrudnichestvo">
               Сотрудничество
             </b-btn>
           </b-nav-item>
