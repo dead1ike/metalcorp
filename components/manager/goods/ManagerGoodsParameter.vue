@@ -37,28 +37,23 @@
       </div>
     </b-input-group>
     <hr />
-    <div v-for="itemParameter in rowData.good_parameters" class="d-flex flex-row">
-      <div
-        v-if="itemParameter.uuid !== null"
-        :key="itemParameter.uuid"
-        class="d-flex flex-row h4 justify-content-between w-100"
-      >
-        <div class="p-2">
-          <span>{{ itemParameter.title }}</span>
-        </div>
-        <div class="p-2">
-          <span>{{ itemParameter.parameter_value }}</span>
-        </div>
-        <div class="p-2">
-          <b-btn class="btn-icon" variant="light" @click="deleteGoodParameter(itemParameter.uuid)">
-            <b-icon-trash variant="danger"></b-icon-trash
-          ></b-btn>
-        </div>
-      </div>
-    </div>
-    <!--    <template #modal-footer>-->
-    <!--      <b-btn variant="danger" @click="closeModal">Закрыть</b-btn>-->
-    <!--    </template>-->
+    <table class="w-100">
+      <tbody>
+        <tr v-for="itemParameter in rowData.good_parameters">
+          <td>
+            <span>{{ itemParameter.title }}</span>
+          </td>
+          <td>
+            <span>{{ itemParameter.parameter_value }}</span>
+          </td>
+          <td>
+            <b-btn class="btn-icon" variant="light" @click="deleteGoodParameter(itemParameter.uuid)">
+              <b-icon-trash variant="danger"></b-icon-trash>
+            </b-btn>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
