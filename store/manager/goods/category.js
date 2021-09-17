@@ -1,6 +1,7 @@
 export const state = () => ({
   items: {
     category: [],
+    favorites: [],
   },
   item: {
     category: {},
@@ -65,8 +66,20 @@ export const mutations = {
     if (state.filter.limit === limit) return
     state.filter.limit = limit
   },
+  setFavoritesArray(state, { item }) {
+    state.items.favorites.push(item)
+  },
+  setFavoritesSlice(state, { item }) {
+    const index = state.items.favorites.findIndex(itemFavorite => itemFavorite.uuid === item.uuid)
+    if (index > -1) {
+      state.items.favorites.splice(index, 1)
+    }
+  },
 }
 export const getters = {
+  getFavorites(state) {
+    return state.items.favorites
+  },
   getCategoryFilter(state) {
     return state.filter
   },

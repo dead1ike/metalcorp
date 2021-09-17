@@ -1,7 +1,6 @@
 <template>
   <div class="d-flex flex-column overflow-hidden">
     <div class="overflow-hidden h-100">
-      <p style="font-size: 120px; font-weight: 900">ЗАЕБИСЬ<span style="font-size: 10px">(КНОПКА)</span></p>
       <b-table
         striped
         hover

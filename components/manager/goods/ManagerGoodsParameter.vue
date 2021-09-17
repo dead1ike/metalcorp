@@ -7,6 +7,7 @@
       <div class="d-flex w-100">
         <div class="d-flex flex-fill p-2">
           <b-dd
+            ref="ddParams"
             variant="corp"
             :text="selectedParameter.title ? selectedParameter.title : 'Выберите'"
             boundary="window"
@@ -16,14 +17,35 @@
               <b-btn variant="corp" size="sm" block @click="managerParameterAdd()">Добавить параметр</b-btn>
             </b-dd-item>
             <template v-for="item in getParameters">
-              <b-dd-item v-if="item.uuid !== null" :key="item.uuid" @click="selectParameter(item.uuid)">
-                {{ item.title }}
-              </b-dd-item>
+              <b-dd-form v-if="item.uuid !== null" :key="item.uuid">
+                <div class="d-flex">
+                  <div>
+                    <b-btn variant="outline-black" class="b-check live-edit pr-1">
+                      <b-icon
+                        v-if="checkSelectFavorites(item)"
+                        icon="check-square"
+                        variant="black"
+                        @click="updateFavoritesSlice(item)"
+                      ></b-icon>
+                      <b-icon v-else icon="square" variant="black" @click="updateFavoritesArray(item)"></b-icon>
+                    </b-btn>
+                  </div>
+                  <div @click="selectParameter(item.uuid)" class="h4 pt-2 pl-1" style="cursor: pointer">
+                    {{ item.title }}
+                  </div>
+                </div>
+              </b-dd-form>
             </template>
           </b-dd>
         </div>
         <div class="d-flex p-2">
-          <b-form-input v-model.trim="form.parameter_value" placeholder="Значение" trim></b-form-input>
+          <b-form-input
+            @keydown.enter="addParameter()"
+            v-model.trim="form.parameter_value"
+            placeholder="Значение"
+            ref="formparamvalue"
+            trim
+          ></b-form-input>
         </div>
         <div class="align-self-center mx-2">
           <b-btn
@@ -31,8 +53,9 @@
             style="border-radius: 50%; border: 2px solid; font-weight: bold;font-size: 25px;height: 50px; width: 50px"
             size="sm"
             @click="addParameter()"
-            >+</b-btn
           >
+            +
+          </b-btn>
         </div>
       </div>
     </b-input-group>
@@ -78,7 +101,14 @@ export default {
       return this.$store.getters['manager/goods/parameters/getGoodItem']
     },
     getParameters() {
-      return this.$store.getters['manager/rack/parameter/getParameter']
+      const itemParameters = _.orderBy(
+        this.$store.getters['manager/rack/parameter/getParameter'],
+        item => {
+          return this.checkSelectFavorites(item)
+        },
+        ['desc'],
+      )
+      return itemParameters
     },
     selectedParameter() {
       if (this.getParameters.find(item => item.uuid === this.form.parameter_uuid)) {
@@ -89,6 +119,20 @@ export default {
   },
   mounted() {},
   methods: {
+    updateFavoritesArray(item) {
+      this.$store.commit('manager/goods/category/setFavoritesArray', {
+        item,
+      })
+    },
+
+    updateFavoritesSlice(item) {
+      this.$store.commit('manager/goods/category/setFavoritesSlice', {
+        item,
+      })
+    },
+    checkSelectFavorites(item) {
+      return this.$store.getters['manager/goods/category/getFavorites'].includes(item)
+    },
     deleteGoodParameter(goodParameterUuid) {
       this.$store.dispatch('manager/goods/parameters/deleteGoodParameter', goodParameterUuid).then(() => {
         this.$store.dispatch('manager/goods/goods/fetchGoods')
@@ -102,6 +146,12 @@ export default {
     },
     selectParameter(uuid) {
       this.form.parameter_uuid = uuid
+      this.$refs.ddParams.hide(true)
+      this.$refs.formparamvalue.$el.focus()
+      console.warn(this.$refs)
+      console.warn(this.$refs.formparamvalue)
+      console.warn(this.$refs.formparamvalue.$el.children[0])
+      console.warn(this.$refs.formparamvalue.$el.focus())
     },
     clearForm() {
       this.form.parameter_value = ''
