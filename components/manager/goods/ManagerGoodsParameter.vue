@@ -12,6 +12,7 @@
             :text="selectedParameter.title ? selectedParameter.title : 'Выберите'"
             boundary="window"
             lazy
+            no-flip
           >
             <b-dd-item>
               <b-btn variant="corp" size="sm" block @click="managerParameterAdd()">Добавить параметр</b-btn>
@@ -106,7 +107,7 @@ export default {
         item => {
           return this.checkSelectFavorites(item)
         },
-        ['desc'],
+        ['asc'],
       )
       return itemParameters
     },
@@ -116,22 +117,25 @@ export default {
       }
       return {}
     },
+    getFavorites() {
+      return this.$store.getters['favorites/getFavorites']
+    },
   },
   mounted() {},
   methods: {
     updateFavoritesArray(item) {
-      this.$store.commit('manager/goods/category/setFavoritesArray', {
+      this.$store.commit('favorites/setFavoritesArray', {
         item,
       })
     },
 
     updateFavoritesSlice(item) {
-      this.$store.commit('manager/goods/category/setFavoritesSlice', {
+      this.$store.commit('favorites/setFavoritesSlice', {
         item,
       })
     },
     checkSelectFavorites(item) {
-      return this.$store.getters['manager/goods/category/getFavorites'].includes(item)
+      return _.find(this.getFavorites, item)
     },
     deleteGoodParameter(goodParameterUuid) {
       this.$store.dispatch('manager/goods/parameters/deleteGoodParameter', goodParameterUuid).then(() => {
