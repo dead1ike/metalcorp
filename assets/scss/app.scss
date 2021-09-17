@@ -265,10 +265,33 @@ table#manager-table .flip-list-move {
   flex-direction: column;
 }
 
+.good_card
+{
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.good_card_title
+{
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-shadow: #00000020 0 0 10px;
+  font-family: Nunito;
+}
+
+.good_card_description
+{
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 300;
+  font-family: Nunito;
+}
+
 .sidebar
 {
   padding-top: 50px;
-  width: 300px;
+  width: 550px;
   background: #151515;
 
 }
