@@ -67,8 +67,8 @@ html, body, #__nuxt, #__layout {
 }
 
 .dropdown-menu {
-  max-height: 400px;
-  max-width: 600px;
+  max-height: 800px;
+  max-width: 700px;
   overflow-y: auto;
 }
 
@@ -294,6 +294,19 @@ table#manager-table .flip-list-move {
   width: 550px;
   background: #151515;
 
+}
+
+.catalog_header
+{
+  font-weight: 400;
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
 }
 
 .sidebar span
