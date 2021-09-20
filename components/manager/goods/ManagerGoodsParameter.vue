@@ -11,8 +11,8 @@
             variant="corp"
             :text="selectedParameter.title ? selectedParameter.title : 'Выберите'"
             boundary="window"
+            dropright
             lazy
-            no-flip
           >
             <b-dd-item>
               <b-btn variant="corp" size="sm" block @click="managerParameterAdd()">Добавить параметр</b-btn>

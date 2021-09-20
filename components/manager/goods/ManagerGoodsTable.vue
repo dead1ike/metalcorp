@@ -10,6 +10,7 @@
         no-border-collapse
         :fields="getGoodsFields"
         :items="getGoodsItems"
+        style="min-height: 1000px"
       >
         <template #cell(parameters)="data">
           <manager-goods-parameter :row-data="data.item" />
