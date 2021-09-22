@@ -43,7 +43,12 @@
       </div>
     </div>
     <div class="d-flex justify-content-center w-100 h-100 p-6">
-      <b-img id="picture" class="shadow-lg w-100" src="https://i.ibb.co/t24tR0S/map.png" @ />
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.9013534506607!2d60.596504723699496!3d56.83048163117117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16ef2ff8cede5%3A0xfe2746b5a8d04c04!2z0YPQuy4g0KDQsNC00LjRidC10LLQsCwgOSwg0JXQutCw0YLQtdGA0LjQvdCx0YPRgNCzLCDQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC7LiwgNjIwMDE0!5e0!3m2!1sru!2sru!4v1632217559600!5m2!1sru!2sru"
+        style="border:0;height: 460px; width: 100%"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
     </div>
   </div>
 </template>

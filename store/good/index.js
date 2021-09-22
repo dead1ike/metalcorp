@@ -7,16 +7,7 @@ export const state = () => ({
   },
   filter: {
     search: '',
-    parameters: {
-      weight: '',
-      color: '',
-      cover: '',
-      width: '',
-      fireproof: '',
-      height: '',
-      price: '',
-      depth: '',
-    },
+    parameters: {},
     category_uuid: null,
   },
 })
@@ -61,6 +52,9 @@ export const mutations = {
   },
   setCategoryUuid(state, uuid) {
     state.filter.category_uuid = uuid
+  },
+  setClearFilter(state) {
+    state.filter.parameters = {}
   },
 }
 

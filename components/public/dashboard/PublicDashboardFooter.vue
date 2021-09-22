@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row w-100 justify-content-around flex-wrap text-white bg-black p-4">
+  <div class="d-flex flex-row w-100 justify-content-around flex-wrap text-white p-4" style="background-color: #252525">
     <div class="d-flex flex-column m-4">
       <div class="">
         <b-img
@@ -42,11 +42,11 @@
       <public-widget-sidebar-catalog />
     </div>
     <div class="d-flex flex-column">
-      <a class="banner_text" href="#" style="text-decoration: none;color: white">Наши объекты</a>
-      <a class="banner_text" href="#" style="text-decoration: none;color: white">Отзывы</a>
-      <a class="banner_text" href="#" style="text-decoration: none;color: white">Сотрудничество</a>
-      <a class="banner_text" href="#" style="text-decoration: none;color: white">Вакансии</a>
-      <a class="banner_text" href="#" style="text-decoration: none;color: white">Контакты</a>
+      <a class="banner_text" href="/obyekty" style="text-decoration: none;color: white">Наши объекты</a>
+      <a class="banner_text" href="/otzyvy" style="text-decoration: none;color: white">Отзывы</a>
+      <a class="banner_text" href="/sotrudnichestvo" style="text-decoration: none;color: white">Сотрудничество</a>
+      <a class="banner_text" href="/vakansii" style="text-decoration: none;color: white">Вакансии</a>
+      <a class="banner_text" href="/kontakty" style="text-decoration: none;color: white">Контакты</a>
     </div>
   </div>
 </template>

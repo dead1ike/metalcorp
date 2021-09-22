@@ -22,6 +22,9 @@
           <span class="good_card_description">{{ param.title }}</span>
           <span class="good_card_description">{{ param.parameter_value }}</span>
         </div>
+        <div>
+          <b-spinbutton id="popover" v-model="form.good_count" min="1" style="max-width: 200px"></b-spinbutton>
+        </div>
       </div>
     </div>
   </div>
@@ -33,6 +36,13 @@ export default {
     const goodSlug = params.slug
     const goodUuid = params.uuid
     return { goodSlug, goodUuid }
+  },
+  data() {
+    return {
+      form: {
+        good_count: 1,
+      },
+    }
   },
   computed: {
     getGoodByUuid() {

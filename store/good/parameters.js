@@ -18,8 +18,8 @@ export const actions = {
   },
   fetchGoodParameters({ commit, getters }) {
     return this.$axios
-      .get('/api/good/goodParameter', {
-        // params: getters.getFilters,
+      .get('/api/good/good/parameters', {
+        params: getters.getFilters,
       })
       .then(({ data }) => {
         commit('setGoodParameters', data.data)
@@ -42,8 +42,8 @@ export const mutations = {
     state.item.goodItem = good
   },
   setGoodParameters(state, data) {
-    console.warn('goodParameters', state.items.goodParameters)
     state.items.goodParameters = data
+    console.warn('goodParameters', state.items.goodParameters)
   },
   setCategoryUuid(state, data) {
     state.filter.category_uuid = data

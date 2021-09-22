@@ -1,17 +1,6 @@
 <template>
   <div class="d-flex">
     <public-widget-sidebar />
-    <!--    <div class="sidebar d-none d-lg-block">-->
-    <!--      <span>Каталог</span>-->
-    <!--      <div v-for="item in getCategories">-->
-    <!--        <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>-->
-    <!--      </div>-->
-    <!--      <div style="margin-top: 150px">-->
-    <!--        <p class="h5 px-3" style="color:white">+7 (906) 812-81-75</p>-->
-    <!--        <p class="h6 px-3" style="color:white">Ежедневно с 9:00 до 21:00</p>-->
-    <!--        <b-btn class="mx-3 mt-4" variant="light" style="font-weight: 700" @click="call()">Заказать звонок</b-btn>-->
-    <!--      </div>-->
-    <!--    </div>-->
 
     <div class="overflow-auto h-100 container__main">
       <div class="shadow d-flex flex-fill">
@@ -38,30 +27,13 @@
             </p>
           </div>
           <div class="banner_button">
-            <b-btn variant="black" size="lg" class="px-lg-5 py-4" to="/category">Заказать</b-btn>
+            <b-btn variant="light" size="lg" class="px-lg-5 py-4" to="/category">Заказать</b-btn>
           </div>
         </div>
       </div>
       <h2 class="p-4" style="font-weight: 700;font-size: 40px">Каталог</h2>
       <div class="d-flex flex-wrap justify-content-around">
         <public-widget-catalog />
-        <!--        <div-->
-        <!--          class="p-3 m-2 d-flex flex-column justify-content-between"-->
-        <!--          v-for="item in getCategories"-->
-        <!--          v-if="item.uuid !== null"-->
-        <!--          :key="item.uuid"-->
-        <!--          style="max-width: 300px; max-height: 400px; border: black solid 1px"-->
-        <!--        >-->
-        <!--          <div>-->
-        <!--            <h4 style="font-weight: 700">{{ item.title }}</h4>-->
-        <!--          </div>-->
-        <!--          <div class="align-self-center p-3" style="min-height: 200px">-->
-        <!--            <img :src="item.image" alt="1" style="max-height: 200px" />-->
-        <!--          </div>-->
-        <!--          <div class="align-self-center">-->
-        <!--            <b-btn variant="black" @click="toCategory(item)">Подробнее</b-btn>-->
-        <!--          </div>-->
-        <!--        </div>-->
       </div>
       <!--блок3-->
       <div class="d-none d-lg-flex w-100 p-3">
@@ -83,7 +55,12 @@
             </div>
             <div class="block3_banner_button">
               <h5 class="mb-1">Ваше имя</h5>
-              <b-form-input v-model="form.name" class="p-2" placeholder="Имя" style="max-width: 400px"></b-form-input>
+              <b-form-input
+                v-model="form.name"
+                class="p-2"
+                placeholder="Имя"
+                style="max-width: 287px;max-height: 45px"
+              ></b-form-input>
             </div>
             <div class="block3_banner_button">
               <h5 class="mb-1">Ваш телефон</h5>
@@ -91,11 +68,17 @@
                 v-model="form.phone"
                 class="p-2"
                 placeholder="Телефон"
-                style="max-width: 400px"
+                style="max-width: 287px;max-height: 45px"
               ></b-form-input>
             </div>
             <div class="block3_banner_button">
-              <b-btn variant="light" class="px-lg-5 py-4">Оставить заявку</b-btn>
+              <b-btn
+                variant="light"
+                class="ml-2 text-truncate"
+                size="sm"
+                style="font-size: 22px; line-height: 26px;padding: 20px 30px 20px 30px"
+                >Оставить заявку
+              </b-btn>
             </div>
           </div>
           <div class="d-flex flex-column w-100 justify-content-around align-items-center" style="margin-left: 450px">
@@ -143,7 +126,12 @@
           </div>
           <div class="block3_mobile_button my-2">
             <h5 class="mb-1">Ваше имя</h5>
-            <b-form-input v-model="form.name" class="px-2" placeholder="Имя" style="max-width: 400px"></b-form-input>
+            <b-form-input
+              v-model="form.name"
+              class="px-2"
+              placeholder="Имя"
+              style="max-width: 287px;max-height: 45px"
+            ></b-form-input>
           </div>
           <div class="block3_mobile_button my-2">
             <h5 class="mb-1">Ваш телефон</h5>
@@ -152,11 +140,17 @@
               class="px-2"
               type="tel"
               placeholder="Телефон"
-              style="max-width: 400px"
+              style="max-width: 287px;max-height: 45px"
             ></b-form-input>
           </div>
           <div class="block3_mobile_button">
-            <b-btn variant="light" size="sm" class="px-lg-5 py-3 my-2">Оставить заявку</b-btn>
+            <b-btn
+              variant="light"
+              class="text-truncate ml-2"
+              size="sm"
+              style="font-size: 22px; line-height: 26px;padding: 20px 30px 20px 30px"
+              >Оставить заявку
+            </b-btn>
           </div>
         </div>
         <div
@@ -196,12 +190,15 @@
           <div class="d-flex flex-column justify-content-around flex-fill pr-5">
             <div class="py-sm-3">
               <div>
-                <p class="block3_banner_header text-wrap" style="font-size: 40px">
+                <p class="block3_banner_header text-wrap" style="font-weight: 700;line-height:77px">
                   У нас вы найдете все<br />
                   необходимые стеллажи
                 </p>
               </div>
-              <div class="block3_banner_text text-wrap">
+              <div
+                class="block3_banner_text text-wrap"
+                style="font-size: 20px;font-weight: 300;letter-spacing: 0,2px;line-height: 31px "
+              >
                 <p>
                   Наша компания является ведущим дилером крупнейших производителей, систем складского хранения, по всей
                   территории РФ!
@@ -218,20 +215,50 @@
                 </p>
               </div>
             </div>
-            <div
-              class="d-flex flex-column flex-lg-row h-100 justify-content-around align-items-lg-end align-items-center"
-            >
-              <img src="https://i.ibb.co/ZHntwqp/yandex-logo.jpg" class="py-2" />
-
-              <img src="https://i.ibb.co/4mpvp3B/cdek.jpg" class="py-2" />
-
-              <img src="https://i.ibb.co/Swy9Q6x/dl.jpg" class="py-2" />
+            <div class="d-flex flex-column">
+              <div class="d-flex justify-content-center">
+                <p style="font-size: 24px;line-height: 28px;font-weight: 700">Наши партнеры</p>
+              </div>
+              <div class="d-flex h-100 justify-content-center align-items-lg-end align-items-center">
+                <section id="slider_bl" class="ml-3">
+                  <div class="wrapper">
+                    <input checked type="radio" name="slider" id="slide1" />
+                    <input type="radio" name="slider" id="slide2" />
+                    <input type="radio" name="slider" id="slide3" />
+                    <input type="radio" name="slider" id="slide4" />
+                    <div class="slider-wrapper">
+                      <div class="inner">
+                        <article>
+                          <img src="https://i.ibb.co/cTKpdj1/slide1.png" />
+                        </article>
+                        <article>
+                          <img src="https://i.ibb.co/xmgnfZg/slide2.png" />
+                        </article>
+                        <article>
+                          <img src="https://i.ibb.co/Sdv2Kyv/slide3.png" />
+                        </article>
+                        <article>
+                          <img src="https://i.ibb.co/Tgxfrvd/slide4.png" />
+                        </article>
+                      </div>
+                    </div>
+                    <div class="slider-prev-next-control">
+                      <label for="slide1"></label>
+                      <label for="slide2"></label>
+                      <label for="slide3"></label>
+                      <label for="slide4"></label>
+                    </div>
+                  </div>
+                </section>
+              </div>
             </div>
           </div>
-          <div class="d-lg-none d-sm-flex"><hr /></div>
+          <div class="d-lg-none d-sm-flex">
+            <hr />
+          </div>
           <div class="vl d-none d-lg-block"></div>
           <div class="d-flex flex-column px-5">
-            <div class="block3_banner_text text-wrap">
+            <div class="block3_banner_text text-wrap" style="font-size: 24px;font-weight: 400;line-height: 29px">
               <p>
                 Поставка оборудования напрямую от производителя
               </p>
@@ -260,7 +287,7 @@
       <!--      блок 5-->
       <div class="p-3">
         <div
-          class="d-flex flex-column flex-lg-row p-3 text-white"
+          class="d-flex flex-column flex-lg-row text-white"
           style="box-shadow: #00000050 0 0 10;background-color: #454545"
         >
           <div class="d-flex flex-column" style="padding: 50px">
@@ -271,12 +298,18 @@
             <p>+7 (906) 812-81-75</p>
             <p>Ежедневно с 9:00 до 21:00</p>
           </div>
-          <div class="d-none d-lg-flex">
-            <img src="https://i.ibb.co/SxbBmKM/location.png" alt="1" />
-          </div>
-          <div class="d-sm-flex d-lg-none">
-            <img src="https://i.ibb.co/D7sFZjN/location-mobile.png" alt="1" />
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.9013534506607!2d60.596504723699496!3d56.83048163117117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16ef2ff8cede5%3A0xfe2746b5a8d04c04!2z0YPQuy4g0KDQsNC00LjRidC10LLQsCwgOSwg0JXQutCw0YLQtdGA0LjQvdCx0YPRgNCzLCDQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC7LiwgNjIwMDE0!5e0!3m2!1sru!2sru!4v1632217559600!5m2!1sru!2sru"
+            style="border:0;height: 460px; width: 100%"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+          <!--          <div class="d-none d-lg-flex">-->
+          <!--            <img src="https://i.ibb.co/SxbBmKM/location.png" alt="1" />-->
+          <!--          </div>-->
+          <!--          <div class="d-sm-flex d-lg-none">-->
+          <!--            <img src="https://i.ibb.co/D7sFZjN/location-mobile.png" alt="1" />-->
+          <!--          </div>-->
         </div>
       </div>
     </div>

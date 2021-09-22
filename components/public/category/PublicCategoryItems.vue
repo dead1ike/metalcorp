@@ -23,6 +23,11 @@
                 <h5 class="m-0">Заказать</h5>
               </b-btn>
             </template>
+            <template>
+              <b-btn variant="corp" class="mx-1 py-3 px-5" @click="toRacksPage(item)">
+                <h5 class="m-0">Заказать</h5>
+              </b-btn>
+            </template>
           </div>
         </div>
       </div>
@@ -93,6 +98,7 @@ export default {
     }
     this.fetchCategory()
     this.$store.dispatch('type/fetchTypes')
+    console.warn(this.getCategoryItems)
   },
   created() {
     this.fetchCategoryD = _.debounce(this.fetchCategory, 500)
@@ -105,7 +111,7 @@ export default {
       this.$store.commit('category/setCurrentPageCategory', this.pagination.currentPage)
     },
     toRacksPage(item) {
-      this.$router.push(`/category/${item.uuid}/${item.slug}`)
+      this.$router.push(`/category/${item.uuid}`)
     },
     fetchCategory() {
       this.$store.dispatch('category/fetchCategory')

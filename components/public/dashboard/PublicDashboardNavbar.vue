@@ -1,6 +1,6 @@
 <template>
-  <div class="main-header-content">
-    <b-navbar toggleable="lg">
+  <div class="main-header-content py-3 px-2">
+    <b-navbar toggleable="lg" style="padding: 0">
       <b-navbar-brand to="/">
         <b-img style="max-width: 150px; max-height: 63px" src="~/static/logo.png" />
       </b-navbar-brand>
@@ -11,18 +11,25 @@
         </template>
       </b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="w-100 d-flex flex-wrap justify-content-between">
-          <b-nav-item class="mt-3 ml-3">
-            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/rekvizity">Реквизиты</b-btn>
-            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/otzyvy">Отзывы</b-btn>
-            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/obyekty">Наши объекты</b-btn>
-            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/vakansii">Вакансии</b-btn>
-            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/kontakty">Контакты</b-btn>
-            <b-btn variant="outline-black" class="m-1 font-weight-bold live-edit" to="/sotrudnichestvo">
-              Сотрудничество
-            </b-btn>
-          </b-nav-item>
-          <b-nav-item to="/offer" class="m-0 px-1 py-4 font-weight-bolder mx-1 align-items-end">
+        <b-navbar-nav class="w-100 d-flex flex-wrap align-items-center justify-content-between mx-5">
+          <b-btn variant="outline-black" class="live-edit" size="sm" to="/rekvizity" style="font-size: 18px"
+            >Реквизиты</b-btn
+          >
+          <b-btn variant="outline-black" class="live-edit" size="sm" to="/otzyvy" style="font-size: 18px">Отзывы</b-btn>
+          <b-btn variant="outline-black" class="live-edit" size="sm" to="/obyekty" style="font-size: 18px"
+            >Наши объекты</b-btn
+          >
+          <b-btn variant="outline-black" class="live-edit" size="sm" to="/vakansii" style="font-size: 18px"
+            >Вакансии</b-btn
+          >
+          <b-btn variant="outline-black" class="live-edit" size="sm" to="/kontakty" style="font-size: 18px"
+            >Контакты</b-btn
+          >
+          <b-btn variant="outline-black" class="live-edit" size="sm" to="/sotrudnichestvo" style="font-size: 18px">
+            Сотрудничество
+          </b-btn>
+
+          <b-nav-item to="/offer" class="font-weight-bolder align-items-end mt-2" style="font-size: 22px">
             <public-offer-basket />
           </b-nav-item>
         </b-navbar-nav>

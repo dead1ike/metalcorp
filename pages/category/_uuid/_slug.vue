@@ -4,117 +4,26 @@
       <b-input-group>
         <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filters.search"></b-form-input>
       </b-input-group>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Вес,кг</span>
-        <!--        <b-form-input placeholder="" v-model="filters.weight"></b-form-input>-->
-        <b-dd :text="filters.weight ? filters.weight : 'Выберите'">
-          <template v-for="item in getWeightOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
+      <div class="mx-2 my-4">
+        <b-btn @click="clearFilter">Сбросить фильтр</b-btn>
       </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Высота</span>
-        <b-dd :text="filters.height ? filters.height : 'Выберите'">
-          <template v-for="item in getHeightOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
+
+      <div
+        class="m-2 d-flex flex-column"
+        v-for="(goodParameters, indexGroup) in getGoodParamsGroup"
+        :key="goodParameters.uuid"
+      >
+        <p>{{ getTitle(goodParameters) }}</p>
+        <b-dd
+          :text="
+            getGoodParamTitle(indexGroup).parameter_value ? getGoodParamTitle(indexGroup).parameter_value : 'Выберите'
+          "
+        >
+          <div v-for="goodParameter in goodParameters" :key="goodParameter.uuid">
+            <b-dd-item @click="updateFilter(indexGroup, goodParameter)">
+              {{ goodParameter.parameter_value }}
             </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Ширина</span>
-        <b-dd :text="filters.width ? filters.width : 'Выберите'">
-          <template v-for="item in getWidthOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Глубина</span>
-        <b-dd :text="filters.depth ? filters.depth : 'Выберите'">
-          <template v-for="item in getDepthOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Цена</span>
-        <b-dd :text="filters.price ? filters.price : 'Выберите'">
-          <template v-for="item in getPriceOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Покрытие</span>
-        <b-dd :text="filters.cover ? filters.cover : 'Выберите'">
-          <template v-for="item in getCoverOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Цвет</span>
-        <b-dd :text="filters.color ? filters.color : 'Выберите'">
-          <template v-for="item in getColorOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
-        </b-dd>
-      </div>
-      <div class="m-2 d-flex flex-column">
-        <span class="h3">Огнестойкость</span>
-        <b-dd :text="filters.fireproof ? filters.fireproof : 'Выберите'">
-          <template v-for="item in getFireproofOptions">
-            <b-dd-item
-              v-if="item.uuid !== null"
-              :key="item.uuid"
-              @click="updateWeightFilter(item.parameter_slug, item.parameter_value)"
-            >
-              {{ item.parameter_value }}
-            </b-dd-item>
-          </template>
+          </div>
         </b-dd>
       </div>
     </div>
@@ -206,18 +115,11 @@ export default {
   },
   data() {
     return {
+      selectedParams: [],
       form: {
         title: '',
       },
       filters: {
-        width: '',
-        height: '',
-        depth: '',
-        weight: '',
-        fireproof: '',
-        price: '',
-        cover: '',
-        color: '',
         category_uuid: null,
         limit: 20,
         page: 1,
@@ -240,45 +142,31 @@ export default {
     getGoodParams() {
       return this.$store.getters['good/parameters/getGoodParameters']
     },
-    getWeightOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === 'e29ec165-6bcf-4dba-8fc8-a3eff0dfea9d'
+    getGoodParamsGroup() {
+      const currentParams = _.uniqBy(this.getGoodParams, item => {
+        return item.parameter_uuid + item.parameter_value
       })
+      return _.groupBy(currentParams, 'parameter_uuid')
     },
-    getHeightOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '9a025b06-5954-46c4-8056-1cc4e24b9b7f'
-      })
-    },
-    getWidthOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '60093bd2-5b9d-4e08-9250-ceaf6aa6751d'
-      })
-    },
-    getDepthOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '01882074-0050-4264-a6e0-83d444119694'
-      })
-    },
-    getColorOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '1966482c-2ce6-44dc-a663-7d2e6e59544f'
-      })
-    },
-    getPriceOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '77b5dedf-94e9-40d9-a624-f40ef4de69ff'
-      })
-    },
-    getFireproofOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '0ea8d05a-838d-4bca-89cf-0c4818cc7b49'
-      })
-    },
-    getCoverOptions() {
-      return this.getGoodParams.filter(item => {
-        return item.parameter_uuid === '1c9638f4-0a99-4d15-b244-20156902b1ae'
-      })
+    getSelectedGroupParams: {
+      // геттер:
+      get() {
+        return this.selectedParams
+      },
+      // сеттер:
+      set(payload) {
+        // const selectedGroupParams = Object.assign({}, this.selectedGroupParams)
+        // selectedGroupParams[payload.key] = payload.value
+        // Object.assign(this.selectedGroupParams, selectedGroupParams)
+        const index = this.selectedParams.findIndex(item => {
+          return item.parameter_uuid === payload.value.parameter_uuid
+        })
+        if (index >= 0) {
+          this.selectedParams.splice(index, 1, payload.value)
+        } else {
+          this.selectedParams.push(payload.value)
+        }
+      },
     },
   },
   watch: {
@@ -304,18 +192,34 @@ export default {
     this.$store.dispatch('good/parameters/fetchGoodParameters')
   },
   methods: {
+    selectParameter(indexGroup, itemParameter) {
+      this.getSelectedGroupParams = { key: indexGroup, value: itemParameter }
+    },
+    getGoodParamTitle(indexGroup) {
+      return (
+        this.getSelectedGroupParams.find(item => {
+          return item.parameter_uuid === indexGroup
+        }) || {}
+      )
+    },
+    getTitle(parameters) {
+      return _.head(parameters).title
+    },
     fetchGoods() {
       this.$store.dispatch('good/fetchGoods').then(() => {
         console.warn('getGoods', this.getGoodItems)
       })
     },
-    updateWeightFilter(slug, value) {
-      this.filters[slug] = value
+    updateFilter(indexGroup, goodParameter) {
+      this.getSelectedGroupParams = { key: indexGroup, value: goodParameter }
+      this.filters[goodParameter.slug] = goodParameter.parameter_value
       this.$store.commit('good/setFilterItem', {
-        slug,
-        value,
+        slug: goodParameter.slug,
+        value: goodParameter.parameter_value,
       })
-      console.warn(this.filters)
+    },
+    clearFilter() {
+      this.$store.commit('good/setClearFilter')
     },
     openModal() {
       this.$store.commit('category/setCurrentCategory', {
