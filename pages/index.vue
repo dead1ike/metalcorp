@@ -299,7 +299,7 @@
             <p>Ежедневно с 9:00 до 21:00</p>
           </div>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.9013534506607!2d60.596504723699496!3d56.83048163117117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16ef2ff8cede5%3A0xfe2746b5a8d04c04!2z0YPQuy4g0KDQsNC00LjRidC10LLQsCwgOSwg0JXQutCw0YLQtdGA0LjQvdCx0YPRgNCzLCDQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC7LiwgNjIwMDE0!5e0!3m2!1sru!2sru!4v1632217559600!5m2!1sru!2sru"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.8783381042517!2d60.597364416289885!3d56.8308764808554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16ef31d597ead%3A0x7263bd0b41c65518!2z0YPQuy4g0KDQsNC00LjRidC10LLQsCwgNCwg0JXQutCw0YLQtdGA0LjQvdCx0YPRgNCzLCDQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC7LiwgNjIwMDE0!5e0!3m2!1sru!2sru!4v1632318528007!5m2!1sru!2sru"
             style="border:0;height: 460px; width: 100%"
             allowfullscreen=""
             loading="lazy"
