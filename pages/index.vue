@@ -27,24 +27,24 @@
             </p>
           </div>
           <div class="banner_button">
-            <b-btn variant="light" size="lg" class="px-lg-5 py-4" to="/category">Заказать</b-btn>
+            <a class="white_button py-4 px-5" href="/category" style="max-width: 156px">Заказать</a>
           </div>
         </div>
       </div>
-      <h2 class="p-4" style="font-weight: 700;font-size: 40px">Каталог</h2>
-      <div class="d-flex flex-wrap justify-content-around">
+      <h2 class="p-4 catalog_heading">Каталог</h2>
+      <div class="d-flex flex-wrap justify-content-center">
         <public-widget-catalog />
       </div>
       <!--блок3-->
       <div class="d-none d-lg-flex w-100 p-3">
         <div
-          class="text-white d-flex flex-fill block3_banner flex-row justify-content-around align-self-center w-100"
+          class="text-white d-flex block3_banner flex-row align-self-center w-100"
           style="background-image: url(https://i.ibb.co/2P5YRL9/background-2.jpg);background-repeat:no-repeat;background-size: cover"
         >
-          <div class="d-flex flex-column w-100 justify-content-around">
-            <div>
-              <p class="block3_banner_header text-wrap">
-                Гарантируем качество<br />
+          <div class="d-flex flex-column w-100">
+            <div class="w-100">
+              <p class="block3_banner_header">
+                Гарантируем качество <br />
                 и надежность
               </p>
             </div>
@@ -53,17 +53,17 @@
                 Закажите бесплатный выезд замерщика
               </p>
             </div>
-            <div class="block3_banner_button">
-              <h5 class="mb-1">Ваше имя</h5>
+            <div class="block3_input_header">
+              <span>Ваше имя</span>
               <b-form-input
                 v-model="form.name"
                 class="p-2"
-                placeholder="Имя"
+                placeholder="Иван"
                 style="max-width: 287px;max-height: 45px"
               ></b-form-input>
             </div>
-            <div class="block3_banner_button">
-              <h5 class="mb-1">Ваш телефон</h5>
+            <div class="block3_input_header">
+              <span>Ваш телефон</span>
               <b-form-input
                 v-model="form.phone"
                 class="p-2"
@@ -72,37 +72,35 @@
               ></b-form-input>
             </div>
             <div class="block3_banner_button">
-              <b-btn
-                variant="light"
-                class="ml-2 text-truncate"
-                size="sm"
-                style="font-size: 22px; line-height: 26px;padding: 20px 30px 20px 30px"
-                >Оставить заявку
-              </b-btn>
+              <a class="ml-2 text-truncate white_button py-4 px-5">Оставить заявку </a>
             </div>
           </div>
-          <div class="d-flex flex-column w-100 justify-content-around align-items-center" style="margin-left: 450px">
-            <div class="w-100">
+          <div class="d-flex flex-column align-items-center" style="margin-right: 250px">
+            <div class="w-100 pencil">
               <img
                 src="https://i.ibb.co/SxWYs9V/pencil-icon.png"
                 alt="pencil"
                 style="max-width: 89px;max-height: 89px"
               />
-              <p class="h3 mt-4" style="font-weight: 700">Точный замер</p>
+              <p class="mt-4">Точный замер</p>
             </div>
-            <div class="w-100">
-              <img src="https://i.ibb.co/VYc6Ln6/calc-icon.png" alt="calc" style="max-width: 74px;max-height: 96px" />
-              <p class="h3 mt-4" style="font-weight: 700">Расчет сметы</p>
+            <div class="w-100 calc">
+              <img
+                src="https://i.ibb.co/VYc6Ln6/calc-icon.png"
+                alt="calc"
+                style="max-width: 74px;max-height: 96px;margin-left: 5px"
+              />
+              <p class="mt-4">Расчет сметы</p>
             </div>
-            <div class="w-100">
+            <div class="w-100 calend">
               <img
                 src="https://i.ibb.co/Y87d2Ww/calendar-icon.png"
                 alt="calendar"
                 style="max-width: 96px;max-height: 96px"
               />
-              <p class="h3 mt-4" style="font-weight: 700">
-                Сроки поставки <br />
-                и установки стеллажей
+              <p class="mt-3 text-truncate">
+                Сроки поставки и <br />
+                установки стеллажей
               </p>
             </div>
           </div>
@@ -304,12 +302,6 @@
             allowfullscreen=""
             loading="lazy"
           ></iframe>
-          <!--          <div class="d-none d-lg-flex">-->
-          <!--            <img src="https://i.ibb.co/SxbBmKM/location.png" alt="1" />-->
-          <!--          </div>-->
-          <!--          <div class="d-sm-flex d-lg-none">-->
-          <!--            <img src="https://i.ibb.co/D7sFZjN/location-mobile.png" alt="1" />-->
-          <!--          </div>-->
         </div>
       </div>
     </div>
