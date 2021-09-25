@@ -6,9 +6,9 @@
         :fields="getFields"
         striped
         head-variant="light"
-        sticky-header
         bordered
         hover
+        sticky-header="100%"
         no-border-collapse
       >
         <template #cell(title)="data">

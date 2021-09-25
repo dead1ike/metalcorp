@@ -51,6 +51,12 @@ export const actions = {
     uploadingFile.set('image', data.image)
     return this.$axios.patch(`/api/good/good/${data.uuid}`, uploadingFile)
   },
+  changeBrand({ commit }, { itemGoods, itemBrand }) {
+    console.warn('changeBrand', itemGoods, itemBrand)
+    return this.$axios.patch(`/api/good/good/${itemGoods.uuid}`, {
+      brand_uuid: itemBrand.uuid,
+    })
+  },
 }
 
 export const mutations = {
@@ -85,5 +91,8 @@ export const getters = {
   },
   getGoodsItems(state) {
     return state.items.goods
+  },
+  getFilterLimit(state) {
+    return state.filter.limit
   },
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column overflow-hidden">
+  <div class="d-flex flex-column h-100 overflow-hidden">
     <div class="overflow-hidden h-100">
       <b-table
         striped
@@ -10,11 +10,46 @@
         no-border-collapse
         :fields="getGoodsFields"
         :items="getGoodsItems"
-        style="min-height: 1000px"
       >
         <template #cell(parameters)="data">
           <manager-goods-parameter :row-data="data.item" />
         </template>
+        <template #cell(title)="data">
+          <div>
+            <div class="text-center">
+              <b-img thumbnail :src="data.item.image" style="max-width: 320px; max-height: 320px" />
+            </div>
+            <div class="h3 py-2 text-center">{{ data.item.title }}</div>
+            <table class="table table-striped table-hover ">
+              <tbody>
+                <tr>
+                  <td class="align-middle">Категория:</td>
+                  <td>
+                    <b>{{ data.item.category.title }}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">Бренд:</td>
+                  <td>
+                    <b-dd size="lg" variant="link" :text="data.item.brand.title">
+                      <template v-for="itemBrand in getBrandItems">
+                        <b-dd-item :key="itemBrand.uuid" @click="changeBrand(data.item, itemBrand)">
+                          <div class="d-flex align-items-center">
+                            <div style="width:80px">
+                              <b-img :src="itemBrand.image" style="max-height:80px;max-width:80px" thumbnail></b-img>
+                            </div>
+                            <div class="h-100 pl-3">{{ itemBrand.title }}</div>
+                          </div>
+                        </b-dd-item>
+                      </template>
+                    </b-dd>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </template>
+
         <template #cell(actions)="data">
           <!--          <b-icon-->
           <!--            icon="pencil"-->
@@ -28,30 +63,38 @@
             <b-icon icon="trash" variant="danger" title="Удалить"></b-icon>
           </b-btn>
         </template>
-        <template #cell(title)="data">
-          <div>
-            <div><b-img thumbnail :src="data.item.image" style="max-width: 180px; max-height: 180px" /></div>
-            <div class="h3 py-2">{{ data.item.title }}</div>
-          </div>
-        </template>
       </b-table>
     </div>
     <div class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
         <b-pagination
-          pills
           v-model="pagination.currentPage"
+          pills
           :total-rows="getGoodsPagination.total"
           :per-page="pagination.perPage"
-          class="p-2 m-1"
+          class="p-1 m-1"
         ></b-pagination>
       </div>
-      <div class="mt-3 mr-3 d-flex flex-row">
+      <div class="d-flex flex-row align-items-center">
         <strong class="mx-1">Кол-во</strong>
-        <span class="mx-1" style="cursor: pointer" @click="changeLimit(5)">5</span>
-        <span class="mx-1" style="cursor: pointer" @click="changeLimit(15)">15</span>
-        <span class="mx-1" style="cursor: pointer" @click="changeLimit(50)">50</span>
-        <span class="mx-1" style="cursor: pointer" @click="changeLimit(100)">100</span>
+        <b-btn size="sm" class="m-1" variant="link" :class="{ active: getFilterLimit === 5 }" @click="changeLimit(5)"
+          >5</b-btn
+        >
+        <b-btn size="sm" class="m-1" variant="link" :class="{ active: getFilterLimit === 15 }" @click="changeLimit(15)">
+          15</b-btn
+        >
+        <b-btn size="sm" class="m-1" variant="link" :class="{ active: getFilterLimit === 50 }" @click="changeLimit(50)">
+          50</b-btn
+        >
+        <b-btn
+          size="sm"
+          class="m-1"
+          variant="link"
+          :class="{ active: getFilterLimit === 100 }"
+          @click="changeLimit(100)"
+        >
+          100</b-btn
+        >
       </div>
     </div>
   </div>
@@ -82,6 +125,12 @@ export default {
     getGoodsItems() {
       return this.$store.getters['manager/goods/goods/getGoodsItems']
     },
+    getFilterLimit() {
+      return this.$store.getters['manager/goods/goods/getFilterLimit']
+    },
+    getBrandItems() {
+      return this.$store.getters['manager/brand/getBrandItems']
+    },
   },
   watch: {
     'form.image'(newValue) {
@@ -100,6 +149,17 @@ export default {
     },
     changePage() {
       this.$store.commit('manager/goods/goods/setCurrentPageGoods', this.pagination.currentPage)
+    },
+    changeBrand(itemGoods, itemBrand) {
+      this.$store
+        .dispatch('manager/goods/goods/changeBrand', {
+          itemBrand,
+          itemGoods,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('Бренд обновлен')
+        })
     },
     uploadImage() {
       this.$store

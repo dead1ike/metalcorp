@@ -25,7 +25,7 @@
       </b-dd>
     </div>
     <b-input-group>
-      <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filter.search"></b-form-input>
+      <b-form-input v-model="filter.search" class="p-3 mx-2" placeholder="Поиск"></b-form-input>
       <b-input-group-append>
         <b-btn variant="corp">Поиск</b-btn>
       </b-input-group-append>

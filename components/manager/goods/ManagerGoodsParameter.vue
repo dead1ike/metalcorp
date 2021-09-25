@@ -21,17 +21,12 @@
               <b-dd-form v-if="item.uuid !== null" :key="item.uuid">
                 <div class="d-flex">
                   <div>
-                    <b-btn variant="outline-black" class="b-check live-edit pr-1">
-                      <b-icon
-                        v-if="checkSelectFavorites(item)"
-                        icon="check-square"
-                        variant="black"
-                        @click="updateFavoritesSlice(item)"
-                      ></b-icon>
-                      <b-icon v-else icon="square" variant="black" @click="updateFavoritesArray(item)"></b-icon>
+                    <b-btn variant="outline-black" class="b-check live-edit pr-1" @click="updateFavorites(item)">
+                      <b-icon v-if="checkSelectFavorites(item)" icon="check-square" variant="black"></b-icon>
+                      <b-icon v-else icon="square" variant="black"></b-icon>
                     </b-btn>
                   </div>
-                  <div @click="selectParameter(item.uuid)" class="h4 pt-2 pl-1" style="cursor: pointer">
+                  <div class="pt-2 pl-1" style="cursor: pointer" @click="selectParameter(item.uuid)">
                     {{ item.title }}
                   </div>
                 </div>
@@ -41,11 +36,11 @@
         </div>
         <div class="d-flex p-2">
           <b-form-input
-            @keydown.enter="addParameter()"
+            ref="formparamvalue"
             v-model.trim="form.parameter_value"
             placeholder="Значение"
-            ref="formparamvalue"
             trim
+            @keydown.enter="addParameter()"
           ></b-form-input>
         </div>
         <div class="align-self-center mx-2">
@@ -63,7 +58,7 @@
     <hr />
     <table class="w-100">
       <tbody>
-        <tr v-for="itemParameter in rowData.good_parameters">
+        <tr v-for="itemParameter in rowData.good_parameters" :key="itemParameter.uuid">
           <td>
             <span>{{ itemParameter.title }}</span>
           </td>
@@ -123,6 +118,13 @@ export default {
   },
   mounted() {},
   methods: {
+    updateFavorites(item) {
+      if (this.checkSelectFavorites(item)) {
+        this.updateFavoritesSlice(item)
+      } else {
+        this.updateFavoritesArray(item)
+      }
+    },
     updateFavoritesArray(item) {
       this.$store.commit('favorites/setFavoritesArray', {
         item,

@@ -95,13 +95,19 @@ export default {
           modalName: 'managerGoodsAdd',
           modalStatus: false,
         })
-      } /*else if (modalId === 'manager-goods-parameter') {
+      } /* else if (modalId === 'manager-goods-parameter') {
         this.$store.commit('setActiveModal', {
           modalName: 'managerGoodsParameter',
           modalStatus: false,
         })
-      }*/
+      } */
     })
+    this.fetchBrandItems()
+  },
+  methods: {
+    fetchBrandItems() {
+      this.$store.dispatch('manager/brand/fetchBrandItems')
+    },
   },
 }
 </script>

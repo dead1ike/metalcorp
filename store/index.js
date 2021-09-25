@@ -4,7 +4,7 @@ export const state = () => ({
       {
         key: 'title',
         label: 'Наименование',
-        class: 'align-middle text-left',
+        class: 'align-top text-left',
       },
       {
         key: 'parameters',
