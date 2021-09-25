@@ -6589,6 +6589,13 @@ num2fraction@^1.2.2:
   resolved "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+nuxt-storm@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/nuxt-storm/-/nuxt-storm-1.1.2.tgz#783c744640546ccdadcfa2e15a0bbca1354aed33"
+  integrity sha512-///OsEMPOtVWVJXba3q1v+hsSDSBzNVpnuEgn/bmlZ1xtGxhNWDf0Lk4+M1WtAkRjl3G4OjCTd74cwIZGHs+kQ==
+  dependencies:
+    consola "^2.15.3"
+
 nuxt@^2.15.8:
   version "2.15.8"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-2.15.8.tgz#946cba46bdaaf0e3918aa27fd9ea0fed8ed303b0"

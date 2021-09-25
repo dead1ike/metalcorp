@@ -43,6 +43,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
+    ['nuxt-storm', { nested: true, alias: true }],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
