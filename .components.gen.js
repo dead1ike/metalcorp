@@ -1,5 +1,19 @@
 import Vue from 'vue'
 import AuthLogin from '@/components/auth/AuthLogin.vue'
+import PublicDimensionModal from '@/components/public/dimension/PublicDimensionModal.vue'
+import PublicDashboardControl from '@/components/public/dashboard/PublicDashboardControl.vue'
+import PublicDashboardFooter from '@/components/public/dashboard/PublicDashboardFooter.vue'
+import PublicDashboardNavbar from '@/components/public/dashboard/PublicDashboardNavbar.vue'
+import PublicCategoryItems from '@/components/public/category/PublicCategoryItems.vue'
+import PublicCategoryOrderModal from '@/components/public/category/PublicCategoryOrderModal.vue'
+import PublicMainCategoryItems from '@/components/public/category/PublicMainCategoryItems.vue'
+import PublicFeedbackManage from '@/components/public/feedback/PublicFeedbackManage.vue'
+import PublicOfferBasket from '@/components/public/offer/PublicOfferBasket.vue'
+import PublicOfferConfirm from '@/components/public/offer/PublicOfferConfirm.vue'
+import PublicOfferManage from '@/components/public/offer/PublicOfferManage.vue'
+import PublicWidgetCatalog from '@/components/public/widget/PublicWidgetCatalog.vue'
+import PublicWidgetSidebar from '@/components/public/widget/PublicWidgetSidebar.vue'
+import PublicWidgetSidebarCatalog from '@/components/public/widget/PublicWidgetSidebarCatalog.vue'
 import ManagerAvitoMenu from '@/components/manager/avito/ManagerAvitoMenu.vue'
 import ManagerDashboardFooter from '@/components/manager/dashboard/ManagerDashboardFooter.vue'
 import ManagerDashboardNavbar from '@/components/manager/dashboard/ManagerDashboardNavbar.vue'
@@ -13,20 +27,6 @@ import ManagerRackControl from '@/components/manager/rack/ManagerRackControl.vue
 import ManagerSidebarMenu from '@/components/manager/sidebar/ManagerSidebarMenu.vue'
 import ManagerUserAdd from '@/components/manager/user/ManagerUserAdd.vue'
 import ManagerUserTable from '@/components/manager/user/ManagerUserTable.vue'
-import PublicCategoryItems from '@/components/public/category/PublicCategoryItems.vue'
-import PublicCategoryOrderModal from '@/components/public/category/PublicCategoryOrderModal.vue'
-import PublicMainCategoryItems from '@/components/public/category/PublicMainCategoryItems.vue'
-import PublicDashboardControl from '@/components/public/dashboard/PublicDashboardControl.vue'
-import PublicDashboardFooter from '@/components/public/dashboard/PublicDashboardFooter.vue'
-import PublicDashboardNavbar from '@/components/public/dashboard/PublicDashboardNavbar.vue'
-import PublicDimensionModal from '@/components/public/dimension/PublicDimensionModal.vue'
-import PublicFeedbackManage from '@/components/public/feedback/PublicFeedbackManage.vue'
-import PublicOfferBasket from '@/components/public/offer/PublicOfferBasket.vue'
-import PublicOfferConfirm from '@/components/public/offer/PublicOfferConfirm.vue'
-import PublicOfferManage from '@/components/public/offer/PublicOfferManage.vue'
-import PublicWidgetCatalog from '@/components/public/widget/PublicWidgetCatalog.vue'
-import PublicWidgetSidebar from '@/components/public/widget/PublicWidgetSidebar.vue'
-import PublicWidgetSidebarCatalog from '@/components/public/widget/PublicWidgetSidebarCatalog.vue'
 import ManagerRackCategoryAdd from '@/components/manager/rack/category/ManagerRackCategoryAdd.vue'
 import ManagerRackCategoryTable from '@/components/manager/rack/category/ManagerRackCategoryTable.vue'
 import ManagerRackComponentAdd from '@/components/manager/rack/component/ManagerRackComponentAdd.vue'
@@ -42,6 +42,34 @@ import ManagerRackTypeComponentTable from '@/components/manager/rack/typeCompone
 
 Vue.component('AuthLogin', AuthLogin)
 Vue.component('LazyAuthLogin', AuthLogin)
+Vue.component('PublicDimensionModal', PublicDimensionModal)
+Vue.component('LazyPublicDimensionModal', PublicDimensionModal)
+Vue.component('PublicDashboardControl', PublicDashboardControl)
+Vue.component('LazyPublicDashboardControl', PublicDashboardControl)
+Vue.component('PublicDashboardFooter', PublicDashboardFooter)
+Vue.component('LazyPublicDashboardFooter', PublicDashboardFooter)
+Vue.component('PublicDashboardNavbar', PublicDashboardNavbar)
+Vue.component('LazyPublicDashboardNavbar', PublicDashboardNavbar)
+Vue.component('PublicCategoryItems', PublicCategoryItems)
+Vue.component('LazyPublicCategoryItems', PublicCategoryItems)
+Vue.component('PublicCategoryOrderModal', PublicCategoryOrderModal)
+Vue.component('LazyPublicCategoryOrderModal', PublicCategoryOrderModal)
+Vue.component('PublicMainCategoryItems', PublicMainCategoryItems)
+Vue.component('LazyPublicMainCategoryItems', PublicMainCategoryItems)
+Vue.component('PublicFeedbackManage', PublicFeedbackManage)
+Vue.component('LazyPublicFeedbackManage', PublicFeedbackManage)
+Vue.component('PublicOfferBasket', PublicOfferBasket)
+Vue.component('LazyPublicOfferBasket', PublicOfferBasket)
+Vue.component('PublicOfferConfirm', PublicOfferConfirm)
+Vue.component('LazyPublicOfferConfirm', PublicOfferConfirm)
+Vue.component('PublicOfferManage', PublicOfferManage)
+Vue.component('LazyPublicOfferManage', PublicOfferManage)
+Vue.component('PublicWidgetCatalog', PublicWidgetCatalog)
+Vue.component('LazyPublicWidgetCatalog', PublicWidgetCatalog)
+Vue.component('PublicWidgetSidebar', PublicWidgetSidebar)
+Vue.component('LazyPublicWidgetSidebar', PublicWidgetSidebar)
+Vue.component('PublicWidgetSidebarCatalog', PublicWidgetSidebarCatalog)
+Vue.component('LazyPublicWidgetSidebarCatalog', PublicWidgetSidebarCatalog)
 Vue.component('ManagerAvitoMenu', ManagerAvitoMenu)
 Vue.component('LazyManagerAvitoMenu', ManagerAvitoMenu)
 Vue.component('ManagerDashboardFooter', ManagerDashboardFooter)
@@ -68,34 +96,6 @@ Vue.component('ManagerUserAdd', ManagerUserAdd)
 Vue.component('LazyManagerUserAdd', ManagerUserAdd)
 Vue.component('ManagerUserTable', ManagerUserTable)
 Vue.component('LazyManagerUserTable', ManagerUserTable)
-Vue.component('PublicCategoryItems', PublicCategoryItems)
-Vue.component('LazyPublicCategoryItems', PublicCategoryItems)
-Vue.component('PublicCategoryOrderModal', PublicCategoryOrderModal)
-Vue.component('LazyPublicCategoryOrderModal', PublicCategoryOrderModal)
-Vue.component('PublicMainCategoryItems', PublicMainCategoryItems)
-Vue.component('LazyPublicMainCategoryItems', PublicMainCategoryItems)
-Vue.component('PublicDashboardControl', PublicDashboardControl)
-Vue.component('LazyPublicDashboardControl', PublicDashboardControl)
-Vue.component('PublicDashboardFooter', PublicDashboardFooter)
-Vue.component('LazyPublicDashboardFooter', PublicDashboardFooter)
-Vue.component('PublicDashboardNavbar', PublicDashboardNavbar)
-Vue.component('LazyPublicDashboardNavbar', PublicDashboardNavbar)
-Vue.component('PublicDimensionModal', PublicDimensionModal)
-Vue.component('LazyPublicDimensionModal', PublicDimensionModal)
-Vue.component('PublicFeedbackManage', PublicFeedbackManage)
-Vue.component('LazyPublicFeedbackManage', PublicFeedbackManage)
-Vue.component('PublicOfferBasket', PublicOfferBasket)
-Vue.component('LazyPublicOfferBasket', PublicOfferBasket)
-Vue.component('PublicOfferConfirm', PublicOfferConfirm)
-Vue.component('LazyPublicOfferConfirm', PublicOfferConfirm)
-Vue.component('PublicOfferManage', PublicOfferManage)
-Vue.component('LazyPublicOfferManage', PublicOfferManage)
-Vue.component('PublicWidgetCatalog', PublicWidgetCatalog)
-Vue.component('LazyPublicWidgetCatalog', PublicWidgetCatalog)
-Vue.component('PublicWidgetSidebar', PublicWidgetSidebar)
-Vue.component('LazyPublicWidgetSidebar', PublicWidgetSidebar)
-Vue.component('PublicWidgetSidebarCatalog', PublicWidgetSidebarCatalog)
-Vue.component('LazyPublicWidgetSidebarCatalog', PublicWidgetSidebarCatalog)
 Vue.component('ManagerRackCategoryAdd', ManagerRackCategoryAdd)
 Vue.component('LazyManagerRackCategoryAdd', ManagerRackCategoryAdd)
 Vue.component('ManagerRackCategoryTable', ManagerRackCategoryTable)
