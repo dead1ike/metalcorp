@@ -104,7 +104,8 @@ table#manager-table .flip-list-move {
 
 .vl {
   border-left: solid #00000050 2px;
-
+  max-height: 640px;
+  margin-top: 50px
 }
 
 .block3_banner {
@@ -119,7 +120,7 @@ table#manager-table .flip-list-move {
   font-size: 64px;
   line-height: 77px;
   margin-left: 25px;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .block3_banner_text {
@@ -139,7 +140,7 @@ table#manager-table .flip-list-move {
 
 }
 
-.block3_input_header{
+.block3_input_header {
   margin-top: 20px;
   margin-left: 25px;
   font-size: 20px;
@@ -173,6 +174,48 @@ table#manager-table .flip-list-move {
 
 }
 
+.block4_text{
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 31px;
+  margin-left: 25px;
+  padding-top: 20px;
+  letter-spacing: 0.2px;
+  max-width: 718px;
+}
+.block4_right_text{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  margin-left: 25px;
+  padding-top: 20px;
+  color: #2d2d2d;
+}
+
+.block5 {
+  background-color: #454545;
+  color: white;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 300;
+}
+
+.block5_heading{
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #5b95ed
+}
+
+.block5_header{
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 400;
+}
+
+
 .banner_header {
   font-style: normal;
   font-weight: 700;
@@ -202,8 +245,8 @@ table#manager-table .flip-list-move {
 }
 
 .main-header {
-  box-shadow: 1px 2px 3px #ccc;
-  color: white;
+  width: 100%;
+  background-color: white;
   display: flex;
   flex-flow: row wrap;
 }
@@ -219,6 +262,7 @@ table#manager-table .flip-list-move {
   text-align: center;
   z-index: 30;
   background: #061e2a;
+  background: linear-gradient(to right, #fefefe 99%, #8c8c8d);
   padding: 1rem 0 0 0;
   justify-content: flex-start;
 }
@@ -259,6 +303,7 @@ table#manager-table .flip-list-move {
 }
 
 .wrapper {
+  overflow: hidden;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -274,21 +319,19 @@ table#manager-table .flip-list-move {
   font-weight: 500;
   letter-spacing: 2px;
   text-shadow: #00000020 0 0 10px;
-  font-family: 'Fira Sans', sans-serif;;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .good_card_description {
   font-size: 24px;
   line-height: 28px;
   font-weight: 300;
-  font-family: 'Fira Sans', sans-serif;;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .sidebar {
-  padding-top: 20px;
-  width: 710px;
+  width: 302px;
   background: #3D3D3D;
-
 }
 
 .catalog_header {
@@ -328,6 +371,17 @@ table#manager-table .flip-list-move {
   cursor: pointer;
   transition: 0.4s;
 }
+
+.sub-catalog{
+  color: #3d3d3d;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 
 .sidebar_goods {
   padding-top: 50px;
@@ -560,7 +614,8 @@ table#manager-table .flip-list-move {
 }
 
 
-.white_button{
+
+.white_button {
   text-align: center;
   text-decoration: none;
   font-size: 22px;
@@ -569,13 +624,14 @@ table#manager-table .flip-list-move {
   font-weight: 500;
   font-style: normal;
 }
+
 .white_button:hover {
   color: white;
   text-decoration: none;
   background-color: #2A8C92;
 }
 
-.black_button{
+.black_button {
   text-align: center;
   text-decoration: none;
   font-size: 22px;
@@ -588,13 +644,21 @@ table#manager-table .flip-list-move {
   color: white;
   text-decoration: none;
   background-color: #2A8C92;
+  cursor: pointer;
 }
 
-.sidebar_button{
-  margin-top: 84px;
+.sidebar_button {
+  //margin-top: 84px;
 }
 
-.has-search{
+.sidebar_text1{
+  color:#dadada;font-size: 20px;line-height: 24px; font-weight: 400;
+}
+.sidebar_text2{
+  color:#dadada;font-size: 16px;line-height: 19px; font-weight: 400;
+}
+
+.has-search {
   position: relative;
 }
 
@@ -615,56 +679,59 @@ table#manager-table .flip-list-move {
   color: #aaa;
 }
 
-.navitem{
+.navitem {
   font-style: 18px;
   color: black;
   font-weight: 400;
 }
 
-.search{
+.search {
   position: relative;
 }
 
-.search_icon{
+.search_icon {
   position: absolute;
   left: 15px;
   top: 12px;
 }
 
-.search input{
+.search input {
   padding: 8px 0 8px 35px;
 }
 
-.catalog_heading{
+.catalog_heading {
   margin-top: 200px;
   font-style: normal;
   font-size: 64px;
   line-height: 77px;
   font-weight: 700;
 }
+
 .catalog_text {
   text-align: left;
-  padding: 0;
+  padding-bottom: 5px;
   font-size: 16px;
-  line-height: 15px;
+  line-height: 20px;
   font-weight: 300;
 
 }
 
 
-.pencil{
+.pencil {
   margin-top: 40px;
   font-size: 28px;
   line-height: 34px;
   font-weight: 500;
 }
-.calc{
+
+.calc {
   margin-top: 40px;
   font-size: 28px;
   line-height: 34px;
   font-weight: 500;
 }
-.calend{
+
+.calend {
   margin-top: 40px;
   font-size: 28px;
   line-height: 34px;
@@ -673,4 +740,23 @@ table#manager-table .flip-list-move {
 
 .b-table-sticky-header, .table-responsive, [class*=table-responsive-] {
   margin-bottom: 0;
+}
+
+.partners {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  margin-left: 25px;
+  margin-top: 50px;
+}
+
+.truncate {
+  padding: 10px; /* Поля вокруг текста */
+}
+.truncate p {
+  margin: 0; /* Убираем внешний отступ */
+  -webkit-line-clamp: 8; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
 }
