@@ -17,12 +17,11 @@ export const actions = {
     const { data } = await this.$axios.post('/api/good/good/list', {
       ...getters.getFilters,
     })
-    console.warn('fetchGoods', data.data)
     commit('setGoods', data.data)
   },
   fetchGood({ commit }, uuid) {
     return this.$axios.get(`/api/good/good/${uuid}`).then(({ data }) => {
-      commit('setGood', data)
+      commit('setGood', data.data)
     })
   },
   postBlank({ commit }, payload) {
@@ -45,10 +44,7 @@ export const mutations = {
     state.items.good = data
   },
   setFilterItem(state, data) {
-    console.warn('slug', data.slug)
-    console.warn('value', data.value)
     state.filter.parameters[data.slug] = data.value
-    console.warn('setFilter', state.filter.parameters)
   },
   setCategoryUuid(state, uuid) {
     state.filter.category_uuid = uuid

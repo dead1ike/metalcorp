@@ -154,10 +154,6 @@ export default {
       this.form.parameter_uuid = uuid
       this.$refs.ddParams.hide(true)
       this.$refs.formparamvalue.$el.focus()
-      console.warn(this.$refs)
-      console.warn(this.$refs.formparamvalue)
-      console.warn(this.$refs.formparamvalue.$el.children[0])
-      console.warn(this.$refs.formparamvalue.$el.focus())
     },
     clearForm() {
       this.form.parameter_value = ''
@@ -173,9 +169,7 @@ export default {
           this.$store.dispatch('manager/goods/goods/fetchGoods')
           this.clearForm()
         })
-        .catch(e => {
-          console.warn(e)
-        })
+        .catch(e => {})
     },
   },
 }

@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     getCategoryOptions() {
-      return this.$store.getters['category/getCategoryItems']
+      return this.$store.getters['manager/goods/category/getCategoryItems']
     },
     selectedCategory() {
       if (this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)) {

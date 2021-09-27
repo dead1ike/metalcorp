@@ -43,7 +43,6 @@ export const mutations = {
   },
   setGoodParameters(state, data) {
     state.items.goodParameters = data
-    console.warn('goodParameters', state.items.goodParameters)
   },
   setCategoryUuid(state, data) {
     state.filter.category_uuid = data

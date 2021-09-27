@@ -50,12 +50,10 @@ export const mutations = {
     state.pagination.category.total = total
   },
   setCurrentPageCategory(state, currentPage) {
-    console.warn('setCurrenPage', currentPage)
     if (state.filter.page === currentPage) return
     state.filter.page = currentPage
   },
   setLimitCategory(state, limit) {
-    console.warn('limit', limit)
     if (state.filter.limit === limit) return
     state.filter.limit = limit
   },
@@ -76,10 +74,8 @@ export const getters = {
   getCategoryItems(state) {
     return state.items.category
   },
-  getCategoryByUuid: state => uuid => {
-    return state.items.category.find(item => {
-      return item.uuid === uuid
-    })
+  getCategoryByUuid(state) {
+    return state.items.category
   },
   getCurrentCategory(state) {
     return state.item.category

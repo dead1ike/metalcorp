@@ -45,6 +45,52 @@
                     </b-dd>
                   </td>
                 </tr>
+                <tr>
+                  <td class="align-middle">ID товара:</td>
+                  <td class="align-middle">
+                    <div v-if="!data.item.goods_id">
+                      <b-input-group>
+                        <b-form-input placeholder="ID товара" v-model="form.goods_id"></b-form-input>
+                        <b-input-group-prepend>
+                          <b-btn variant="light" @click="addGoodsId(data.item)">
+                            <b-icon-plus-circle variant="success"></b-icon-plus-circle>
+                          </b-btn>
+                        </b-input-group-prepend>
+                      </b-input-group>
+                    </div>
+                    <div v-else>
+                      <div class="d-flex justify-content-around align-items-center">
+                        <span>{{ data.item.goods_id }}</span>
+                        <b-btn variant="light" @click="deleteGoodsId(data.item)">
+                          <b-icon-trash variant="danger"></b-icon-trash>
+                        </b-btn>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">Цена товара:</td>
+                  <td class="align-middle">
+                    <div v-if="data.item.goods_price === '0'">
+                      <b-input-group>
+                        <b-form-input placeholder="Цена товара" v-model="form.goods_price"></b-form-input>
+                        <b-input-group-prepend>
+                          <b-btn variant="light" @click="addGoodsPrice(data.item)">
+                            <b-icon-plus-circle variant="success"></b-icon-plus-circle>
+                          </b-btn>
+                        </b-input-group-prepend>
+                      </b-input-group>
+                    </div>
+                    <div v-else>
+                      <div class="d-flex justify-content-around align-items-center">
+                        <span>{{ data.item.goods_price }}</span>
+                        <b-btn variant="light" @click="deleteGoodsPrice(data.item)">
+                          <b-icon-trash variant="danger"></b-icon-trash>
+                        </b-btn>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -78,14 +124,14 @@
       <div class="d-flex flex-row align-items-center">
         <strong class="mx-1">Кол-во</strong>
         <b-btn size="sm" class="m-1" variant="link" :class="{ active: getFilterLimit === 5 }" @click="changeLimit(5)"
-          >5</b-btn
-        >
+          >5
+        </b-btn>
         <b-btn size="sm" class="m-1" variant="link" :class="{ active: getFilterLimit === 15 }" @click="changeLimit(15)">
-          15</b-btn
-        >
+          15
+        </b-btn>
         <b-btn size="sm" class="m-1" variant="link" :class="{ active: getFilterLimit === 50 }" @click="changeLimit(50)">
-          50</b-btn
-        >
+          50
+        </b-btn>
         <b-btn
           size="sm"
           class="m-1"
@@ -93,8 +139,8 @@
           :class="{ active: getFilterLimit === 100 }"
           @click="changeLimit(100)"
         >
-          100</b-btn
-        >
+          100
+        </b-btn>
       </div>
     </div>
   </div>
@@ -108,6 +154,8 @@ export default {
       form: {
         image: null,
         good_uuid: null,
+        goods_id: '',
+        goods_price: '',
       },
       pagination: {
         currentPage: 1,
@@ -144,6 +192,50 @@ export default {
     this.fetchGoods()
   },
   methods: {
+    deleteGoodsId(itemGoods) {
+      this.$store
+        .dispatch('manager/goods/goods/deleteGoodsId', {
+          itemGoods,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('ID удалён')
+        })
+    },
+    deleteGoodsPrice(itemGoods) {
+      this.$store
+        .dispatch('manager/goods/goods/deleteGoodsPrice', {
+          itemGoods,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('Цена удалена')
+        })
+    },
+    addGoodsId(itemGoods) {
+      this.$store
+        .dispatch('manager/goods/goods/putGoodsId', {
+          itemGoods,
+          itemGoodsId: this.form.goods_id,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('ID добавлен')
+          this.form.goods_id = ''
+        })
+    },
+    addGoodsPrice(itemGoods) {
+      this.$store
+        .dispatch('manager/goods/goods/putGoodsPrice', {
+          itemGoods,
+          itemGoodsPrice: this.form.goods_price,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('Цена добавлена')
+          this.form.goods_price = ''
+        })
+    },
     changeLimit(value) {
       this.$store.commit('manager/goods/goods/setLimitGoods', value)
     },

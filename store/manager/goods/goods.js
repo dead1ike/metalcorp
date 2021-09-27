@@ -52,9 +52,29 @@ export const actions = {
     return this.$axios.patch(`/api/good/good/${data.uuid}`, uploadingFile)
   },
   changeBrand({ commit }, { itemGoods, itemBrand }) {
-    console.warn('changeBrand', itemGoods, itemBrand)
     return this.$axios.patch(`/api/good/good/${itemGoods.uuid}`, {
       brand_uuid: itemBrand.uuid,
+    })
+  },
+
+  putGoodsId({ commit }, { itemGoods, itemGoodsId }) {
+    return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
+      goods_id: itemGoodsId,
+    })
+  },
+  deleteGoodsId({ commit }, { itemGoods }) {
+    return this.$axios.patch(`/api/good/good/${itemGoods.uuid}`, {
+      goods_id: '',
+    })
+  },
+  putGoodsPrice({ commit }, { itemGoods, itemGoodsPrice }) {
+    return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
+      goods_price: itemGoodsPrice,
+    })
+  },
+  deleteGoodsPrice({ commit }, { itemGoods }) {
+    return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
+      goods_price: '0',
     })
   },
 }

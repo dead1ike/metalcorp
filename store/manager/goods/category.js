@@ -48,7 +48,6 @@ export const mutations = {
     state.pagination.category.total = total
   },
   setCurrentPageCategory(state, currentPage) {
-    console.warn('setCurrenPage', currentPage)
     if (state.filter.page === currentPage) return
     state.filter.page = currentPage
   },
@@ -62,7 +61,6 @@ export const mutations = {
     state.filter.parent_uuid = data
   },
   setLimitCategory(state, limit) {
-    console.warn('limit', limit)
     if (state.filter.limit === limit) return
     state.filter.limit = limit
   },
