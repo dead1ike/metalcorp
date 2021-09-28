@@ -67,6 +67,16 @@ export const actions = {
       goods_id: '',
     })
   },
+  putGoodsUrl({ commit }, { itemGoods, itemGoodsUrl }) {
+    return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
+      goods_url: itemGoodsUrl,
+    })
+  },
+  deleteGoodsUrl({ commit }, { itemGoods }) {
+    return this.$axios.patch(`/api/good/good/${itemGoods.uuid}`, {
+      goods_url: '',
+    })
+  },
   putGoodsPrice({ commit }, { itemGoods, itemGoodsPrice }) {
     return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
       goods_price: itemGoodsPrice,
