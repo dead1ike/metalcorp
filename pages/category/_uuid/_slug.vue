@@ -22,12 +22,6 @@
 export default {
   layout: 'catalog',
 
-  asyncData({ params }) {
-    const categorySlug = params.slug
-    const categoryUuid = params.uuid
-    return { categorySlug, categoryUuid }
-  },
-
   computed: {
     getFilter() {
       return this.$store.getters['good/getFilters']
@@ -44,12 +38,12 @@ export default {
   },
 
   mounted() {
+    this.fetchGoods()
+    this.fetchRacks()
     this.$store.dispatch('category/fetchCategory').then(() => {
       console.warn('categoryPage', this.getCategoryByUuid)
       this.form.title = this.getCategoryByUuid.title
     })
-    this.fetchGoods()
-    this.fetchRacks()
   },
   methods: {
     fetchRacks() {

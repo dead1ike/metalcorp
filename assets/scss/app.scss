@@ -1040,12 +1040,10 @@ table#manager-table .flip-list-move {
   font-weight: 300;
   line-height: 24px;
 }
-.category_block > div {
-  min-width: 33.333%;
-  max-width: 33.333%;
-}
-
-.category_even > div:last-child {
-  min-width: 66.666%;
-  max-width: 66.666%;
-}
+//.category_block > div {
+//  max-width: 33.333%;
+//}
+//
+//.category_even > div:last-child {
+//  max-width: 66.666%;
+//}

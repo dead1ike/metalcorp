@@ -4,7 +4,7 @@
       class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
       v-for="itemRack in getTypeByCategoryUuid"
       :key="itemRack.uuid"
-      style="min-width: 500px; max-width: 500px"
+      style="max-width: 500px"
     >
       <div class="h4">{{ itemRack.title }}</div>
       <div class="d-flex py-4 flex-row h-100">

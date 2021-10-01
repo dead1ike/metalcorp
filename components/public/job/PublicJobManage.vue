@@ -24,12 +24,12 @@
             <span>-информационная поддержка</span>
           </div>
         </div>
-        <div class="w-100">
+        <div class="w-100 overflow-hidden">
           <b-img src="https://i.ibb.co/gWjrdVH/block1.png" style="max-height: 503px" />
         </div>
       </div>
       <div class="d-flex flex-column flex-lg-row px-4 pb-5">
-        <div>
+        <div class="overflow-hidden">
           <b-img src="https://i.ibb.co/s9pNKXb/block2.png" />
         </div>
         <div class="w-100 bg-dark text-white px-6 py-7">
@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="d-flex flex-column flex-lg-row px-4 pb-5">
-        <div class="w-100">
+        <div class="w-100 overflow-hidden">
           <b-img src="https://i.ibb.co/6NzYxkL/block3.png" style="max-height: 503px" />
         </div>
         <div class="w-100 d-flex flex-column">

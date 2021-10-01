@@ -104,7 +104,7 @@
     <div class="px-4 pt-5">
       <p class="rackpage_header">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</p>
     </div>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-column align-items-center flex-lg-row">
       <div class="px-4 py-4" style="width: 30%">
         <b-img :src="getTypeByUuid.image" class="w-75"></b-img>
       </div>

@@ -4,7 +4,7 @@
       <div class="good_card_title pb-5">
         <p>{{ getGoodByUuid.title }}</p>
       </div>
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-column flex-lg-row justify-content-between">
         <div class="d-flex flex-column align-items-start good_card_image">
           <b-img :src="getGoodByUuid.image" style="max-width: 350px" />
         </div>

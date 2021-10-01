@@ -4,11 +4,11 @@
     :class="{ category_even: getCategoryItems.length % 2 !== 0 }"
   >
     <div class="d-flex flex-column p-2" v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid">
-      <div class="d-flex flex-column border border-dark p-4 h-100">
+      <div class="d-flex flex-column border border-dark p-4 h-100" style="max-width: 400px">
         <div class="h4">{{ itemCategory.title }}</div>
         <div class="d-flex py-4 flex-row h-100">
-          <div class="flex-fill" style="max-width: 300px">
-            {{ itemCategory.description }}
+          <div class="flex-fill truncate" style="max-width: 300px">
+            <p>{{ itemCategory.description }}</p>
           </div>
           <div class="pl-2">
             <img :src="itemCategory.image" style="max-width: 200px" />

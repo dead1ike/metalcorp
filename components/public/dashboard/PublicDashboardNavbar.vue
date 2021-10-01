@@ -14,7 +14,7 @@
           </template>
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="w-100 d-flex flex-wrap align-items-center justify-content-between mx-5">
+          <b-navbar-nav class="d-flex flex-wrap align-items-center justify-content-between mx-5">
             <!--          <b-btn variant="outline-black" class="live-edit" size="sm" to="/rekvizity" style="font-size: 18px"-->
             <!--            >Реквизиты</b-btn-->
             <!--          >-->
