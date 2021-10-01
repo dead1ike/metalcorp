@@ -1,16 +1,13 @@
 <template>
-  <div class="wrapper">
-    <div class="main-header">
-      <public-dashboard-navbar />
-    </div>
-    <Nuxt class="container__main" />
+  <div class="h-100 d-flex flex-column">
+    <public-dashboard-navbar />
+    <Nuxt />
     <template v-if="$store.getters.getActiveDimensionModal">
       <public-dimension-modal />
     </template>
     <template v-if="$store.getters.getActiveCategoryModal">
       <public-category-order-modal />
     </template>
-    <div><public-dashboard-footer /></div>
   </div>
 </template>
 

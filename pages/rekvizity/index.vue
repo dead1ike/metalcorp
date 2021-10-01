@@ -3,7 +3,7 @@
     <div class="w-100 d-flex justify-content-center mt-5">
       <h2>Реквизиты</h2>
     </div>
-    <div class="w-100 d-flex justify-content-center mt-1">
+    <div class="w-100 d-flex justify-content-center pt-4">
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
     <div class="d-flex justify-content-center flex-row w-100 h-100">

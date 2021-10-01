@@ -1,5 +1,8 @@
 <template>
-  <div class="d-flex flex-row w-100 justify-content-around flex-wrap text-white p-4" style="background-color: #252525">
+  <div
+    class="d-flex flex-row w-100 justify-content-around flex-wrap text-white p-4"
+    style="background-color: #252525; z-index: 90"
+  >
     <div class="d-flex flex-column m-4">
       <div class="">
         <b-img
@@ -11,7 +14,7 @@
         <a class="text-white" href="tel:+79068128175">+7 (906) 812-81-75</a> <br />
         <span>ЕЖЕДНЕВНО с 9:00 до 21:00</span><br />
         <br />
-        <b-btn variant="light">Заказать звонок</b-btn>
+        <a class="white_button d-inline-block px-4 py-3">Заказать звонок</a>
       </div>
     </div>
     <div class="m-4 d-flex flex-column text-left">
@@ -42,11 +45,11 @@
       <public-widget-sidebar-catalog />
     </div>
     <div class="d-flex flex-column">
-      <a class="banner_text" href="/obyekty" style="text-decoration: none;color: white">Наши объекты</a>
-      <a class="banner_text" href="/otzyvy" style="text-decoration: none;color: white">Отзывы</a>
-      <a class="banner_text" href="/sotrudnichestvo" style="text-decoration: none;color: white">Сотрудничество</a>
-      <a class="banner_text" href="/vakansii" style="text-decoration: none;color: white">Вакансии</a>
-      <a class="banner_text" href="/kontakty" style="text-decoration: none;color: white">Контакты</a>
+      <a class="footer_text" @click="objects()" style="text-decoration: none; color: white">Наши объекты</a>
+      <a class="footer_text" @click="feedback()" style="text-decoration: none; color: white">Отзывы</a>
+      <a class="footer_text" @click="job()" style="text-decoration: none; color: white">Сотрудничество</a>
+      <a class="footer_text" @click="vacancy()" style="text-decoration: none; color: white">Вакансии</a>
+      <a class="footer_text" @click="contacts()" style="text-decoration: none; color: white">Контакты</a>
     </div>
   </div>
 </template>
@@ -54,5 +57,22 @@
 <script>
 export default {
   name: 'PublicDashboardFooter',
+  methods: {
+    objects() {
+      this.$router.push('/obyekty')
+    },
+    vacancy() {
+      this.$router.push('/vakansii')
+    },
+    feedback() {
+      this.$router.push('/otzyvy')
+    },
+    job() {
+      this.$router.push('/sotrudnichestvo')
+    },
+    contacts() {
+      this.$router.push('/kontakty')
+    },
+  },
 }
 </script>

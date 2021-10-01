@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar d-none d-lg-block">
+  <div class="sidebar d-none d-lg-flex flex-column pt-3 h-100">
     <div class="search ml-3 mb-4">
       <svg
         width="18"
@@ -17,18 +17,21 @@
       <input placeholder="Поиск" />
     </div>
 
-    <span class="pb-5 pt-4">Каталог</span>
-    <div v-for="item in getCategories">
-      <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>
-    </div>
-    <div style="margin-top: 150px">
-      <p class="px-4" style="color:white;font-size: 20px;line-height: 24px">+7 (906) 812-81-75</p>
-      <p class="px-4" style="color:white;font-size: 16px;line-height: 19px">Ежедневно с 9:00 до 21:00</p>
-      <div class="sidebar_button">
-        <a class="white_button py-4 px-5 mx-3  text-truncate" @click="call()" style="max-width: 235px"
-          >Заказать звонок</a
-        >
+    <div class="overflow-auto h-100">
+      <div class="pb-5 pt-4">
+        <span class="catalog" @click="toCatalog()">Каталог</span>
       </div>
+      <div v-for="item in getCategories">
+        <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <p class="px-4 sidebar_text1">+7 (906) 812-81-75</p>
+      <p class="px-4 sidebar_text2">Ежедневно с 9:00 до 21:00</p>
+    </div>
+    <div class="sidebar_button my-5">
+      <a class="white_button py-4 px-5 mx-3 text-truncate" @click="call()" style="max-width: 235px">Заказать звонок</a>
     </div>
   </div>
 </template>
@@ -38,7 +41,7 @@ export default {
   name: 'PublicWidgetSidebar',
   computed: {
     getCategories() {
-      return this.$store.getters['widget/getWidgetCategoryItems'].filter(item => {
+      return this.$store.getters['widget/getWidgetCategoryItems'].filter((item) => {
         return item.parent_uuid === null
       })
     },
@@ -55,6 +58,9 @@ export default {
     },
     toCategory(item) {
       this.$router.push(`/category/${item.uuid}`)
+    },
+    toCatalog() {
+      this.$router.push('/category')
     },
   },
 }

@@ -1,50 +1,59 @@
 <template>
-  <div class="overflow-hidden w-100 h-100">
-    <div class="w-100 d-flex justify-content-center mt-5">
-      <h2>Отзывы</h2>
-    </div>
-    <div class="w-100 d-flex justify-content-center mt-1">
+  <div class="h-100">
+    <div class="w-100 d-flex justify-content-center pt-4">
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
-    <div class="d-flex flex-column w-100">
-      <div>
-        <div class="d-flex flex-column m-3">
-          <h4>Ваше имя:</h4>
-          <b-input v-model="form.username" placeholder="Введите свое имя"></b-input>
-        </div>
-        <div class="d-flex flex-column m-3">
-          <h4>Ваш отзыв:</h4>
-          <b-textarea v-model="form.text" placeholder="Введите ваш отзыв или предложеие"></b-textarea>
-        </div>
-        <div class="d-inline-flex flex-row align-self-center ml-3">
-          <b-file v-model="form.image" plain></b-file>
-        </div>
-        <div class="m-3">
-          <b-btn variant="corp" @click="sendFeedback()">Отправить</b-btn>
+    <div>
+      <div class="pt-5 px-5 feedback_header">Отзывы</div>
+      <div class="px-5 py-5" v-for="itemFeedback in getFeedbackItems" :key="itemFeedback.uuid">
+        <div class="px-4 py-5 shadow d-flex flex-column">
+          <div class="d-flex flex-row">
+            <div class="feedback_rate px-3 mr-2 py-1 text-center" style="max-width: 47px; max-height: 34px">5</div>
+            <div class="feedback_name">{{ itemFeedback.username }}</div>
+          </div>
+          <div class="feedback_text pt-4">{{ itemFeedback.text }}</div>
+          <div class="pt-5">
+            <b-img :src="itemFeedback.image" style="max-height: 212px" />
+          </div>
         </div>
       </div>
-      <div>
-        <h4 class="m-2">Отзывы:</h4>
-        <div v-if="getFeedbackItems.length !== 0" class="d-flex flex-column m-2">
-          <div v-for="item in getFeedbackItems">
-            <div v-if="item.uuid !== null" :key="item.uuid">
-              <div class="gradient">
-                <h2 class="m-0">{{ item.username }}</h2>
-              </div>
-              <div class="p-2 m-4 text-break">
-                <h4 class="m-0">{{ item.text }}</h4>
-              </div>
-              <div v-if="item.image" class="p-2 m-4 text-break">
-                <b-img :src="item.image" style="max-width: 300px; max-height: 300px" />
-              </div>
+      <div class="py-5">
+        <div class="feedback_form_header">Оставьте свой отзыв</div>
+        <div class="px-5 pt-2">
+          <div class="px-4 shadow d-flex flex-column" style="max-width: 757px">
+            <div class="pt-4" style="max-width: 344px">
+              <p class="feedback_form_text">Ваше имя</p>
+              <b-form-input v-model="form.username"></b-form-input>
+            </div>
+            <div class="pt-4" style="max-width: 344px">
+              <p class="feedback_form_text">Ваш номер телефона</p>
+              <b-form-input></b-form-input>
+            </div>
+            <div class="pt-4" style="max-width: 690px">
+              <p class="feedback_form_text">Ваш отзыв</p>
+              <b-form-textarea v-model="form.text"></b-form-textarea>
+            </div>
+            <div class="pt-4">
+              <p class="feedback_form_text">
+                Оцените от 1 до 5, на сколько вы<br />
+                довольны сотрудничеством с нами?
+              </p>
+              <b-input-group style="max-width: 370px">
+                <b-form-rating inline color="#5B95ED" v-model="form.value"></b-form-rating>
+              </b-input-group>
+            </div>
+            <div class="py-5">
+              <p class="feedback_form_text">Прикрепите фото</p>
+              <b-file v-model="form.image" plain></b-file>
+            </div>
+            <div class="pt-4">
+              <p class="black_button px-5 py-3 d-inline-block">Отправить</p>
             </div>
           </div>
         </div>
-        <div v-else>
-          <b>Здесь пока нет ни одного отзыва</b>
-        </div>
       </div>
     </div>
+    <public-dashboard-footer />
   </div>
 </template>
 
@@ -57,6 +66,7 @@ export default {
         username: '',
         text: '',
         image: null,
+        value: null,
       },
     }
   },

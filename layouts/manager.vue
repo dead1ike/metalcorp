@@ -43,7 +43,6 @@
 export default {
   middleware: 'auth',
   mounted() {
-    console.warn(this.$store)
     this.$root.$on('bv::modal::hide', (bvEvent, modalId) => {
       if (modalId === 'manager-category-add') {
         this.$store.commit('setActiveModal', {

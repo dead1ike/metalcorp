@@ -19,9 +19,11 @@ export const state = () => ({
 })
 export const actions = {
   async fetchCategory({ commit, getters }) {
+    console.warn('getter', getters.getCategoryFilter)
     const { data } = await this.$axios.get('/api/category', {
       params: getters.getCategoryFilter,
     })
+
     commit('setCategory', data.data)
     commit('setCategoryTotal', data.meta.total)
   },
@@ -74,8 +76,10 @@ export const getters = {
   getCategoryItems(state) {
     return state.items.category
   },
-  getCategoryByUuid(state) {
-    return state.items.category
+  getCategoryByUuid: (state) => (uuid) => {
+    return state.items.category.find((item) => {
+      return item.uuid === uuid
+    })
   },
   getCurrentCategory(state) {
     return state.item.category

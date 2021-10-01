@@ -1,32 +1,26 @@
 <template>
-  <div class="d-flex flex-wrap justify-content-center">
+  <div class="d-flex flex-wrap justify-content-center p-2 container-fluid" style="max-width: 1500px">
     <div
-      class="p-3 m-2 d-flex flex-column justify-content-around"
-      v-for="item in getCategories"
-      v-if="item.uuid !== null"
-      :key="item.uuid"
-      style="width: 450px; height: 500px; border: black solid 1px"
+      class="d-flex flex-column px-4 py-4 m-2 border border-dark"
+      v-for="itemCategory in getCategories"
+      :key="itemCategory.uuid"
+      style="max-width: 400px"
     >
-      <div class="pt-4 pl-2">
-        <h4 style="font-weight: 700">{{ item.title }}</h4>
-      </div>
-      <div class="d-flex flex-row">
-        <div class="w-100">
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
-          <p class="catalog_text">Название стеллажа</p>
+      <div class="h4">{{ itemCategory.title }}</div>
+      <div class="d-flex py-4 flex-row h-100">
+        <div class="d-none d-lg-flex flex-column" style="width: 50%">
+          <template v-for="itemChild in itemCategory.childs.slice(0, 3)">
+            <span :key="itemChild.uuid" class="d-block sub-catalog py-1">
+              {{ itemChild.title }}
+            </span>
+          </template>
         </div>
-        <div class="align-self-start" style="min-height: 200px">
-          <img :src="item.image" alt="1" style="max-height: 200px" />
+        <div class="pl-2" style="width: 50%">
+          <img :src="itemCategory.image" class="w-100" />
         </div>
       </div>
-      <div class="align-self-start">
-        <a class="black_button py-4 px-5" @click="toCategory(item)">Подробнее</a>
+      <div>
+        <a @click="toCategory(itemCategory)" class="black_button d-inline-block py-4 px-5">Подробнее</a>
       </div>
     </div>
   </div>
@@ -37,19 +31,22 @@ export default {
   name: 'PublicWidgetCatalog',
   computed: {
     getCategories() {
-      return this.$store.getters['widget/getWidgetCategoryItems'].filter(item => {
+      return this.$store.getters['widget/getWidgetCategoryItems'].filter((item) => {
         return item.parent_uuid === null
       })
     },
-    getSubCategories() {
-      return this.$store.getters['widget/getWidgetCategoryItems']
-    },
   },
   mounted() {
-    console.warn(this.getCategories)
     this.$store.dispatch('widget/fetchWidgetCategory')
+    console.warn(this.getCategories)
   },
   methods: {
+    route(itemChild) {
+      if (!itemChild.childs) {
+        this.$router.push(`/category/${itemChild.uuid}/${itemChild.slug}`)
+      }
+      this.$router.push(`/category/${itemChild.uuid}`)
+    },
     toCategory(item) {
       this.$router.push(`/category/${item.uuid}`)
     },

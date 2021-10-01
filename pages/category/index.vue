@@ -1,10 +1,16 @@
 <template>
-  <div class="overflow-hidden h-100 d-flex">
-    <public-main-category-items />
-    <!--    <public-category-items />-->
+  <div class="overflow-hidden h-100 d-flex flex-row">
+    <public-widget-sidebar />
+    <div class="h-100 overflow-auto flex-column w-100">
+      <public-widget-catalog />
+      <public-widget-callback />
+      <public-dashboard-footer />
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  layout: 'catalog',
+}
 </script>

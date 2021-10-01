@@ -15,16 +15,30 @@ import ManagerUserAdd from '@/components/manager/user/ManagerUserAdd.vue'
 import ManagerUserTable from '@/components/manager/user/ManagerUserTable.vue'
 import PublicCategoryItems from '@/components/public/category/PublicCategoryItems.vue'
 import PublicCategoryOrderModal from '@/components/public/category/PublicCategoryOrderModal.vue'
-import PublicMainCategoryItems from '@/components/public/category/PublicMainCategoryItems.vue'
+import PublicContactManage from '@/components/public/contact/PublicContactManage.vue'
 import PublicDashboardControl from '@/components/public/dashboard/PublicDashboardControl.vue'
 import PublicDashboardFooter from '@/components/public/dashboard/PublicDashboardFooter.vue'
 import PublicDashboardNavbar from '@/components/public/dashboard/PublicDashboardNavbar.vue'
 import PublicDimensionModal from '@/components/public/dimension/PublicDimensionModal.vue'
 import PublicFeedbackManage from '@/components/public/feedback/PublicFeedbackManage.vue'
+import PublicJobManage from '@/components/public/job/PublicJobManage.vue'
+import PublicMainFifthBlock from '@/components/public/main/PublicMainFifthBlock.vue'
+import PublicMainFirstBlock from '@/components/public/main/PublicMainFirstBlock.vue'
+import PublicMainFourthBlock from '@/components/public/main/PublicMainFourthBlock.vue'
+import PublicMainThirdBlock from '@/components/public/main/PublicMainThirdBlock.vue'
+import PublicObjectManage from '@/components/public/object/PublicObjectManage.vue'
 import PublicOfferBasket from '@/components/public/offer/PublicOfferBasket.vue'
 import PublicOfferConfirm from '@/components/public/offer/PublicOfferConfirm.vue'
 import PublicOfferManage from '@/components/public/offer/PublicOfferManage.vue'
+import PublicVacancyManage from '@/components/public/vacancy/PublicVacancyManage.vue'
+import PublicWidgetCallback from '@/components/public/widget/PublicWidgetCallback.vue'
 import PublicWidgetCatalog from '@/components/public/widget/PublicWidgetCatalog.vue'
+import PublicWidgetGoodsCatalog from '@/components/public/widget/PublicWidgetGoodsCatalog.vue'
+import PublicWidgetGoodsFilter from '@/components/public/widget/PublicWidgetGoodsFilter.vue'
+import PublicWidgetGoodsPage from '@/components/public/widget/PublicWidgetGoodsPage.vue'
+import PublicWidgetRackCatalog from '@/components/public/widget/PublicWidgetRackCatalog.vue'
+import PublicWidgetRackCategory from '@/components/public/widget/PublicWidgetRackCategory.vue'
+import PublicWidgetRackPage from '@/components/public/widget/PublicWidgetRackPage.vue'
 import PublicWidgetSidebar from '@/components/public/widget/PublicWidgetSidebar.vue'
 import PublicWidgetSidebarCatalog from '@/components/public/widget/PublicWidgetSidebarCatalog.vue'
 import ManagerRackCategoryAdd from '@/components/manager/rack/category/ManagerRackCategoryAdd.vue'
@@ -72,8 +86,8 @@ Vue.component('PublicCategoryItems', PublicCategoryItems)
 Vue.component('LazyPublicCategoryItems', PublicCategoryItems)
 Vue.component('PublicCategoryOrderModal', PublicCategoryOrderModal)
 Vue.component('LazyPublicCategoryOrderModal', PublicCategoryOrderModal)
-Vue.component('PublicMainCategoryItems', PublicMainCategoryItems)
-Vue.component('LazyPublicMainCategoryItems', PublicMainCategoryItems)
+Vue.component('PublicContactManage', PublicContactManage)
+Vue.component('LazyPublicContactManage', PublicContactManage)
 Vue.component('PublicDashboardControl', PublicDashboardControl)
 Vue.component('LazyPublicDashboardControl', PublicDashboardControl)
 Vue.component('PublicDashboardFooter', PublicDashboardFooter)
@@ -84,14 +98,42 @@ Vue.component('PublicDimensionModal', PublicDimensionModal)
 Vue.component('LazyPublicDimensionModal', PublicDimensionModal)
 Vue.component('PublicFeedbackManage', PublicFeedbackManage)
 Vue.component('LazyPublicFeedbackManage', PublicFeedbackManage)
+Vue.component('PublicJobManage', PublicJobManage)
+Vue.component('LazyPublicJobManage', PublicJobManage)
+Vue.component('PublicMainFifthBlock', PublicMainFifthBlock)
+Vue.component('LazyPublicMainFifthBlock', PublicMainFifthBlock)
+Vue.component('PublicMainFirstBlock', PublicMainFirstBlock)
+Vue.component('LazyPublicMainFirstBlock', PublicMainFirstBlock)
+Vue.component('PublicMainFourthBlock', PublicMainFourthBlock)
+Vue.component('LazyPublicMainFourthBlock', PublicMainFourthBlock)
+Vue.component('PublicMainThirdBlock', PublicMainThirdBlock)
+Vue.component('LazyPublicMainThirdBlock', PublicMainThirdBlock)
+Vue.component('PublicObjectManage', PublicObjectManage)
+Vue.component('LazyPublicObjectManage', PublicObjectManage)
 Vue.component('PublicOfferBasket', PublicOfferBasket)
 Vue.component('LazyPublicOfferBasket', PublicOfferBasket)
 Vue.component('PublicOfferConfirm', PublicOfferConfirm)
 Vue.component('LazyPublicOfferConfirm', PublicOfferConfirm)
 Vue.component('PublicOfferManage', PublicOfferManage)
 Vue.component('LazyPublicOfferManage', PublicOfferManage)
+Vue.component('PublicVacancyManage', PublicVacancyManage)
+Vue.component('LazyPublicVacancyManage', PublicVacancyManage)
+Vue.component('PublicWidgetCallback', PublicWidgetCallback)
+Vue.component('LazyPublicWidgetCallback', PublicWidgetCallback)
 Vue.component('PublicWidgetCatalog', PublicWidgetCatalog)
 Vue.component('LazyPublicWidgetCatalog', PublicWidgetCatalog)
+Vue.component('PublicWidgetGoodsCatalog', PublicWidgetGoodsCatalog)
+Vue.component('LazyPublicWidgetGoodsCatalog', PublicWidgetGoodsCatalog)
+Vue.component('PublicWidgetGoodsFilter', PublicWidgetGoodsFilter)
+Vue.component('LazyPublicWidgetGoodsFilter', PublicWidgetGoodsFilter)
+Vue.component('PublicWidgetGoodsPage', PublicWidgetGoodsPage)
+Vue.component('LazyPublicWidgetGoodsPage', PublicWidgetGoodsPage)
+Vue.component('PublicWidgetRackCatalog', PublicWidgetRackCatalog)
+Vue.component('LazyPublicWidgetRackCatalog', PublicWidgetRackCatalog)
+Vue.component('PublicWidgetRackCategory', PublicWidgetRackCategory)
+Vue.component('LazyPublicWidgetRackCategory', PublicWidgetRackCategory)
+Vue.component('PublicWidgetRackPage', PublicWidgetRackPage)
+Vue.component('LazyPublicWidgetRackPage', PublicWidgetRackPage)
 Vue.component('PublicWidgetSidebar', PublicWidgetSidebar)
 Vue.component('LazyPublicWidgetSidebar', PublicWidgetSidebar)
 Vue.component('PublicWidgetSidebarCatalog', PublicWidgetSidebarCatalog)
