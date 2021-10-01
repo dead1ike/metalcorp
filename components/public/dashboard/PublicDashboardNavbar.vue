@@ -1,9 +1,9 @@
 <template>
   <div class="main-header shadow">
-    <div class="main-header-content py-3 px-2">
-      <b-navbar toggleable="lg" style="padding: 0">
-        <b-navbar-brand to="/" class="px-2">
-          <div style="width: 280px">
+    <div class="main-header-content py-3">
+      <b-navbar toggleable="lg">
+        <b-navbar-brand to="/">
+          <div style="width: 280px" class="pl-1">
             <b-img style="max-width: 150px; max-height: 63px" src="~/static/logo.png" />
           </div>
         </b-navbar-brand>
@@ -14,23 +14,7 @@
           </template>
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="d-flex flex-wrap align-items-center justify-content-between mx-5">
-            <!--          <b-btn variant="outline-black" class="live-edit" size="sm" to="/rekvizity" style="font-size: 18px"-->
-            <!--            >Реквизиты</b-btn-->
-            <!--          >-->
-            <!--          <b-btn variant="outline-black" class="live-edit" size="sm" to="/obyekty" style="font-size: 18px"-->
-            <!--            >Наши объекты</b-btn-->
-            <!--          >-->
-            <!--          <b-btn variant="outline-black" class="live-edit" size="sm" to="/otzyvy" style="font-size: 18px">Отзывы</b-btn>-->
-            <!--          <b-btn variant="outline-black" class="live-edit" size="sm" to="/sotrudnichestvo" style="font-size: 18px">-->
-            <!--            Сотрудничество-->
-            <!--          </b-btn>-->
-            <!--          <b-btn variant="outline-black" class="live-edit" size="sm" to="/vakansii" style="font-size: 18px"-->
-            <!--            >Вакансии</b-btn-->
-            <!--          >-->
-            <!--          <b-btn variant="outline-black" class="live-edit" size="sm"  style="font-size: 18px"-->
-            <!--            >Контакты</b-btn-->
-            <!--          >-->
+          <b-navbar-nav class="w-100 d-flex flex-wrap align-items-center justify-content-between">
             <b-nav-item to="/obyekty"><span class="navitem">Наши объекты</span></b-nav-item>
             <b-nav-item to="/otzyvy"><span class="navitem">Отзывы</span></b-nav-item>
             <b-nav-item to="/sotrudnichestvo"><span class="navitem">Сотрудничество</span></b-nav-item>
@@ -45,11 +29,10 @@
                   />
                   <path d="M14 19H17.1667V26.9167H14V19ZM20.3333 19H23.5V26.9167H20.3333V19Z" fill="#445CAA" />
                 </svg>
-                <span class="navitem mx-1">Корзина</span>
+                <span class="navitem">Корзина</span>
               </div>
             </b-nav-item>
           </b-navbar-nav>
-          <!-- Right aligned nav items -->
         </b-collapse>
       </b-navbar>
     </div>
