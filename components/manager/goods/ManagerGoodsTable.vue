@@ -20,7 +20,7 @@
               <b-img thumbnail :src="data.item.image" style="max-width: 320px; max-height: 320px" />
             </div>
             <div class="h3 py-2 text-center">{{ data.item.title }}</div>
-            <table class="table table-striped table-hover ">
+            <table class="table table-striped table-hover">
               <tbody>
                 <tr>
                   <td class="align-middle">Категория:</td>
@@ -35,8 +35,8 @@
                       <template v-for="itemBrand in getBrandItems">
                         <b-dd-item :key="itemBrand.uuid" @click="changeBrand(data.item, itemBrand)">
                           <div class="d-flex align-items-center">
-                            <div style="width:80px">
-                              <b-img :src="itemBrand.image" style="max-height:80px;max-width:80px" thumbnail></b-img>
+                            <div style="width: 80px">
+                              <b-img :src="itemBrand.image" style="max-height: 80px; max-width: 80px" thumbnail></b-img>
                             </div>
                             <div class="h-100 pl-3">{{ itemBrand.title }}</div>
                           </div>
@@ -46,13 +46,13 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="align-middle">ID товара:</td>
+                  <td class="align-middle">Url товара:</td>
                   <td class="align-middle">
-                    <div v-if="!data.item.goods_id">
+                    <div v-if="!data.item.goods_url">
                       <b-input-group>
-                        <b-form-input placeholder="ID товара" v-model="form.goods_id"></b-form-input>
+                        <b-form-input placeholder="Url товара" v-model="form.goods_url"></b-form-input>
                         <b-input-group-prepend>
-                          <b-btn variant="light" @click="addGoodsId(data.item)">
+                          <b-btn variant="light" @click="addGoodsUrl(data.item)">
                             <b-icon-plus-circle variant="success"></b-icon-plus-circle>
                           </b-btn>
                         </b-input-group-prepend>
@@ -60,8 +60,8 @@
                     </div>
                     <div v-else>
                       <div class="d-flex justify-content-around align-items-center">
-                        <span>{{ data.item.goods_id }}</span>
-                        <b-btn variant="light" @click="deleteGoodsId(data.item)">
+                        <span>{{ data.item.goods_url }}</span>
+                        <b-btn variant="light" @click="deleteGoodsUrl(data.item)">
                           <b-icon-trash variant="danger"></b-icon-trash>
                         </b-btn>
                       </div>
@@ -156,6 +156,7 @@ export default {
         good_uuid: null,
         goods_id: '',
         goods_price: '',
+        goods_url: '',
       },
       pagination: {
         currentPage: 1,
@@ -202,6 +203,16 @@ export default {
           this.makeToast('ID удалён')
         })
     },
+    deleteGoodsUrl(itemGoods) {
+      this.$store
+        .dispatch('manager/goods/goods/deleteGoodsUrl', {
+          itemGoods,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('Url удалён')
+        })
+    },
     deleteGoodsPrice(itemGoods) {
       this.$store
         .dispatch('manager/goods/goods/deleteGoodsPrice', {
@@ -221,6 +232,18 @@ export default {
         .then(() => {
           this.fetchGoods()
           this.makeToast('ID добавлен')
+          this.form.goods_id = ''
+        })
+    },
+    addGoodsUrl(itemGoods) {
+      this.$store
+        .dispatch('manager/goods/goods/putGoodsUrl', {
+          itemGoods,
+          itemGoodsUrl: this.form.goods_url,
+        })
+        .then(() => {
+          this.fetchGoods()
+          this.makeToast('Url добавлен')
           this.form.goods_id = ''
         })
     },
