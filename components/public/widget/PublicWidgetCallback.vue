@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="px-5 py-4">
-        <a class="black_button d-block px-4 py-3" style="max-width: 281px">Оставить заявку</a>
+        <a class="black_button d-inline-block px-4 py-3" style="max-width: 281px">Оставить заявку</a>
       </div>
     </div>
     <div class="d-flex flex-column w-100 callback_rightside" style="max-width: 650px">

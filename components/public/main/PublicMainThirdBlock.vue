@@ -2,12 +2,12 @@
   <div>
     <div class="d-none d-lg-flex w-100 p-3">
       <div class="text-white d-flex block3_banner flex-row align-self-center w-100">
-        <div class="d-flex flex-column w-100">
+        <div class="d-flex flex-column flex-fill">
           <div class="w-100">
-            <p class="block3_banner_header">
-              Гарантируем качество <br />
+            <h1 class="">
+              Гарантируем качество<br />
               и надежность
-            </p>
+            </h1>
           </div>
           <div class="block3_banner_text text-wrap">
             <p>Закажите бесплатный выезд замерщика</p>
@@ -31,10 +31,10 @@
             ></b-form-input>
           </div>
           <div class="block3_banner_button">
-            <a class="ml-2 text-truncate white_button py-4 px-5">Оставить заявку </a>
+            <a class="ml-2 text-truncate d-inline-block white_button py-4 px-5">Оставить заявку </a>
           </div>
         </div>
-        <div class="d-flex flex-column align-items-center block3_right" style="">
+        <div class="d-flex flex-column flex-fill align-items-center">
           <div class="w-100 pencil">
             <img
               src="https://i.ibb.co/SxWYs9V/pencil-icon.png"
@@ -68,10 +68,10 @@
     <div class="d-flex d-lg-none flex-column w-100">
       <div class="text-white d-flex flex-fill flex-column justify-content-center block3_mobile_left">
         <div>
-          <p class="block3_mobile_header text-wrap">
+          <h4 class="text-wrap">
             Гарантируем качество<br />
             и надежность
-          </p>
+          </h4>
         </div>
         <div class="block3_mobile_text text-wrap">
           <p>Закажите бесплатный выезд замерщика</p>
@@ -95,7 +95,7 @@
           ></b-form-input>
         </div>
         <div class="block3_mobile_button py-5">
-          <a class="ml-2 text-truncate white_button py-4 px-5">Оставить заявку </a>
+          <a class="ml-2 text-truncate d-inline-block white_button py-4 px-5">Оставить заявку </a>
         </div>
       </div>
       <div class="text-white d-flex flex-column justify-content-center block3_mobile_right">
