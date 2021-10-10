@@ -5,7 +5,7 @@
       <div class="shadow d-flex flex-fill">
         <public-main-first-block />
       </div>
-      <h2 class="catalog_heading">Каталог</h2>
+      <h2 class="p-2 m-2 catalog_heading">Каталог</h2>
       <div class="d-flex flex-wrap justify-content-between">
         <public-widget-catalog />
       </div>
