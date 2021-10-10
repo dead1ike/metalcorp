@@ -50,7 +50,7 @@
                   <td class="align-middle">
                     <div v-if="!data.item.goods_url">
                       <b-input-group>
-                        <b-form-input placeholder="Url товара" v-model="form.goods_url"></b-form-input>
+                        <b-form-input v-model="form.goods_url" placeholder="Url товара"></b-form-input>
                         <b-input-group-prepend>
                           <b-btn variant="light" @click="addGoodsUrl(data.item)">
                             <b-icon-plus-circle variant="success"></b-icon-plus-circle>
@@ -73,7 +73,7 @@
                   <td class="align-middle">
                     <div v-if="data.item.goods_price === '0'">
                       <b-input-group>
-                        <b-form-input placeholder="Цена товара" v-model="form.goods_price"></b-form-input>
+                        <b-form-input v-model="form.goods_price" placeholder="Цена товара"></b-form-input>
                         <b-input-group-prepend>
                           <b-btn variant="light" @click="addGoodsPrice(data.item)">
                             <b-icon-plus-circle variant="success"></b-icon-plus-circle>

@@ -127,35 +127,6 @@
   </div>
 </template>
 
-<style>
-.offer_title {
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 31px;
-  color: #445caa;
-}
-.offer_text {
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 26px;
-}
-.offer_price1 {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 29px;
-}
-.offer_price2 {
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 26px;
-}
-.empty_offer {
-  font-size: 26px;
-  font-weight: 300;
-  line-height: 31px;
-}
-</style>
-
 <script>
 export default {
   name: 'PublicOfferManage',

@@ -162,18 +162,18 @@
         </div>
         <div class="pt-5">
           <div
-            v-if="this.$route.params.slug !== 'mzprofil'"
+            v-if="$route.params.slug !== 'mzprofil'"
             class="d-flex justify-content-between align-items-center flex-row m-2"
           >
             <p class="rack_parameter_title">Количество полок</p>
             <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
           </div>
           <div class="d-flex align-items-center justify-content-between flex-row m-2">
-            <p class="rack_parameter_title" v-if="this.$route.params.slug === 'sgr'">Количество рам</p>
-            <p class="rack_parameter_title" v-else-if="this.$route.params.slug === 'sfm'">Количество рам</p>
-            <p class="rack_parameter_title" v-else-if="this.$route.params.slug === 'sk'">Количество рам</p>
-            <p class="rack_parameter_title" v-else-if="this.$route.params.slug === 'mspro'">Количество рам</p>
-            <p class="rack_parameter_title" v-else>Количество стеллажей</p>
+            <p v-if="$route.params.slug === 'sgr'" class="rack_parameter_title">Количество рам</p>
+            <p v-else-if="$route.params.slug === 'sfm'" class="rack_parameter_title">Количество рам</p>
+            <p v-else-if="$route.params.slug === 'sk'" class="rack_parameter_title">Количество рам</p>
+            <p v-else-if="$route.params.slug === 'mspro'" class="rack_parameter_title">Количество рам</p>
+            <p v-else class="rack_parameter_title">Количество стеллажей</p>
             <b-spinbutton id="popover" v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
             <b-popover triggers="hover" placement="top" target="popover"
               >На 1 стеллаж идёт 2 рамы, <br />
@@ -250,9 +250,7 @@ export default {
     },
   },
   mounted() {
-    console.warn('rackPage', this.$route.params)
     this.$store.dispatch('type/fetchType', this.$route.params.uuid).then(() => {
-      console.warn('rackPageCurrent', this.getTypeByUuid)
       return this.getTypeByUuid
     })
   },

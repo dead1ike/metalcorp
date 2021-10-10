@@ -2,16 +2,16 @@
   <div>
     <div class="sidebar_goods d-block">
       <b-input-group>
-        <b-form-input class="p-3 mx-2" placeholder="Поиск" v-model="filters.search"></b-form-input>
+        <b-form-input v-model="filters.search" class="p-3 mx-2" placeholder="Поиск"></b-form-input>
       </b-input-group>
       <div class="mx-2 my-4">
         <b-btn @click="clearFilter">Сбросить фильтр</b-btn>
       </div>
 
       <div
-        class="m-2 d-flex flex-column"
         v-for="(goodParameters, indexGroup) in getGoodParamsGroup"
         :key="goodParameters.uuid"
+        class="m-2 d-flex flex-column"
       >
         <p>{{ getTitle(goodParameters) }}</p>
         <b-dd

@@ -45,11 +45,11 @@
       <public-widget-sidebar-catalog />
     </div>
     <div class="d-flex flex-column">
-      <a class="footer_text" @click="objects()" style="text-decoration: none; color: white">Наши объекты</a>
-      <a class="footer_text" @click="feedback()" style="text-decoration: none; color: white">Отзывы</a>
-      <a class="footer_text" @click="job()" style="text-decoration: none; color: white">Сотрудничество</a>
-      <a class="footer_text" @click="vacancy()" style="text-decoration: none; color: white">Вакансии</a>
-      <a class="footer_text" @click="contacts()" style="text-decoration: none; color: white">Контакты</a>
+      <a class="footer_text" style="text-decoration: none; color: white" @click="objects()">Наши объекты</a>
+      <a class="footer_text" style="text-decoration: none; color: white" @click="feedback()">Отзывы</a>
+      <a class="footer_text" style="text-decoration: none; color: white" @click="job()">Сотрудничество</a>
+      <a class="footer_text" style="text-decoration: none; color: white" @click="vacancy()">Вакансии</a>
+      <a class="footer_text" style="text-decoration: none; color: white" @click="contacts()">Контакты</a>
     </div>
   </div>
 </template>

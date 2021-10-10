@@ -46,7 +46,7 @@
         <div class="align-self-center mx-2">
           <b-btn
             variant="outline-success"
-            style="border-radius: 50%; border: 2px solid; font-weight: bold;font-size: 25px;height: 50px; width: 50px"
+            style="border-radius: 50%; border: 2px solid; font-weight: bold; font-size: 25px; height: 50px; width: 50px"
             size="sm"
             @click="addParameter()"
           >
@@ -82,6 +82,9 @@ export default {
   props: {
     rowData: {
       type: Object,
+      default() {
+        return {}
+      },
     },
   },
   data() {
@@ -97,18 +100,17 @@ export default {
       return this.$store.getters['manager/goods/parameters/getGoodItem']
     },
     getParameters() {
-      const itemParameters = _.orderBy(
+      return _.orderBy(
         this.$store.getters['manager/rack/parameter/getParameter'],
-        item => {
+        (item) => {
           return this.checkSelectFavorites(item)
         },
         ['asc'],
       )
-      return itemParameters
     },
     selectedParameter() {
-      if (this.getParameters.find(item => item.uuid === this.form.parameter_uuid)) {
-        return this.getParameters.find(item => item.uuid === this.form.parameter_uuid)
+      if (this.getParameters.find((item) => item.uuid === this.form.parameter_uuid)) {
+        return this.getParameters.find((item) => item.uuid === this.form.parameter_uuid)
       }
       return {}
     },
@@ -169,7 +171,6 @@ export default {
           this.$store.dispatch('manager/goods/goods/fetchGoods')
           this.clearForm()
         })
-        .catch(e => {})
     },
   },
 }

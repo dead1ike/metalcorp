@@ -12,7 +12,7 @@
           class="d-flex flex-column px-2 py-5 justify-content-between"
         >
           <div class="object_title" style="max-width: 490px">{{ itemObject.title }}</div>
-          <div class="object_subtitle" v-if="itemObject.subtitle !== null">{{ itemObject.subtitle }}</div>
+          <div v-if="itemObject.subtitle !== null" class="object_subtitle">{{ itemObject.subtitle }}</div>
           <div><b-img :src="itemObject.image" style="max-width: 490px" class="w-100" /></div>
         </div>
       </div>

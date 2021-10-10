@@ -5,7 +5,7 @@
     </div>
     <div>
       <div class="pt-5 px-5 feedback_header">Отзывы</div>
-      <div class="px-5 py-5" v-for="itemFeedback in getFeedbackItems" :key="itemFeedback.uuid">
+      <div v-for="itemFeedback in getFeedbackItems" :key="itemFeedback.uuid" class="px-5 py-5">
         <div class="px-4 py-5 shadow d-flex flex-column">
           <div class="d-flex flex-row">
             <div class="feedback_rate px-3 mr-2 py-1 text-center" style="max-width: 47px; max-height: 34px">5</div>
@@ -39,7 +39,7 @@
                 довольны сотрудничеством с нами?
               </p>
               <b-input-group style="max-width: 370px">
-                <b-form-rating inline color="#5B95ED" v-model="form.value"></b-form-rating>
+                <b-form-rating v-model="form.value" inline color="#5B95ED"></b-form-rating>
               </b-input-group>
             </div>
             <div class="py-5">
@@ -108,11 +108,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.gradient {
-  background: linear-gradient(270deg, rgba(84, 114, 249, 0) 0, rgba(84, 114, 249, 0.2) 98%);
-  opacity: 1;
-  border-left: 4px solid #5472f9;
-}
-</style>

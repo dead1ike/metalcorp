@@ -9,7 +9,7 @@
       :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'"
     >
       <template v-for="item in getCategoryOptions">
-        <b-dd-item @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
+        <b-dd-item :key="item.uuid" @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
       </template>
     </b-dd>
     <b-input-group class="d-flex flex-column">
@@ -45,8 +45,8 @@ export default {
       return this.$store.getters['manager/goods/category/getCategoryItems']
     },
     selectedCategory() {
-      if (this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)) {
-        return this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)
+      if (this.getCategoryOptions.find((category) => category.uuid === this.form.category_uuid)) {
+        return this.getCategoryOptions.find((category) => category.uuid === this.form.category_uuid)
       }
       return {}
     },

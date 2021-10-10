@@ -32,23 +32,23 @@
         <div class="d-flex h-100 justify-content-center align-items-lg-end align-items-center" style="max-width: 780px">
           <section id="slider_bl" class="ml-3">
             <div class="wrapper">
-              <input checked type="radio" name="slider" id="slide1" />
-              <input type="radio" name="slider" id="slide2" />
-              <input type="radio" name="slider" id="slide3" />
-              <input type="radio" name="slider" id="slide4" />
+              <input id="slide1" checked type="radio" name="slider" />
+              <input id="slide2" type="radio" name="slider" />
+              <input id="slide3" type="radio" name="slider" />
+              <input id="slide4" type="radio" name="slider" />
               <div class="slider-wrapper">
                 <div class="inner">
                   <article>
-                    <img src="https://i.ibb.co/cTKpdj1/slide1.png" />
+                    <img src="https://i.ibb.co/cTKpdj1/slide1.png" alt="" />
                   </article>
                   <article>
-                    <img src="https://i.ibb.co/xmgnfZg/slide2.png" />
+                    <img src="https://i.ibb.co/xmgnfZg/slide2.png" alt="" />
                   </article>
                   <article>
-                    <img src="https://i.ibb.co/Sdv2Kyv/slide3.png" />
+                    <img src="https://i.ibb.co/Sdv2Kyv/slide3.png" alt="" />
                   </article>
                   <article>
-                    <img src="https://i.ibb.co/Tgxfrvd/slide4.png" />
+                    <img src="https://i.ibb.co/Tgxfrvd/slide4.png" alt="" />
                   </article>
                 </div>
               </div>
@@ -67,7 +67,7 @@
       <hr />
     </div>
     <div class="vl d-none d-lg-block pt-5"></div>
-    <div class="d-flex flex-column  pl-2  mt-4 mr-5">
+    <div class="d-flex flex-column pl-2 mt-4 mr-5">
       <div class="block4_right_text text-wrap">
         <p class="pb-4">
           Поставка оборудования<br />

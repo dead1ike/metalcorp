@@ -10,32 +10,30 @@
         <b-dd variant="corp" :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'">
           <div class="overflow-auto" style="max-height: 500px">
             <b-dd-item>
-              <b-btn variant="corp" @click="managerCategoryAddModal()">
-                Добавить категорию
-              </b-btn>
+              <b-btn variant="corp" @click="managerCategoryAddModal()"> Добавить категорию </b-btn>
             </b-dd-item>
             <template v-for="item in getCategoryOptions">
-              <b-dd-item @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
+              <b-dd-item :key="item.uuid" @click="selectCategory(item.uuid)">{{ item.title }}</b-dd-item>
             </template>
           </div>
         </b-dd>
       </div>
       <b-input-group class="py-2 px-2 d-flex flex-column">
         <span class="h3">Наименование товара</span>
-        <b-form-input class="w-100" v-model="form.title"> </b-form-input>
+        <b-form-input v-model="form.title" class="w-100"> </b-form-input>
       </b-input-group>
     </div>
     <!--    артинка описание-->
     <div class="d-inline-flex flex-column align-self-center w-100 pt-4">
       <b-file v-model="form.image"></b-file>
-      <b-form-input class="w-100 mt-2" v-model="form.image_url" placeholder="URL Картинки"> </b-form-input>
+      <b-form-input v-model="form.image_url" class="w-100 mt-2" placeholder="URL Картинки"> </b-form-input>
     </div>
     <div class="d-flex flex-column py-2">
       <span class="h4 py-2">Описание товара</span>
-      <b-form-textarea placeholder="Описание товара" v-model="form.description"></b-form-textarea>
+      <b-form-textarea v-model="form.description" placeholder="Описание товара"></b-form-textarea>
     </div>
     <template #modal-footer>
-      <b-btn variant="corp" @click="addGood" :disabled="!buttonState">Добавить</b-btn>
+      <b-btn variant="corp" :disabled="!buttonState" @click="addGood">Добавить</b-btn>
       <b-btn variant="danger" @click="closeModal">Отмена</b-btn>
     </template>
   </b-modal>
@@ -64,13 +62,13 @@ export default {
       return this.$store.getters['manager/goods/category/getCategoryItems']
     },
     selectedCategory() {
-      if (this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)) {
-        return this.getCategoryOptions.find(category => category.uuid === this.form.category_uuid)
+      if (this.getCategoryOptions.find((category) => category.uuid === this.form.category_uuid)) {
+        return this.getCategoryOptions.find((category) => category.uuid === this.form.category_uuid)
       }
       return {}
     },
     buttonState() {
-      if (this.form.category_uuid !== null) return true
+      return this.form.category_uuid !== null
     },
   },
 

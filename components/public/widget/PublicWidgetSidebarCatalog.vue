@@ -1,8 +1,8 @@
 <template>
   <div class="d-block">
     <span class="catalog_header">Каталог</span>
-    <div v-for="item in getCategories">
-      <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>
+    <div v-for="item in getCategories" :key="item.uuid">
+      <p v-if="item.uuid !== null" class="catalog" @click="toCategory(item)">{{ item.title }}</p>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@ export default {
   name: 'PublicWidgetSidebarCatalog',
   computed: {
     getCategories() {
-      return this.$store.getters['widget/getWidgetCategoryItems'].filter(item => {
+      return this.$store.getters['widget/getWidgetCategoryItems'].filter((item) => {
         return item.parent_uuid === null
       })
     },

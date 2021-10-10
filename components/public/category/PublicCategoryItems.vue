@@ -3,7 +3,7 @@
     class="d-flex flex-wrap justify-content-center p-3 category_block"
     :class="{ category_even: getCategoryItems.length % 2 !== 0 }"
   >
-    <div class="d-flex flex-column p-2" v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid">
+    <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="d-flex flex-column p-2">
       <div class="d-flex flex-column border border-dark p-4 h-100" style="max-width: 400px">
         <div class="h4">{{ itemCategory.title }}</div>
         <div class="d-flex py-4 flex-row h-100">
@@ -11,18 +11,18 @@
             <p>{{ itemCategory.description }}</p>
           </div>
           <div class="pl-2">
-            <img :src="itemCategory.image" style="max-width: 200px" />
+            <img :src="itemCategory.image" style="max-width: 200px" alt="" />
           </div>
         </div>
         <div>
           <template v-if="itemCategory.childs.length > 0">
             <div>
-              <a @click="toCategoryPage(itemCategory)" class="black_button d-inline-block py-4 px-5">Подробнее</a>
+              <a class="black_button d-inline-block py-4 px-5" @click="toCategoryPage(itemCategory)">Подробнее</a>
             </div>
           </template>
           <template v-else>
             <div>
-              <a @click="toListPage(itemCategory)" class="black_button d-inline-block py-4 px-5">Подробнее</a>
+              <a class="black_button d-inline-block py-4 px-5" @click="toListPage(itemCategory)">Подробнее</a>
             </div>
           </template>
         </div>
@@ -31,16 +31,14 @@
   </div>
 </template>
 
-<style></style>
-
 <script>
 export default {
+  name: 'PublicCategoryItems',
   asyncData({ params }) {
     const categoryUuid = params.uuid
     const categorySlug = params.slug
     return { categorySlug, categoryUuid }
   },
-  name: 'PublicCategoryItems',
   data() {
     return {
       pagination: {

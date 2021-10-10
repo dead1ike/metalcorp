@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex flex-wrap justify-content-center p-2">
     <div
-      class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
       v-for="itemRack in getTypeByCategoryUuid"
       :key="itemRack.uuid"
+      class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
       style="max-width: 500px"
     >
       <div class="h4">{{ itemRack.title }}</div>
@@ -12,7 +12,7 @@
           <p>{{ itemRack.description }}</p>
         </div>
         <div class="pl-2">
-          <img :src="itemRack.image" style="max-width: 200px" />
+          <img :src="itemRack.image" style="max-width: 200px" alt="" />
         </div>
       </div>
       <div>
@@ -33,7 +33,6 @@ export default {
     },
   },
   mounted() {
-    console.warn('racksPageRoute', this.$route.params.uuid)
     this.fetchRacks()
   },
   methods: {

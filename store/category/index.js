@@ -19,7 +19,6 @@ export const state = () => ({
 })
 export const actions = {
   async fetchCategory({ commit, getters }) {
-    console.warn('getter', getters.getCategoryFilter)
     const { data } = await this.$axios.get('/api/category', {
       params: getters.getCategoryFilter,
     })

@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex flex-wrap justify-content-center p-2">
     <div
-      class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
       v-for="itemGoods in getGoodItems"
       :key="itemGoods.uuid"
+      class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
       style="max-width: 500px"
     >
       <div class="h4">{{ itemGoods.title }}</div>
@@ -12,7 +12,7 @@
           <p>{{ itemGoods.description }}</p>
         </div>
         <div class="pl-2">
-          <img :src="itemGoods.image" style="max-width: 200px" />
+          <img :src="itemGoods.image" style="max-width: 200px" alt="" />
         </div>
       </div>
       <div>
@@ -39,7 +39,7 @@ export default {
   methods: {
     fetchGoods() {
       this.$store.dispatch('good/fetchGoods').then(() => {
-        console.warn('goodCatalogPage', this.getGoodItems)
+        // console.warn('goodCatalogPage', this.getGoodItems)
       })
     },
     routeMore(item) {

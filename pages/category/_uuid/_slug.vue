@@ -41,7 +41,6 @@ export default {
     this.fetchGoods()
     this.fetchRacks()
     this.$store.dispatch('category/fetchCategory').then(() => {
-      console.warn('categoryPage', this.getCategoryByUuid)
       this.form.title = this.getCategoryByUuid.title
     })
   },
@@ -51,7 +50,7 @@ export default {
     },
     fetchGoods() {
       this.$store.dispatch('good/fetchGoods').then(() => {
-        console.warn('goods', this.getGoodItems)
+        // console.warn('goods', this.getGoodItems)
       })
     },
     openModal() {

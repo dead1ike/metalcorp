@@ -21,8 +21,8 @@
       <div class="pb-5 pt-4">
         <span class="catalog" @click="toCatalog()">Каталог</span>
       </div>
-      <div v-for="item in getCategories">
-        <p class="catalog" v-if="item.uuid !== null" :key="item.uuid" @click="toCategory(item)">{{ item.title }}</p>
+      <div v-for="item in getCategories" :key="item.uuid">
+        <p v-if="item.uuid !== null" class="catalog" @click="toCategory(item)">{{ item.title }}</p>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
       <p class="px-4 sidebar_text2">Ежедневно с 9:00 до 21:00</p>
     </div>
     <div class="sidebar_button my-5">
-      <a class="white_button py-4 px-5 mx-3 text-truncate" @click="call()" style="max-width: 235px">Заказать звонок</a>
+      <a class="white_button py-4 px-5 mx-3 text-truncate" style="max-width: 235px" @click="call()">Заказать звонок</a>
     </div>
   </div>
 </template>

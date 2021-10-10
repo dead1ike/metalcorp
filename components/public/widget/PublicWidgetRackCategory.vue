@@ -37,7 +37,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch('category/fetchCategory').then(() => {
-      console.warn('categoryPage', this.getCategoryByUuid)
       this.form.title = this.getCategoryByUuid.title
     })
   },

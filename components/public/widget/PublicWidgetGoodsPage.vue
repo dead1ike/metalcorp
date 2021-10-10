@@ -23,7 +23,11 @@
         </div>
         <div class="d-flex flex-column w-100">
           <p class="good_card_params_header">Параметры:</p>
-          <div class="d-flex flex-row justify-content-between" v-for="itemParams in getGoodByUuid.good_parameters">
+          <div
+            v-for="itemParams in getGoodByUuid.good_parameters"
+            :key="itemParams.uuid"
+            class="d-flex flex-row justify-content-between"
+          >
             <span class="py-2">{{ itemParams.title }}</span>
             <span class="py-2">{{ itemParams.parameter_value }}</span>
           </div>
@@ -55,7 +59,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch('good/fetchGood', this.$route.params.uuid).then(() => {
-      console.warn('good', this.getGoodByUuid)
       return this.getGoodByUuid
     })
   },
