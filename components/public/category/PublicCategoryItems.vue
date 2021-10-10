@@ -17,12 +17,12 @@
         <div>
           <template v-if="itemCategory.childs.length > 0">
             <div>
-              <a class="black_button d-inline-block py-4 px-5" @click="toCategoryPage(itemCategory)">Подробнее</a>
+              <a class="black_button d-inline-block py-4 px-5" @click="toCategoryPage(itemCategory)">Подробнее 1</a>
             </div>
           </template>
           <template v-else>
             <div>
-              <a class="black_button d-inline-block py-4 px-5" @click="toListPage(itemCategory)">Подробнее</a>
+              <a class="black_button d-inline-block py-4 px-5" @click="toListPage(itemCategory)">Подробнее 2</a>
             </div>
           </template>
         </div>

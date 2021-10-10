@@ -3,10 +3,7 @@
     <div class="d-flex flex-column justify-content-between flex-fill">
       <div class="py-sm-3">
         <div>
-          <p class="block3_banner_header text-wrap">
-            У нас вы найдете все<br />
-            необходимые стеллажи
-          </p>
+          <h2 class="text-wrap font-weight-bold">У нас вы найдете все необходимые стеллажи</h2>
         </div>
         <div class="block4_text text-wrap">
           <p>
@@ -27,7 +24,7 @@
       </div>
       <div class="d-flex flex-column">
         <div class="d-flex justify-content-start" style="max-width: 718px">
-          <p class="partners">Наши партнеры</p>
+          <h3 class="font-weight-bold">Наши партнеры</h3>
         </div>
         <div class="d-flex h-100 justify-content-center align-items-lg-end align-items-center" style="max-width: 780px">
           <section id="slider_bl" class="ml-3">

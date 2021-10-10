@@ -1,19 +1,16 @@
 <template>
-  <div class="text-white d-flex flex-fill flex-column banner justify-content-center">
+  <div class="text-white d-flex flex-fill flex-column banner">
     <div>
-      <h1 class="banner_header text-wrap">
-        Комплексное решение<br />
-        для вашего склада
-      </h1>
+      <h1 class="text-wrap font-weight-bold">Комплексное решение для вашего склада</h1>
     </div>
-    <div class="banner_text text-wrap">
-      <p>
+    <div class="text-wrap pt-6">
+      <p class="main_subheader">
         Складские стеллажи от производителя с установкой под ключ<br />
         и гарантией 24 месяца
       </p>
     </div>
-    <div class="banner_button">
-      <a class="white_button py-4 px-5 widget_pointer" style="max-width: 156px" @click="toCategory()">Заказать</a>
+    <div class="pt-10">
+      <b-btn class="main_header_button font-weight-normal" variant="light" @click="toCategory()"> Заказать </b-btn>
     </div>
   </div>
 </template>

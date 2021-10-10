@@ -17,7 +17,7 @@
       </div>
       <div>
         <div>
-          <a class="black_button d-inline-block py-4 px-5" @click="routeMore(itemRack)">Подробнее</a>
+          <a class="black_button d-inline-block py-4 px-5" @click="routeMore(itemRack)">Подробнее 5</a>
         </div>
       </div>
     </div>

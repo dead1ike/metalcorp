@@ -14,7 +14,9 @@
           </template>
         </b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="w-100 d-flex flex-wrap align-items-center justify-content-between">
+          <b-navbar-nav
+            class="w-100 d-flex flex-wrap align-items-center justify-content-between main_menu font-weight-normal"
+          >
             <b-nav-item to="/obyekty"><span class="navitem">Наши объекты</span></b-nav-item>
             <b-nav-item to="/otzyvy"><span class="navitem">Отзывы</span></b-nav-item>
             <b-nav-item to="/sotrudnichestvo"><span class="navitem">Сотрудничество</span></b-nav-item>

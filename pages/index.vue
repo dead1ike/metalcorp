@@ -2,10 +2,10 @@
   <div class="d-flex overflow-hidden">
     <public-widget-sidebar />
     <div class="overflow-auto h-100 container__main">
-      <div class="shadow d-flex flex-fill">
+      <div class="banner_header d-flex flex-fill pb-10">
         <public-main-first-block />
       </div>
-      <h2 class="p-2 m-2 catalog_heading">Каталог</h2>
+      <h2 class="font-weight-bold pt-10 pb-6">Каталог</h2>
       <div class="d-flex flex-wrap justify-content-between">
         <public-widget-catalog />
       </div>

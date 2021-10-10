@@ -1,6 +1,6 @@
 <template>
-  <div class="sidebar d-none d-lg-flex flex-column pt-3 h-100">
-    <div class="search ml-3 mb-4">
+  <div class="sidebar d-none d-lg-flex flex-column p-5 h-100">
+    <div class="search">
       <svg
         width="18"
         height="18"
@@ -18,20 +18,22 @@
     </div>
 
     <div class="overflow-auto h-100">
-      <div class="pb-5 pt-4">
-        <span class="catalog" @click="toCatalog()">Каталог</span>
+      <div class="pt-9 pb-8">
+        <nuxt-link class="button_catalog font-weight-bold" :to="`/category`">Каталог</nuxt-link>
       </div>
-      <div v-for="item in getCategories" :key="item.uuid">
-        <p v-if="item.uuid !== null" class="catalog" @click="toCategory(item)">{{ item.title }}</p>
+      <div v-for="item in getCategories" :key="item.uuid" class="pb-7 text-truncate">
+        <nuxt-link v-if="item.uuid !== null" class="categories" :to="`/category/${item.uuid}`">
+          {{ item.title }}
+        </nuxt-link>
       </div>
     </div>
 
-    <div class="mb-2">
-      <p class="px-4 sidebar_text1">+7 (906) 812-81-75</p>
-      <p class="px-4 sidebar_text2">Ежедневно с 9:00 до 21:00</p>
+    <div class="pb-9">
+      <span class="font-weight-normal">+7 (906) 812-81-75</span>
+      <span class="operating_mode font-weight-normal">Ежедневно с 9:00 до 21:00</span>
     </div>
-    <div class="sidebar_button my-5">
-      <a class="white_button py-4 px-5 mx-3 text-truncate" style="max-width: 235px" @click="call()">Заказать звонок</a>
+    <div class="sidebar_button">
+      <b-btn class="text-truncate" variant="light" @click="call()">Заказать звонок</b-btn>
     </div>
   </div>
 </template>
