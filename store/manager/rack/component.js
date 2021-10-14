@@ -10,7 +10,7 @@ export const state = () => ({
     component: {
       title: '',
       page: 1,
-      limit: 50,
+      limit: 100,
     },
   },
 })
