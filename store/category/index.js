@@ -4,6 +4,7 @@ export const state = () => ({
   },
   item: {
     category: {},
+    category_title: '',
   },
   filter: {
     parent_uuid: 'parent',
@@ -41,6 +42,9 @@ export const actions = {
   },
 }
 export const mutations = {
+  setCategoryTitle(state, data) {
+    state.item.category_title = data
+  },
   setCategory(state, data) {
     state.items.category = data
   },
@@ -74,6 +78,10 @@ export const getters = {
   },
   getCategoryItems(state) {
     return state.items.category
+  },
+
+  getCategoryTitle(state) {
+    return state.item.category_title
   },
   getCategoryByUuid: (state) => (uuid) => {
     return state.items.category.find((item) => {

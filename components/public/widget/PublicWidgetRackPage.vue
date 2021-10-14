@@ -102,44 +102,37 @@
   <!--  </div>-->
   <div class="d-flex flex-column">
     <div class="px-4 pt-5">
-      <p class="rackpage_header">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</p>
+      <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h2>
     </div>
-    <div class="d-flex flex-column align-items-center flex-lg-row">
+    <div class="d-flex flex-column flex-lg-row">
       <div class="px-4 py-4" style="width: 30%">
         <b-img :src="getTypeByUuid.image" class="w-75"></b-img>
       </div>
       <div class="d-flex flex-column py-4" style="width: 35%">
         <div>
-          <p class="rackpage_description_header">Описание:</p>
-          <p class="rackpage_description">{{ getTypeByUuid.description }}</p>
+          <h4 class="rackpage_description_header">Описание:</h4>
+          <h5 class="font-weight-light">{{ getTypeByUuid.description }}</h5>
         </div>
         <div class="pt-3">
-          <p class="rackpage_load_header">Допустимые нагрузки на данный стеллаж:</p>
-          <p class="rackpage_description">{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</p>
-          <p class="rackpage_description">
+          <h5 class="rackpage_load_header">Допустимые нагрузки на данный стеллаж:</h5>
+          <h5 class="font-weight-light">{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
+          <h5 class="font-weight-light">
             {{ 'Максимальная нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}
-          </p>
-          <p class="rackpage_description">{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</p>
-        </div>
-        <div class="pt-5">
-          <span class="rack_price pr-3">Стоимость:</span>
-          <span class="rack_price_2">{{ getFinalResult ? getFinalResult : '0' }} руб.</span>
-        </div>
-        <div class="pt-5">
-          <a class="d-inline-block py-3 px-4 black_button" @click="addProduct">Добавить в корзину</a>
+          </h5>
+          <h5 class="font-weight-light">{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
         </div>
       </div>
       <div class="d-flex flex-column py-4 pl-5">
         <div>
-          <p class="rack_price">Задайте параметры стеллажа:</p>
+          <h4 class="rack_price">Задайте параметры стеллажа:</h4>
         </div>
         <div class="pt-4">
           <div v-for="(itemParameters, indexGroup) in getRackParamsGroup" :key="itemParameters.parameter_uuid">
             <div class="d-flex flex-row align-items-center justify-content-between">
               <div class="text-right pr-2 py-3">
-                <p class="rack_parameter_title">{{ getLabel(itemParameters) }}:</p>
+                <h5>{{ getLabel(itemParameters) }}:</h5>
               </div>
-              <div class="p-2">
+              <div class="p-2 w-50">
                 <b-dd
                   block
                   variant="dark"
@@ -165,21 +158,28 @@
             v-if="$route.params.slug !== 'mzprofil'"
             class="d-flex justify-content-between align-items-center flex-row m-2"
           >
-            <p class="rack_parameter_title">Количество полок</p>
+            <h5 class="rack_parameter_title">Количество полок</h5>
             <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
           </div>
           <div class="d-flex align-items-center justify-content-between flex-row m-2">
-            <p v-if="$route.params.slug === 'sgr'" class="rack_parameter_title">Количество рам</p>
-            <p v-else-if="$route.params.slug === 'sfm'" class="rack_parameter_title">Количество рам</p>
-            <p v-else-if="$route.params.slug === 'sk'" class="rack_parameter_title">Количество рам</p>
-            <p v-else-if="$route.params.slug === 'mspro'" class="rack_parameter_title">Количество рам</p>
-            <p v-else class="rack_parameter_title">Количество стеллажей</p>
+            <h5 v-if="$route.params.slug === 'sgr'" class="rack_parameter_title">Количество рам</h5>
+            <h5 v-else-if="$route.params.slug === 'sfm'" class="rack_parameter_title">Количество рам</h5>
+            <h5 v-else-if="$route.params.slug === 'sk'" class="rack_parameter_title">Количество рам</h5>
+            <h5 v-else-if="$route.params.slug === 'mspro'" class="rack_parameter_title">Количество рам</h5>
+            <h5 v-else class="rack_parameter_title">Количество стеллажей</h5>
             <b-spinbutton id="popover" v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
             <b-popover triggers="hover" placement="top" target="popover"
               >На 1 стеллаж идёт 2 рамы, <br />
               на 2 стеллажа 3 рамы и т.д.</b-popover
             >
           </div>
+        </div>
+        <div class="pt-5 d-flex flex-row">
+          <h4 class="rack_price pr-3">Стоимость:</h4>
+          <h4 class="font-weight-light">{{ getFinalResult ? getFinalResult : '0' }} руб.</h4>
+        </div>
+        <div class="pt-5">
+          <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="addProduct">Добавить в корзину</b-btn>
         </div>
       </div>
     </div>

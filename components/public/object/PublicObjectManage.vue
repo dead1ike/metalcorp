@@ -4,21 +4,25 @@
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
     <div>
-      <div class="feedback_header py-5 px-4">Наши объекты</div>
+      <h2 class="font-weight-bold pt-10 pb-6 pl-5">Наши объекты</h2>
       <div class="d-flex flex-wrap py-5 px-4">
         <div
           v-for="itemObject in getObjectItems"
           :key="itemObject.uuid"
           class="d-flex flex-column px-2 py-5 justify-content-between"
         >
-          <div class="object_title" style="max-width: 490px">{{ itemObject.title }}</div>
-          <div v-if="itemObject.subtitle !== null" class="object_subtitle">{{ itemObject.subtitle }}</div>
-          <div><b-img :src="itemObject.image" style="max-width: 490px" class="w-100" /></div>
+          <div class="object_title" style="max-width: 490px">
+            <h5>{{ itemObject.title }}</h5>
+          </div>
+          <div v-if="itemObject.subtitle !== null" class="object_subtitle">
+            <h5>{{ itemObject.subtitle }}</h5>
+          </div>
+          <div><b-img :src="itemObject.image" style="max-width: 490px; max-height: 310px" class="w-100" /></div>
         </div>
       </div>
-      <div class="d-flex justify-content-center pb-5">
-        <a class="black_button d-inline-block px-5 py-3">Еще объекты</a>
-      </div>
+      <!--      <div class="d-flex justify-content-center pb-5">-->
+      <!--        <b-btn class="d-inline-block px-5 py-3" variant="dark">Еще объекты</b-btn>-->
+      <!--      </div>-->
       <public-main-third-block />
     </div>
     <public-dashboard-footer />

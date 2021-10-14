@@ -4,113 +4,145 @@
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
     <div>
-      <div class="feedback_header px-4 pb-5">Сотрудничество</div>
-      <div class="d-flex flex-column flex-lg-row px-4 pb-5">
-        <div class="w-100 d-flex flex-column">
-          <div class="job_header pb-4">Приглашаем дилеров к сотрудничеству</div>
+      <h2 class="font-weight-bold pt-10 pb-6 pl-7">Сотрудничество</h2>
+      <div class="d-flex flex-column flex-lg-row px-4 py-10">
+        <div class="w-100 d-flex flex-column px-4">
+          <div class="job_header pb-4"><h4>Приглашаем дилеров к сотрудничеству</h4></div>
           <div class="job_text pb-5" style="max-width: 648px">
-            Компания «METALCORP» заинтересована в расширении сети продаж и приглашает к сотрудничеству компании,
-            специализирующиеся на торговле складским и торговым оборудованием.
+            <h5 class="font-weight-light">
+              Компания «METALCORP» заинтересована в расширении сети продаж и приглашает к сотрудничеству компании,
+              специализирующиеся на торговле складским и торговым оборудованием.
+            </h5>
           </div>
           <div class="job_header2 py-4" style="max-width: 648px">
-            Являясь производителем стеллажей, мы предоставляем нашим партнерам максимально выгодные условия:
+            <h4>Являясь производителем стеллажей, мы предоставляем нашим партнерам максимально выгодные условия:</h4>
           </div>
-          <div class="job_text d-flex flex-column pt-3">
-            <span>-дополнительные скидки по результатам продаж</span>
-            <span>-персональный менеджер</span>
-            <span>-обучение персонала, шеф-монтаж</span>
-            <span>-разработка проектов</span>
-            <span>-помощь в ведении сложных заказов</span>
-            <span>-информационная поддержка</span>
+          <div class="job_text d-flex flex-column">
+            <h5 class="font-weight-light m-0">-дополнительные скидки по результатам продаж</h5>
+            <h5 class="font-weight-light m-0">-персональный менеджер</h5>
+            <h5 class="font-weight-light m-0">-обучение персонала, шеф-монтаж</h5>
+            <h5 class="font-weight-light m-0">-разработка проектов</h5>
+            <h5 class="font-weight-light m-0">-помощь в ведении сложных заказов</h5>
+            <h5 class="font-weight-light m-0">-информационная поддержка</h5>
           </div>
         </div>
-        <div class="w-100 overflow-hidden">
-          <b-img src="https://i.ibb.co/gWjrdVH/block1.png" style="max-height: 503px" />
-        </div>
+        <div
+          class="w-100"
+          style="
+            background-image: url('https://i.ibb.co/gWjrdVH/block1.png');
+            background-repeat: no repeat;
+            background-position: center;
+            background-size: cover;
+          "
+        ></div>
       </div>
-      <div class="d-flex flex-column flex-lg-row px-4 pb-5">
-        <div class="overflow-hidden">
-          <b-img src="https://i.ibb.co/s9pNKXb/block2.png" />
-        </div>
-        <div class="w-100 bg-dark text-white px-6 py-7">
-          <div class="job_header pb-4">Веб-мастерам</div>
+      <div class="d-flex flex-column flex-lg-row px-4 py-10">
+        <div
+          class="w-100"
+          style="
+            background-image: url('https://i.ibb.co/s9pNKXb/block2.png');
+            background-repeat: no repeat;
+            background-position: center;
+            background-size: cover;
+          "
+        ></div>
+        <div class="bg-dark text-white p-10">
+          <div class="job_header pb-4"><h4>Веб-мастерам</h4></div>
           <div class="job_text">
-            <p>
+            <h5 class="font-weight-light">
               Мы приглашаем к сотрудничеству веб-мастеров, владельцев групп и пабликов в соц.сетях, блогеров и любых
               других людей, способных направить целевой трафик и получить за это вознаграждение.
-            </p>
-            <p>
+            </h5>
+            <h5 class="font-weight-light pt-4">
               Мы работаем по системе CPA - оплата за действие. Вознаграждение Вы получаете за каждый оплаченный заказ.
               Принцип работы такой же, как и в любых CPA-сетях, только вознаграждение больше, т.к. нет посредника.
-            </p>
-            <div class="d-flex flex-column">
-              <span>-Вознаграждение оплачивается за совершенное действие, а именно, оплата заказа. </span>
-              <span
-                >-Мы даем специальный уникальный персональный ключ (UTM метку), по которому мы идентифицируем, что
+            </h5>
+            <div class="d-flex flex-column pt-4">
+              <h5 class="font-weight-light m-0">
+                -Вознаграждение оплачивается за совершенное действие, а именно, оплата заказа.
+              </h5>
+              <h5 class="font-weight-light m-0">
+                -Мы даем специальный уникальный персональный ключ (UTM метку), по которому мы идентифицируем, что
                 посетитель пришел от вас.
-              </span>
-              <span>-Метка сохраняется в Cookie на 30 дней </span>
-              <span>-Выплаты раз в месяц или по договоренности </span>
-              <span>-Рассматриваются любые предложения от веб-мастеров с оплатой за совершенное действие (лид).</span>
+              </h5>
+              <h5 class="font-weight-light m-0">-Метка сохраняется в Cookie на 30 дней</h5>
+              <h5 class="font-weight-light m-0">-Выплаты раз в месяц или по договоренности</h5>
+              <h5 class="font-weight-light m-0">
+                -Рассматриваются любые предложения от веб-мастеров с оплатой за совершенное действие (лид).
+              </h5>
             </div>
           </div>
-          <div class="job_header3 pt-5">
-            <p class="py-2">Вознаграждение 5% Архивные стеллажи</p>
-            <p class="py-2">Вознаграждение 7% Грузовые стеллажи</p>
-            <p class="py-2">Вознаграждение 10% Палетные стеллажи</p>
-            <p class="py-2">Вознаграждение 15% Мезонин</p>
+          <div class="job_header3 pt-10">
+            <h5 class="py-4">Вознаграждение 5% Архивные стеллажи</h5>
+            <h5 class="py-4">Вознаграждение 7% Грузовые стеллажи</h5>
+            <h5 class="py-4">Вознаграждение 10% Палетные стеллажи</h5>
+            <h5 class="py-4">Вознаграждение 15% Мезонин</h5>
           </div>
-          <div class="d-flex flex-column">
-            <span class="job_header3">Для групп в соцсетях, Каналы youtube, блгеров: </span>
-            <span class="job_text2">Скидки для участников группы, промо-коды</span>
+          <div class="d-flex flex-column pt-7">
+            <h5 class="m-0">Для групп в соцсетях, Каналы youtube, блогеров:</h5>
+            <h5 class="font-weight-light m-0">Скидки для участников группы, промо-коды</h5>
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column flex-lg-row px-4 pb-5">
-        <div class="w-100 overflow-hidden">
-          <b-img src="https://i.ibb.co/6NzYxkL/block3.png" style="max-height: 503px" />
-        </div>
-        <div class="w-100 d-flex flex-column">
-          <div class="job_header py-4">Производителям стеллажного оборудования</div>
+      <div class="d-flex flex-column flex-lg-row px-4 py-10">
+        <div
+          class="w-100"
+          style="
+            background-image: url('https://i.ibb.co/6NzYxkL/block3.png');
+            background-repeat: no repeat;
+            background-position: center;
+            background-size: cover;
+          "
+        ></div>
+        <div class="w-100 d-flex flex-column p-4">
+          <div class="job_header py-4"><h4>Производителям стеллажного оборудования</h4></div>
           <div class="job_text pb-5" style="max-width: 648px">
-            Также мы приглашаем к взаимовыгодному сотрудничеству компании-производители стеллажного оборудования.
+            <h5 class="font-weight-light">
+              Также мы приглашаем к взаимовыгодному сотрудничеству компании-производители стеллажного оборудования.
+            </h5>
           </div>
           <div class="job_header2 py-4" style="max-width: 648px">
-            Мы ценим долгосрочные, взаимовыгодные отношения, залогом которых является прозрачность и ясность
-            сотрудничества. Наша компания предоставляет ряд серьезных гарантий и преимуществ. Мы открыты для новых
-            партнерских отношений.
+            <h5 class="font-weight-light">
+              Мы ценим долгосрочные, взаимовыгодные отношения, залогом которых является прозрачность и ясность
+              сотрудничества. Наша компания предоставляет ряд серьезных гарантий и преимуществ. Мы открыты для новых
+              партнерских отношений.
+            </h5>
           </div>
         </div>
       </div>
-      <div class="px-4 py-5">
+      <div class="px-4 py-10">
         <div class="shadow d-flex flex-column flex-lg-row">
-          <div class="w-100 d-flex flex-column px-4 py-3">
-            <div class="vacancy_form_header1">Плюсы сотрудничества с нами</div>
+          <div class="w-100 d-flex flex-column p-8">
+            <div class="vacancy_form_header1"><h4>Плюсы сотрудничества с нами</h4></div>
             <div class="vacancy_text1 py-4">
-              <p>-Отсутствие жестких планов по обороту</p>
-              <p>-Оформление точек продаж</p>
-              <p>-Наличие собственных складов и т.д.</p>
+              <h5 class="font-weight-light m-0">-Отсутствие жестких планов по обороту</h5>
+              <h5 class="font-weight-light m-0">-Оформление точек продаж</h5>
+              <h5 class="font-weight-light m-0">-Наличие собственных складов и т.д.</h5>
             </div>
             <div class="vacancy_text2 pt-3">
-              Мы предлагаем гибкий подход в решении всех возникающих в ходе взаимодействия вопросов. Адекватная ценовая
-              юполитика также благоприятствует развитию партнерских отношений.
+              <h5 class="font-weight-light">
+                Мы предлагаем гибкий подход в решении всех возникающих в ходе взаимодействия вопросов. Адекватная
+                ценовая юполитика также благоприятствует развитию партнерских отношений.
+              </h5>
             </div>
           </div>
-          <div class="w-100 bg-dark d-flex flex-column text-white px-4 py-3">
-            <div class="vacancy_form_header1">Хотите узнать больше о наших услугах и предложениях для партнеров?</div>
-            <div class="vacancy_form_header2">Закажите обратный звонок!</div>
+          <div class="w-100 bg-dark d-flex flex-column text-white p-8">
+            <div class="vacancy_form_header1">
+              <h4>Хотите узнать больше о наших услугах и предложениях для партнеров?</h4>
+            </div>
+            <div class="vacancy_form_header2"><h4>Закажите обратный звонок!</h4></div>
             <div class="d-flex flex-row pt-5 pb-5">
               <div class="d-flex flex-column pr-6">
-                <div class="vacancy_right_heading">Почта:</div>
-                <div class="vacancy_right_text pt-3">info@m-lc.ru</div>
+                <div class="vacancy_right_heading"><h5>Почта:</h5></div>
+                <div class="vacancy_right_text pt-3"><h5 class="font-weight-light">info@m-lc.ru</h5></div>
               </div>
               <div class="d-flex flex-column">
-                <div class="vacancy_right_heading">Телефон:</div>
-                <div class="vacancy_right_text pt-3">+7 (906) 812-81-75</div>
+                <div class="vacancy_right_heading"><h5>Телефон:</h5></div>
+                <div class="vacancy_right_text pt-3"><h5 class="font-weight-light">+7 (906) 812-81-75</h5></div>
               </div>
             </div>
             <div class="pt-3">
-              <a class="white_button d-inline-block px-5 py-3">Заказать звонок</a>
+              <b-btn class="d-inline-block px-8 py-4" variant="light" to="/zvonok">Заказать звонок</b-btn>
             </div>
           </div>
         </div>

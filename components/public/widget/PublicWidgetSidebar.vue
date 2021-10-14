@@ -33,7 +33,7 @@
       <span class="operating_mode font-weight-normal">Ежедневно с 9:00 до 21:00</span>
     </div>
     <div class="sidebar_button">
-      <b-btn class="text-truncate" variant="light" @click="call()">Заказать звонок</b-btn>
+      <b-btn class="d-inline-block px-8 py-4" variant="light" @click="toCallback">Заказать звонок</b-btn>
     </div>
   </div>
 </template>
@@ -52,17 +52,14 @@ export default {
     this.$store.dispatch('widget/fetchWidgetCategory')
   },
   methods: {
-    call() {
-      this.$store.commit('setActiveModal', {
-        modalName: 'dimensionModal',
-        modalStatus: true,
-      })
-    },
     toCategory(item) {
       this.$router.push(`/category/${item.uuid}`)
     },
     toCatalog() {
       this.$router.push('/category')
+    },
+    toCallback() {
+      this.$router.push('/zvonok')
     },
   },
 }

@@ -1,28 +1,36 @@
 <template>
-  <div
-    class="d-flex flex-wrap justify-content-center p-3 category_block"
-    :class="{ category_even: getCategoryItems.length % 2 !== 0 }"
-  >
-    <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="d-flex flex-column p-2">
-      <div class="d-flex flex-column border border-dark p-4 h-100" style="max-width: 400px">
+  <div>
+    <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ getCategoryTitle }}</h2>
+
+    <div class="d-flex flex-wrap justify-content-center p-2">
+      <div
+        v-for="itemCategory in getCategoryItems"
+        :key="itemCategory.uuid"
+        class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
+        style="max-width: 500px"
+      >
         <div class="h4">{{ itemCategory.title }}</div>
         <div class="d-flex py-4 flex-row h-100">
-          <div class="flex-fill truncate" style="max-width: 300px">
+          <div class="flex-fill truncate" style="max-width: 50%">
             <p>{{ itemCategory.description }}</p>
           </div>
           <div class="pl-2">
-            <img :src="itemCategory.image" style="max-width: 200px" alt="" />
+            <img :src="itemCategory.image" style="max-width: 50%" alt="" />
           </div>
         </div>
         <div>
           <template v-if="itemCategory.childs.length > 0">
             <div>
-              <a class="black_button d-inline-block py-4 px-5" @click="toCategoryPage(itemCategory)">Подробнее 1</a>
+              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toCategoryPage(itemCategory)"
+                >Подробнее 1</b-btn
+              >
             </div>
           </template>
           <template v-else>
             <div>
-              <a class="black_button d-inline-block py-4 px-5" @click="toListPage(itemCategory)">Подробнее 2</a>
+              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toListPage(itemCategory)"
+                >Подробнее 2</b-btn
+              >
             </div>
           </template>
         </div>
@@ -56,6 +64,9 @@ export default {
     },
     getCurrentCategoryUuid() {
       return this.$store.getters['category/getCurrentCategoryUuid']
+    },
+    getCategoryTitle() {
+      return this.$store.getters['category/getCategoryTitle']
     },
   },
   watch: {

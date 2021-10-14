@@ -3,53 +3,83 @@
     class="d-flex flex-row w-100 justify-content-around flex-wrap text-white p-4"
     style="background-color: #252525; z-index: 90"
   >
-    <div class="d-flex flex-column m-4">
-      <div class="">
+    <div class="d-flex flex-column p-10">
+      <div class="w-100">
         <b-img
+          style="width: 200px"
           src="https://thumb.tildacdn.com/tild6536-3538-4137-b034-373731613935/-/resize/130x/-/format/webp/__2_2.png"
         ></b-img>
       </div>
-      <br />
-      <div class="mt-2">
+      <div class="pt-10">
         <a class="text-white" href="tel:+79068128175">+7 (906) 812-81-75</a> <br />
         <span>ЕЖЕДНЕВНО с 9:00 до 21:00</span><br />
-        <br />
-        <a class="white_button d-inline-block px-4 py-3">Заказать звонок</a>
+      </div>
+      <div class="pt-7">
+        <b-btn class="d-inline-block px-8 py-4" variant="light" to="/zvonok">Заказать звонок</b-btn>
       </div>
     </div>
-    <div class="m-4 d-flex flex-column text-left">
+    <div class="p-10 d-flex flex-column text-left">
       <div>
-        <strong>
+        <h5 class="designer_dolbaeb font-weight-normal pb-6">
           ОБЩЕСТВО С ОГРАНИЧЕННОЙ <br />
           ОТВЕТСТВЕННОСТЬЮ «МЕТАЛЛКОРП»
-        </strong>
+        </h5>
       </div>
-      <br />
-      <div>
-        <span>ИНН 6678111118</span><br />
-        <span>КПП 667801001</span><br />
-        <span>ОГРН 1216600004587</span><br />
+      <div class="pb-5">
+        <h5 class="designer_dolbaeb font-weight-light m-0">ИНН 6678111118</h5>
+        <h5 class="designer_dolbaeb font-weight-light m-0">КПП 667801001</h5>
+        <h5 class="designer_dolbaeb font-weight-light m-0">ОГРН 1216600004587</h5>
       </div>
-      <br />
-      <div style="letter-spacing: 1px">
-        <a class="text-white" href="tel:+79068128175">+7 (906) 812-81-75</a> <br />
-        <a class="text-white" href="mailto:info@m-lc.ru">info@m-lc.ru</a>
+      <div class="pb-3">
+        <h5 class="text-white designer_dolbaeb m-0 font-weight-light" href="tel:+79068128175">+7 (906) 812-81-75</h5>
+        <h5 class="text-white designer_dolbaeb m-0 font-weight-light" href="mailto:info@m-lc.ru">info@m-lc.ru</h5>
       </div>
-      <br />
-      <div class="mt-2">
-        Адрес<br />
-        г. Екатеринбург,ул. Радищева, 4, офис 611
+      <div class="">
+        <h5 class="designer_dolbaeb m-0 font-weight-light">Адрес</h5>
+        <h5 class="designer_dolbaeb m-0 font-weight-light">г. Екатеринбург,ул. Радищева, 4, офис 611</h5>
       </div>
     </div>
-    <div class="d-flex flex-column">
-      <public-widget-sidebar-catalog />
-    </div>
-    <div class="d-flex flex-column">
-      <a class="footer_text" style="text-decoration: none; color: white" @click="objects()">Наши объекты</a>
-      <a class="footer_text" style="text-decoration: none; color: white" @click="feedback()">Отзывы</a>
-      <a class="footer_text" style="text-decoration: none; color: white" @click="job()">Сотрудничество</a>
-      <a class="footer_text" style="text-decoration: none; color: white" @click="vacancy()">Вакансии</a>
-      <a class="footer_text" style="text-decoration: none; color: white" @click="contacts()">Контакты</a>
+    <div class="d-flex justify-content-between flex-row p-10">
+      <div class="d-block px-10">
+        <h5
+          class="designer_dolbaeb m-0 footer_list font-weight-normal pb-8"
+          style="text-decoration: none"
+          @click="objects()"
+        >
+          Наши объекты
+        </h5>
+        <h5
+          class="designer_dolbaeb m-0 footer_list font-weight-normal pb-8"
+          style="text-decoration: none"
+          @click="feedback()"
+        >
+          Отзывы
+        </h5>
+        <h5
+          class="designer_dolbaeb m-0 footer_list font-weight-normal pb-8"
+          style="text-decoration: none"
+          @click="job()"
+        >
+          Сотрудничество
+        </h5>
+        <h5
+          class="designer_dolbaeb m-0 footer_list font-weight-normal pb-8"
+          style="text-decoration: none"
+          @click="vacancy()"
+        >
+          Вакансии
+        </h5>
+        <h5
+          class="designer_dolbaeb m-0 footer_list font-weight-normal"
+          style="text-decoration: none"
+          @click="contacts()"
+        >
+          Контакты
+        </h5>
+      </div>
+      <div class="px-10">
+        <public-widget-sidebar-catalog class="designer_dolbaeb" />
+      </div>
     </div>
   </div>
 </template>

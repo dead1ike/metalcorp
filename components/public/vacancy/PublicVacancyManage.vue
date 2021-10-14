@@ -4,140 +4,158 @@
       <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
     </div>
     <div class="d-flex flex-column">
-      <div class="feedback_header py-5 px-4">Вакансии</div>
-      <div class="d-flex flex-column flex-lg-row">
+      <h2 class="font-weight-bold pt-10 pb-6 pl-7">Вакансии</h2>
+      <div class="d-flex flex-column flex-lg-row py-10">
         <div class="w-100 px-4">
-          <div class="shadow px-4 py-5">
-            <div class="d-flex flex-column">
-              <div class="vacancy_header1">Бухгалтер</div>
-              <div class="vacancy_header2 py-3">от 75 000 руб.</div>
-            </div>
-            <div>
-              <div class="vacancy_text1 py-3">
-                <p>Требуемый опыт работы: 3-6 лет</p>
-                <p>Полная занятость, полный день</p>
+          <div class="shadow px-4 py-10">
+            <div class="d-flex flex-column flex-lg-row justify-content-lg-between">
+              <div>
+                <div class="vacancy_header1"><h4>Бухгалтер</h4></div>
+                <div class="vacancy_header2 py-3"><h5 class="font-weight-normal">от 75 000 руб.</h5></div>
+              </div>
+              <div>
+                <div class="vacancy_text1 py-3">
+                  <h5 class="font-weight-normal">Требуемый опыт работы: 3-6 лет</h5>
+                  <h5 class="font-weight-normal">Полная занятость, полный день</h5>
+                </div>
               </div>
             </div>
             <div>
-              <div class="vacancy_header2 py-3">Обязанности:</div>
+              <div class="vacancy_header2 py-3"><h4>Обязанности:</h4></div>
               <div class="vacancy_text2">
-                <p>-поиск и привлечение клиентов (металлообработка), ведение переговоров, консультирование клиентов</p>
-                <p>-полное ведение проектов по металлообработке, их расчет и экономическое обоснование</p>
-                <p>
+                <h5 class="font-weight-light">
+                  -поиск и привлечение клиентов (металлообработка), ведение переговоров, консультирование клиентов
+                </h5>
+                <h5 class="font-weight-light">
+                  -полное ведение проектов по металлообработке, их расчет и экономическое обоснование
+                </h5>
+                <h5 class="font-weight-light">
                   -прием заказов на изготовление деталей по чертежам заказчика, плотное взаимодействие с производством
-                </p>
-                <p>
+                </h5>
+                <h5 class="font-weight-light">
                   -составление коммерческих предложений, выставление счетов, контроль сроков производства и отгрузки
                   товара
-                </p>
+                </h5>
               </div>
             </div>
             <div>
-              <div class="vacancy_header2 py-3">Требования:</div>
+              <div class="vacancy_header2 py-3"><h4>Требования:</h4></div>
               <div class="vacancy_text2">
-                <p>-высшее техническое образование</p>
-                <p>-опыт работы в области обработки металлов (продаж)</p>
-                <p>-знание программ SolidWorks, AutoCAD, Компас3D</p>
-                <p>-знание 1C (желательно)</p>
-                <p>-навыки чтения машиностроительных чертежей, финансового анализа</p>
+                <h5 class="font-weight-light">-высшее техническое образование</h5>
+                <h5 class="font-weight-light">-опыт работы в области обработки металлов (продаж)</h5>
+                <h5 class="font-weight-light">-знание программ SolidWorks, AutoCAD, Компас3D</h5>
+                <h5 class="font-weight-light">-знание 1C (желательно)</h5>
+                <h5 class="font-weight-light">-навыки чтения машиностроительных чертежей, финансового анализа</h5>
               </div>
             </div>
             <div class="pb-3">
-              <div class="vacancy_header2 py-3">Условия:</div>
+              <div class="vacancy_header2 py-3"><h4>Условия:</h4></div>
               <div class="vacancy_text2">
-                <p>-полное соблюдение трудового законодательства</p>
-                <p>-дополнительные льготы согласно колдоговора</p>
-                <p>-график работы 5/2, 8.00 час. - 17.00 час</p>
-                <p>-бонусы от продаж</p>
+                <h5 class="font-weight-light">-полное соблюдение трудового законодательства</h5>
+                <h5 class="font-weight-light">-дополнительные льготы согласно колдоговора</h5>
+                <h5 class="font-weight-light">-график работы 5/2, 8.00 час. - 17.00 час</h5>
+                <h5 class="font-weight-light">-бонусы от продаж</h5>
               </div>
             </div>
           </div>
         </div>
         <div class="w-100 px-4">
-          <div class="shadow px-4 py-5">
-            <div class="d-flex flex-column">
-              <div class="vacancy_header1">Менеджер</div>
-              <div class="vacancy_header2 py-3">от 75 000 руб.</div>
-            </div>
-            <div>
-              <div class="vacancy_text1 py-3">
-                <p>Требуемый опыт работы: 3-6 лет</p>
-                <p>Полная занятость, полный день</p>
+          <div class="shadow px-4 py-10">
+            <div class="d-flex flex-column flex-lg-row justify-content-lg-between">
+              <div>
+                <div class="vacancy_header1"><h4>Менеджер</h4></div>
+                <div class="vacancy_header2 py-3"><h5 class="font-weight-normal">от 75 000 руб.</h5></div>
+              </div>
+              <div>
+                <div class="vacancy_text1 py-3">
+                  <h5 class="font-weight-normal">Требуемый опыт работы: 3-6 лет</h5>
+                  <h5 class="font-weight-normal">Полная занятость, полный день</h5>
+                </div>
               </div>
             </div>
             <div>
-              <div class="vacancy_header2 py-3">Обязанности:</div>
+              <div class="vacancy_header2 py-3"><h4>Обязанности:</h4></div>
               <div class="vacancy_text2">
-                <p>-поиск и привлечение клиентов (металлообработка), ведение переговоров, консультирование клиентов</p>
-                <p>-полное ведение проектов по металлообработке, их расчет и экономическое обоснование</p>
-                <p>
+                <h5 class="font-weight-light">
+                  -поиск и привлечение клиентов (металлообработка), ведение переговоров, консультирование клиентов
+                </h5>
+                <h5 class="font-weight-light">
+                  -полное ведение проектов по металлообработке, их расчет и экономическое обоснование
+                </h5>
+                <h5 class="font-weight-light">
                   -прием заказов на изготовление деталей по чертежам заказчика, плотное взаимодействие с производством
-                </p>
-                <p>
+                </h5>
+                <h5 class="font-weight-light">
                   -составление коммерческих предложений, выставление счетов, контроль сроков производства и отгрузки
                   товара
-                </p>
+                </h5>
               </div>
             </div>
             <div>
-              <div class="vacancy_header2 py-3">Требования:</div>
+              <div class="vacancy_header2 py-3"><h4>Требования:</h4></div>
               <div class="vacancy_text2">
-                <p>-высшее техническое образование</p>
-                <p>-опыт работы в области обработки металлов (продаж)</p>
-                <p>-знание программ SolidWorks, AutoCAD, Компас3D</p>
-                <p>-знание 1C (желательно)</p>
-                <p>-навыки чтения машиностроительных чертежей, финансового анализа</p>
+                <h5 class="font-weight-light">-высшее техническое образование</h5>
+                <h5 class="font-weight-light">-опыт работы в области обработки металлов (продаж)</h5>
+                <h5 class="font-weight-light">-знание программ SolidWorks, AutoCAD, Компас3D</h5>
+                <h5 class="font-weight-light">-знание 1C (желательно)</h5>
+                <h5 class="font-weight-light">-навыки чтения машиностроительных чертежей, финансового анализа</h5>
               </div>
             </div>
             <div class="pb-3">
-              <div class="vacancy_header2 py-3">Условия:</div>
+              <div class="vacancy_header2 py-3"><h4>Условия:</h4></div>
               <div class="vacancy_text2">
-                <p>-полное соблюдение трудового законодательства</p>
-                <p>-дополнительные льготы согласно колдоговора</p>
-                <p>-график работы 5/2, 8.00 час. - 17.00 час</p>
-                <p>-бонусы от продаж</p>
+                <h5 class="font-weight-light">-полное соблюдение трудового законодательства</h5>
+                <h5 class="font-weight-light">-дополнительные льготы согласно колдоговора</h5>
+                <h5 class="font-weight-light">-график работы 5/2, 8.00 час. - 17.00 час</h5>
+                <h5 class="font-weight-light">-бонусы от продаж</h5>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="px-4 py-5">
+      <div class="px-4 py-10">
         <div class="shadow d-flex flex-column flex-lg-row">
-          <div class="w-100 d-flex flex-column px-4 py-3">
-            <div class="vacancy_form_header1">Заполните данные для рассмотрения вашей кандидатуры</div>
-            <div class="d-flex flex-column flex-lg-row py-5">
-              <div class="d-flex flex-column pr-5">
-                <p class="feedback_form_text">Ваше имя</p>
+          <div class="w-100 d-flex flex-column px-7 pt-7">
+            <div class="vacancy_form_header1" style="max-width: 580px">
+              <h4>Заполните данные для рассмотрения вашей кандидатуры</h4>
+            </div>
+            <div class="d-flex flex-column flex-lg-row py-9">
+              <div class="d-flex flex-column pr-10">
+                <h5 class="feedback_form_text">Ваше имя</h5>
                 <b-form-input size="sm"></b-form-input>
               </div>
-              <div class="d-flex flex-column pr-5">
-                <p class="feedback_form_text text-truncate">Номер телефона</p>
+              <div class="d-flex flex-column pr-10">
+                <h5 class="feedback_form_text text-truncate">Номер телефона</h5>
                 <b-form-input size="sm"></b-form-input>
               </div>
               <div class="d-flex flex-column">
-                <p class="feedback_form_text">Прикрепите резюме</p>
+                <h5 class="feedback_form_text">Прикрепите резюме</h5>
                 <b-file plain></b-file>
               </div>
             </div>
-            <div>
-              <a class="black_button d-inline-block px-4 py-3">Отправить</a>
+            <div class="pt-6">
+              <b-btn class="d-inline-block px-8 py-4" variant="dark">Отправить</b-btn>
             </div>
           </div>
-          <div class="w-100 bg-dark d-flex flex-column text-white px-4 py-3">
-            <div class="vacancy_form_header1">Возникли вопросы по вакансии?</div>
-            <div class="vacancy_form_header2">Закажите обратный звонок!</div>
+          <div class="w-100 bg-dark d-flex flex-column text-white p-7">
+            <div class="vacancy_form_header1"><h3>Возникли вопросы по вакансии?</h3></div>
+            <div class="vacancy_form_header2"><h4>Закажите обратный звонок!</h4></div>
             <div class="d-flex flex-row pt-5 pb-5">
-              <div class="d-flex flex-column pr-6">
-                <div class="vacancy_right_heading">Почта:</div>
-                <div class="vacancy_right_text pt-3">info@m-lc.ru</div>
+              <div class="d-flex flex-column pr-10 py-4">
+                <div class="vacancy_right_heading"><h5>Почта:</h5></div>
+                <div class="vacancy_right_text pt-3">
+                  <h5 class="font-weight-light">info@m-lc.ru</h5>
+                </div>
               </div>
-              <div class="d-flex flex-column">
-                <div class="vacancy_right_heading">Телефон:</div>
-                <div class="vacancy_right_text pt-3">+7 (906) 812-81-75</div>
+              <div class="d-flex flex-column pl-10 py-4">
+                <div class="vacancy_right_heading"><h5>Телефон:</h5></div>
+                <div class="vacancy_right_text pt-3">
+                  <h5 class="font-weight-light">+7 (906) 812-81-75</h5>
+                </div>
               </div>
             </div>
             <div class="pt-3">
-              <a class="white_button d-inline-block px-5 py-3">Заказать звонок</a>
+              <b-btn class="d-inline-block px-8 py-4" variant="light" to="/zvonok">Заказать звонок</b-btn>
             </div>
           </div>
         </div>

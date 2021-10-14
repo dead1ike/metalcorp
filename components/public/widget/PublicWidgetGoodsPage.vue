@@ -2,38 +2,38 @@
   <div class="h-100 w-100 flex-column overflow-auto d-flex">
     <div class="d-flex flex-column py-5 px-4">
       <div class="good_card_title pb-5">
-        <p>{{ getGoodByUuid.title }}</p>
+        <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ getGoodByUuid.title }}</h2>
       </div>
       <div class="d-flex flex-column flex-lg-row justify-content-between">
         <div class="d-flex flex-column align-items-start good_card_image">
           <b-img :src="getGoodByUuid.image" style="max-width: 350px" />
         </div>
-        <div class="d-flex flex-column w-100 h-100 pr-5">
+        <div class="d-flex flex-column w-100 h-100 p-5">
           <div class="d-flex flex-column" style="max-width: 570px">
-            <p class="good_card_description_header">Описание:</p>
-            <p>{{ getGoodByUuid.description }}</p>
-          </div>
-          <div class="d-flex flex-row pt-5">
-            <strong class="mr-4">Стоимость: </strong>
-            <span> 9999 руб.</span>
-          </div>
-          <div class="pt-4">
-            <a class="black_button d-block py-2 px-4">Добавить в корзину</a>
+            <h4 class="good_card_description_header">Описание:</h4>
+            <h5 class="font-weight-light">{{ getGoodByUuid.description }}</h5>
           </div>
         </div>
-        <div class="d-flex flex-column w-100">
-          <p class="good_card_params_header">Параметры:</p>
+        <div class="d-flex flex-column w-100 shadow p-5">
+          <h4 class="good_card_params_header">Параметры:</h4>
           <div
             v-for="itemParams in getGoodByUuid.good_parameters"
             :key="itemParams.uuid"
             class="d-flex flex-row justify-content-between"
           >
-            <span class="py-2">{{ itemParams.title }}</span>
-            <span class="py-2">{{ itemParams.parameter_value }}</span>
+            <h5 class="py-2">{{ itemParams.title }}</h5>
+            <h5 class="font-weight-light py-2">{{ itemParams.parameter_value }}</h5>
           </div>
           <div class="d-flex flex-row pt-2 align-items-center justify-content-between">
-            <span class="pr-4 good_card_params">Количество:</span>
+            <h5 class="pr-4 good_card_params">Количество:</h5>
             <b-spinbutton v-model="form.good_count" min="1" style="max-width: 200px"></b-spinbutton>
+          </div>
+          <div class="d-flex flex-row pt-5">
+            <h4 class="mr-4">Стоимость:</h4>
+            <h4 class="font-weight-light">9999 руб.</h4>
+          </div>
+          <div class="pt-4">
+            <b-btn class="d-inline-block py-4 px-8" variant="dark">Добавить в корзину</b-btn>
           </div>
         </div>
       </div>

@@ -1,53 +1,36 @@
 <template>
-  <div class="h-100 w-100 overflow-auto">
-    <div class="d-flex flex-row justify-content-around">
-      <div class="mt-4">
-        <h3>Контактная информация:</h3>
-        <hr />
-        <div class="m-2">
-          <h5>Фамилия Имя Отчество</h5>
-          <b-input v-model="form.name" :state="nameState" placeholder="Введите"></b-input>
-        </div>
-        <div class="m-2">
-          <h5>Email</h5>
-          <b-input v-model="form.email" :state="emailState" placeholder="Введите"></b-input>
-        </div>
-        <div class="m-2">
-          <h5>Телефон</h5>
-          <b-input v-model="form.phone" :state="phoneState" placeholder="Введите"></b-input>
-        </div>
-        <hr />
-        <div class="d-flex">
-          <div class="m-2">
-            <b-btn :disabled="!isValidate" variant="corp" @click="confirmOffer()">Оформить заказ</b-btn>
+  <div class="overflow-auto">
+    <div class="h-100 w-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
+      <div
+        class="w-100 h-100 d-flex flex-column align-items-center text-white"
+        style="max-width: 870px; min-height: 100%; background-image: url('https://i.ibb.co/1sxMCx2/offer-bg.png')"
+      >
+        <div class="py-10" style="max-width: 485px">
+          <div class="pt-10 pb-8">
+            <h3 class="text-center">
+              Заполните данные<br />
+              для оформления заказа
+            </h3>
           </div>
-          <div class="m-2">
-            <b-btn variant="outline-corp" @click="goBack">Изменить заказ</b-btn>
+          <div class="d-flex align-items-center flex-column">
+            <div class="p-6" style="max-width: 290px">
+              <h5>Ваше имя</h5>
+              <b-input v-model="form.name" :state="nameState" placeholder="Введите"></b-input>
+            </div>
+            <div class="p-6" style="max-width: 290px">
+              <h5>Ваш телефон</h5>
+              <b-input v-model="form.phone" :state="phoneState" placeholder="Введите"></b-input>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="d-flex flex-column mt-4">
-        <h3>Ваш заказ:</h3>
-        <hr />
-        <div class="w-100">
-          <b-table
-            no-border-collapse
-            head-variant="light"
-            sticky-header="100%"
-            borderless
-            striped
-            hover
-            :fields="getOfferConfirmFields"
-            :items="getOfferConfirmItems"
-          >
-          </b-table>
-        </div>
-        <div class="d-flex justify-content-end">
-          <span class="mr-2">Итого:</span>
-          <span>{{ getSumm }} рублей </span>
+          <div class="d-flex justify-content-center">
+            <div class="p-4">
+              <b-btn :disabled="!isValidate" variant="light" @click="confirmOffer()">Отправить</b-btn>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <public-dashboard-footer />
   </div>
 </template>
 
@@ -58,7 +41,6 @@ export default {
     return {
       form: {
         name: '',
-        email: '',
         phone: '',
       },
     }
@@ -84,8 +66,7 @@ export default {
     },
     isValidate() {
       let isValid = false
-      if (this.emailState !== true) isValid = false
-      else if (this.phoneState !== true) isValid = false
+      if (this.phoneState !== true) isValid = false
       else if (this.nameState !== true) isValid = false
       else isValid = true
       return isValid
@@ -93,9 +74,6 @@ export default {
   },
   mounted() {},
   methods: {
-    goBack() {
-      this.$router.push('/offer')
-    },
     confirmOffer() {
       this.$store
         .dispatch('basket/postOrder', {

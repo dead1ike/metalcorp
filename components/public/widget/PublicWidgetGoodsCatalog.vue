@@ -12,12 +12,12 @@
           <p>{{ itemGoods.description }}</p>
         </div>
         <div class="pl-2">
-          <img :src="itemGoods.image" style="max-width: 200px" alt="" />
+          <img :src="itemGoods.image" style="max-width: 180px" alt="" />
         </div>
       </div>
       <div>
         <div>
-          <a class="black_button d-inline-block py-4 px-5" @click="routeMore(itemGoods)">Подробнее 4</a>
+          <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)">Подробнее 4</b-btn>
         </div>
       </div>
     </div>

@@ -12,6 +12,8 @@ export const actions = {
   postFeedback({ commit }, data) {
     const boundaryForm = new FormData()
     boundaryForm.set('image', data.image)
+    boundaryForm.set('value', data.value)
+    boundaryForm.set('telephone', data.telephone)
     boundaryForm.set('text', data.text)
     boundaryForm.set('username', data.username)
     boundaryForm.set('uuid', data.uuid)

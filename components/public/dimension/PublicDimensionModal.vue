@@ -1,19 +1,37 @@
 <template>
-  <b-modal id="dimension-modal" no-close-on-esc no-close-on-backdrop>
-    <template #modal-header>
-      <h3>Заказать обратный звонок</h3>
-    </template>
-    <div class="px-5">
-      <h5 class="mb-5">Введите свой номер телефона и Вам поступит бесплатный звонок от нашего специалиста</h5>
-      <b-form-input v-model="form.phone" class="p-2" placeholder="+7 (999) 123-14-55"></b-form-input>
-    </div>
-    <template #modal-footer>
-      <div class="d-flex mr-md-2 flex-column justify-content-end flex-sm-row w-100">
-        <b-btn variant="danger" class="m-1" @click="closeModal()">Отменить </b-btn>
-        <b-btn variant="black" class="m-1" @click="confirmOffer()">Отправить</b-btn>
+  <div class="overflow-auto">
+    <div class="h-100 w-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
+      <div
+        class="w-100 h-100 d-flex flex-column align-items-center text-white"
+        style="max-width: 870px; min-height: 100%; background-image: url('https://i.ibb.co/1sxMCx2/offer-bg.png')"
+      >
+        <div class="py-10" style="max-width: 485px">
+          <div class="pt-10 pb-8">
+            <h3 class="text-center">
+              Заполните данные<br />
+              и мы свяжемся с вами
+            </h3>
+          </div>
+          <div class="d-flex align-items-center flex-column">
+            <div class="p-6" style="max-width: 290px">
+              <h5>Ваше имя</h5>
+              <b-input v-model="form.name" :state="nameState" placeholder="Введите"></b-input>
+            </div>
+            <div class="p-6" style="max-width: 290px">
+              <h5>Ваш телефон</h5>
+              <b-input v-model="form.phone" :state="phoneState" placeholder="Введите"></b-input>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="p-4">
+              <b-btn :disabled="!isValidate" variant="light" @click="confirmOffer()">Отправить</b-btn>
+            </div>
+          </div>
+        </div>
       </div>
-    </template>
-  </b-modal>
+    </div>
+    <public-dashboard-footer />
+  </div>
 </template>
 
 <script>
@@ -22,28 +40,36 @@ export default {
   data() {
     return {
       form: {
+        name: '',
         phone: '',
       },
     }
   },
-  mounted() {
-    this.$bvModal.show('dimension-modal')
-  },
-  methods: {
-    closeModal() {
-      this.$store.commit('setActiveModal', {
-        modalName: 'dimensionModal',
-        modalStatus: false,
-      })
+  computed: {
+    phoneState() {
+      return this.$store.getters.validPhone(String(this.form.phone))
     },
+    nameState() {
+      return this.$store.getters.validName(String(this.form.name))
+    },
+    isValidate() {
+      let isValid = false
+      if (this.phoneState !== true) isValid = false
+      else if (this.nameState !== true) isValid = false
+      else isValid = true
+      return isValid
+    },
+  },
+
+  methods: {
     confirmOffer() {
       this.$store
         .dispatch('basket/postOrder', {
           ...this.form,
         })
         .then(() => {
-          this.closeModal()
           this.form.phone = ''
+          this.form.name = ''
         })
     },
   },

@@ -1,8 +1,10 @@
 <template>
   <div class="d-block">
-    <span class="catalog_header">Каталог</span>
+    <h5 class="catalog_header m-0 designer_dolbaeb pb-4">Каталог</h5>
     <div v-for="item in getCategories" :key="item.uuid">
-      <p v-if="item.uuid !== null" class="catalog" @click="toCategory(item)">{{ item.title }}</p>
+      <h5 v-if="item.uuid !== null" class="catalog m-0 designer_dolbaeb py-3" @click="toCategory(item)">
+        {{ item.title }}
+      </h5>
     </div>
   </div>
 </template>

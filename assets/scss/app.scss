@@ -126,8 +126,8 @@ table#manager-table .flip-list-move {
 
 .vl {
   border-left: solid #00000050 2px;
-  max-height: 640px;
-  margin-top: 50px
+  max-height: 440px;
+  //margin-top: 40px
 }
 
 .block3_banner {
@@ -196,10 +196,10 @@ table#manager-table .flip-list-move {
   //font-weight: 300;
   //font-size: 20px;
   //line-height: 31px;
-  margin-left: 25px;
+  //margin-left: 25px;
   padding-top: 20px;
   letter-spacing: 0.2px;
-  max-width: 718px;
+  max-width: 830px;
 }
 
 .block4_right_text {
@@ -208,8 +208,9 @@ table#manager-table .flip-list-move {
   //font-size: 24px;
   //line-height: 29px;
   margin-left: 25px;
-  padding-top: 20px;
+  //padding-top: 20px;
   color: #2d2d2d;
+  max-width: 612px
 }
 
 .block5 {
@@ -374,14 +375,14 @@ table#manager-table .flip-list-move {
   //font-size: 20px;
   //line-height: 24px;
   display: block;
-  padding: 10px 20px;
+  //padding: 10px 20px;
   color: #fff;
   text-decoration: none;
 }
 
 .catalog {
   display: block;
-  padding: 5px 20px;
+  //padding: 2px 20px;
   color: #aaa;
   text-decoration: none;
   //line-height: 22px;
@@ -390,6 +391,21 @@ table#manager-table .flip-list-move {
 }
 
 .catalog:hover {
+  color: #2BA3AA;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.footer_list {
+  display: block;
+  //padding: 5px 20px;
+  color: #fff;
+  text-decoration: none;
+  //line-height: 22px;
+  //font-size: 18px;
+  //font-weight: 300;
+}
+
+.footer_list:hover {
   color: #2BA3AA;
   cursor: pointer;
   transition: 0.4s;
@@ -918,7 +934,7 @@ table#manager-table .flip-list-move {
   //font-size: 32px;
   //line-height: 39px;
   //font-weight: 500;
-  padding-left: 80px;
+  //padding-left: 80px;
 }
 
 .feedback_form_text {
@@ -1115,6 +1131,12 @@ table#manager-table .flip-list-move {
 
 .form_measurer {
   max-width: 278px;
+}
+
+.block_racks{
+  h2 {
+    max-width: 735px;
+  }
 }
 
 

@@ -21,7 +21,7 @@
           </div>
         </div>
         <div>
-          <b-btn :to="`/category/${itemCategory.uuid}`" variant="dark">Подробнее 3</b-btn>
+          <b-btn @click="toCategory(itemCategory)" variant="dark">Подробнее 3</b-btn>
         </div>
       </div>
     </div>
@@ -49,6 +49,7 @@ export default {
       this.$router.push(`/category/${itemChild.uuid}`)
     },
     toCategory(item) {
+      this.$store.commit('category/setCategoryTitle', item.title)
       this.$router.push(`/category/${item.uuid}`)
     },
   },
