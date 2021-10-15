@@ -8,7 +8,7 @@
       <div class="d-flex flex-column px-2 py-2">
         <span class="h3">Категория товаров</span>
         <b-dd variant="corp" :text="selectedCategory.title ? selectedCategory.title : 'Выберите основную категорию'">
-          <div class="overflow-auto" style="max-height: 500px">
+          <div style="max-height: 600px">
             <b-dd-item>
               <b-btn variant="corp" @click="managerCategoryAddModal()"> Добавить категорию </b-btn>
             </b-dd-item>
