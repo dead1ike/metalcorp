@@ -22,15 +22,13 @@
           <template v-if="itemCategory.childs.length > 0">
             <div>
               <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toCategoryPage(itemCategory)"
-                >Подробнее 1</b-btn
+                >Подробнее</b-btn
               >
             </div>
           </template>
           <template v-else>
             <div>
-              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toListPage(itemCategory)"
-                >Подробнее 2</b-btn
-              >
+              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toListPage(itemCategory)">Подробнее</b-btn>
             </div>
           </template>
         </div>

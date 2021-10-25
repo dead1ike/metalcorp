@@ -43,13 +43,7 @@ export default {
   },
   methods: {
     openModal() {
-      this.$store.commit('category/setCurrentCategory', {
-        category_title: this.form.title,
-      })
-      this.$store.commit('setActiveModal', {
-        modalName: 'categoryModal',
-        modalStatus: true,
-      })
+      this.$router.push('/zvonok')
     },
   },
 }

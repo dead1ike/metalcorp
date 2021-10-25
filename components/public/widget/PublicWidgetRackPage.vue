@@ -1,105 +1,4 @@
 <template>
-  <!--  <div class="d-flex flex-row justify-content-around">-->
-  <!--    <div class="p-5">-->
-  <!--      <div class="my-3">-->
-  <!--  <h3 class="text-center">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h3>-->
-  <!--      </div>-->
-  <!--      <div>-->
-  <!--          <b-img :src="getTypeByUuid.image"></b-img>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="p-5 h-100 d-flex flex-column">-->
-  <!--      <div class="my-3">-->
-  <!--        <h3 class="text-center">Описание:</h3>-->
-  <!--          <h5>{{ getTypeByUuid.description }}</h5>-->
-  <!--      </div>-->
-  <!--      <div class="my-3">-->
-  <!--          <h4>Допустимые нагрузки на данный стеллаж:</h4>-->
-  <!--  <h5>{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>-->
-  <!--  <h5>{{ 'Максимальная нагрузка на секцию:' + ' ' + getTypeByUuid.section_load }}</h5>-->
-  <!--  <h5>{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--    <div class="p-5 mt-4">-->
-  <!--      <h4 class="text-center text-truncate">Задайте параметры стеллажа</h4>-->
-
-  <!--        <div v-for="(itemParameters, indexGroup) in getRackParamsGroup" :key="itemParameters.parameter_uuid">-->
-  <!--          <div class="d-flex flex-row">-->
-  <!--            <div class="d-flex flex-fill m-3 mr-3 p-2 text-right">-->
-  <!--              <label class="h5"> {{ getLabel(itemParameters) }}:</label>-->
-  <!--            </div>-->
-  <!--            <div class="p-2">-->
-  <!--              <b-dd-->
-  <!--                block-->
-  <!--                style="min-width: 224px"-->
-  <!--                variant="corp"-->
-  <!--                no-caret-->
-  <!--                :text="-->
-  <!--                  getGroupParamTitle(indexGroup).parameter_value-->
-  <!--                    ? getGroupParamTitle(indexGroup).parameter_value-->
-  <!--                    : 'Выберите'-->
-  <!--                "-->
-  <!--              >-->
-  <!--                <div v-for="itemParameter in itemParameters" :key="itemParameter.uuid">-->
-  <!--                  <b-dd-item @click="selectParameter(indexGroup, itemParameter)">-->
-  <!--                    {{ itemParameter.parameter_value }}-->
-  <!--                  </b-dd-item>-->
-  <!--                </div>-->
-  <!--              </b-dd>-->
-  <!--            </div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--  <div v-if="this.$route.params.slug !== 'mzprofil'" class="d-flex align-items-end flex-column m-2">-->
-  <!--    <label> Количество полок:</label>-->
-  <!--    <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>-->
-  <!--  </div>-->
-  <!--  <div class="d-flex align-items-end flex-column m-2">-->
-  <!--    <label v-if="this.$route.params.slug === 'sgr'"> Количество рам:</label>-->
-  <!--    <label v-else-if="this.$route.params.slug === 'sfm'"> Количество рам:</label>-->
-  <!--    <label v-else-if="this.$route.params.slug === 'sk'"> Количество рам:</label>-->
-  <!--    <label v-else-if="this.$route.params.slug === 'mspro'"> Количество рам:</label>-->
-  <!--    <label v-else>Количество стеллажей:</label>-->
-  <!--    <b-spinbutton id="popover" v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>-->
-  <!--    <b-popover triggers="hover" placement="top" target="popover"-->
-  <!--      >На 1 стеллаж идёт 2 рамы, <br />-->
-  <!--      на 2 стеллажа 3 рамы и т.д.</b-popover-->
-  <!--    >-->
-  <!--    <div class="mt-3">В наличии : <b style="color: green">Много</b></div>-->
-  <!--  </div>-->
-
-  <!--  <div class="w-100 mt-5 d-flex flex-column">-->
-  <!--    <div class="d-flex flex-row justify-content-end m-2">-->
-  <!--      <div class="text-right mr-5">-->
-  <!--        <h5><b>Цена за стеллаж :</b></h5>-->
-  <!--      </div>-->
-  <!--      <div class="text-left">-->
-  <!--        <h5>{{ getRackPrice }} руб.</h5>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div-->
-  <!--      v-if="-->
-  <!--              this.$route.params.slug === 'sgr' ||-->
-  <!--                this.$route.params.slug === 'sfm' ||-->
-  <!--                this.$route.params.slug === 'sk' ||-->
-  <!--                this.$route.params.slug === 'mspro'-->
-  <!--            "-->
-  <!--      class="d-flex flex-row justify-content-end m-2"-->
-  <!--    ></div>-->
-  <!--    <div v-else class="d-flex flex-row justify-content-end m-2">-->
-  <!--      <div class="text-right mr-5">-->
-  <!--        <h5><b>Итоговая сумма :</b></h5>-->
-  <!--      </div>-->
-  <!--      <div class="text-right">-->
-  <!--        <h5>{{ getFinalResult }} руб.</h5>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="d-flex justify-content-end m-2">-->
-  <!--      <b-btn :disabled="!buttonState" variant="corp" @click="addProduct">Добавить в заказ</b-btn>-->
-  <!--    </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <div class="d-flex flex-column">
     <div class="px-4 pt-5">
       <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h2>
@@ -372,7 +271,7 @@ export default {
         appendToast: false,
         solid: true,
         variant,
-        toaster: 'b-toaster-top-right',
+        toaster: 'b-toaster-bottom-right',
       })
     },
   },

@@ -1,5 +1,22 @@
 export const state = () => ({
   fields: {
+    managerVacancy: [
+      {
+        key: 'name',
+        label: 'Имя',
+        class: 'align-middle text-left',
+      },
+      {
+        key: 'phone',
+        label: 'Телефон',
+        class: 'align-middle text-left',
+      },
+      {
+        key: 'actions',
+        label: '',
+        class: 'align-middle text-left',
+      },
+    ],
     managerGoods: [
       {
         key: 'title',
@@ -374,6 +391,9 @@ export const getters = {
   getOfferManageFields(state) {
     return state.fields.offerManage
   },
+  getManagerVacancyFiels(state) {
+    return state.fields.managerVacancy
+  },
 
   getGoodFields(state) {
     return state.fields.managerGoods
@@ -381,13 +401,13 @@ export const getters = {
   getOfferConfirmFields(state) {
     return state.fields.offerConfirm
   },
-  getNewUuid: state => payload => {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+  getNewUuid: (state) => (payload) => {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
       (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16),
     )
   },
-  getUserFields: state => state.fields.user,
-  validEmail: () => payload => {
+  getUserFields: (state) => state.fields.user,
+  validEmail: () => (payload) => {
     if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(payload)) {
       return false
     } else if (payload.length < 6) {
@@ -395,13 +415,13 @@ export const getters = {
     }
     return true
   },
-  validPhone: () => payload => {
+  validPhone: () => (payload) => {
     if (!payload.match(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/)) {
       return false
     }
     return true
   },
-  validName: () => payload => {
+  validName: () => (payload) => {
     if (payload.length === 0) {
       return false
     }

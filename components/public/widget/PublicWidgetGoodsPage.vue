@@ -26,14 +26,14 @@
           </div>
           <div class="d-flex flex-row pt-2 align-items-center justify-content-between">
             <h5 class="pr-4 good_card_params">Количество:</h5>
-            <b-spinbutton v-model="form.good_count" min="1" style="max-width: 200px"></b-spinbutton>
+            <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
           </div>
           <div class="d-flex flex-row pt-5">
             <h4 class="mr-4">Стоимость:</h4>
-            <h4 class="font-weight-light">9999 руб.</h4>
+            <h4 class="font-weight-light">{{ getGoodByUuid.goods_price }} руб.</h4>
           </div>
           <div class="pt-4">
-            <b-btn class="d-inline-block py-4 px-8" variant="dark">Добавить в корзину</b-btn>
+            <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="addProduct">Добавить в корзину</b-btn>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       form: {
-        good_count: 1,
+        rack_count: 1,
       },
     }
   },
@@ -59,8 +59,35 @@ export default {
   },
   mounted() {
     this.$store.dispatch('good/fetchGood', this.$route.params.uuid).then(() => {
+      console.warn(this.getGoodByUuid)
       return this.getGoodByUuid
     })
+  },
+  methods: {
+    getUuid() {
+      return this.$store.getters.getNewUuid(new Date())
+    },
+    addProduct() {
+      this.$store.commit('type/setAddBasketProduct', {
+        ...this.form,
+        parameters: this.getGoodByUuid.good_parameters,
+        title: this.getGoodByUuid.title,
+        price: this.getGoodByUuid.goods_price,
+        image: this.getGoodByUuid.image,
+        uuid: this.getUuid(),
+      })
+      this.makeToast('Товар добавлен в корзину', 'success')
+    },
+    makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
+      this.$bvToast.toast(body, {
+        title,
+        autoHideDelay: 2000,
+        appendToast: false,
+        solid: true,
+        variant,
+        toaster: 'b-toaster-bottom-right',
+      })
+    },
   },
 }
 </script>

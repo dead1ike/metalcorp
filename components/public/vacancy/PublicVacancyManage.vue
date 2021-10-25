@@ -122,19 +122,19 @@
             <div class="d-flex flex-column flex-lg-row py-9">
               <div class="d-flex flex-column pr-10">
                 <h5 class="feedback_form_text">Ваше имя</h5>
-                <b-form-input size="sm"></b-form-input>
+                <b-form-input size="sm" v-model="form.name"></b-form-input>
               </div>
               <div class="d-flex flex-column pr-10">
                 <h5 class="feedback_form_text text-truncate">Номер телефона</h5>
-                <b-form-input size="sm"></b-form-input>
+                <b-form-input size="sm" v-model="form.phone"></b-form-input>
               </div>
               <div class="d-flex flex-column">
-                <h5 class="feedback_form_text">Прикрепите резюме</h5>
-                <b-file plain></b-file>
+                <h5 class="feedback_form_text">Прикрепите резюме (pdf)</h5>
+                <b-file plain v-model="form.pdf_file"></b-file>
               </div>
             </div>
             <div class="pt-6">
-              <b-btn class="d-inline-block px-8 py-4" variant="dark">Отправить</b-btn>
+              <b-btn class="d-inline-block px-8 py-4" variant="dark" @click="send">Отправить</b-btn>
             </div>
           </div>
           <div class="w-100 bg-dark d-flex flex-column text-white p-7">
@@ -168,9 +168,40 @@
 <script>
 export default {
   name: 'PublicVacancyManage',
+  data() {
+    return {
+      form: {
+        name: '',
+        phone: '',
+        pdf_file: null,
+      },
+    }
+  },
   computed: {
     getItems() {
       return this.$store.getters['seo/getVakansiiItems']
+    },
+    buttonState() {
+      let isValid = false
+      if (this.form.name !== '') isValid = true
+      else if (this.form.phone !== '') isValid = true
+      else if (this.form.pdf_file !== null) isValid = true
+      else isValid = false
+    },
+  },
+  methods: {
+    send() {
+      this.$store
+        .dispatch('vacancy/postVacancy', {
+          name: this.form.name,
+          phone: this.form.phone,
+          pdf_file: this.form.pdf_file,
+        })
+        .then(() => {
+          this.form.name = ''
+          this.form.phone = ''
+          this.form.pdf_file = null
+        })
     },
   },
 }

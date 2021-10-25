@@ -82,11 +82,23 @@ export default {
           total: this.getSumm,
         })
         .then(() => {
+          // this.makeToast('Ваш заказ успешно добавлен')
           this.$store.commit('type/setDelBasketProducts')
           this.form.name = ''
           this.form.phone = ''
-          this.form.email = ''
+          this.$router.push('/')
+          alert('Ваш заказ успешно оформлен')
         })
+    },
+    makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
+      this.$bvToast.toast(body, {
+        title,
+        autoHideDelay: 2000,
+        appendToast: false,
+        solid: true,
+        variant,
+        toaster: 'b-toaster-bottom-right',
+      })
     },
   },
 }

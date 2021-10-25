@@ -1,10 +1,10 @@
 <template>
   <div class="overflow-auto">
     <div class="h-100">
-      <div class="feedback_header px-4 py-5">Корзина</div>
+      <h2 class="font-weight-bold pt-10 pb-6 px-3">Корзина</h2>
       <div v-if="getOfferManageItems.length > 0">
         <div v-for="offerItem in getOfferManageItems" :key="offerItem.uuid" class="px-4 py-5">
-          <div class="shadow d-flex flex-row align-items-center justify-content-around py-4">
+          <div class="shadow d-flex flex-column flex-lg-row align-items-center justify-content-around py-4">
             <div><b-img :src="offerItem.image" style="max-width: 100px" /></div>
             <div class="offer_title">
               {{ offerItem.title }}
@@ -19,7 +19,7 @@
               {{ offerItem.title === 'MZ-Profil' ? '--' : 'Количество полок ' + offerItem.shelf_count }}
             </div>
             <div class="d-flex flex-column">
-              <div class="offer_text pb-1">Количество стеллажей</div>
+              <div class="offer_text pb-1 text-center">Количество</div>
               <b-spinbutton :value="offerItem.rack_count" inline min="1">
                 <template #decrement>
                   <b-btn size="sm" variant="link" @click="countDecrement(offerItem.uuid)">-</b-btn>

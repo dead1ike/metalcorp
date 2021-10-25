@@ -11,9 +11,9 @@
         <div class="d-flex py-4 flex-row h-100">
           <div class="d-none d-lg-flex flex-column" style="width: 50%">
             <template v-for="itemChild in itemCategory.childs.slice(0, 6)">
-              <nuxt-link :key="itemChild.uuid" :to="`/category/${itemChild.uuid}`" class="d-block designer_dolbaeb">
+              <span :key="itemChild.uuid" class="d-block designer_dolbaeb">
                 {{ itemChild.title }}
-              </nuxt-link>
+              </span>
             </template>
           </div>
           <div class="pl-2" style="width: 50%">
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div>
-          <b-btn @click="toCategory(itemCategory)" variant="dark">Подробнее 3</b-btn>
+          <b-btn @click="toCategory(itemCategory)" variant="dark">Подробнее</b-btn>
         </div>
       </div>
     </div>
