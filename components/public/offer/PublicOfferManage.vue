@@ -11,7 +11,7 @@
             </div>
             <div class="d-flex flex-column">
               <div v-for="itemParam in offerItem.parameters.slice(0, 4)" :key="itemParam.uuid" class="offer_text">
-                <span class="pr-2">{{ itemParam.parameter_title }}</span>
+                <span class="pr-2">{{ itemParam.parameter_title ? itemParam.parameter_title : itemParam.title }}</span>
                 <span>{{ itemParam.parameter_value }}</span>
               </div>
             </div>

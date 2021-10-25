@@ -21,12 +21,12 @@
             :key="itemParams.uuid"
             class="d-flex flex-row justify-content-between"
           >
-            <h5 class="py-2">{{ itemParams.title }}</h5>
+            <h5 class="py-2">{{ itemParams.title ? itemParams.title : '' }}</h5>
             <h5 class="font-weight-light py-2">{{ itemParams.parameter_value }}</h5>
           </div>
           <div class="d-flex flex-row pt-2 align-items-center justify-content-between">
             <h5 class="pr-4 good_card_params">Количество:</h5>
-            <b-spinbutton v-model="form.count" min="1" style="max-width: 200px"></b-spinbutton>
+            <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
           </div>
           <div class="d-flex flex-row pt-5">
             <h4 class="mr-4">Стоимость:</h4>
@@ -48,16 +48,15 @@ export default {
   data() {
     return {
       form: {
-        count: 1,
+        rack_count: 1,
       },
     }
   },
   computed: {
     total() {
       let x = parseInt(this.getGoodByUuid.price)
-      let y = this.form.count
-      const result = x * y
-      return String(result)
+      let y = this.form.rack_count
+      return x * y
     },
     getGoodByUuid() {
       return this.$store.getters['good/getGood'] || {}
@@ -79,6 +78,7 @@ export default {
         title: this.getGoodByUuid.title,
         price: this.getGoodByUuid.price,
         image: this.getGoodByUuid.image,
+        total: this.total,
         uuid: this.getUuid(),
       })
       this.makeToast('Товар добавлен в корзину', 'success')

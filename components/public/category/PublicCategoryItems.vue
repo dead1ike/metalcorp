@@ -34,6 +34,23 @@
         </div>
       </div>
     </div>
+    <div class="overflow-hidden text-center d-flex flex-row bg-light">
+      <div class="flex-fill d-flex justify-content-center">
+        <b-pagination
+          pills
+          v-model="pagination.currentPage"
+          :total-rows="getCategoryPagination.total"
+          :per-page="pagination.perPage"
+          class="p-2 m-1"
+        ></b-pagination>
+      </div>
+      <div class="mt-3 mr-3 d-flex flex-row">
+        <strong class="mx-1">Кол-во</strong>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(5)">5</span>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(10)">10</span>
+        <span class="mx-1" style="cursor: pointer" @click="changeLimit(50)">50</span>
+      </div>
+    </div>
   </div>
 </template>
 

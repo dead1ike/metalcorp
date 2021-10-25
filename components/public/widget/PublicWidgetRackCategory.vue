@@ -33,13 +33,11 @@ export default {
   },
   computed: {
     getCategoryByUuid() {
-      return this.$store.getters['category/getCategoryByUuid'](this.$route.params.uuid)
+      return this.$store.getters['category/getCategoryByUuid'](this.$route.params.uuid) || {}
     },
   },
   mounted() {
-    this.$store.dispatch('category/fetchCategory').then(() => {
-      this.form.title = this.getCategoryByUuid.title
-    })
+    this.$store.dispatch('category/fetchCategory').then(() => {})
   },
   methods: {
     openModal() {

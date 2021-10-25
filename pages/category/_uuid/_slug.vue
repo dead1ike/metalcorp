@@ -29,13 +29,13 @@ export default {
       return this.$store.getters['good/getFilters']
     },
     getTypeByCategoryUuid() {
-      return this.$store.getters['type/getTypesByCategoryUuid'](this.$route.params.uuid)
+      return this.$store.getters['type/getTypesByCategoryUuid'](this.$route.params.uuid) || {}
     },
     getCategoryByUuid() {
-      return this.$store.getters['category/getCategoryByUuid'](this.$route.params.uuid)
+      return this.$store.getters['category/getCategoryByUuid'](this.$route.params.uuid) || {}
     },
     getGoodItems() {
-      return this.$store.getters['good/getGoodItems']
+      return this.$store.getters['good/getGoodItems'] || {}
     },
   },
 
@@ -43,15 +43,18 @@ export default {
     this.fetchGoods()
     this.fetchRacks()
     this.$store.dispatch('category/fetchCategory').then(() => {
-      this.form.title = this.getCategoryByUuid.title
+      return this.getCategoryByUuid
     })
   },
   methods: {
     fetchRacks() {
-      this.$store.dispatch('type/fetchTypes').then(() => {})
+      this.$store.dispatch('type/fetchTypes').then(() => {
+        return this.getTypeByCategoryUuid
+      })
     },
     fetchGoods() {
       this.$store.dispatch('good/fetchGoods').then(() => {
+        return this.getGoodItems
         // console.warn('goods', this.getGoodItems)
       })
     },

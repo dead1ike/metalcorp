@@ -90,7 +90,7 @@ export const state = () => ({
       },
       {
         key: 'rack_count',
-        label: 'Количество стеллажей',
+        label: 'Количество',
         class: 'align-middle text-center',
       },
       {
