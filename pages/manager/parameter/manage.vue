@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="p-4 shadow h-100 overflow-auto">
+    <div class="py-2">
       <b-btn variant="corp" size="sm" block @click="managerParameterAdd()">Добавить параметр</b-btn>
     </div>
     <div>

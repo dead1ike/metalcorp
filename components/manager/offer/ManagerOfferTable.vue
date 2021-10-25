@@ -1,13 +1,8 @@
 <template>
-  <div>
+  <div class="overflow-auto">
     <b-table borderless striped hover :fields="getManagerOfferFields" :items="getManagerOfferItems">
       <template #cell(created_at)="data">
-        {{
-          $DateTime
-            .fromISO(data.item.created_at)
-            .setLocale('ru')
-            .toLocaleString($DateTime.DATETIME_SHORT)
-        }}
+        {{ $DateTime.fromISO(data.item.created_at).setLocale('ru').toLocaleString($DateTime.DATETIME_SHORT) }}
       </template>
       <template #cell(actions)="data">
         <b-btn variant="link" size="sm" @click="showOrder(data.item)">

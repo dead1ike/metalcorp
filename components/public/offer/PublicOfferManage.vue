@@ -77,7 +77,9 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    console.warn(this.getOfferManageItems)
+  },
   methods: {
     toCatalog() {
       this.$router.push('/category')

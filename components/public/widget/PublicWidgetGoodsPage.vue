@@ -26,11 +26,11 @@
           </div>
           <div class="d-flex flex-row pt-2 align-items-center justify-content-between">
             <h5 class="pr-4 good_card_params">Количество:</h5>
-            <b-spinbutton v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
+            <b-spinbutton v-model="form.count" min="1" style="max-width: 200px"></b-spinbutton>
           </div>
           <div class="d-flex flex-row pt-5">
             <h4 class="mr-4">Стоимость:</h4>
-            <h4 class="font-weight-light">{{ getGoodByUuid.goods_price }} руб.</h4>
+            <h4 class="font-weight-light">{{ total }} руб.</h4>
           </div>
           <div class="pt-4">
             <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="addProduct">Добавить в корзину</b-btn>
@@ -48,18 +48,23 @@ export default {
   data() {
     return {
       form: {
-        rack_count: 1,
+        count: 1,
       },
     }
   },
   computed: {
+    total() {
+      let x = parseInt(this.getGoodByUuid.price)
+      let y = this.form.count
+      const result = x * y
+      return String(result)
+    },
     getGoodByUuid() {
       return this.$store.getters['good/getGood'] || {}
     },
   },
   mounted() {
     this.$store.dispatch('good/fetchGood', this.$route.params.uuid).then(() => {
-      console.warn(this.getGoodByUuid)
       return this.getGoodByUuid
     })
   },
@@ -72,7 +77,7 @@ export default {
         ...this.form,
         parameters: this.getGoodByUuid.good_parameters,
         title: this.getGoodByUuid.title,
-        price: this.getGoodByUuid.goods_price,
+        price: this.getGoodByUuid.price,
         image: this.getGoodByUuid.image,
         uuid: this.getUuid(),
       })

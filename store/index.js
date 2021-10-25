@@ -258,11 +258,11 @@ export const state = () => ({
         label: 'ФИО заказчика',
         class: 'align-middle text-center',
       },
-      {
-        key: 'email',
-        label: 'Email',
-        class: 'align-middle text-center',
-      },
+      // {
+      //   key: 'email',
+      //   label: 'Email',
+      //   class: 'align-middle text-center',
+      // },
       {
         key: 'phone',
         label: 'Телефон',

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="w-100 mb-3">
+  <div class="p-4 shadow h-100 overflow-auto">
+    <div class="w-100 mb-3 py-2">
       <b-btn variant="corp" block size="sm" @click="managerCategoryAdd()">Добавить категорию</b-btn>
     </div>
     <div class="w-100 h-100">

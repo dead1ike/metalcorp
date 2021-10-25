@@ -71,9 +71,9 @@
                 <tr>
                   <td class="align-middle">Цена товара:</td>
                   <td class="align-middle">
-                    <div v-if="data.item.goods_price === '0'">
+                    <div v-if="data.item.price === '0'">
                       <b-input-group>
-                        <b-form-input v-model="form.goods_price" placeholder="Цена товара"></b-form-input>
+                        <b-form-input v-model="form.price" placeholder="Цена товара"></b-form-input>
                         <b-input-group-prepend>
                           <b-btn variant="light" @click="addGoodsPrice(data.item)">
                             <b-icon-plus-circle variant="success"></b-icon-plus-circle>
@@ -83,7 +83,7 @@
                     </div>
                     <div v-else>
                       <div class="d-flex justify-content-around align-items-center">
-                        <span>{{ data.item.goods_price }}</span>
+                        <span>{{ data.item.price }}</span>
                         <b-btn variant="light" @click="deleteGoodsPrice(data.item)">
                           <b-icon-trash variant="danger"></b-icon-trash>
                         </b-btn>
@@ -155,7 +155,7 @@ export default {
         image: null,
         good_uuid: null,
         goods_id: '',
-        goods_price: '',
+        price: '',
         goods_url: '',
       },
       pagination: {
@@ -251,12 +251,12 @@ export default {
       this.$store
         .dispatch('manager/goods/goods/putGoodsPrice', {
           itemGoods,
-          itemGoodsPrice: this.form.goods_price,
+          itemGoodsPrice: this.form.price,
         })
         .then(() => {
           this.fetchGoods()
           this.makeToast('Цена добавлена')
-          this.form.goods_price = ''
+          this.form.price = ''
         })
     },
     changeLimit(value) {

@@ -79,12 +79,12 @@ export const actions = {
   },
   putGoodsPrice({ commit }, { itemGoods, itemGoodsPrice }) {
     return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
-      goods_price: itemGoodsPrice,
+      price: itemGoodsPrice,
     })
   },
   deleteGoodsPrice({ commit }, { itemGoods }) {
     return this.$axios.put(`/api/good/good/${itemGoods.uuid}`, {
-      goods_price: '0',
+      price: '0',
     })
   },
 }
