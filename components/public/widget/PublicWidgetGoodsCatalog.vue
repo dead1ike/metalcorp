@@ -67,8 +67,10 @@ export default {
   },
   watch: {
     'pagination.currentPage'(newValue) {
-      console.warn('pagewatch', newValue)
-      if (newValue) this.changePage()
+      if (newValue) {
+        this.changePage()
+        this.fetchGoods()
+      }
     },
     getFilters: {
       handler() {
@@ -86,17 +88,14 @@ export default {
   },
   methods: {
     changeLimit(value) {
-      console.warn('limit', value)
       this.$store.commit('good/setLimitGoods', value)
+      this.fetchGoods()
     },
     changePage() {
-      console.warn('changepage', this.pagination.currentPage)
       this.$store.commit('good/setCurrentPageGoods', this.pagination.currentPage)
     },
     fetchGoods() {
-      this.$store.dispatch('good/fetchGoods').then(() => {
-        console.warn('goodCatalogPage', this.getGoodItems)
-      })
+      this.$store.dispatch('good/fetchGoods').then(() => {})
     },
     routeMore(item) {
       if (!item.parent_uuid) {

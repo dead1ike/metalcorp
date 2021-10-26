@@ -55,7 +55,6 @@ export default {
     fetchGoods() {
       this.$store.dispatch('good/fetchGoods').then(() => {
         return this.getGoodItems
-        // console.warn('goods', this.getGoodItems)
       })
     },
     openModal() {

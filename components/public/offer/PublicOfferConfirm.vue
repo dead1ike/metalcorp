@@ -72,9 +72,7 @@ export default {
       return isValid
     },
   },
-  mounted() {
-    console.warn(this.getOfferConfirmItems)
-  },
+  mounted() {},
   methods: {
     confirmOffer() {
       this.$store
