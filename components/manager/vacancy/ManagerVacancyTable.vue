@@ -13,8 +13,8 @@
         :fields="getVacancyFields"
       >
         <template #cell(actions)="data">
-          <!--          <b-btn :disabled="busy.vacancy" @click="downloadPdf(data.item.uuid)">Скачать</b-btn>-->
-          <!--          <b-btn variant="danger" @click="deleteVacancy(data.item)">Удалить</b-btn>-->
+          <b-btn :disabled="busy.vacancy" @click="downloadPdf(data.item.uuid)">Скачать</b-btn>
+          <b-btn variant="danger" @click="deleteVacancy(data.item)">Удалить</b-btn>
         </template>
       </b-table>
     </div>

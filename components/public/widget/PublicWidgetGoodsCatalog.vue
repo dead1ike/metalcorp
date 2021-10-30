@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div class="overflow-hidden text-center d-flex flex-row bg-light">
+    <div v-if="getGoodItems.length !== 0" class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
         <b-pagination
           pills
