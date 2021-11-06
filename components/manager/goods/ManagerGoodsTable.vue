@@ -59,7 +59,7 @@
                       </b-input-group>
                     </div>
                     <div v-else>
-                      <div class="d-flex justify-content-around align-items-center">
+                      <div class="d-flex justify-content-between align-items-center">
                         <span>{{ data.item.goods_url }}</span>
                         <b-btn variant="light" @click="deleteGoodsUrl(data.item)">
                           <b-icon-trash variant="danger"></b-icon-trash>
@@ -82,7 +82,7 @@
                       </b-input-group>
                     </div>
                     <div v-else>
-                      <div class="d-flex justify-content-around align-items-center">
+                      <div class="d-flex justify-content-between align-items-center">
                         <span>{{ data.item.price }}</span>
                         <b-btn variant="light" @click="deleteGoodsPrice(data.item)">
                           <b-icon-trash variant="danger"></b-icon-trash>

@@ -6,6 +6,9 @@
     <div class="p-5">
       <b-file v-model="form.price_file" browse-text="Выбрать прайс" placeholder="Файл не выбран"> </b-file>
     </div>
+    <!--    <div class="p-5">-->
+    <!--      <h5>Последняя загрузка :</h5>-->
+    <!--    </div>-->
     <div class="p-5 text-right">
       <b-btn variant="corp" @click="uploadPrice()">Отправить на сервер</b-btn>
     </div>
