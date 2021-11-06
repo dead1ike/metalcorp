@@ -46,11 +46,11 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="align-middle">Url товара:</td>
+                  <td class="align-middle">Артикул товара:</td>
                   <td class="align-middle">
                     <div v-if="!data.item.goods_url">
                       <b-input-group>
-                        <b-form-input v-model="form.goods_url" placeholder="Url товара"></b-form-input>
+                        <b-form-input v-model="form.goods_url" placeholder="Артикул товара"></b-form-input>
                         <b-input-group-prepend>
                           <b-btn variant="light" @click="addGoodsUrl(data.item)">
                             <b-icon-plus-circle variant="success"></b-icon-plus-circle>

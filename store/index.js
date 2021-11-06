@@ -318,6 +318,12 @@ export const actions = {
   fetchBlank({ commit }) {},
   postBlank({ commit }, data) {},
   putBlank({ commit }, data) {},
+
+  uploadFile({ commit }, file) {
+    const uploadingFile = new FormData()
+    uploadingFile.set('price_file', file)
+    return this.$axios.post('/api/good/good/price', uploadingFile)
+  },
 }
 export const mutations = {
   setActiveModal(state, { modalName, modalStatus }) {

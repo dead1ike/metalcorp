@@ -1223,4 +1223,7 @@ table#manager-table .flip-list-move {
       padding-left: 42px;
     }
   }
+  .custom-file-label::after {
+    color: #eee;
+  }
 }

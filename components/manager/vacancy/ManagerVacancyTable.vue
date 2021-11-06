@@ -46,7 +46,7 @@ export default {
     downloadPdf(uuid) {
       this.busy.vacancy = true
       this.$axios
-        .get(`/api/vacancies/${uuid}`, {
+        .get(`/api/vacancy/pdf_file/${uuid}`, {
           responseType: 'blob',
         })
         .then((response) => {

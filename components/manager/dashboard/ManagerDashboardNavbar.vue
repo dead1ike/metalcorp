@@ -9,6 +9,7 @@
     </b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
+        <b-nav-item to="/manager/price/manage" class="mt-2 h5"> Прайсы </b-nav-item>
         <b-nav-item to="/manager/vacancy/manage" class="mt-2 h5"> Вакансии </b-nav-item>
         <b-nav-item to="/manager/user/manage" class="mt-2 h5"> Пользователи </b-nav-item>
         <b-nav-item to="/manager/offer/manage" class="mt-2 h5"> Заказы </b-nav-item>

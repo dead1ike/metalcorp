@@ -28,7 +28,7 @@ export const state = () => ({
 export const actions = {
   fetchGoods({ commit, getters }) {
     return this.$axios
-      .get('/api/good/good', {
+      .get('/api/good/goodManager', {
         params: getters.getGoodsFilter,
       })
       .then(({ data }) => {
