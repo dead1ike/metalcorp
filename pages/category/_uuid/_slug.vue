@@ -2,6 +2,7 @@
   <div class="overflow-hidden h-100 d-flex flex-row">
     <public-widget-sidebar />
     <div class="h-100 w-100 overflow-auto flex-column">
+      фывфывфыв
       <h2 v-if="getCategoryByUuid.title" class="font-weight-bold pt-10 pb-6 px-10">{{ getCategoryByUuid.title }}</h2>
 
       <template v-if="getTypeByCategoryUuid.length > 0">
@@ -25,11 +26,17 @@ export default {
   layout: 'catalog',
 
   computed: {
+    getParamUuid() {
+      return this.$route.params.uuid
+    },
     getFilter() {
       return this.$store.getters['good/getFilters']
     },
     getTypeByCategoryUuid() {
       return this.$store.getters['type/getTypesByCategoryUuid'](this.$route.params.uuid) || {}
+    },
+    getCurrentCategory() {
+      return this.$store.getters['category/getCurrentCategory'] || {}
     },
     getCategoryByUuid() {
       return this.$store.getters['category/getCategoryByUuid'](this.$route.params.uuid) || {}
@@ -40,11 +47,19 @@ export default {
   },
 
   mounted() {
+    console.warn('mount slug', this.$route.params.uuid)
+    this.updateFilter('category_uuid', this.getParamUuid)
+    this.fetchGoods()
+    this.fetchRacks()
     this.fetchCategory()
-    this.fetchRacks()
-    this.fetchRacks()
   },
   methods: {
+    updateFilter(fieldName, value) {
+      this.$store.commit('good/setFilter', {
+        fieldName,
+        value,
+      })
+    },
     fetchCategory() {
       this.$store.dispatch('category/fetchCategory').then(() => {
         return this.getCategoryByUuid
