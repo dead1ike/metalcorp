@@ -40,6 +40,10 @@
         <span class="mx-1" style="cursor: pointer" @click="changeLimit(50)">50</span>
       </div>
     </div>
+    <div v-else class="d-flex">
+      <h3 class="p-10">По вашему запросу ничего не найдено!</h3>
+      <div class="ml-10 text-center flex-fill"><b-icon-emoji-dizzy scale="13" variant="corp" /></div>
+    </div>
   </div>
 </template>
 
@@ -102,9 +106,9 @@ export default {
       })
     },
     updatePage() {
-      console.warn('updated', this.$route.params)
       if (this.getParamUuid === 'search') {
         this.updateFilter('search', this.getSearchTitle)
+        this.updateFilter('page', 1)
       } else {
         this.$store.commit('good/setCategoryUuid', this.getParamUuid)
       }

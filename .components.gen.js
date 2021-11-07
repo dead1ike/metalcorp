@@ -27,10 +27,10 @@ import PublicMainFifthBlock from '@/components/public/main/PublicMainFifthBlock.
 import PublicMainFirstBlock from '@/components/public/main/PublicMainFirstBlock.vue'
 import PublicMainFourthBlock from '@/components/public/main/PublicMainFourthBlock.vue'
 import PublicMainThirdBlock from '@/components/public/main/PublicMainThirdBlock.vue'
-import PublicObjectManage from '@/components/public/object/PublicObjectManage.vue'
 import PublicOfferBasket from '@/components/public/offer/PublicOfferBasket.vue'
 import PublicOfferConfirm from '@/components/public/offer/PublicOfferConfirm.vue'
 import PublicOfferManage from '@/components/public/offer/PublicOfferManage.vue'
+import PublicObjectManage from '@/components/public/object/PublicObjectManage.vue'
 import PublicVacancyManage from '@/components/public/vacancy/PublicVacancyManage.vue'
 import PublicWidgetCallback from '@/components/public/widget/PublicWidgetCallback.vue'
 import PublicWidgetCatalog from '@/components/public/widget/PublicWidgetCatalog.vue'
@@ -111,14 +111,14 @@ Vue.component('PublicMainFourthBlock', PublicMainFourthBlock)
 Vue.component('LazyPublicMainFourthBlock', PublicMainFourthBlock)
 Vue.component('PublicMainThirdBlock', PublicMainThirdBlock)
 Vue.component('LazyPublicMainThirdBlock', PublicMainThirdBlock)
-Vue.component('PublicObjectManage', PublicObjectManage)
-Vue.component('LazyPublicObjectManage', PublicObjectManage)
 Vue.component('PublicOfferBasket', PublicOfferBasket)
 Vue.component('LazyPublicOfferBasket', PublicOfferBasket)
 Vue.component('PublicOfferConfirm', PublicOfferConfirm)
 Vue.component('LazyPublicOfferConfirm', PublicOfferConfirm)
 Vue.component('PublicOfferManage', PublicOfferManage)
 Vue.component('LazyPublicOfferManage', PublicOfferManage)
+Vue.component('PublicObjectManage', PublicObjectManage)
+Vue.component('LazyPublicObjectManage', PublicObjectManage)
 Vue.component('PublicVacancyManage', PublicVacancyManage)
 Vue.component('LazyPublicVacancyManage', PublicVacancyManage)
 Vue.component('PublicWidgetCallback', PublicWidgetCallback)
