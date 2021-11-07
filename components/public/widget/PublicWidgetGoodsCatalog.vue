@@ -5,15 +5,15 @@
         v-for="itemGoods in getGoodItems"
         :key="itemGoods.uuid"
         class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
-        style="max-width: 500px"
+        style="max-width: 32%"
       >
-        <div class="h4">{{ itemGoods.title }}</div>
+        <h5>{{ itemGoods.title }}</h5>
         <div class="d-flex py-4 flex-row h-100">
-          <div class="flex-fill truncate" style="max-width: 300px">
-            <p>{{ itemGoods.description }}</p>
+          <div class="flex-fill truncate" style="max-width: 50%">
+            <p class="designer_dolbaeb">{{ itemGoods.description }}</p>
           </div>
           <div class="pl-2">
-            <img :src="itemGoods.image" style="max-width: 180px" alt="" />
+            <img :src="itemGoods.image" class="w-100" alt="" />
           </div>
         </div>
         <div>

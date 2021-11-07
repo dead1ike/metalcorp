@@ -31,6 +31,11 @@ export const actions = {
       ...data,
     })
   },
+  patchCategory({ commit }, { uuid, data }) {
+    return this.$axios.put('/api/category/' + uuid, {
+      ...data,
+    })
+  },
   uploadFile({ commit }, data) {
     const uploadingFile = new FormData()
     uploadingFile.set('image', data.image)
@@ -68,7 +73,7 @@ export const mutations = {
     state.items.favorites.push(item)
   },
   setFavoritesSlice(state, { item }) {
-    const index = state.items.favorites.findIndex(itemFavorite => itemFavorite.uuid === item.uuid)
+    const index = state.items.favorites.findIndex((itemFavorite) => itemFavorite.uuid === item.uuid)
     if (index > -1) {
       state.items.favorites.splice(index, 1)
     }
@@ -87,8 +92,8 @@ export const getters = {
   getCategoryItems(state) {
     return state.items.category
   },
-  getCategoryByUuid: state => uuid => {
-    return state.items.category.find(item => {
+  getCategoryByUuid: (state) => (uuid) => {
+    return state.items.category.find((item) => {
       return item.uuid === uuid
     })
   },

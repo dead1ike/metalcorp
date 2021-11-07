@@ -1,8 +1,5 @@
 <template>
   <div class="h-100">
-    <div class="w-100 d-flex justify-content-center pt-4">
-      <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
-    </div>
     <div>
       <h2 class="font-weight-bold pt-10 pb-6 pl-7">Сотрудничество</h2>
       <div class="d-flex flex-column flex-lg-row px-4 py-10">

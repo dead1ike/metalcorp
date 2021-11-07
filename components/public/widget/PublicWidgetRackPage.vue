@@ -4,15 +4,15 @@
       <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ 'Стеллаж' + ' ' + getTypeByUuid.title }}</h2>
     </div>
     <div class="d-flex flex-column flex-lg-row">
-      <div class="px-4 py-4" style="width: 30%">
-        <b-img :src="getTypeByUuid.image" class="w-75"></b-img>
+      <div class="d-flex flex-column align-items-start good_card_image p-9">
+        <b-img :src="getTypeByUuid.image" style="max-width: 350px"></b-img>
       </div>
-      <div class="d-flex flex-column py-4" style="width: 35%">
-        <div>
-          <h4 class="rackpage_description_header">Описание:</h4>
+      <div class="d-flex flex-column w-100 h-100 p-5">
+        <div class="flex-wrap">
+          <h4 class="good_card_description_header">Описание:</h4>
           <h5 class="font-weight-light">{{ getTypeByUuid.description }}</h5>
         </div>
-        <div class="pt-3">
+        <div class="pt-3 w-100">
           <h5 class="rackpage_load_header">Допустимые нагрузки на данный стеллаж:</h5>
           <h5 class="font-weight-light">{{ 'Максимальная нагрузка на стеллаж:' + ' ' + getTypeByUuid.load }}</h5>
           <h5 class="font-weight-light">
@@ -21,7 +21,7 @@
           <h5 class="font-weight-light">{{ 'Максимальная нагрузка на полку:' + ' ' + getTypeByUuid.shelf_load }}</h5>
         </div>
       </div>
-      <div class="d-flex flex-column py-4 pl-5">
+      <div class="d-flex flex-column w-100 py-4 pl-5">
         <div>
           <h4 class="rack_price">Задайте параметры стеллажа:</h4>
         </div>

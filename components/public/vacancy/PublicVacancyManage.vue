@@ -1,8 +1,5 @@
 <template>
   <div class="h-100">
-    <div class="w-100 d-flex justify-content-center pt-4">
-      <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
-    </div>
     <div class="d-flex flex-column">
       <h2 class="font-weight-bold pt-10 pb-6 pl-7">Вакансии</h2>
       <div class="d-flex flex-column flex-lg-row py-10">
@@ -119,21 +116,22 @@
             <div class="vacancy_form_header1" style="max-width: 580px">
               <h4>Заполните данные для рассмотрения вашей кандидатуры</h4>
             </div>
-            <div class="d-flex flex-column flex-lg-row py-9">
-              <div class="d-flex flex-column pr-10">
-                <h5 class="feedback_form_text">Ваше имя</h5>
-                <b-form-input size="sm" v-model="form.name"></b-form-input>
+            <div class="d-flex flex-column flex-lg-row py-9 h-100">
+              <div class="d-flex flex-column pr-10 mb-5 mb-sm-0">
+                <h5 class="feedback_form_text text-truncate">Ваше имя</h5>
+                <b-form-input v-model="form.name" class="border-dark" size="lg"></b-form-input>
               </div>
-              <div class="d-flex flex-column pr-10">
+              <div class="d-flex flex-column pr-10 mb-5 mb-sm-0">
                 <h5 class="feedback_form_text text-truncate">Номер телефона</h5>
-                <b-form-input size="sm" v-model="form.phone"></b-form-input>
+                <b-form-input v-model="form.phone" class="border-dark" size="lg"></b-form-input>
               </div>
               <div class="d-flex flex-column">
-                <h5 class="feedback_form_text">Прикрепите резюме (pdf)</h5>
-                <b-file plain v-model="form.pdf_file"></b-file>
+                <h5 class="feedback_form_text text-truncate">Прикрепите резюме</h5>
+                <label for="file_vacancy" class="btn btn-light border-dark btn-lg">Загрузить</label>
+                <b-file id="file_vacancy" v-model="form.pdf_file" plain class="d-none"></b-file>
               </div>
             </div>
-            <div class="pt-6">
+            <div class="pb-7">
               <b-btn class="d-inline-block px-8 py-4" variant="dark" @click="send">Отправить</b-btn>
             </div>
           </div>

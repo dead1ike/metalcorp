@@ -1,8 +1,5 @@
 <template>
   <div class="h-100">
-    <div class="w-100 d-flex justify-content-center pt-4">
-      <b-breadcrumb :items="getItems" style="background-color: white"> </b-breadcrumb>
-    </div>
     <h2 class="font-weight-bold pt-10 pb-6 pl-7">Контакты</h2>
     <div class="px-5 py-5 d-flex w-100 flex-column flex-lg-row">
       <div class="p-7 d-flex flex-column bg-dark text-white">
@@ -30,8 +27,8 @@
       </div>
     </div>
     <h2 class="font-weight-bold pt-10 pb-6 pl-7">Реквизиты</h2>
-    <div class="d-flex flex-column flex-lg-row">
-      <div class="w-100 px-5">
+    <div class="px-5 py-5 d-flex w-100 flex-column flex-lg-row">
+      <div class="w-100 px-5 d-flex">
         <div class="shadow d-flex flex-column p-8">
           <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100">
@@ -97,13 +94,13 @@
       </div>
       <div class="w-100 px-5">
         <div class="shadow d-flex flex-column p-8">
-          <div class="w-100 d-flex flex-row justify-content-between py-2">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Полное наименование организации</h5></div>
             <div class="w-100">
               <h5 class="font-weight-light">ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «МЕТАЛЛКОРП»</h5>
             </div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Юридический адрес</h5></div>
             <div class="w-100">
               <h5 class="font-weight-light">
@@ -111,7 +108,7 @@
               </h5>
             </div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Фактический адрес</h5></div>
             <div class="w-100">
               <h5 class="font-weight-light">
@@ -119,27 +116,27 @@
               </h5>
             </div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>ИНН</h5></div>
             <div class="w-100"><h5 class="font-weight-light">6678111118</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>КПП</h5></div>
             <div class="w-100"><h5 class="font-weight-light">667801001</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>ОГРН</h5></div>
             <div class="w-100"><h5 class="font-weight-light">1216600004587</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>ОКПО</h5></div>
             <div class="w-100"><h5 class="font-weight-light">47046899</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Номер Р/с</h5></div>
             <div class="w-100"><h5 class="font-weight-light">40702810602500090234</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Наименование банка</h5></div>
             <div class="w-100">
               <h5 class="font-weight-light">
@@ -147,15 +144,15 @@
               </h5>
             </div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Номер К/сч</h5></div>
             <div class="w-100"><h5 class="font-weight-light">30101810845250000999</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>БИК</h5></div>
             <div class="w-100"><h5 class="font-weight-light">044525999</h5></div>
           </div>
-          <div class="w-100 d-flex flex-row justify-content-between py-3">
+          <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Телефон</h5></div>
             <div class="w-100"><h5 class="font-weight-light">+7 (906) 812-81-75</h5></div>
           </div>
@@ -170,7 +167,9 @@
         </div>
       </div>
     </div>
-    <public-dashboard-footer />
+    <div class="pt-10">
+      <public-dashboard-footer />
+    </div>
   </div>
 </template>
 

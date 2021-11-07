@@ -2,7 +2,6 @@
   <div class="overflow-hidden h-100 d-flex flex-row">
     <public-widget-sidebar />
     <div class="h-100 w-100 overflow-auto flex-column">
-      фывфывфыв
       <h2 v-if="getCategoryByUuid.title" class="font-weight-bold pt-10 pb-6 px-10">{{ getCategoryByUuid.title }}</h2>
 
       <template v-if="getTypeByCategoryUuid.length > 0">

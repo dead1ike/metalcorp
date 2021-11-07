@@ -18,7 +18,7 @@
         {{ data.item.rack_component_value }}
       </template>
       <template #cell(rack_component_parameters)="data">
-        <b-btn class="corp" size="sm" @click="managerPriceAdd(data.item)">Добавить параметр</b-btn>
+        <b-btn variant="corp" size="sm" @click="managerPriceAdd(data.item)">Добавить параметр</b-btn>
       </template>
       <template #cell(child)="data">
         <div v-if="data.item.rack_component_childs.length !== 0">

@@ -31,9 +31,16 @@
                   />
                   <path d="M14 19H17.1667V26.9167H14V19ZM20.3333 19H23.5V26.9167H20.3333V19Z" fill="#445CAA" />
                 </svg>
-                <b-badge v-if="getBasket !== 0" class="position-absolute" style="border-radius: 50%">{{
-                  getBasket
-                }}</b-badge>
+                <b-btn
+                  to="/offer"
+                  v-if="getBasket !== 0"
+                  class="position-absolute px-3 py-0 ml-n8 mb-n3 designer_dolbaeb"
+                  pill
+                  variant="corp"
+                  size="sm"
+                >
+                  {{ getBasket }}
+                </b-btn>
                 <span class="navitem">Корзина</span>
               </div>
             </b-nav-item>

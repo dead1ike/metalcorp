@@ -2,7 +2,7 @@
   <div>
     <b-table borderless striped hover :fields="getManagerCategoryFields" :items="getManagerCategoryItems">
       <template #cell(title)="data">
-        {{ data.item.title + ' (' + showParent(data.item.parent_uuid).title + ')' }}
+        {{ data.item.title }}
       </template>
       <template #cell(image)="data">
         <div class="d-flex flex-column">
@@ -14,6 +14,18 @@
           </div>
           <div class="d-inline-flex flex-row align-self-center">
             <b-file v-model="form.image" plain @input="categoryUuid(data.item)"></b-file>
+          </div>
+        </div>
+      </template>
+      <template #cell(price_from)="data">
+        <div class="d-flex flex-column">
+          <div>
+            <b-form-input v-model="data.value" :placeholder="data.item.from">{{ data.item.from }}</b-form-input>
+          </div>
+          <div>
+            <b-btn variant="corp" size="lg" class="text-truncate" @click="updatePriceFrom(data.item.uuid, data.value)"
+              >Изменить цену</b-btn
+            >
           </div>
         </div>
       </template>
@@ -44,6 +56,7 @@ export default {
       form: {
         image: null,
         category_uuid: null,
+        from: null,
       },
     }
   },
@@ -52,7 +65,7 @@ export default {
       return this.$store.getters['manager/rack/field/getManagerCategoryFields']
     },
     getManagerCategoryItems() {
-      return this.$store.getters['manager/goods/category/getCategoryItems'].filter(item => {
+      return this.$store.getters['manager/goods/category/getCategoryItems'].filter((item) => {
         return item.parent_uuid !== null
       })
     },
@@ -69,6 +82,20 @@ export default {
     this.$store.dispatch('manager/goods/category/fetchCategory')
   },
   methods: {
+    updatePriceFrom(uuid, value) {
+      this.$store
+        .dispatch('manager/goods/category/patchCategory', {
+          uuid,
+          data: {
+            from: value,
+          },
+        })
+        .then(() => {
+          this.fetchCategory()
+          this.makeToast('Цена изменена!')
+          this.form.from = ''
+        })
+    },
     deleteItem(item) {
       this.$store.dispatch('category/deleteCategory', item.uuid).then(() => {
         this.$store.dispatch('category/fetchCategory')
@@ -84,14 +111,14 @@ export default {
           image: this.form.image,
         })
         .then(() => {
-          this.makeToast('Картинка успешно загружена')
+          this.makeToast('Картинка успешно загружена , братан!')
           this.$store.dispatch('category/fetchCategory')
           this.form.image = null
         })
     },
     showParent(uuid) {
-      if (this.getCategoryItems.find(item => item.uuid === uuid)) {
-        return this.getCategoryItems.find(item => item.uuid === uuid)
+      if (this.getCategoryItems.find((item) => item.uuid === uuid)) {
+        return this.getCategoryItems.find((item) => item.uuid === uuid)
       }
       return {}
     },

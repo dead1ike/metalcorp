@@ -20,6 +20,12 @@ export const state = () => ({
         sortable: true,
       },
       {
+        key: 'price_from',
+        label: 'Цена от',
+        class: 'align-middle text-center',
+        sortable: true,
+      },
+      {
         key: 'actions',
         label: '',
         class: 'align-middle text-center',

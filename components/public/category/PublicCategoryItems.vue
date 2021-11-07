@@ -1,56 +1,50 @@
 <template>
-  <div>
+  <div class="w-100">
     <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ getCategoryTitle }}</h2>
-
-    <div class="d-flex flex-wrap justify-content-center p-2">
+    <div class="d-flex flex-wrap flex-column flex-sm-row p-2">
       <div
         v-for="itemCategory in getCategoryItems"
         :key="itemCategory.uuid"
-        class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
-        style="max-width: 500px"
+        class="d-flex flex-sm-column flex-row flex-wrap flex-sm-nowrap px-5 py-5 m-3 border border-dark"
+        style="width: 32%; min-width: 450px; max-width: 800px"
       >
-        <div class="h4">{{ itemCategory.title }}</div>
-        <div class="d-flex py-4 flex-row h-100">
-          <div class="flex-fill truncate" style="max-width: 50%">
-            <p>{{ itemCategory.description }}</p>
+        <h5>{{ itemCategory.title }}</h5>
+        <div class="d-flex py-4 flex-sm-row flex-column h-100">
+          <div class="flex-fill truncate d-sm-block d-none" style="max-width: 50%">
+            <div class="designer_dolbaeb">{{ itemCategory.description }}</div>
           </div>
           <div class="pl-2">
-            <img :src="itemCategory.image" style="max-width: 50%" alt="" />
+            <img :src="itemCategory.image" class="w-100" />
           </div>
         </div>
-        <div>
+        <div class="d-flex flex-column">
           <template v-if="itemCategory.childs.length > 0">
-            <div>
-              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toCategoryPage(itemCategory)"
-                >Подробнее</b-btn
-              >
+            <div class="d-flex flex-row w-100 justify-content-between">
+              <div>
+                <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toCategoryPage(itemCategory)"
+                  >Подробнее</b-btn
+                >
+              </div>
+              <div class="mt-4 mr-5">
+                <h5>от {{ itemCategory.from }} руб.</h5>
+              </div>
             </div>
           </template>
           <template v-else>
-            <div>
-              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toListPage(itemCategory)">Подробнее</b-btn>
+            <div class="d-flex flex-row justify-content-between">
+              <div class="pt-6">
+                <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toListPage(itemCategory)"
+                  >Подробнее</b-btn
+                >
+              </div>
+              <div class="p-6 mt-4 pl-10 ml-10">
+                <span class="h4">от {{ itemCategory.from }} руб.</span>
+              </div>
             </div>
           </template>
         </div>
       </div>
     </div>
-    <!--    <div class="overflow-hidden text-center d-flex flex-row bg-light">-->
-    <!--      <div class="flex-fill d-flex justify-content-center">-->
-    <!--        <b-pagination-->
-    <!--          pills-->
-    <!--          v-model="pagination.currentPage"-->
-    <!--          :total-rows="getCategoryPagination.total"-->
-    <!--          :per-page="pagination.perPage"-->
-    <!--          class="p-2 m-1"-->
-    <!--        ></b-pagination>-->
-    <!--      </div>-->
-    <!--      <div class="mt-3 mr-3 d-flex flex-row">-->
-    <!--        <strong class="mx-1">Кол-во</strong>-->
-    <!--        <span class="mx-1" style="cursor: pointer" @click="changeLimit(5)">5</span>-->
-    <!--        <span class="mx-1" style="cursor: pointer" @click="changeLimit(10)">10</span>-->
-    <!--        <span class="mx-1" style="cursor: pointer" @click="changeLimit(50)">50</span>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </template>
 

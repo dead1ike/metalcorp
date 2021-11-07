@@ -8,23 +8,23 @@
         <div class="text-wrap py-6">
           <h4>Закажите бесплатный выезд замерщика</h4>
         </div>
-        <div class="form_measurer">
-          <div class="pb-7">
+        <div class="form_measurer pt-6 d-flex flex-column h-100">
+          <div class="pb-7 pr-10 pr-sm-0">
             <span class="font-weight-normal">Ваше имя</span>
-            <b-form-input v-model="form.name" placeholder="Иван"></b-form-input>
+            <b-form-input v-model="form.name" size="lg" placeholder="Иван"></b-form-input>
           </div>
-          <div class="pb-7">
+          <div class="pb-7 pr-10 pr-sm-0">
             <span class="font-weight-normal">Ваш телефон</span>
-            <b-form-input v-model="form.phone" placeholder="Телефон"></b-form-input>
+            <b-form-input v-model="form.phone" size="lg" placeholder="Телефон"></b-form-input>
           </div>
 
-          <div class="pt-9">
+          <div class="mt-auto pb-10 mb-10 mb-sm-4 text-sm-left">
             <b-btn variant="light">Оставить заявку </b-btn>
           </div>
         </div>
       </div>
 
-      <div class="d-flex flex-column flex-fill p-8">
+      <div class="d-flex flex-column flex-fill pt-8 text-center text-sm-left">
         <div class="w-100 pb-8">
           <img src="https://i.ibb.co/SxWYs9V/pencil-icon.png" alt="pencil" style="max-width: 89px; max-height: 89px" />
           <h4 class="pt-4">Точный замер</h4>
