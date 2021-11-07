@@ -55,8 +55,14 @@ export default {
     }
   },
   computed: {
+    getParamUuid() {
+      return this.$route.params.uuid
+    },
+    getSearchTitle() {
+      return this.$route.query.title
+    },
     getFilters() {
-      this.$store.getters['good/getGoodFilter']
+      return this.$store.getters['good/getGoodFilter']
     },
     getGoodsPagination() {
       return this.$store.getters['good/getGoodsPagination'] || {}
@@ -72,6 +78,9 @@ export default {
         this.fetchGoods()
       }
     },
+    getSearchTitle(newValue, oldValue) {
+      this.updatePage()
+    },
     getFilters: {
       handler() {
         this.fetchGoodsD()
@@ -80,13 +89,27 @@ export default {
     },
   },
   mounted() {
-    this.$store.commit('good/setCategoryUuid', this.$route.params.uuid)
-    this.fetchGoods()
+    this.updatePage()
   },
   created() {
     this.fetchGoodsD = _.debounce(this.fetchGoods, 500)
   },
   methods: {
+    updateFilter(fieldName, value) {
+      this.$store.commit('good/setFilter', {
+        fieldName,
+        value,
+      })
+    },
+    updatePage() {
+      console.warn('updated', this.$route.params)
+      if (this.getParamUuid === 'search') {
+        this.updateFilter('search', this.getSearchTitle)
+      } else {
+        this.$store.commit('good/setCategoryUuid', this.getParamUuid)
+      }
+      this.fetchGoods()
+    },
     changeLimit(value) {
       this.$store.commit('good/setLimitGoods', value)
       this.fetchGoods()

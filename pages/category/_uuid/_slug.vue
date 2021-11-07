@@ -40,13 +40,16 @@ export default {
   },
 
   mounted() {
-    this.fetchGoods()
+    this.fetchCategory()
     this.fetchRacks()
-    this.$store.dispatch('category/fetchCategory').then(() => {
-      return this.getCategoryByUuid
-    })
+    this.fetchRacks()
   },
   methods: {
+    fetchCategory() {
+      this.$store.dispatch('category/fetchCategory').then(() => {
+        return this.getCategoryByUuid
+      })
+    },
     fetchRacks() {
       this.$store.dispatch('type/fetchTypes').then(() => {
         return this.getTypeByCategoryUuid

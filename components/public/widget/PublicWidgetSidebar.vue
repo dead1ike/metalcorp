@@ -14,7 +14,7 @@
           fill="#787878"
         />
       </svg>
-      <input placeholder="Поиск" />
+      <input v-model="filter.title" placeholder="Поиск" @keyup.enter="searchSidebar()" />
     </div>
 
     <div class="overflow-auto h-100">
@@ -41,6 +41,13 @@
 <script>
 export default {
   name: 'PublicWidgetSidebar',
+  data() {
+    return {
+      filter: {
+        title: '',
+      },
+    }
+  },
   computed: {
     getCategories() {
       return this.$store.getters['widget/getWidgetCategoryItems'].filter((item) => {
@@ -60,6 +67,9 @@ export default {
     },
     toCallback() {
       this.$router.push('/zvonok')
+    },
+    searchSidebar() {
+      this.$router.push({ path: '/category/search', query: { title: this.filter.title } })
     },
   },
 }
