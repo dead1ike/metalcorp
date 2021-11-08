@@ -46,43 +46,44 @@ export default {
   },
 
   mounted() {
-    console.warn('mount slug', this.$route.params.uuid)
+    console.warn('catalog', this.getParamUuid)
     this.updateFilter('category_uuid', this.getParamUuid)
-    this.fetchGoods()
-    this.fetchRacks()
-    this.fetchCategory()
+    this.$root.$emit('fetch', 'Goods', 'Items')
+    this.$root.$emit('fetch', 'Rack', 'Items')
+    this.$root.$emit('fetch', 'Category', 'Items')
   },
+
   methods: {
     updateFilter(fieldName, value) {
-      this.$store.commit('good/setFilter', {
+      this.$store.commit('category/setFilterItem', {
         fieldName,
         value,
       })
     },
-    fetchCategory() {
-      this.$store.dispatch('category/fetchCategory').then(() => {
-        return this.getCategoryByUuid
-      })
-    },
-    fetchRacks() {
-      this.$store.dispatch('type/fetchTypes').then(() => {
-        return this.getTypeByCategoryUuid
-      })
-    },
-    fetchGoods() {
-      this.$store.dispatch('good/fetchGoods').then(() => {
-        return this.getGoodItems
-      })
-    },
-    openModal() {
-      this.$store.commit('category/setCurrentCategory', {
-        category_title: this.form.title,
-      })
-      this.$store.commit('setActiveModal', {
-        modalName: 'categoryModal',
-        modalStatus: true,
-      })
-    },
+    // fetchCategory() {
+    //   this.$store.dispatch('category/fetchCategory').then(() => {
+    //     return this.getCategoryByUuid
+    //   })
+    // },
+    // fetchRacks() {
+    //   this.$store.dispatch('type/fetchTypes').then(() => {
+    //     return this.getTypeByCategoryUuid
+    //   })
+    // },
+    // fetchGoods() {
+    //   this.$store.dispatch('good/fetchGoods').then(() => {
+    //     return this.getGoodItems
+    //   })
+    // },
+    // openModal() {
+    //   this.$store.commit('category/setCurrentCategory', {
+    //     category_title: this.form.title,
+    //   })
+    //   this.$store.commit('setActiveModal', {
+    //     modalName: 'categoryModal',
+    //     modalStatus: true,
+    //   })
+    // },
   },
 }
 </script>

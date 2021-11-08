@@ -37,7 +37,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('category/fetchCategory').then(() => {})
+    // this.$store.dispatch('category/fetchCategory')
   },
   methods: {
     openModal() {

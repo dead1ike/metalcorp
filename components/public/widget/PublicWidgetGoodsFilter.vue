@@ -52,7 +52,7 @@ export default {
       return this.$store.getters['good/parameters/getGoodParameters']
     },
     getGoodParamsGroup() {
-      const currentParams = _.uniqBy(this.getGoodParams, item => {
+      const currentParams = _.uniqBy(this.getGoodParams, (item) => {
         return item.parameter_uuid + item.parameter_value
       })
       return _.groupBy(currentParams, 'parameter_uuid')
@@ -67,7 +67,7 @@ export default {
         // const selectedGroupParams = Object.assign({}, this.selectedGroupParams)
         // selectedGroupParams[payload.key] = payload.value
         // Object.assign(this.selectedGroupParams, selectedGroupParams)
-        const index = this.selectedParams.findIndex(item => {
+        const index = this.selectedParams.findIndex((item) => {
           return item.parameter_uuid === payload.value.parameter_uuid
         })
         if (index >= 0) {
@@ -81,13 +81,13 @@ export default {
   watch: {
     getFilter: {
       handler() {
-        this.fetchGoodsD()
+        this.$root.$emit('fetch', 'Goods', 'Items')
       },
       deep: true,
     },
   },
   created() {
-    this.fetchGoodsD = _.debounce(this.fetchGoods, 500)
+    //
   },
   mounted() {
     this.$store.dispatch('good/parameters/fetchGoodParameters')
@@ -101,7 +101,7 @@ export default {
     },
     getGoodParamTitle(indexGroup) {
       return (
-        this.getSelectedGroupParams.find(item => {
+        this.getSelectedGroupParams.find((item) => {
           return item.parameter_uuid === indexGroup
         }) || {}
       )
@@ -116,7 +116,7 @@ export default {
         slug: goodParameter.slug,
         value: goodParameter.parameter_value,
       })
-      this.fetchGoods()
+      this.$root.$emit('fetch', 'Goods', 'Items')
     },
   },
 }

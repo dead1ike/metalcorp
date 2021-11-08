@@ -63,12 +63,12 @@ export default {
     toCatalog() {
       this.$router.push('/category')
     },
-    openModal() {
-      this.$store.commit('setActiveModal', {
-        modalName: 'dimensionModal',
-        modalStatus: true,
-      })
-    },
+    // openModal() {
+    //   this.$store.commit('setActiveModal', {
+    //     modalName: 'dimensionModal',
+    //     modalStatus: true,
+    //   })
+    // },
   },
 }
 </script>

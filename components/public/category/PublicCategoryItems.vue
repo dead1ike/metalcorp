@@ -84,7 +84,7 @@ export default {
     },
     getFilter: {
       handler() {
-        this.fetchCategoryD()
+        this.$root.$emit('fetch', 'Category', 'Items')
       },
       deep: true,
     },
@@ -95,11 +95,11 @@ export default {
     } else {
       this.$store.commit('category/setCurrentCategoryUuid', 'parent')
     }
-    this.fetchCategory()
+    this.$root.$emit('fetch', 'Category', 'Items')
     this.$store.dispatch('type/fetchTypes')
   },
   created() {
-    this.fetchCategoryD = _.debounce(this.fetchCategory, 500)
+    //
   },
   methods: {
     changeLimit(value) {
@@ -113,9 +113,6 @@ export default {
     },
     toListPage(item) {
       this.$router.push(`/category/${item.uuid}/${item.slug}`)
-    },
-    fetchCategory() {
-      this.$store.dispatch('category/fetchCategory')
     },
   },
 }

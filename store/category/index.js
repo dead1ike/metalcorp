@@ -19,13 +19,17 @@ export const state = () => ({
   },
 })
 export const actions = {
-  async fetchCategory({ commit, getters }) {
+  async fetchCategoryItems({ commit, getters }) {
     const { data } = await this.$axios.get('/api/category', {
       params: getters.getCategoryFilter,
     })
 
-    commit('setCategory', data.data)
+    commit('setCategoryItems', data.data)
     commit('setCategoryTotal', data.meta.total)
+  },
+  async fetchCategoryItem({ commit, getters }, uuid) {
+    const { data } = await this.$axios.get(`/api/category/${uuid}`)
+    commit('setCategoryItem', data.data)
   },
   postCategory({ commit }, data) {
     return this.$axios.post('/api/category', {
@@ -42,14 +46,14 @@ export const actions = {
   },
 }
 export const mutations = {
+  setFilterItem(state, { fieldName, value }) {
+    state.filter[fieldName] = value
+  },
   setCategoryTitle(state, data) {
     state.item.category_title = data
   },
-  setCategory(state, data) {
+  setCategoryItems(state, data) {
     state.items.category = data
-  },
-  setFilterItem(state, { fieldName, value }) {
-    state.filter[fieldName] = value
   },
   setCategoryTotal(state, total) {
     state.pagination.category.total = total

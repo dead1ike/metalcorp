@@ -26,8 +26,8 @@
     <div v-if="getGoodItems.length !== 0" class="overflow-hidden text-center d-flex flex-row bg-light">
       <div class="flex-fill d-flex justify-content-center">
         <b-pagination
-          pills
           v-model="pagination.currentPage"
+          pills
           :total-rows="getGoodsPagination.total"
           :per-page="pagination.perPage"
           class="p-2 m-1"
@@ -75,7 +75,7 @@ export default {
     'pagination.currentPage'(newValue) {
       if (newValue) {
         this.changePage()
-        this.fetchGoods()
+        this.$root.$emit('fetch', 'Goods', 'Items')
       }
     },
     getSearchTitle() {
@@ -87,7 +87,7 @@ export default {
     },
     getFilters: {
       handler() {
-        this.fetchGoodsD()
+        this.$root.$emit('fetch', 'Goods', 'Items')
       },
       deep: true,
     },
@@ -98,7 +98,7 @@ export default {
     this.updatePage()
   },
   created() {
-    this.fetchGoodsD = _.debounce(this.fetchGoods, 500)
+    //
   },
   methods: {
     updateFilter(fieldName, value) {
@@ -118,21 +118,23 @@ export default {
         this.updateFilter('category_uuid', this.getParamUuid)
         // this.$store.commit('good/setCategoryUuid', this.getParamUuid)
       }
-      // this.fetchGoods()
+      this.$root.$emit('fetch', 'Goods', 'Items')
     },
     changeLimit(value) {
       this.$store.commit('good/setLimitGoods', value)
-      this.fetchGoods()
+      this.$root.$emit('fetch', 'Goods', 'Items')
     },
     changePage() {
       this.$store.commit('good/setCurrentPageGoods', this.pagination.currentPage)
     },
-    fetchGoods() {
-      this.$store.dispatch('good/fetchGoods').then(() => {})
-    },
+    // fetchGoods() {
+    //   this.$store.dispatch('good/fetchGoods').then(() => {})
+    // },
     routeMore(item) {
       if (!item.parent_uuid) {
         this.$router.push(`/category/${item.uuid}`)
+      } else {
+        this.$router.push(`/category/${item.uuid}/${item.slug}`)
       }
       this.$router.push(`/product/${item.uuid}/${item.slug}`)
     },

@@ -22,7 +22,7 @@ export const state = () => ({
 })
 
 export const actions = {
-  async fetchGoods({ commit, getters }) {
+  async fetchGoodsItems({ commit, getters }) {
     const { data } = await this.$axios.post('/api/good/good/list', {
       ...getters.getGoodFilter,
     })

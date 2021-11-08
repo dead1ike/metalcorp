@@ -158,12 +158,12 @@ export default {
     },
   },
   methods: {
-    openModal() {
-      this.$store.commit('setActiveModal', {
-        modalName: 'dimensionModal',
-        modalStatus: true,
-      })
-    },
+    // openModal() {
+    //   this.$store.commit('setActiveModal', {
+    //     modalName: 'dimensionModal',
+    //     modalStatus: true,
+    //   })
+    // },
   },
 }
 </script>
