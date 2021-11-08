@@ -12,7 +12,7 @@ export const state = () => ({
 })
 
 export const actions = {
-  fetchWidgetCategory({ commit }) {
+  fetchWidgetCategoryItems({ commit }) {
     return this.$axios.get('/api/category').then(({ data }) => {
       commit('setWidgetCatergoryItems', data.data)
     })

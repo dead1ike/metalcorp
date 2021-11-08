@@ -17,7 +17,9 @@
       </div>
       <div>
         <div>
-          <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemRack)">Подробнее</b-btn>
+          <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemRack)"
+            >Подробнее PublicWidgetRackCatalog</b-btn
+          >
         </div>
       </div>
     </div>
@@ -37,7 +39,7 @@ export default {
   },
   methods: {
     fetchRacks() {
-      this.$store.dispatch('type/fetchTypes').then(() => {})
+      this.$root.$emit('fetch', 'Rack', 'Items')
     },
     routeMore(item) {
       if (!item.parent_uuid) {

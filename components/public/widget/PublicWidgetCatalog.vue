@@ -21,7 +21,7 @@
           </div>
         </div>
         <div>
-          <b-btn @click="toCategory(itemCategory)" variant="dark">Подробнее</b-btn>
+          <b-btn variant="dark" @click="toCategory(itemCategory)">Подробнее PublicWidgetCatalog</b-btn>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('widget/fetchWidgetCategory')
+    this.$root.$emit('fetch', 'WidgetCategory', 'Items')
   },
   methods: {
     route(itemChild) {

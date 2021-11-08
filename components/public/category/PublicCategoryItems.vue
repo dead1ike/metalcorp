@@ -22,8 +22,8 @@
             <div class="d-flex flex-row w-100 justify-content-between">
               <div>
                 <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toCategoryPage(itemCategory)"
-                  >Подробнее</b-btn
-                >
+                  >Подробнее PublicCategoryItems
+                </b-btn>
               </div>
               <div class="mt-4 mr-5">
                 <h5>от {{ itemCategory.from }} руб.</h5>
@@ -34,7 +34,7 @@
             <div class="d-flex flex-row justify-content-between">
               <div class="pt-6">
                 <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toListPage(itemCategory)"
-                  >Подробнее</b-btn
+                  >Подробнее PublicCategoryItems2</b-btn
                 >
               </div>
               <div class="p-6 mt-4 pl-10 ml-10">
@@ -96,7 +96,7 @@ export default {
       this.$store.commit('category/setCurrentCategoryUuid', 'parent')
     }
     this.$root.$emit('fetch', 'Category', 'Items')
-    this.$store.dispatch('type/fetchTypes')
+    this.$root.$emit('fetch', 'Rack', 'Items')
   },
   created() {
     //

@@ -22,19 +22,14 @@
         <nuxt-link class="button_catalog font-weight-bold" :to="`/category`">Каталог</nuxt-link>
       </div>
       <div v-for="item in getCategories" :key="item.uuid" class="pb-7 text-truncate">
-        <nuxt-link
-          v-if="item.uuid !== '19fea985-bb05-4ab6-8652-0a17691c18e9'"
+        <b-link
+          v-if="item.uuid === '19fea985-bb05-4ab6-8652-0a17691c18e9'"
           class="categories"
-          :to="`/category/${item.uuid}`"
+          @click="toCategoryNoParent(item)"
         >
           {{ item.title }}
-        </nuxt-link>
-        <nuxt-link
-          v-else-if="item.uuid === '19fea985-bb05-4ab6-8652-0a17691c18e9'"
-          class="categories"
-          :to="`/category/${item.uuid}/${item.slug}`"
-          >{{ item.title }}
-        </nuxt-link>
+        </b-link>
+        <nuxt-link v-else class="categories" :to="`/category/${item.uuid}`">{{ item.title }} </nuxt-link>
       </div>
     </div>
 
@@ -66,9 +61,14 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('widget/fetchWidgetCategory')
+    this.$root.$emit('fetch', 'WidgetCategory', 'Items')
+    this.$root.$emit('fetch', 'Category', 'Items')
   },
   methods: {
+    toCategoryNoParent(item) {
+      this.$store.commit('category/setCurrentCategoryUuid', 'parent')
+      this.$router.push({ path: `/category/${item.uuid}/${item.slug}` })
+    },
     toCategory(item) {
       this.$router.push(`/category/${item.uuid}`)
     },

@@ -20,7 +20,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('widget/fetchWidgetCategory')
+    this.$root.$emit('fetch', 'WidgetCategory', 'Items')
   },
   methods: {
     toCategory(item) {

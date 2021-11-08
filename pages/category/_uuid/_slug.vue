@@ -48,9 +48,7 @@ export default {
   mounted() {
     console.warn('catalog', this.getParamUuid)
     this.updateFilter('category_uuid', this.getParamUuid)
-    this.$root.$emit('fetch', 'Goods', 'Items')
-    this.$root.$emit('fetch', 'Rack', 'Items')
-    this.$root.$emit('fetch', 'Category', 'Items')
+    // this.$store.commit('category/setCurrentCategoryUuid', 'parent')
   },
 
   methods: {
@@ -59,6 +57,9 @@ export default {
         fieldName,
         value,
       })
+      this.$root.$emit('fetch', 'Goods', 'Items')
+      this.$root.$emit('fetch', 'Rack', 'Items')
+      this.$root.$emit('fetch', 'Category', 'Items')
     },
     // fetchCategory() {
     //   this.$store.dispatch('category/fetchCategory').then(() => {

@@ -13,7 +13,7 @@ export const state = () => ({
 })
 
 export const actions = {
-  async fetchTypes({ commit }) {
+  async fetchRackItems({ commit }) {
     const { data } = await this.$axios.get('/api/rack/rack')
     commit('setTypes', data.data)
   },
@@ -47,7 +47,7 @@ export const mutations = {
     state.items.basketProduct.push(data)
   },
   setDelBasketProduct(state, data) {
-    state.items.basketProduct = _.filter(state.items.basketProduct, item => {
+    state.items.basketProduct = _.filter(state.items.basketProduct, (item) => {
       return data.uuid !== item.uuid
     })
   },
@@ -55,16 +55,16 @@ export const mutations = {
     state.items.basketProduct = []
   },
   setCountIncrement(state, uuid) {
-    state.items.basketProduct.find(item => item.uuid === uuid).rack_count++
-    const count = state.items.basketProduct.find(item => item.uuid === uuid).rack_count
-    const price = state.items.basketProduct.find(item => item.uuid === uuid).price
-    state.items.basketProduct.find(item => item.uuid === uuid).total = price * count
+    state.items.basketProduct.find((item) => item.uuid === uuid).rack_count++
+    const count = state.items.basketProduct.find((item) => item.uuid === uuid).rack_count
+    const price = state.items.basketProduct.find((item) => item.uuid === uuid).price
+    state.items.basketProduct.find((item) => item.uuid === uuid).total = price * count
   },
   setCountDecrement(state, uuid) {
-    state.items.basketProduct.find(item => item.uuid === uuid).rack_count--
-    const count = state.items.basketProduct.find(item => item.uuid === uuid).rack_count
-    const price = state.items.basketProduct.find(item => item.uuid === uuid).price
-    state.items.basketProduct.find(item => item.uuid === uuid).total = price * count
+    state.items.basketProduct.find((item) => item.uuid === uuid).rack_count--
+    const count = state.items.basketProduct.find((item) => item.uuid === uuid).rack_count
+    const price = state.items.basketProduct.find((item) => item.uuid === uuid).price
+    state.items.basketProduct.find((item) => item.uuid === uuid).total = price * count
   },
   setFilterItem(state, { fieldName, value }) {
     state.filter[fieldName] = value
@@ -80,13 +80,13 @@ export const getters = {
   getRack(state) {
     return state.item.rack
   },
-  getTypesByCategoryUuid: state => categoryUuid => {
-    return state.items.rack.filter(item => {
+  getTypesByCategoryUuid: (state) => (categoryUuid) => {
+    return state.items.rack.filter((item) => {
       return item.category_uuid === categoryUuid
     })
   },
-  getTypeById: state => typeUuid => {
-    return state.items.rack.find(item => {
+  getTypeById: (state) => (typeUuid) => {
+    return state.items.rack.find((item) => {
       return item.uuid === typeUuid
     })
   },

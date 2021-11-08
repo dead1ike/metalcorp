@@ -18,7 +18,9 @@
         </div>
         <div>
           <div>
-            <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)">Подробнее</b-btn>
+            <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)"
+              >Подробнее PublicWidgetGoodsCatalog</b-btn
+            >
           </div>
         </div>
       </div>
