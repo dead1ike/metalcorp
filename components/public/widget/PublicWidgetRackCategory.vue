@@ -1,19 +1,19 @@
 <template>
   <div class="d-flex flex-column pb-5">
     <div class="d-flex flex-column flex-lg-row px-4">
-      <div class="p-2">
+      <div class="p-2 px-8 pr-10">
         <b-img :src="getCategoryByUuid.image" class="w-100" />
       </div>
-      <div class="d-flex flex-column w-100">
+      <div class="d-flex flex-column w-100 pl-10">
         <div class="rackpage_description_header"><h4>Описание:</h4></div>
         <div class="rackpage_description pt-3">
-          <h5 class="font-weight-light">{{ getCategoryByUuid.description }}</h5>
+          <h5 class="font-weight-light text-wrap col-6 p-0">{{ getCategoryByUuid.description }}</h5>
         </div>
-        <div class="d-flex flex-row mt-auto mb-4 pt-10 pt-sm-0">
+        <div class="d-flex flex-row mt-auto mb-4 pt-10 pt-sm-10">
           <h4 class="rack_price pr-4">Стоимость:</h4>
           <h4 class="font-weight-light">от {{ getCategoryByUuid.from }} руб.</h4>
         </div>
-        <div class="mb-5">
+        <div>
           <b-btn class="d-inline-block px-8 py-4" variant="dark" @click="openModal()">Заказать расчет</b-btn>
         </div>
       </div>
