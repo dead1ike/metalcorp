@@ -47,7 +47,8 @@
             </div>
             <div class="pt-7 pb-6">
               <p class="designer_dolbaeb font-weight-normal">Прикрепите фото</p>
-              <b-file v-model="form.image" plain></b-file>
+              <label for="file_vacancy" class="btn btn-light border-dark btn-lg">Загрузить</label>
+              <b-file id="file_vacancy" v-model="form.image" plain class="d-none"></b-file>
             </div>
             <div class="pt-10">
               <b-btn class="px-8 py-4 d-inline-block" variant="dark" @click="sendFeedback">Отправить</b-btn>
