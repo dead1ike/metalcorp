@@ -5,7 +5,7 @@
   >
     <div class="d-flex flex-row flex-sm-column p-sm-8 pt-10">
       <div class="w-100 pr-4 p-sm-0">
-        <b-img style="max-width: 200px" class="w-100" src="~/static/logo1.png"></b-img>
+        <b-img style="max-width: 200px" class="w-100" src="~/static/img/logo1.png"></b-img>
       </div>
       <div class="pl-4 p-sm-0">
         <div class="pt-sm-10 pt-0">
