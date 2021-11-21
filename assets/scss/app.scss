@@ -133,7 +133,7 @@ table#manager-table .flip-list-move {
 .block3_banner {
   width: 100%;
   height: 700px;
-  background-image: url(https://i.ibb.co/2P5YRL9/background-2.jpg);
+  background-image: url(~/static/background-2.jpg);
   background-repeat: no-repeat;
   background-size: cover
 }
@@ -175,13 +175,13 @@ table#manager-table .flip-list-move {
 }
 
 .block3_mobile_left {
-  background-image: url(https://i.ibb.co/8MGDwfN/block3-left.jpg);
+  background-image: url(~/static/block3-left.jpg);
   background-repeat: no-repeat;
   background-size: cover
 }
 
 .block3_mobile_right {
-  background-image: url(https://i.ibb.co/p2HCpp9/block3-right.jpg);
+  background-image: url(~/static/block3-right.jpg);
   background-repeat: no-repeat;
   background-size: cover
 }
@@ -236,7 +236,7 @@ table#manager-table .flip-list-move {
 
 .banner {
   height: 735px;
-  background-image: url(https://i.ibb.co/Vgb03MM/background-1.jpg);
+  background-image: url(~/static/background-1.jpg);
   background-size: cover;
   background-position: right 35% bottom 50%;
   width: 100%;
@@ -815,7 +815,7 @@ table#manager-table .flip-list-move {
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
   overflow: hidden; /* Обрезаем всё за пределами блока */
 }
-.truncate h5 {
+.truncate div {
   margin: 0; /* Убираем внешний отступ */
   -webkit-line-clamp: 8; /* Число отображаемых строк */
   display: -webkit-box; /* Включаем флексбоксы */
