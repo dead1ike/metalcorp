@@ -1,9 +1,9 @@
 <template>
-  <div class="d-flex flex-wrap justify-content-center p-2 container-fluid public-widget-catalog">
-    <div v-for="itemCategory in getCategories" :key="itemCategory.uuid" class="d-flex flex-wrap p-2">
-      <div class="d-flex flex-column border border-dark px-3 px-sm-4 py-4 py-sm-4 h-100 w-100">
-        <div class="d-flex flex-row-reverse flex-sm-column h-100">
-          <div class="h4 m-0 w-100" style="min-width: 110px">{{ itemCategory.title }}</div>
+  <div class="d-flex flex-wrap justify-content-center container-fluid public-widget-catalog p-2">
+    <div v-for="itemCategory in getCategories" :key="itemCategory.uuid" class="py-2 py-sm-3">
+      <div class="d-flex flex-column border border-dark px-3 px-sm-4 py-4 py-sm-4 mx-2 mx-sm-3 h-100">
+        <div class="d-flex flex-row-reverse flex-sm-column h-100 pb-3 pb-sm-0">
+          <div class="h4 m-0 w-100" style="min-width: 116px">{{ itemCategory.title }}</div>
           <div class="d-flex py-0 py-sm-4 flex-row h-100">
             <div class="d-none d-md-flex flex-column" style="width: 50%">
               <template v-for="itemChild in itemCategory.childs.slice(0, 6)">

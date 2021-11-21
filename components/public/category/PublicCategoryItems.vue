@@ -1,9 +1,9 @@
 <template>
   <div class="w-100">
     <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ getCategoryTitle }}</h2>
-    <div class="d-flex flex-wrap public-category-items">
-      <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="py-3">
-        <div class="d-flex flex-sm-column flex-row flex-wrap flex-sm-nowrap h-100 px-5 py-5 mx-3 border border-dark">
+    <div class="d-flex flex-wrap justify-content-center public-category-items p-2">
+      <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="py-2 py-sm-3">
+        <div class="d-flex flex-column border border-dark px-3 px-sm-4 py-4 py-sm-4 mx-2 mx-sm-3 h-100">
           <h5>{{ itemCategory.title }}</h5>
           <div class="d-flex py-4 flex-sm-row flex-column">
             <div class="flex-fill truncate d-xl-block d-none" style="max-width: 50%">

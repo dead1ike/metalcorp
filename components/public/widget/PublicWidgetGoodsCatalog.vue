@@ -1,26 +1,23 @@
 <template>
   <div>
-    <div class="d-flex flex-wrap justify-content-center p-2">
-      <div
-        v-for="itemGoods in getGoodItems"
-        :key="itemGoods.uuid"
-        class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
-        style="max-width: 32%"
-      >
-        <h5>{{ itemGoods.title }}</h5>
-        <div class="d-flex py-4 flex-row h-100">
-          <div class="flex-fill truncate" style="max-width: 50%">
-            <p class="designer_dolbaeb">{{ itemGoods.description }}</p>
+    <div class="d-flex flex-wrap justify-content-center public-widget-goods-catalog p-2">
+      <div v-for="itemGoods in getGoodItems" :key="itemGoods.uuid" class="py-2 py-sm-3">
+        <div class="d-flex flex-column border border-dark p-3 p-sm-4 mx-2 mx-sm-3 h-100 justify-content-between">
+          <h5>{{ itemGoods.title }}</h5>
+          <div class="d-flex py-4 flex-row h-100">
+            <div class="flex-fill truncate" style="max-width: 50%">
+              <p class="designer_dolbaeb">{{ itemGoods.description }}</p>
+            </div>
+            <div class="pl-2">
+              <img :src="itemGoods.image" class="w-100" alt="" />
+            </div>
           </div>
-          <div class="pl-2">
-            <img :src="itemGoods.image" class="w-100" alt="" />
-          </div>
-        </div>
-        <div>
           <div>
-            <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)"
-              >Подробнее PublicWidgetGoodsCatalog</b-btn
-            >
+            <div>
+              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)"
+                >Подробнее PublicWidgetGoodsCatalog
+              </b-btn>
+            </div>
           </div>
         </div>
       </div>
@@ -44,6 +41,38 @@
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.public-widget-goods-catalog {
+  & > div {
+    width: 50%;
+
+    img {
+      max-height: 80px;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 575.98px) {
+  //
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 767.98px) {
+  .public-widget-goods-catalog {
+    & > div {
+      width: 33%;
+      max-width: 800px;
+
+      img {
+        max-height: inherit;
+        width: 100%;
+      }
+    }
+  }
+}
+</style>
 
 <script>
 export default {

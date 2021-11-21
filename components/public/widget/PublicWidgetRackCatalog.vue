@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-wrap justify-content-center public-widget-rack-catalog p-2">
-    <div v-for="itemRack in getTypeByCategoryUuid" :key="itemRack.uuid" class="py-2">
-      <div class="d-flex flex-column justify-content-between px-4 py-5 mx-2 border border-dark h-100">
+    <div v-for="itemRack in getTypeByCategoryUuid" :key="itemRack.uuid" class="py-2 py-sm-3">
+      <div class="d-flex flex-column border border-dark p-3 p-sm-4 mx-2 mx-sm-3 h-100 justify-content-between">
         <h5 class="m-0">{{ itemRack.title }}</h5>
         <div class="d-flex py-3 py-ms-4 flex-row">
           <div class="flex-fill truncate d-none d-md-block" style="max-width: 63%">
@@ -13,7 +13,7 @@
         </div>
         <div>
           <div>
-            <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="routeMore(itemRack)"> Подробнее</b-btn>
+            <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="routeMore(itemRack)"> Подробнее 22</b-btn>
           </div>
         </div>
       </div>
