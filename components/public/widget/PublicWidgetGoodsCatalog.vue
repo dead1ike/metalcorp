@@ -13,11 +13,7 @@
             </div>
           </div>
           <div>
-            <div>
-              <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)"
-                >Подробнее PublicWidgetGoodsCatalog
-              </b-btn>
-            </div>
+            <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)"> Подробнее 44 </b-btn>
           </div>
         </div>
       </div>
@@ -48,7 +44,8 @@
     width: 50%;
 
     img {
-      max-height: 80px;
+      max-height: 120px;
+      max-width: 100%;
     }
   }
 }
@@ -67,7 +64,6 @@
 
       img {
         max-height: inherit;
-        width: 100%;
       }
     }
   }

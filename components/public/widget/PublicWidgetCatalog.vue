@@ -1,24 +1,29 @@
 <template>
   <div class="d-flex flex-wrap justify-content-center container-fluid public-widget-catalog p-2">
-    <div v-for="itemCategory in getCategories" :key="itemCategory.uuid" class="py-2 py-sm-3">
-      <div class="d-flex flex-column border border-dark px-3 px-sm-4 py-4 py-sm-4 mx-2 mx-sm-3 h-100">
-        <div class="d-flex flex-row-reverse flex-sm-column h-100 pb-3 pb-sm-0">
-          <div class="h4 m-0 w-100" style="min-width: 116px">{{ itemCategory.title }}</div>
-          <div class="d-flex py-0 py-sm-4 flex-row h-100">
-            <div class="d-none d-md-flex flex-column" style="width: 50%">
+    <div v-for="itemCategory in getCategories" :key="itemCategory.uuid" class="py-2 py-md-3">
+      <div class="d-flex flex-column border border-dark p-3 p-md-4 mx-2 mx-md-3 h-100 justify-content-between">
+        <div class="d-flex flex-row-reverse flex-md-column h-100 pb-3 pb-md-0">
+          <div class="h4 m-0 w-100">{{ itemCategory.title }}</div>
+
+          <div class="d-flex py-0 py-md-4 flex-row h-100">
+            <div class="d-none d-md-flex flex-fill flex-column" style="max-width: 65%">
               <template v-for="itemChild in itemCategory.childs.slice(0, 6)">
                 <span :key="itemChild.uuid" class="d-block designer_dolbaeb">
                   {{ itemChild.title }}
                 </span>
               </template>
             </div>
-            <div class="pl-2" style="width: 50%">
+
+            <div class="px-3 px-md-2 w-100 text-center align-self-center">
               <img :src="itemCategory.image" class="w-100" alt="" />
             </div>
           </div>
         </div>
+
         <div>
-          <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="toCategory(itemCategory)">Подробнее</b-btn>
+          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)">
+            Подробнее 11
+          </b-btn>
         </div>
       </div>
     </div>

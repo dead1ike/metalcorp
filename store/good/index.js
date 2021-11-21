@@ -53,7 +53,7 @@ export const mutations = {
   setGoods(state, data) {
     state.items.good = data
   },
-  setFilterItem(state, { slug, value }) {
+  setFilterParameters(state, { slug, value }) {
     state.filter.parameters[slug] = value
   },
   setFilter(state, { fieldName, value }) {

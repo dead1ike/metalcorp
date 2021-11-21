@@ -2,42 +2,29 @@
   <div class="w-100">
     <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ getCategoryTitle }}</h2>
     <div class="d-flex flex-wrap justify-content-center public-category-items p-2">
-      <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="py-2 py-sm-3">
-        <div class="d-flex flex-column border border-dark px-3 px-sm-4 py-4 py-sm-4 mx-2 mx-sm-3 h-100">
+      <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="py-2 py-md-3">
+        <div class="d-flex flex-column border border-dark p-3 p-md-4 mx-2 mx-md-3 h-100 justify-content-between">
           <h5>{{ itemCategory.title }}</h5>
-          <div class="d-flex py-4 flex-sm-row flex-column">
-            <div class="flex-fill truncate d-xl-block d-none" style="max-width: 50%">
+
+          <div class="d-flex py-4 flex-column flex-md-row">
+            <div class="flex-fill truncate d-md-block d-none" style="max-width: 65%">
               <div class="designer_dolbaeb">{{ itemCategory.description }}</div>
             </div>
-            <div class="pl-2" style="max-height: 170px">
-              <img :src="itemCategory.image" class="w-100" style="max-height: 170px" alt="" />
+
+            <div class="pl-0 pl-md-2 w-100 text-center">
+              <img :src="itemCategory.image" alt="" />
             </div>
           </div>
-          <div class="d-flex flex-column">
-            <template v-if="itemCategory.childs.length > 0">
-              <div class="d-flex flex-row w-100 justify-content-between">
-                <div class="pt-6">
-                  <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="toCategoryPage(itemCategory)"
-                    >Подробнее
-                  </b-btn>
-                </div>
-                <div class="p-4 text-center">
-                  <h5 class="mt-4">от {{ itemCategory.from }} руб.</h5>
-                </div>
-              </div>
-            </template>
-            <template v-else>
-              <div class="d-flex flex-column-reverse flex-sm-row justify-content-between">
-                <div class="pt-3">
-                  <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="toListPage(itemCategory)">
-                    Подробнее
-                  </b-btn>
-                </div>
-                <div class="w-100 align-self-center">
-                  <h5 class="mt-3 text-center">от {{ itemCategory.from }} руб.</h5>
-                </div>
-              </div>
-            </template>
+
+          <div class="d-flex flex-column-reverse flex-md-row justify-content-between">
+            <div class="pt-3">
+              <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemCategory)">
+                Подробнее
+              </nuxt-link>
+            </div>
+            <div class="w-100 align-self-center" :class="{ 'd-none': itemCategory.childs.length }">
+              <h5 class="mt-3 text-center">от {{ itemCategory.from }} руб.</h5>
+            </div>
           </div>
         </div>
       </div>
@@ -49,6 +36,11 @@
 .public-category-items {
   & > div {
     width: 50%;
+
+    img {
+      max-height: 120px;
+      max-width: 100%;
+    }
   }
 }
 
@@ -63,6 +55,10 @@
     & > div {
       width: 33%;
       max-width: 800px;
+
+      img {
+        max-height: 170px;
+      }
     }
   }
 }
@@ -128,11 +124,14 @@ export default {
     changePage() {
       this.$store.commit('category/setCurrentPageCategory', this.pagination.currentPage)
     },
-    toCategoryPage(item) {
-      this.$router.push(`/category/${item.uuid}`)
-    },
-    toListPage(item) {
-      this.$router.push(`/category/${item.uuid}/${item.slug}`)
+    getLink(itemCategory) {
+      console.warn('itemCategory', itemCategory.title)
+      console.warn('itemCategory', itemCategory)
+      if (itemCategory.childs.length) {
+        return `/category/${itemCategory.uuid}`
+      } else {
+        return `/category/${itemCategory.uuid}/${itemCategory.slug}`
+      }
     },
   },
 }
