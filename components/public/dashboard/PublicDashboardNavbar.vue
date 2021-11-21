@@ -4,7 +4,7 @@
       <b-navbar toggleable="lg">
         <b-navbar-brand to="/">
           <div style="width: 280px" class="pl-1">
-            <b-img style="max-width: 150px; max-height: 63px" src="~/static/logo.png" />
+            <b-img style="max-width: 150px; max-height: 63px" src="~/static/img/logo.png" />
           </div>
         </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse">

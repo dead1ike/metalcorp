@@ -8,5 +8,8 @@
 </template>
 
 <script>
-export default {}
+export default {
+  layout: 'catalog',
+}
 </script>
+<style lang="scss"></style>

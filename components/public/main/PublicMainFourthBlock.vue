@@ -41,16 +41,16 @@
                   <div class="slider-wrapper">
                     <div class="inner">
                       <article>
-                        <img src="~/static/slide1.png" alt="" />
+                        <img src="~/static/img/slide1.png" alt="" />
                       </article>
                       <article>
-                        <img src="~/static/slide2.png" alt="" />
+                        <img src="~/static/img/slide2.png" alt="" />
                       </article>
                       <article>
-                        <img src="~/static/slide3.png" alt="" />
+                        <img src="~/static/img/slide3.png" alt="" />
                       </article>
                       <article>
-                        <img src="~/static/slide4.png" alt="" />
+                        <img src="~/static/img/slide4.png" alt="" />
                       </article>
                     </div>
                   </div>

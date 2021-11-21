@@ -133,7 +133,7 @@ table#manager-table .flip-list-move {
 .block3_banner {
   width: 100%;
   height: 700px;
-  background-image: url(~/static/background-2.jpg);
+  background-image: url(~/static/img/background-2.jpg);
   background-repeat: no-repeat;
   background-size: cover
 }
@@ -175,13 +175,13 @@ table#manager-table .flip-list-move {
 }
 
 .block3_mobile_left {
-  background-image: url(~/static/block3-left.jpg);
+  background-image: url(~/static/img/block3-left.jpg);
   background-repeat: no-repeat;
   background-size: cover
 }
 
 .block3_mobile_right {
-  background-image: url(~/static/block3-right.jpg);
+  background-image: url(~/static/img/block3-right.jpg);
   background-repeat: no-repeat;
   background-size: cover
 }
@@ -236,7 +236,7 @@ table#manager-table .flip-list-move {
 
 .banner {
   height: 735px;
-  background-image: url(~/static/background-1.jpg);
+  background-image: url(~/static/img/background-1.jpg);
   background-size: cover;
   background-position: right 35% bottom 50%;
   width: 100%;
@@ -572,10 +572,10 @@ table#manager-table .flip-list-move {
 #slider_bl #slide1:checked ~ .slider-prev-next-control label:nth-child(2)::after, #slider_bl #slide1:checked ~ .slider-prev-next-control label:nth-child(5)::after, #slider_bl #slide2:checked ~ .slider-prev-next-control label:nth-child(1)::after, #slider_bl #slide2:checked ~ .slider-prev-next-control label:nth-child(3)::after, #slider_bl #slide3:checked ~ .slider-prev-next-control label:nth-child(2)::after, #slider_bl #slide3:checked ~ .slider-prev-next-control label:nth-child(4)::after, #slider_bl #slide4:checked ~ .slider-prev-next-control label:nth-child(3)::after, #slider_bl #slide4:checked ~ .slider-prev-next-control label:nth-child(5)::after, #slider_bl #slide5:checked ~ .slider-prev-next-control label:nth-child(1)::after, #slider_bl #slide5:checked ~ .slider-prev-next-control label:nth-child(4)::after {
   font-family: 'Fira Sans', sans-serif;;
   font-style: normal;
-  //font-weight: 400;
+  font-weight: 700;
   text-decoration: inherit;
   margin: 0;
-  //line-height: 38px;
+  line-height: 38px;
   //font-size: 3em;
   display: block;
   color: #777
@@ -583,7 +583,8 @@ table#manager-table .flip-list-move {
 
 #slider_bl #slide1:checked ~ .slider-prev-next-control label:nth-child(2)::after, #slider_bl #slide2:checked ~ .slider-prev-next-control label:nth-child(3)::after, #slider_bl #slide3:checked ~ .slider-prev-next-control label:nth-child(4)::after, #slider_bl #slide4:checked ~ .slider-prev-next-control label:nth-child(5)::after, #slider_bl #slide5:checked ~ .slider-prev-next-control label:nth-child(1)::after {
   content: ">";
-  padding-left: 10px
+  padding-left: 16px;
+  padding-top: 6px
 }
 
 #slider_bl #slide1:checked ~ .slider-prev-next-control label:nth-child(2), #slider_bl #slide2:checked ~ .slider-prev-next-control label:nth-child(3), #slider_bl #slide3:checked ~ .slider-prev-next-control label:nth-child(4), #slider_bl #slide4:checked ~ .slider-prev-next-control label:nth-child(5), #slider_bl #slide5:checked ~ .slider-prev-next-control label:nth-child(1) {
@@ -600,7 +601,8 @@ table#manager-table .flip-list-move {
 
 #slider_bl #slide1:checked ~ .slider-prev-next-control label:nth-child(5)::after, #slider_bl #slide2:checked ~ .slider-prev-next-control label:nth-child(1)::after, #slider_bl #slide3:checked ~ .slider-prev-next-control label:nth-child(2)::after, #slider_bl #slide4:checked ~ .slider-prev-next-control label:nth-child(3)::after, #slider_bl #slide5:checked ~ .slider-prev-next-control label:nth-child(4)::after {
   content: "<";
-  padding-left: 8px
+  padding-left: 16px;
+  padding-top: 6px
 }
 
 #slider_bl #slide1:checked ~ .slider-dot-control label:nth-child(1), #slider_bl #slide2:checked ~ .slider-dot-control label:nth-child(2), #slider_bl #slide3:checked ~ .slider-dot-control label:nth-child(3), #slider_bl #slide4:checked ~ .slider-dot-control label:nth-child(4), #slider_bl #slide5:checked ~ .slider-dot-control label:nth-child(5) {
@@ -614,6 +616,8 @@ table#manager-table .flip-list-move {
 #slider_bl #slide1:checked ~ .slider-wrapper .inner {
   margin-left: 0
 }
+
+
 
 #slider_bl #slide2:checked ~ .slider-wrapper .inner {
   margin-left: -100%

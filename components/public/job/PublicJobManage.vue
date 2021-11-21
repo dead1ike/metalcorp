@@ -2,8 +2,8 @@
   <div class="h-100">
     <div>
       <h2 class="font-weight-bold pt-10 pb-6 pl-7">Сотрудничество</h2>
-      <div class="d-flex flex-column flex-lg-row px-4 py-10">
-        <div class="w-100 d-flex flex-column px-4">
+      <div class="d-flex flex-column flex-lg-row px-lg-4 py-lg-10">
+        <div class="w-100 d-flex flex-column px-4 pb-8">
           <div class="job_header pb-4"><h4>Приглашаем дилеров к сотрудничеству</h4></div>
           <div class="job_text pb-5" style="max-width: 648px">
             <h5 class="font-weight-light">
@@ -15,32 +15,34 @@
             <h4>Являясь производителем стеллажей, мы предоставляем нашим партнерам максимально выгодные условия:</h4>
           </div>
           <div class="job_text d-flex flex-column">
-            <h5 class="font-weight-light m-0">-дополнительные скидки по результатам продаж</h5>
-            <h5 class="font-weight-light m-0">-персональный менеджер</h5>
-            <h5 class="font-weight-light m-0">-обучение персонала, шеф-монтаж</h5>
-            <h5 class="font-weight-light m-0">-разработка проектов</h5>
-            <h5 class="font-weight-light m-0">-помощь в ведении сложных заказов</h5>
-            <h5 class="font-weight-light m-0">-информационная поддержка</h5>
+            <h5 class="font-weight-light">-дополнительные скидки по результатам продаж</h5>
+            <h5 class="font-weight-light">-персональный менеджер</h5>
+            <h5 class="font-weight-light">-обучение персонала, шеф-монтаж</h5>
+            <h5 class="font-weight-light">-разработка проектов</h5>
+            <h5 class="font-weight-light">-помощь в ведении сложных заказов</h5>
+            <h5 class="font-weight-light">-информационная поддержка</h5>
           </div>
         </div>
         <div
           class="w-100"
           style="
-            background-image: url('~/static/block1.png');
+            background-image: url('/img/block1.png');
             background-repeat: no repeat;
             background-position: center;
             background-size: cover;
+            min-height: 213px;
           "
         ></div>
       </div>
-      <div class="d-flex flex-column flex-lg-row px-4 py-10">
+      <div class="d-flex flex-column-reverse flex-lg-row px-lg-4 py-lg-10">
         <div
           class="w-100"
           style="
-            background-image: url('~/static/block2.png');
+            background-image: url('/img/block2.png');
             background-repeat: no repeat;
             background-position: center;
             background-size: cover;
+            min-height: 481px;
           "
         ></div>
         <div class="bg-dark text-white p-10">
@@ -81,14 +83,15 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column flex-lg-row px-4 py-10">
+      <div class="d-flex flex-column-reverse flex-lg-row px-lg-4 py-lg-10">
         <div
           class="w-100"
           style="
-            background-image: url('~/static/block3.png');
+            background-image: url('/img/block3.png');
             background-repeat: no repeat;
             background-position: center;
             background-size: cover;
+            min-height: 213px;
           "
         ></div>
         <div class="w-100 d-flex flex-column p-4">
@@ -107,7 +110,7 @@
           </div>
         </div>
       </div>
-      <div class="px-4 py-10">
+      <div class="px-lg-4 py-10">
         <div class="shadow d-flex flex-column flex-lg-row">
           <div class="w-100 d-flex flex-column p-8">
             <div class="vacancy_form_header1"><h4>Плюсы сотрудничества с нами</h4></div>
