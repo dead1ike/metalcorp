@@ -1,19 +1,22 @@
 <template>
   <div class="d-flex flex-wrap justify-content-center public-widget-rack-catalog p-2">
-    <div v-for="itemRack in getTypeByCategoryUuid" :key="itemRack.uuid" class="py-2 py-sm-3">
-      <div class="d-flex flex-column border border-dark p-3 p-sm-4 mx-2 mx-sm-3 h-100 justify-content-between">
+    <div v-for="itemRack in getTypeByCategoryUuid" :key="itemRack.uuid" class="py-2 py-md-3">
+      <div class="d-flex flex-column border border-dark p-3 p-md-4 mx-2 mx-md-3 h-100 justify-content-between">
         <h5 class="m-0">{{ itemRack.title }}</h5>
-        <div class="d-flex py-3 py-ms-4 flex-row">
+
+        <div class="d-flex py-3 py-md-4 flex-row">
           <div class="flex-fill truncate d-none d-md-block" style="max-width: 63%">
             <p class="designer_dolbaeb">{{ itemRack.description }}</p>
           </div>
-          <div class="pl-2">
-            <img :src="itemRack.image" class="" alt="" />
+
+          <div class="pl-0 pl-md-2 w-100 text-center">
+            <img :src="itemRack.image" alt="" />
           </div>
         </div>
+
         <div>
           <div>
-            <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="routeMore(itemRack)"> Подробнее 22</b-btn>
+            <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="routeMore(itemRack)"> Подробнее 33 </b-btn>
           </div>
         </div>
       </div>
@@ -27,7 +30,7 @@
     width: 50%;
 
     img {
-      max-height: 80px;
+      max-height: 120px;
     }
   }
 }
@@ -46,7 +49,7 @@
 
       img {
         max-height: inherit;
-        width: 100%;
+        max-width: 100%;
       }
     }
   }

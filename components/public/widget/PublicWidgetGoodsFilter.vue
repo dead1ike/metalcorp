@@ -20,7 +20,7 @@
           "
         >
           <div v-for="goodParameter in goodParameters" :key="goodParameter.uuid">
-            <b-dd-item @click="updateFilter(indexGroup, goodParameter)">
+            <b-dd-item @click="setGoodFilterParameters(indexGroup, goodParameter)">
               {{ goodParameter.parameter_value }}
             </b-dd-item>
           </div>
@@ -109,10 +109,10 @@ export default {
     getTitle(parameters) {
       return _.head(parameters).title
     },
-    updateFilter(indexGroup, goodParameter) {
+    setGoodFilterParameters(indexGroup, goodParameter) {
       this.getSelectedGroupParams = { key: indexGroup, value: goodParameter }
       this.filters[goodParameter.slug] = goodParameter.parameter_value
-      this.$store.commit('good/setFilterItem', {
+      this.$store.commit('good/setFilterParameters', {
         slug: goodParameter.slug,
         value: goodParameter.parameter_value,
       })

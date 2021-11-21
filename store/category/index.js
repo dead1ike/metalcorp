@@ -46,7 +46,7 @@ export const actions = {
   },
 }
 export const mutations = {
-  setFilterItem(state, { fieldName, value }) {
+  setFilter(state, { fieldName, value }) {
     state.filter[fieldName] = value
   },
   setCategoryTitle(state, data) {
