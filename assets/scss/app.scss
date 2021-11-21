@@ -815,6 +815,13 @@ table#manager-table .flip-list-move {
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
   overflow: hidden; /* Обрезаем всё за пределами блока */
 }
+.truncate h5 {
+  margin: 0; /* Убираем внешний отступ */
+  -webkit-line-clamp: 8; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
+}
 
 .callback_banner {
   margin: 60px 40px;

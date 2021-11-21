@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="pb-9">
+    <div class="pb-9 d-flex flex-column">
       <span class="font-weight-normal">+7 (906) 812-81-75</span>
       <span class="operating_mode font-weight-normal">Ежедневно с 9:00 до 21:00</span>
     </div>
