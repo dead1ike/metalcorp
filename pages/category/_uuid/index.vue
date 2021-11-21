@@ -6,7 +6,7 @@
         <h3 class="p-10 font-weight-bold">
           Результаты поиска : <small class="">"{{ $route.query.title }}"</small>
         </h3>
-        <div class="d-flex" v-if="$store.getters['good/getGoodItems'].length <= 0">
+        <div v-if="$store.getters['good/getGoodItems'].length <= 0" class="d-flex">
           <h3 class="p-10">По вашему запросу ничего не найдено!</h3>
           <div class="ml-10 text-center flex-fill"><b-icon-emoji-dizzy scale="13" variant="corp" /></div>
         </div>

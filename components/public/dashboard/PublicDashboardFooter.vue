@@ -6,7 +6,8 @@
     <div class="d-flex flex-row flex-sm-column p-sm-8 pt-10">
       <div class="w-100 pr-4 p-sm-0">
         <b-img
-          style="width: 200px"
+          style="max-width: 200px"
+          class="w-100"
           src="https://thumb.tildacdn.com/tild6536-3538-4137-b034-373731613935/-/resize/130x/-/format/webp/__2_2.png"
         ></b-img>
       </div>
@@ -16,7 +17,9 @@
           <span>ЕЖЕДНЕВНО с 9:00 до 21:00</span><br />
         </div>
         <div class="pt-sm-7 pt-4">
-          <b-btn class="d-inline-block px-8 py-4 text-truncate" variant="light" to="/zvonok">Заказать звонок</b-btn>
+          <b-btn class="d-inline-block px-6 py-4 px-sm-8 py-sm-4 text-truncate" variant="light" to="/zvonok"
+            >Заказать звонок</b-btn
+          >
         </div>
       </div>
     </div>

@@ -1,32 +1,53 @@
 <template>
-  <div class="d-flex flex-wrap justify-content-center p-2 container-fluid" style="max-width: 2600px">
-    <div
-      v-for="itemCategory in getCategories"
-      :key="itemCategory.uuid"
-      class="d-flex flex-wrap p-2"
-      style="max-width: 800px; min-width: 300px; width: 33.33%"
-    >
-      <div class="d-flex flex-column border border-dark p-4 h-100 w-100">
-        <div class="h4">{{ itemCategory.title }}</div>
-        <div class="d-flex py-4 flex-row h-100">
-          <div class="d-none d-lg-flex flex-column" style="width: 50%">
-            <template v-for="itemChild in itemCategory.childs.slice(0, 6)">
-              <span :key="itemChild.uuid" class="d-block designer_dolbaeb">
-                {{ itemChild.title }}
-              </span>
-            </template>
-          </div>
-          <div class="pl-2" style="width: 50%">
-            <img :src="itemCategory.image" class="w-100" alt="" />
+  <div class="d-flex flex-wrap justify-content-center p-2 container-fluid public-widget-catalog">
+    <div v-for="itemCategory in getCategories" :key="itemCategory.uuid" class="d-flex flex-wrap p-2">
+      <div class="d-flex flex-column border border-dark px-3 px-sm-4 py-4 py-sm-4 h-100 w-100">
+        <div class="d-flex flex-row-reverse flex-sm-column h-100">
+          <div class="h4 m-0 w-100" style="min-width: 110px">{{ itemCategory.title }}</div>
+          <div class="d-flex py-0 py-sm-4 flex-row h-100">
+            <div class="d-none d-md-flex flex-column" style="width: 50%">
+              <template v-for="itemChild in itemCategory.childs.slice(0, 6)">
+                <span :key="itemChild.uuid" class="d-block designer_dolbaeb">
+                  {{ itemChild.title }}
+                </span>
+              </template>
+            </div>
+            <div class="pl-2" style="width: 50%">
+              <img :src="itemCategory.image" class="w-100" alt="" />
+            </div>
           </div>
         </div>
         <div>
-          <b-btn variant="dark" @click="toCategory(itemCategory)">Подробнее PublicWidgetCatalog</b-btn>
+          <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="toCategory(itemCategory)">Подробнее</b-btn>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.public-widget-catalog {
+  max-width: 2600px;
+
+  & > div {
+    width: 50%;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 575.98px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 767.98px) {
+  .public-widget-catalog {
+    & > div {
+      width: 33%;
+      max-width: 800px;
+    }
+  }
+}
+</style>
 
 <script>
 export default {

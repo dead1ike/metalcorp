@@ -1,30 +1,57 @@
 <template>
-  <div class="d-flex flex-wrap justify-content-center p-2">
-    <div
-      v-for="itemRack in getTypeByCategoryUuid"
-      :key="itemRack.uuid"
-      class="d-flex flex-column px-4 py-5 mx-2 my-4 border border-dark"
-      style="max-width: 32%"
-    >
-      <h5>{{ itemRack.title }}</h5>
-      <div class="d-flex py-4 flex-row h-100">
-        <div class="flex-fill truncate" style="max-width: 63%">
-          <p class="designer_dolbaeb">{{ itemRack.description }}</p>
+  <div class="d-flex flex-wrap justify-content-center public-widget-rack-catalog p-2">
+    <div v-for="itemRack in getTypeByCategoryUuid" :key="itemRack.uuid" class="py-2">
+      <div class="d-flex flex-column justify-content-between px-4 py-5 mx-2 border border-dark h-100">
+        <h5 class="m-0">{{ itemRack.title }}</h5>
+        <div class="d-flex py-3 py-ms-4 flex-row">
+          <div class="flex-fill truncate d-none d-md-block" style="max-width: 63%">
+            <p class="designer_dolbaeb">{{ itemRack.description }}</p>
+          </div>
+          <div class="pl-2">
+            <img :src="itemRack.image" class="" alt="" />
+          </div>
         </div>
-        <div class="pl-2">
-          <img :src="itemRack.image" class="w-100" alt="" />
-        </div>
-      </div>
-      <div>
         <div>
-          <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemRack)"
-            >Подробнее PublicWidgetRackCatalog</b-btn
-          >
+          <div>
+            <b-btn variant="dark" class="px-5 py-3 px-sm-7 py-sm-6" @click="routeMore(itemRack)"> Подробнее</b-btn>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.public-widget-rack-catalog {
+  & > div {
+    width: 50%;
+
+    img {
+      max-height: 80px;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 575.98px) {
+  //
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 767.98px) {
+  .public-widget-rack-catalog {
+    & > div {
+      width: 33%;
+      max-width: 800px;
+
+      img {
+        max-height: inherit;
+        width: 100%;
+      }
+    }
+  }
+}
+</style>
 
 <script>
 export default {
