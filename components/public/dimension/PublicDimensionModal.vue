@@ -3,7 +3,7 @@
     <div class="h-100 w-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
       <div
         class="w-100 h-100 d-flex flex-column align-items-center text-white"
-        style="max-width: 870px; min-height: 100%; background-image: url('https://i.ibb.co/1sxMCx2/offer-bg.png')"
+        style="max-width: 870px; min-height: 100%; background-image: url('~/static/offer-bg.png')"
       >
         <div class="py-10" style="max-width: 485px">
           <div class="pt-10 pb-8">

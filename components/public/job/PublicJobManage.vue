@@ -26,7 +26,7 @@
         <div
           class="w-100"
           style="
-            background-image: url('https://i.ibb.co/gWjrdVH/block1.png');
+            background-image: url('~/static/block1.png');
             background-repeat: no repeat;
             background-position: center;
             background-size: cover;
@@ -37,7 +37,7 @@
         <div
           class="w-100"
           style="
-            background-image: url('https://i.ibb.co/s9pNKXb/block2.png');
+            background-image: url('~/static/block2.png');
             background-repeat: no repeat;
             background-position: center;
             background-size: cover;
@@ -85,7 +85,7 @@
         <div
           class="w-100"
           style="
-            background-image: url('https://i.ibb.co/6NzYxkL/block3.png');
+            background-image: url('~/static/block3.png');
             background-repeat: no repeat;
             background-position: center;
             background-size: cover;

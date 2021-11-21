@@ -26,23 +26,15 @@
 
       <div class="d-flex flex-column flex-fill pt-8 text-center text-sm-left">
         <div class="w-100 pb-8">
-          <img src="https://i.ibb.co/SxWYs9V/pencil-icon.png" alt="pencil" style="max-width: 89px; max-height: 89px" />
+          <img src="~/static/pencil-icon.png" alt="pencil" style="max-width: 89px; max-height: 89px" />
           <h4 class="pt-4">Точный замер</h4>
         </div>
         <div class="w-100 py-8">
-          <img
-            src="https://i.ibb.co/VYc6Ln6/calc-icon.png"
-            alt="calc"
-            style="max-width: 74px; max-height: 96px; margin-left: 5px"
-          />
+          <img src="~/static/calc-icon.png" alt="calc" style="max-width: 74px; max-height: 96px; margin-left: 5px" />
           <h4 class="pt-4">Расчет сметы</h4>
         </div>
         <div class="w-100 pt-8">
-          <img
-            src="https://i.ibb.co/Y87d2Ww/calendar-icon.png"
-            alt="calendar"
-            style="max-width: 96px; max-height: 96px"
-          />
+          <img src="~/static/calendar-icon.png" alt="calendar" style="max-width: 96px; max-height: 96px" />
           <h4 class="pt-4 text-truncate">
             Сроки поставки и <br />
             установки стеллажей

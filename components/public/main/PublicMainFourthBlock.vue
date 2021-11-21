@@ -41,16 +41,16 @@
                   <div class="slider-wrapper">
                     <div class="inner">
                       <article>
-                        <img src="https://i.ibb.co/cTKpdj1/slide1.png" alt="" />
+                        <img src="~/static/slide1.png" alt="" />
                       </article>
                       <article>
-                        <img src="https://i.ibb.co/xmgnfZg/slide2.png" alt="" />
+                        <img src="~/static/slide2.png" alt="" />
                       </article>
                       <article>
-                        <img src="https://i.ibb.co/Sdv2Kyv/slide3.png" alt="" />
+                        <img src="~/static/slide3.png" alt="" />
                       </article>
                       <article>
-                        <img src="https://i.ibb.co/Tgxfrvd/slide4.png" alt="" />
+                        <img src="~/static/slide4.png" alt="" />
                       </article>
                     </div>
                   </div>
