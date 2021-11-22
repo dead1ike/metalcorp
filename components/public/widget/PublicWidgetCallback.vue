@@ -7,15 +7,15 @@
       <div class="d-flex flex-column flex-lg-row p-6 h-100">
         <div class="d-flex flex-column pr-10 mb-5 mb-sm-0">
           <h5 class="feedback_form_text text-truncate">Ваше имя</h5>
-          <b-form-input class="border-dark" size="lg"></b-form-input>
+          <b-form-input class="border-dark" size="lg" v-model="form.name"></b-form-input>
         </div>
         <div class="d-flex flex-column pr-10 mt-5 mt-sm-0">
           <h5 class="feedback_form_text text-truncate">Ваш телефон</h5>
-          <b-form-input class="border-dark" size="lg"></b-form-input>
+          <b-form-input class="border-dark" size="lg" v-model="form.phone"></b-form-input>
         </div>
       </div>
       <div class="px-5 pb-9">
-        <b-btn class="btn btn-light border-dark">Оставить заявку</b-btn>
+        <b-btn class="btn btn-light border-dark" @click="confirmOffer()">Оставить заявку</b-btn>
       </div>
     </div>
     <div class="d-flex flex-column w-100 callback_rightside p-7" style="max-width: 650px">
@@ -43,5 +43,27 @@
 <script>
 export default {
   name: 'PublicWidgetCallback',
+  data() {
+    return {
+      form: {
+        name: '',
+        phone: '',
+      },
+    }
+  },
+  methods: {
+    confirmOffer() {
+      this.$store
+        .dispatch('basket/postOrder', {
+          ...this.form,
+        })
+        .then(() => {
+          this.form.phone = ''
+          this.form.name = ''
+          this.$router.push('/')
+          alert('Ваша заявка принята. С вами свяжется специалист!')
+        })
+    },
+  },
 }
 </script>

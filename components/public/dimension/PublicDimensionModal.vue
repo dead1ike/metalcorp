@@ -70,6 +70,8 @@ export default {
         .then(() => {
           this.form.phone = ''
           this.form.name = ''
+          this.$router.push('/')
+          alert('Ваша заявка принята. С вами свяжется специалист!')
         })
     },
   },

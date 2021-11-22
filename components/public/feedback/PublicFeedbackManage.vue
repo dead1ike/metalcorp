@@ -103,12 +103,24 @@ export default {
         .then(() => {
           this.clearForm()
           this.fetchFeedback()
+          this.makeToast('Ваш отзыв отправлен')
         })
     },
     clearForm() {
       this.form.image = null
       this.form.username = ''
+      this.form.telephone = ''
       this.form.text = ''
+    },
+    makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {
+      this.$bvToast.toast(body, {
+        title,
+        autoHideDelay: 2000,
+        appendToast: false,
+        solid: true,
+        variant,
+        toaster: 'b-toaster-bottom-right',
+      })
     },
   },
 }

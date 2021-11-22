@@ -19,7 +19,7 @@
           </div>
 
           <div class="mt-auto pb-10 mb-10 mb-sm-4 text-sm-left">
-            <b-btn variant="light">Оставить заявку </b-btn>
+            <b-btn variant="light" @click="confirmOffer()">Оставить заявку </b-btn>
           </div>
         </div>
       </div>
@@ -130,6 +130,7 @@ export default {
         .then(() => {
           this.form.phone = ''
           this.form.name = ''
+          alert('Ваша заявка принята. С вами свяжется специалист!')
         })
     },
   },

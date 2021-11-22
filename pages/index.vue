@@ -5,7 +5,7 @@
       <div class="banner_header d-flex flex-fill pb-10">
         <public-main-first-block />
       </div>
-      <h2 class="font-weight-bold pt-10 pb-6 ml-2">Каталог</h2>
+      <h2 class="font-weight-bold pt-10 pb-6 ml-5">Каталог</h2>
       <div class="d-flex flex-wrap justify-content-between">
         <public-widget-catalog />
       </div>
