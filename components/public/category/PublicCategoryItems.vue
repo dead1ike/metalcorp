@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <h2 class="font-weight-bold pt-10 pb-6 px-3">{{ getCategoryTitle }}</h2>
+    <h2 class="font-weight-bold pt-10 pb-6 px-5">{{ getCategoryTitle }}</h2>
     <div class="d-flex flex-wrap justify-content-center public-category-items p-2">
       <div v-for="itemCategory in getCategoryItems" :key="itemCategory.uuid" class="py-2 py-md-3">
         <div class="d-flex flex-column border border-dark p-3 p-md-4 mx-2 mx-md-3 h-100 justify-content-between">

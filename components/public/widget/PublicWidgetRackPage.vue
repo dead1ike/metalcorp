@@ -61,10 +61,10 @@
             <b-spinbutton v-model="form.shelf_count" min="2" max="10" style="max-width: 200px"></b-spinbutton>
           </div>
           <div class="d-flex align-items-center justify-content-between flex-row m-2">
-            <h5 v-if="$route.params.slug === 'sgr'" class="rack_parameter_title">Количество рам</h5>
-            <h5 v-else-if="$route.params.slug === 'sfm'" class="rack_parameter_title">Количество рам</h5>
-            <h5 v-else-if="$route.params.slug === 'sk'" class="rack_parameter_title">Количество рам</h5>
-            <h5 v-else-if="$route.params.slug === 'mspro'" class="rack_parameter_title">Количество рам</h5>
+            <h5 v-if="$route.params.slug === 'sgr'" class="rack_parameter_title">Количество стеллажей</h5>
+            <h5 v-else-if="$route.params.slug === 'sfm'" class="rack_parameter_title">Количество стеллажей</h5>
+            <h5 v-else-if="$route.params.slug === 'sk'" class="rack_parameter_title">Количество стеллажей</h5>
+            <h5 v-else-if="$route.params.slug === 'mspro'" class="rack_parameter_title">Количество стеллажей</h5>
             <h5 v-else class="rack_parameter_title">Количество стеллажей</h5>
             <b-spinbutton id="popover" v-model="form.rack_count" min="1" style="max-width: 200px"></b-spinbutton>
             <b-popover triggers="hover" placement="top" target="popover"

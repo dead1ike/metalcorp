@@ -6,7 +6,7 @@
         <div v-for="offerItem in getOfferManageItems" :key="offerItem.uuid" class="px-4 py-5">
           <div class="shadow d-flex flex-column flex-lg-row align-items-center justify-content-around py-4">
             <div><b-img :src="offerItem.image" style="max-width: 100px" /></div>
-            <div class="offer_title">
+            <div class="offer_title text-truncate" style="max-width: 490px">
               {{ offerItem.title }}
             </div>
             <div class="d-flex flex-column">
@@ -30,8 +30,8 @@
               </b-spinbutton>
             </div>
             <div class="d-flex flex-column align-items-center">
-              <span class="offer_price1">Стоимость:</span>
-              <span class="offer_price2">{{ offerItem.price }} руб.</span>
+              <span class="offer_price1">Сумма:</span>
+              <span class="offer_price2">{{ offerItem.total }} руб.</span>
             </div>
             <div>
               <b-dd v-b-popover.hover.topleft="'Удалить'" variant="link" no-caret size="sm">
