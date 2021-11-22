@@ -9,6 +9,6 @@
 
 <script>
 export default {
-  name: 'Index',
+  layout: 'catalog',
 }
 </script>

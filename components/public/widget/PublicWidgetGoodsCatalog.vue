@@ -1,19 +1,22 @@
 <template>
   <div>
     <div class="d-flex flex-wrap justify-content-center public-widget-goods-catalog p-2">
-      <div v-for="itemGoods in getGoodItems" :key="itemGoods.uuid" class="py-2 py-sm-3">
-        <div class="d-flex flex-column border border-dark p-3 p-sm-4 mx-2 mx-sm-3 h-100 justify-content-between">
+      <div v-for="itemGoods in getGoodItems" :key="itemGoods.uuid" class="py-2 py-md-3">
+        <div class="d-flex flex-column border border-dark p-3 p-md-4 mx-2 mx-md-3 h-100 justify-content-between">
           <h5>{{ itemGoods.title }}</h5>
-          <div class="d-flex py-4 flex-row h-100">
-            <div class="flex-fill truncate" style="max-width: 50%">
+
+          <div class="d-flex py-4 flex-column flex-md-row">
+            <div class="d-none d-md-flex flex-fill flex-column truncate" style="max-width: 65%; min-width: 65%">
               <p class="designer_dolbaeb">{{ itemGoods.description }}</p>
             </div>
-            <div class="pl-2">
-              <img :src="itemGoods.image" class="w-100" alt="" />
+
+            <div class="px-3 px-md-2 w-100 text-center align-self-center">
+              <img :src="itemGoods.image" alt="" />
             </div>
           </div>
+
           <div>
-            <b-btn class="d-inline-block py-4 px-8" variant="dark" @click="routeMore(itemGoods)"> Подробнее 44 </b-btn>
+            <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemGoods)"> Подробнее </nuxt-link>
           </div>
         </div>
       </div>
@@ -44,7 +47,7 @@
     width: 50%;
 
     img {
-      max-height: 120px;
+      max-height: 170px;
       max-width: 100%;
     }
   }
@@ -164,6 +167,14 @@ export default {
         this.$router.push(`/category/${item.uuid}/${item.slug}`)
       }
       this.$router.push(`/product/${item.uuid}/${item.slug}`)
+    },
+    getLink(itemGoods) {
+      if (!itemGoods.parent_uuid) {
+        // return `/category/${itemGoods.uuid}`
+        return `/category/${itemGoods.uuid}/${itemGoods.slug}`
+      } else {
+        return `/product/${itemGoods.uuid}/${itemGoods.slug}`
+      }
     },
   },
 }

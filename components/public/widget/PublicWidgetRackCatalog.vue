@@ -5,18 +5,18 @@
         <h5 class="m-0">{{ itemRack.title }}</h5>
 
         <div class="d-flex py-3 py-md-4 flex-row">
-          <div class="flex-fill truncate d-none d-md-block" style="max-width: 63%">
+          <div class="d-none d-md-flex flex-fill flex-column truncate" style="max-width: 65%; min-width: 65%">
             <p class="designer_dolbaeb">{{ itemRack.description }}</p>
           </div>
 
-          <div class="pl-0 pl-md-2 w-100 text-center">
+          <div class="px-3 px-md-2 w-100 text-center align-self-center">
             <img :src="itemRack.image" alt="" />
           </div>
         </div>
 
         <div>
           <div>
-            <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="routeMore(itemRack)"> Подробнее 33 </b-btn>
+            <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="routeMore(itemRack)"> Подробнее </b-btn>
           </div>
         </div>
       </div>
