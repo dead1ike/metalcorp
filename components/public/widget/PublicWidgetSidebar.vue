@@ -29,6 +29,20 @@
         >
           {{ item.title }}
         </b-link>
+        <b-link
+          v-else-if="item.uuid === '1a5e9b78-9fba-40f7-9afe-3097a08743fd'"
+          class="categories"
+          @click="toCategoryNoParent(item)"
+        >
+          {{ item.title }}
+        </b-link>
+        <b-link
+          v-else-if="item.uuid === '21669b5f-6d07-40ca-a88e-6e70e96de3c0'"
+          class="categories"
+          @click="toCategoryNoParent(item)"
+        >
+          {{ item.title }}
+        </b-link>
         <nuxt-link v-else class="categories" :to="`/category/${item.uuid}`">{{ item.title }} </nuxt-link>
       </div>
     </div>

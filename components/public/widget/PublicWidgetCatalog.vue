@@ -6,7 +6,7 @@
           <div class="h4 m-0 w-100">{{ itemCategory.title }}</div>
 
           <div class="d-flex py-0 py-md-4 flex-row h-100">
-            <div class="d-none d-md-flex flex-fill flex-column" style="max-width: 65%">
+            <div class="d-none d-md-flex flex-fill flex-column" style="max-width: 65%; min-width: 65%">
               <template v-for="itemChild in itemCategory.childs.slice(0, 6)">
                 <span :key="itemChild.uuid" class="d-block designer_dolbaeb">
                   {{ itemChild.title }}
@@ -21,9 +21,7 @@
         </div>
 
         <div>
-          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)">
-            Подробнее 11
-          </b-btn>
+          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)"> Подробнее </b-btn>
         </div>
       </div>
     </div>

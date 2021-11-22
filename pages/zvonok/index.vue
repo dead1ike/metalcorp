@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'index',
+  layout: 'catalog',
 }
 </script>
 
