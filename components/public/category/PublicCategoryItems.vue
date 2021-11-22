@@ -7,7 +7,7 @@
           <h5>{{ itemCategory.title }}</h5>
 
           <div class="d-flex py-4 flex-column flex-md-row">
-            <div class="flex-fill truncate d-md-block d-none" style="max-width: 65%">
+            <div class="d-none d-md-flex flex-fill flex-column truncate" style="max-width: 65%; min-width: 65%">
               <div class="designer_dolbaeb">{{ itemCategory.description }}</div>
             </div>
 
@@ -16,7 +16,7 @@
             </div>
           </div>
 
-          <div class="d-flex flex-column-reverse flex-md-row justify-content-between">
+          <div class="d-flex flex-column-reverse flex-xl-row justify-content-between">
             <div class="pt-3">
               <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemCategory)">
                 Подробнее
