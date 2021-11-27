@@ -10,5 +10,8 @@
 <script>
 export default {
   layout: 'catalog',
+  head: {
+    title: 'Отзывы',
+  },
 }
 </script>

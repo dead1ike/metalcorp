@@ -129,6 +129,9 @@
 <script>
 export default {
   layout: 'catalog',
+  head: {
+    title: 'Контакты',
+  },
   computed: {
     getItems() {
       return this.$store.getters['seo/getRekvizityItems']

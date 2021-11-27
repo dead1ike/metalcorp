@@ -125,8 +125,6 @@ export default {
       this.$store.commit('category/setCurrentPageCategory', this.pagination.currentPage)
     },
     getLink(itemCategory) {
-      console.warn('itemCategory', itemCategory.title)
-      console.warn('itemCategory', itemCategory)
       if (itemCategory.childs.length) {
         return `/category/${itemCategory.uuid}`
       } else {

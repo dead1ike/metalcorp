@@ -112,7 +112,6 @@ export default {
       this.updatePage()
     },
     getParamUuid() {
-      console.warn('watch getParamUuid,', this.getParamUuid)
       this.updatePage()
     },
     getFilters: {
@@ -123,7 +122,6 @@ export default {
     },
   },
   mounted() {
-    console.warn('mounted')
     // this.$store.commit('good/setCategoryUuid', this.$route.params.uuid)
     this.updatePage()
   },
@@ -139,11 +137,9 @@ export default {
     },
     updatePage() {
       if (this.getParamUuid === 'search') {
-        console.warn(this.getParamUuid, 'if')
         this.updateFilter('search', this.getSearchTitle)
         this.updateFilter('page', 1)
       } else {
-        console.warn(this.getParamUuid, 'else')
         this.updateFilter('search', '')
         this.updateFilter('category_uuid', this.getParamUuid)
         // this.$store.commit('good/setCategoryUuid', this.getParamUuid)

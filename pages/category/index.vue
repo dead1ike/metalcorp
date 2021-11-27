@@ -14,5 +14,8 @@
 <script>
 export default {
   layout: 'catalog',
+  head: {
+    title: 'Каталог',
+  },
 }
 </script>

@@ -10,6 +10,9 @@
 <script>
 export default {
   layout: 'catalog',
+  head: {
+    title: 'Сотрудничество',
+  },
 }
 </script>
 <style lang="scss"></style>
