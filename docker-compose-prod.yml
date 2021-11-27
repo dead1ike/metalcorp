@@ -3,7 +3,7 @@ services:
 
   app:
     container_name: ${COMPOSE_PROJECT_NAME}-app
-    image: node:17-buster
+    image: node:16-buster
     command: sh -c "yarn && yarn generate && chown -R sail:sail /var/www/app/"
     working_dir: /var/www/app
     volumes:
