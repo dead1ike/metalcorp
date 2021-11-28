@@ -21,7 +21,9 @@
         </div>
 
         <div>
-          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)"> Подробнее </b-btn>
+          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)">
+            Подробнее 1
+          </b-btn>
         </div>
       </div>
     </div>
@@ -73,12 +75,10 @@ export default {
       this.$router.push(`/category/${itemChild.uuid}`)
     },
     toCategory(item) {
-      this.$store.commit('category/setCategoryTitle', item.title)
       if (item.uuid !== '19fea985-bb05-4ab6-8652-0a17691c18e9') {
         this.$router.push(`/category/${item.uuid}`)
       } else {
         this.$router.push(`/category/${item.uuid}/${item.slug}`)
-        this.$store.dispatch('category/fetchAntonCategory')
       }
     },
   },

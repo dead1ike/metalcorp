@@ -46,9 +46,13 @@ export default {
   },
 
   mounted() {
-    console.warn('catalog', this.getParamUuid)
     this.updateFilters('category_uuid', this.getParamUuid)
     // this.$store.commit('category/setCurrentCategoryUuid', 'parent')
+  },
+  created() {
+    if (this.getParamUuid && this.getParamUuid !== 'search') {
+      this.$root.$emit('fetch', 'Category', 'Item', this.getParamUuid)
+    }
   },
 
   methods: {

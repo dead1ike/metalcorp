@@ -8,7 +8,6 @@
 <script>
 export default {
   mounted() {
-    // console.warn(this.$state)
     this.$root.$on('bv::modal::hide', (bvEvent, modalId) => {
       if (modalId === 'dimension-modal') {
         this.$store.commit('setActiveModal', {
@@ -23,20 +22,20 @@ export default {
       }
     })
 
-    this.$root.$on('fetch', (model, factor) => {
-      // this.$root.$emit('fetch', 'Rack', 'Items')
-      // this.$root.$emit('fetch', 'Category', 'Items')
-      // this.$root.$emit('fetch', 'Category', 'Item')
-      // this.$root.$emit('fetch', 'WidgetCategory', 'Items')
+    this.$root.$on('fetch', (model, factor, payload = null) => {
       switch (model) {
         case 'Category':
-          factor === 'Items' ? this.fetchCategoryItemsD() : this.fetchCategoryItemD()
+          if (factor === 'Items') {
+            this.fetchCategoryItemsD()
+          } else {
+            this.fetchCategoryItemD(payload)
+          }
           break
         case 'Rack':
-          factor === 'Items' ? this.fetchRackItemsD() : this.fetchRackItemD()
+          factor === 'Items' ? this.fetchRackItemsD() : this.fetchRackItemD(payload)
           break
         case 'Goods':
-          factor === 'Items' ? this.fetchGoodsItemsD() : this.fetchGoodsItemD()
+          factor === 'Items' ? this.fetchGoodsItemsD() : this.fetchGoodsItemD(payload)
           break
         case 'WidgetCategory':
           this.fetchWidgetCategoryItemsD()
@@ -75,8 +74,8 @@ export default {
     fetchCategoryItems() {
       this.$store.dispatch('category/fetchCategoryItems')
     },
-    fetchCategoryItem() {
-      this.$store.dispatch('category/fetchCategoryItem')
+    fetchCategoryItem(payload) {
+      this.$store.dispatch('category/fetchCategoryItem', payload)
     },
 
     // Rack

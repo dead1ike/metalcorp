@@ -19,7 +19,7 @@
           <div class="d-flex flex-column-reverse flex-xl-row justify-content-between">
             <div class="pt-3">
               <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemCategory)">
-                Подробнее
+                Подробнее 4
               </nuxt-link>
             </div>
             <div class="w-100 align-self-center" :class="{ 'd-none': itemCategory.childs.length }">
@@ -81,6 +81,9 @@ export default {
     }
   },
   computed: {
+    getParamUuid() {
+      return this.$route.params.uuid
+    },
     getCategoryPagination() {
       return this.$store.getters['category/getCategoryPagination'] || {}
     },
@@ -101,21 +104,24 @@ export default {
     getFilter: {
       handler() {
         this.$root.$emit('fetch', 'Category', 'Items')
+        if (this.getParamUuid && this.getParamUuid !== 'search') {
+          this.$root.$emit('fetch', 'Category', 'Item', this.getParamUuid)
+        }
       },
       deep: true,
     },
   },
-  mounted() {
-    if (this.$route.params.uuid) {
-      this.$store.commit('category/setCurrentCategoryUuid', this.$route.params.uuid)
+  created() {
+    if (this.getParamUuid) {
+      if (this.getParamUuid !== 'search') {
+        this.$root.$emit('fetch', 'Category', 'Item', this.getParamUuid)
+      }
+      this.$store.commit('category/setCurrentCategoryUuid', this.getParamUuid)
     } else {
       this.$store.commit('category/setCurrentCategoryUuid', 'parent')
     }
     this.$root.$emit('fetch', 'Category', 'Items')
     this.$root.$emit('fetch', 'Rack', 'Items')
-  },
-  created() {
-    //
   },
   methods: {
     changeLimit(value) {

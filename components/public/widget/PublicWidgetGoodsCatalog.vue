@@ -16,7 +16,7 @@
           </div>
 
           <div>
-            <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemGoods)"> Подробнее </nuxt-link>
+            <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemGoods)"> Подробнее 2 </nuxt-link>
           </div>
         </div>
       </div>
