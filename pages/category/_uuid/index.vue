@@ -1,7 +1,6 @@
 <template>
   <div class="overflow-hidden h-100 d-flex flex-row">
     <public-widget-sidebar />
-    2
     <div class="h-100 w-100 overflow-auto flex-column">
       <template v-if="$route.params.uuid === 'search'">
         <h3 class="p-10 font-weight-bold">
