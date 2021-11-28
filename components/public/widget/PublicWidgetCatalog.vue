@@ -21,9 +21,7 @@
         </div>
 
         <div>
-          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)">
-            Подробнее 1
-          </b-btn>
+          <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="toCategory(itemCategory)"> Подробнее </b-btn>
         </div>
       </div>
     </div>

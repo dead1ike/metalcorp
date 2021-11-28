@@ -19,7 +19,7 @@
           <div class="d-flex flex-column-reverse flex-xl-row justify-content-between">
             <div class="pt-3">
               <nuxt-link class="btn btn-dark px-5 py-3 px-md-7 py-md-6" :to="getLink(itemCategory)">
-                Подробнее 4
+                Подробнее
               </nuxt-link>
             </div>
             <div class="w-100 align-self-center" :class="{ 'd-none': itemCategory.childs.length }">
