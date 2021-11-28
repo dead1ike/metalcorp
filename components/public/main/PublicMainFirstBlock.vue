@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white d-flex flex-fill flex-column banner">
+  <div class="text-white d-flex flex-fill flex-column imagebar">
     <div>
       <h1 class="text-wrap font-weight-bold">Комплексное решение для вашего склада</h1>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="block_guaranty d-lg-flex w-100 pt-10 mt-10">
-    <div class="text-white d-flex block3_banner flex-row align-self-center w-100 p-8">
+    <div class="text-white d-flex block3_image flex-row align-self-center w-100 p-8">
       <div class="d-flex flex-column flex-fill">
         <div class="w-100 py-5">
           <h2 class="font-weight-bold">Гарантируем качество и надежность</h2>

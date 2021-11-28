@@ -2,7 +2,7 @@
   <div class="d-flex overflow-hidden">
     <public-widget-sidebar />
     <div class="overflow-auto h-100 container__main">
-      <div class="banner_header d-flex flex-fill pb-10">
+      <div class="imagebar_header d-flex flex-fill pb-10">
         <public-main-first-block />
       </div>
       <h2 class="font-weight-bold pt-10 pb-6 ml-5">Каталог</h2>
