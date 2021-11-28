@@ -35,7 +35,6 @@ export default {
         })
         .catch((e) => {
           this.makeToast('Ошибка загрузки прайса, попробуйте .xlsx формат', 'danger')
-          console.warn(e)
         })
     },
     makeToast(body = 'Ничего не произошло', variant = 'success', title = 'Уведомление') {

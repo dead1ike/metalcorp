@@ -55,6 +55,9 @@ export const mutations = {
   setCategoryItems(state, data) {
     state.items.category = data
   },
+  setCategoryItem(state, data) {
+    state.item.category = data
+  },
   setCategoryTotal(state, total) {
     state.pagination.category.total = total
   },
@@ -85,7 +88,7 @@ export const getters = {
   },
 
   getCategoryTitle(state) {
-    return state.item.category_title
+    return state.item.category.title || 'ПУСТО'
   },
   getCategoryByUuid: (state) => (uuid) => {
     return state.items.category.find((item) => {
