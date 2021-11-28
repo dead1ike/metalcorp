@@ -11,7 +11,7 @@ services:
     volumes:
       - ./:/var/www/app
     networks:
-      - network-dev
+      - network-skladskoi
 
 networks:
-  network-dev: {}
+  network-skladskoi: {}

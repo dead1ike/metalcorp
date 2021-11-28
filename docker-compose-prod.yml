@@ -9,7 +9,7 @@ services:
     volumes:
       - ./:/var/www/app
     networks:
-      - network-prod
+      - network-skladskoi
 
 networks:
-  network-prod: {}
+  network-skladskoi: {}
