@@ -29,4 +29,3 @@ export default {
   layout: 'catalog',
 }
 </script>
-<style lang="scss"></style>

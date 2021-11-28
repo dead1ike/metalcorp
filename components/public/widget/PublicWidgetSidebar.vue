@@ -75,8 +75,8 @@ export default {
     },
   },
   mounted() {
-    this.$root.$emit('fetch', 'WidgetCategory', 'Items')
-    this.$root.$emit('fetch', 'Category', 'Items')
+    // this.$root.$emit('fetch', 'WidgetCategory', 'Items')
+    // this.$root.$emit('fetch', 'Category', 'Items')
   },
   methods: {
     toCategoryNoParent(item) {
