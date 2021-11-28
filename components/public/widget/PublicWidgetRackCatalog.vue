@@ -16,7 +16,7 @@
 
         <div>
           <div>
-            <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="routeMore(itemRack)"> Подробнее </b-btn>
+            <b-btn variant="dark" class="px-5 py-3 px-md-7 py-md-6" @click="routeMore(itemRack)"> 4Подробнее </b-btn>
           </div>
         </div>
       </div>

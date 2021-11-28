@@ -44,6 +44,7 @@ export default {
     })
     this.$root.$emit('fetch', 'WidgetCategory', 'Items')
     this.$root.$emit('fetch', 'Category', 'Items')
+    this.$root.$emit('fetch', 'Goods', 'Items')
   },
   beforeDestroy() {
     this.$root.$off('bv::modal::hide')

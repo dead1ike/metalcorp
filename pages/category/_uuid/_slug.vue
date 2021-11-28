@@ -2,7 +2,7 @@
   <div class="overflow-hidden h-100 d-flex flex-row">
     <public-widget-sidebar />
     <div class="h-100 w-100 overflow-auto flex-column">
-      <h2 v-if="getCategoryByUuid.title" class="font-weight-bold pt-10 pb-6 px-10">{{ getCategoryByUuid.title }}</h2>
+      <h2 v-if="getCurrentCategory.title" class="font-weight-bold pt-10 pb-6 px-10">{{ getCurrentCategory.title }}</h2>
 
       <template v-if="getTypeByCategoryUuid.length > 0">
         <public-widget-rack-catalog />
@@ -47,14 +47,16 @@ export default {
 
   mounted() {
     this.updateFilters('category_uuid', this.getParamUuid)
-    // this.$store.commit('category/setCurrentCategoryUuid', 'parent')
-  },
-  created() {
-    if (this.getParamUuid && this.getParamUuid !== 'search') {
-      this.$root.$emit('fetch', 'Category', 'Item', this.getParamUuid)
-    }
-  },
 
+    this.$store.dispatch('category/fetchCategoryItem', this.getParamUuid)
+    //   this.$store.commit('category/setCurrentCategoryUuid', 'parent')
+  },
+  // created() {
+  //   if (this.getParamUuid && this.getParamUuid !== 'search') {
+  //     this.$root.$emit('fetch', 'Category', 'Item', this.getParamUuid)
+  //     console.warn(this.getParamUuid)
+  //   }
+  // },
   methods: {
     updateFilters(fieldName, value) {
       this.setCategoryFilter(fieldName, value)
@@ -62,6 +64,7 @@ export default {
       this.$root.$emit('fetch', 'Goods', 'Items')
       this.$root.$emit('fetch', 'Rack', 'Items')
       this.$root.$emit('fetch', 'Category', 'Items')
+      this.$root.$emit('fetch', 'Category', 'Item', this.getParamUuid)
     },
     setCategoryFilter(fieldName, value) {
       this.$store.commit('category/setFilter', {
