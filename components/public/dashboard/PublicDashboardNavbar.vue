@@ -1,9 +1,9 @@
 <template>
   <div class="main-header shadow">
     <div class="main-header-content py-3">
-      <b-navbar toggleable="lg">
+      <b-navbar toggleable="md">
         <b-navbar-brand to="/">
-          <div style="width: 280px" class="pl-1">
+          <div class="pl-1">
             <b-img style="max-width: 150px; max-height: 63px" src="~/static/img/logo.png" />
           </div>
         </b-navbar-brand>
@@ -32,8 +32,8 @@
                   <path d="M14 19H17.1667V26.9167H14V19ZM20.3333 19H23.5V26.9167H20.3333V19Z" fill="#445CAA" />
                 </svg>
                 <b-btn
-                  to="/offer"
                   v-if="getBasket !== 0"
+                  to="/offer"
                   class="position-absolute px-3 py-0 ml-n8 mb-n3 designer_dolbaeb"
                   pill
                   variant="corp"
