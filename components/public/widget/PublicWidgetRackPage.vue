@@ -106,11 +106,11 @@ export default {
     },
     getFinalResult() {
       const result = this.priceManager(this.getTypeByUuid.rack_components) * this.form.rack_count
-      return parseInt(result * 1.3)
+      return parseInt(result)
     },
     getRackPrice() {
       const result = this.priceManager(this.getTypeByUuid.rack_components)
-      return parseInt(result * 1.3)
+      return parseInt(result)
     },
     getRackParamsGroup() {
       const group = _.uniqBy(this.getRackComponentParams, (item) => {
