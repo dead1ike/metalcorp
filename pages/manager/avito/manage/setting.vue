@@ -211,7 +211,7 @@ export default {
       this.$axios.post('/api/avito/avitoSetting/botOn')
     },
     botOff() {
-      this.$axios.post('/api/avito/avitoSetting/botOn')
+      this.$axios.post('/api/avito/avitoSetting/botOff')
     },
     getDuration(date) {
       return (
