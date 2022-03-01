@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import AuthLogin from '@/components/auth/AuthLogin.vue'
-import ManagerAvitoMenu from '@/components/manager/avito/ManagerAvitoMenu.vue'
 import ManagerDashboardFooter from '@/components/manager/dashboard/ManagerDashboardFooter.vue'
 import ManagerDashboardNavbar from '@/components/manager/dashboard/ManagerDashboardNavbar.vue'
+import ManagerAvitoMenu from '@/components/manager/avito/ManagerAvitoMenu.vue'
 import ManagerGoodsAdd from '@/components/manager/goods/ManagerGoodsAdd.vue'
 import ManagerGoodsControl from '@/components/manager/goods/ManagerGoodsControl.vue'
 import ManagerGoodsParameter from '@/components/manager/goods/ManagerGoodsParameter.vue'
@@ -57,12 +57,12 @@ import ManagerRackTypeComponentTable from '@/components/manager/rack/typeCompone
 
 Vue.component('AuthLogin', AuthLogin)
 Vue.component('LazyAuthLogin', AuthLogin)
-Vue.component('ManagerAvitoMenu', ManagerAvitoMenu)
-Vue.component('LazyManagerAvitoMenu', ManagerAvitoMenu)
 Vue.component('ManagerDashboardFooter', ManagerDashboardFooter)
 Vue.component('LazyManagerDashboardFooter', ManagerDashboardFooter)
 Vue.component('ManagerDashboardNavbar', ManagerDashboardNavbar)
 Vue.component('LazyManagerDashboardNavbar', ManagerDashboardNavbar)
+Vue.component('ManagerAvitoMenu', ManagerAvitoMenu)
+Vue.component('LazyManagerAvitoMenu', ManagerAvitoMenu)
 Vue.component('ManagerGoodsAdd', ManagerGoodsAdd)
 Vue.component('LazyManagerGoodsAdd', ManagerGoodsAdd)
 Vue.component('ManagerGoodsControl', ManagerGoodsControl)

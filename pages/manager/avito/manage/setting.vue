@@ -13,11 +13,21 @@
             disabled
           ></b-form-input>
         </b-form-group>
+
+        <b-form-group label="Client_URL:" label-for="nested-Client_URL" label-cols-sm="3" label-align-sm="right">
+          <b-form-input
+            id="nested-Client_URL"
+            v-model="form.authorization_code.client_url"
+            disabled
+          ></b-form-input>
+        </b-form-group>
       </b-form-group>
 
       <div class="d-flex flex-column flex-sm-row w-100 justify-content-between">
         <b-btn class="m-1" variant="danger" @click="fetchSettngs()">Сбросить</b-btn>
         <b-btn class="m-1" variant="success" :disabled="!isChange" @click="saveSettngs()">Сохранить</b-btn>
+        <b-btn class="m-1" variant="success"  @click="botOn()">Включить бота</b-btn>
+        <b-btn class="m-1" variant="danger"  @click="botOff()">Выключить бота</b-btn>
       </div>
     </div>
 
@@ -158,6 +168,7 @@ export default {
         authorization_code: {
           client_id: null,
           client_secret: null,
+          client_url: null,
         },
         token: {
           expires_in: null,
@@ -187,7 +198,8 @@ export default {
     isChange() {
       return (
         this.form.authorization_code.client_id !== this.getItemAuthorizationCode.client_id ||
-        this.form.authorization_code.client_secret !== this.getItemAuthorizationCode.client_secret
+        this.form.authorization_code.client_secret !== this.getItemAuthorizationCode.client_secret ||
+        this.form.authorization_code.client_url !== this.getItemAuthorizationCode.client_url
       )
     },
   },
@@ -195,6 +207,12 @@ export default {
     this.fetchSettngs()
   },
   methods: {
+    botOn() {
+      this.$axios.post('/api/avito/avitoSetting/botOn')
+    },
+    botOff() {
+      this.$axios.post('/api/avito/avitoSetting/botOn')
+    },
     getDuration(date) {
       return (
         this.$DateTime
