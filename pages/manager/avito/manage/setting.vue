@@ -208,10 +208,10 @@ export default {
   },
   methods: {
     botOn() {
-      this.$axios.post('/api/avito/avitoSetting/botOn')
+      this.$axios.get('/api/avito/avitoSetting/botOn')
     },
     botOff() {
-      this.$axios.post('/api/avito/avitoSetting/botOff')
+      this.$axios.get('/api/avito/avitoSetting/botOff')
     },
     getDuration(date) {
       return (
