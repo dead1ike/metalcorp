@@ -9,7 +9,7 @@
         </div>
         <div class="py-2">
           <h5 class="block5_heading">Телефон:</h5>
-          <h5 class="font-weight-light">+7 (906) 812-81-75</h5>
+          <h5 class="font-weight-light">+7 (800) 301-62-98</h5>
           <h5 class="font-weight-light">Ежедневно с 9:00 до 21:00</h5>
         </div>
         <div class="py-2">
@@ -154,7 +154,7 @@
           </div>
           <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Телефон</h5></div>
-            <div class="w-100"><h5 class="font-weight-light">+7 (906) 812-81-75</h5></div>
+            <div class="w-100"><h5 class="font-weight-light">+7 (800) 301-62-98</h5></div>
           </div>
           <div class="w-100 d-flex flex-row justify-content-between py-4">
             <div class="w-100"><h5>Почта</h5></div>

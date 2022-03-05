@@ -7,11 +7,11 @@
       <div class="d-flex flex-column flex-lg-row p-6 h-100">
         <div class="d-flex flex-column pr-10 mb-5 mb-sm-0">
           <h5 class="feedback_form_text text-truncate">Ваше имя</h5>
-          <b-form-input class="border-dark" size="lg" v-model="form.name"></b-form-input>
+          <b-form-input v-model="form.name" class="border-dark" size="lg"></b-form-input>
         </div>
         <div class="d-flex flex-column pr-10 mt-5 mt-sm-0">
           <h5 class="feedback_form_text text-truncate">Ваш телефон</h5>
-          <b-form-input class="border-dark" size="lg" v-model="form.phone"></b-form-input>
+          <b-form-input v-model="form.phone" class="border-dark" size="lg"></b-form-input>
         </div>
       </div>
       <div class="px-5 pb-9">
@@ -30,7 +30,7 @@
         </div>
         <div class="pl-lg-5">
           <h5 class="callback_info_header">Телефон:</h5>
-          <h5 class="font-weight-light">+7 (906) 812-81-75</h5>
+          <h5 class="font-weight-light">+7 (800) 301-62-98</h5>
         </div>
       </div>
       <div class="px-5 py-6">

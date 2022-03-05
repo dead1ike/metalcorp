@@ -5,7 +5,7 @@
       <p class="block5_heading pt-7 font-weight-normal">Адрес:</p>
       <p class="text-truncate mb-5">г. Екатеринбург, ул. Радищева, д.4, оф.661</p>
       <p class="block5_heading pt-7 font-weight-normal">Телефон:</p>
-      <span class="pb-1">+7 (906) 812-81-75</span>
+      <span class="pb-1">+7 (800) 301-62-98</span>
       <span class="pb-8">Ежедневно с 9:00 до 21:00</span>
     </div>
     <iframe

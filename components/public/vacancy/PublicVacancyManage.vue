@@ -148,7 +148,7 @@
               <div class="d-flex flex-column pl-10 py-4">
                 <div class="vacancy_right_heading"><h5>Телефон:</h5></div>
                 <div class="vacancy_right_text pt-3">
-                  <h5 class="font-weight-light">+7 (906) 812-81-75</h5>
+                  <h5 class="font-weight-light">+7 (800) 301-62-98</h5>
                 </div>
               </div>
             </div>

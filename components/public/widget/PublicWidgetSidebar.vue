@@ -48,7 +48,7 @@
     </div>
 
     <div class="pb-9 d-flex flex-column">
-      <span class="font-weight-normal">+7 (906) 812-81-75</span>
+      <span class="font-weight-normal">+7 (800) 301-62-98</span>
       <span class="operating_mode font-weight-normal">Ежедневно с 9:00 до 21:00</span>
     </div>
     <div class="sidebar_button">

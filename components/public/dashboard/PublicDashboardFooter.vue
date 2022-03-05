@@ -9,7 +9,7 @@
       </div>
       <div class="pl-4 p-sm-0">
         <div class="pt-sm-10 pt-0">
-          <a class="text-white" href="tel:+79068128175">+7 (906) 812-81-75</a> <br />
+          <a class="text-white" href="tel:+79068128175">+7 (800) 301-62-98</a> <br />
           <span>ЕЖЕДНЕВНО с 9:00 до 21:00</span><br />
         </div>
         <div class="pt-sm-7 pt-4">
@@ -36,7 +36,7 @@
           </div>
           <div class="pb-3">
             <h5 class="text-white designer_dolbaeb m-0 font-weight-light" href="tel:+79068128175">
-              +7 (906) 812-81-75
+              +7 (800) 301-62-98
             </h5>
             <h5 class="text-white designer_dolbaeb m-0 font-weight-light" href="mailto:info@m-lc.ru">info@m-lc.ru</h5>
           </div>
